@@ -1,0 +1,8 @@
+node_modules/
+frontend/node_modules/
+senior_portal/client/node_modules/
+database.json
+.env
+.gemini/
+.git/
+*.log

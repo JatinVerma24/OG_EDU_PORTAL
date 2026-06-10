@@ -1,0 +1,19 @@
+{
+  "name": "jv-result-checker-monolith",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd client && npm install && npm run build",
+    "vercel-build": "cd client && npm install && npm run build"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.9.0",
+    "marked": "^9.1.6"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "lpu-induction-portal",
+  "version": "1.0.0",
+  "description": "Dynamic LPU Induction schedule and guide for freshers built on React + Express MERN-like stack.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "concurrently \"node server.js\" \"cd frontend && npm run dev\" \"cd senior_portal/client && npm run dev\"",
+    "build": "npm run build-fresher && npm run build-senior",
+    "build-fresher": "cd frontend && npm run build",
+    "build-senior": "cd senior_portal/client && npm run build",
+    "install-all": "npm install && cd frontend && npm install && cd ../senior_portal/client && npm install"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mongoose": "^9.7.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JVOG Result Checker - Academic Tools</title>
+    <meta name="description" content="JVOG Result Checker - Check pass/fail status, calculate TGPA, CGPA, percentage, and track attendance for university students.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+    
+
+</head>
+<body>
+    <!-- Aceternity Background Layer -->
+    <div class="aceternity-bg">
+        <div class="spotlight"></div>
+    </div>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h1 class="logo"><em>OGEDU-PORTAL</em></h1>
+            <p class="logo-sub">RESULT CHECKER</p>
+        </div>
+
+        <nav class="sidebar-nav" id="sidebarNav">
+            <button class="nav-item active" data-page="pass-checker" id="nav-pass-checker">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">Pass Checker</span>
+                <span class="active-dot"></span>
+            </button>
+            <button class="nav-item" data-page="tgpa-calculator" id="nav-tgpa-calculator">
+                <span class="nav-icon">🎓</span>
+                <span class="nav-text">TGPA Calculator</span>
+            </button>
+            <button class="nav-item" data-page="cgpa-calculator" id="nav-cgpa-calculator">
+                <span class="nav-icon">🔮</span>
+                <span class="nav-text">CGPA Calculator</span>
+            </button>
+            <button class="nav-item" data-page="percentage" id="nav-percentage">
+                <span class="nav-icon">📐</span>
+                <span class="nav-text">Percentage</span>
+            </button>
+            <button class="nav-item" data-page="attendance" id="nav-attendance">
+                <span class="nav-icon">✨</span>
+                <span class="nav-text">Bonus Attendance</span>
+            </button>
+            <button class="nav-item" data-page="resources" id="nav-resources">
+                <span class="nav-icon">📚</span>
+                <span class="nav-text">Subject Resources</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+
+            
+            <div class="appearance-toggle" id="themeToggle">
+                <span class="appearance-label">Appearance</span>
+                <span class="theme-icon" id="themeIcon">🌙</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@JatinVermaTHE-OG" target="_blank" class="social-icon" aria-label="YouTube">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3 3 0 0 0-2.11-2.12C19.53 3.5 12 3.5 12 3.5s-7.53 0-9.39.57A3 3 0 0 0 .5 6.19 31.25 31.25 0 0 0 0 12a31.25 31.25 0 0 0 .5 5.81 3 3 0 0 0 2.11 2.12c1.86.57 9.39.57 9.39.57s7.53 0 9.39-.57a3 3 0 0 0 2.11-2.12A31.25 31.25 0 0 0 24 12a31.25 31.25 0 0 0-.5-5.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/ogjatinverma/?hl=en" target="_blank" class="social-icon" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.86 3.9 2.31 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.63-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm6.41-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/jatinverma24/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 2.06-2.06 2.06 2.06 0 0 1-2.06 2.06zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77A1.75 1.75 0 0 0 0 1.73v20.54A1.75 1.75 0 0 0 1.77 24h20.45A1.75 1.75 0 0 0 24 22.27V1.73A1.75 1.75 0 0 0 22.22 0z"/></svg>
+                </a>
+            </div>
+            <p class="credits">DESIGNED BY JATIN VERMA</p>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header" id="mobileHeader">
+        <div class="mobile-logo">
+        <h1><em>OGEDU-PORTAL</em></h1>
+            <p>RESULT CHECKER</p>
+        </div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Pass Checker Page -->
+        <section class="page active" id="page-pass-checker">
+            <div class="page-header">
+                <h2 class="page-title gradient-text-purple">Pass Checker</h2>
+                <p class="page-subtitle">Check if you meet the passing criteria</p>
+            </div>
+
+            <div class="pass-checker-layout glass-card">
+                <div class="form-section">
+                    <div class="form-group">
+                        <label class="form-label" for="subjectName">Subject Name</label>
+                        <input type="text" id="subjectName" class="form-input" placeholder="e.g. Programming in Java">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Examination Type</label>
+                        <div class="toggle-group" id="examType">
+                            <button class="toggle-btn active" data-value="regular">Regular</button>
+                            <button class="toggle-btn" data-value="reappear">Reappear</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Subject Type</label>
+                        <div class="toggle-group" id="subjectType">
+                            <button class="toggle-btn active" data-value="theory">Theory</button>
+                            <button class="toggle-btn" data-value="practical">Practical</button>
+                        </div>
+                    </div>
+
+                    <div class="marks-section">
+                        <div class="marks-row">
+                            <label class="form-label">Attendance</label>
+                            <div class="marks-inputs">
+                                <input type="number" id="attObt" class="form-input marks-input" value="0" min="0">
+                                <span class="marks-separator">/</span>
+                                <input type="number" id="attMax" class="form-input marks-input" value="5" min="0">
+                            </div>
+                        </div>
+
+                        <div class="marks-row">
+                            <label class="form-label">Continuous Assessment</label>
+                            <div class="marks-inputs">
+                                <input type="number" id="caObt" class="form-input marks-input" value="0" min="0">
+                                <span class="marks-separator">/</span>
+                                <input type="number" id="caMax" class="form-input marks-input" value="25" min="0">
+                            </div>
+                        </div>
+
+                        <div class="marks-row">
+                            <label class="form-label">Mid Term (MTE)</label>
+                            <div class="marks-inputs">
+                                <input type="number" id="mteObt" class="form-input marks-input" value="0" min="0">
+                                <span class="marks-separator">/</span>
+                                <input type="number" id="mteMax" class="form-input marks-input" value="20" min="0">
+                            </div>
+                        </div>
+
+                        <div class="marks-row">
+                            <label class="form-label">End Term (ETE)</label>
+                            <div class="marks-inputs">
+                                <input type="number" id="eteObt" class="form-input marks-input" value="0" min="0">
+                                <span class="marks-separator">/</span>
+                                <input type="number" id="eteMax" class="form-input marks-input" value="50" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="verdict-section" id="verdictSection">
+                    <div class="verdict-content" id="verdictContent">
+                        <p class="verdict-text gradient-text-purple" id="verdictText">Enter your marks to see the verdict</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TGPA Calculator Page -->
+        <section class="page" id="page-tgpa-calculator">
+            <div class="tgpa-header">
+                <h2 class="page-title-left">TGPA Calculator</h2>
+                <div class="tgpa-tabs">
+                    <button class="tab-btn active" data-tab="marks-input" id="tabMarksInput">📝 Marks Input</button>
+                    <button class="tab-btn" data-tab="analysis" id="tabAnalysis">📊 Analysis</button>
+                </div>
+            </div>
+
+            <div class="tgpa-controls">
+                <div class="preset-buttons">
+                    <button class="preset-btn btech" id="loadBtech">Load B.Tech</button>
+                    <button class="preset-btn bba" id="loadBba">Load BBA</button>
+                </div>
+                <div class="tgpa-actions">
+                    <button class="action-btn reset-btn" id="tgpaReset">Reset 🗑️</button>
+                    <button class="action-btn relative-btn" id="toggleRelative">Enable Relative Grading</button>
+                </div>
+            </div>
+
+            <!-- Marks Input Tab -->
+            <div class="tab-content active" id="tabContentMarks">
+                <div class="subjects-table">
+                    <div class="table-header">
+                        <span class="col-subject">Subject</span>
+                        <span class="col-credits">Credits</span>
+                        <span class="col-marks">Marks</span>
+                        <span class="col-grade">Grade</span>
+                        <span class="col-action"></span>
+                    </div>
+                    <div id="subjectRows">
+                        <!-- Subject rows injected by JS -->
+                    </div>
+                    <button class="add-subject-btn" id="addSubjectBtn">+ Add Subject</button>
+                </div>
+
+                <button class="calculate-btn" id="calcTgpaBtn">Calculate Result</button>
+
+                <div class="tgpa-result" id="tgpaResult" style="display:none">
+                    <div class="result-card">
+                        <h3>Your TGPA</h3>
+                        <span class="tgpa-value" id="tgpaValue">0.00</span>
+                    </div>
+                </div>
+
+                <div class="info-banner green-banner">
+                    <span>DOWNLOAD GUIDE FOR FREE 📄</span>
+                </div>
+
+                <p class="credits-info">To find your credits: UMS &gt; Academics &gt; View Program Scheme</p>
+
+                <div class="info-banner peach-banner">
+                    <span>Check Credits on UMS 🏛️</span>
+                </div>
+            </div>
+
+            <!-- Analysis Tab -->
+            <div class="tab-content" id="tabContentAnalysis">
+                <div class="analysis-placeholder" id="analysisContent">
+                    <p>Calculate your TGPA first to see the analysis.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CGPA Calculator Page -->
+        <section class="page" id="page-cgpa-calculator">
+            <div class="page-header">
+                <h2 class="page-title">CGPA Calculator 🎓</h2>
+                <p class="page-subtitle">Calculate your cumulative grade point average</p>
+            </div>
+
+            <div class="cgpa-layout">
+                <div class="cgpa-form glass-card">
+                    <div class="semester-grid">
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 1</label>
+                            <input type="number" class="form-input sem-input" id="sem1" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 2</label>
+                            <input type="number" class="form-input sem-input" id="sem2" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 3</label>
+                            <input type="number" class="form-input sem-input" id="sem3" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 4</label>
+                            <input type="number" class="form-input sem-input" id="sem4" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 5</label>
+                            <input type="number" class="form-input sem-input" id="sem5" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 6</label>
+                            <input type="number" class="form-input sem-input" id="sem6" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 7</label>
+                            <input type="number" class="form-input sem-input" id="sem7" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 8</label>
+                            <input type="number" class="form-input sem-input" id="sem8" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="cgpa-buttons">
+                        <button class="action-btn reset-btn" id="cgpaReset">Reset</button>
+                        <button class="calculate-btn" id="calcCgpaBtn">Calculate CGPA</button>
+                    </div>
+                </div>
+
+                <div class="cgpa-result-section" id="cgpaResultSection">
+                    <div class="cgpa-emoji" id="cgpaEmoji">✨</div>
+                    <p class="cgpa-message" id="cgpaMessage">Enter your semester TGPAs to see the future.</p>
+                    <div class="cgpa-value-display" id="cgpaValueDisplay" style="display:none">
+                        <span class="cgpa-label">Your CGPA</span>
+                        <span class="cgpa-big-value" id="cgpaValue">0.00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Percentage Tools Page -->
+        <section class="page" id="page-percentage">
+            <div class="page-header">
+                <h2 class="page-title gradient-text-teal">Percentage Tools 📐</h2>
+                <p class="page-subtitle">Quick conversions and goal setting</p>
+            </div>
+
+            <div class="percentage-tabs">
+                <button class="pct-tab active" data-pctTab="marksToPercent" id="pctTabMarks">Marks → %</button>
+                <button class="pct-tab" data-pctTab="percentToMarks" id="pctTabPercent">% → Marks</button>
+                <button class="pct-tab" data-pctTab="goal" id="pctTabGoal">Goal 🎯</button>
+            </div>
+
+            <!-- Marks to Percentage -->
+            <div class="pct-content active glass-card" id="pctMarksToPercent">
+                <div class="form-group">
+                    <label class="form-label" for="pctTotalMarks">Total Marks</label>
+                    <input type="number" id="pctTotalMarks" class="form-input" placeholder="e.g. 100">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="pctObtainedMarks">Marks Obtained</label>
+                    <input type="number" id="pctObtainedMarks" class="form-input" placeholder="e.g. 85">
+                </div>
+                <button class="calculate-btn" id="calcPercentBtn">Calculate Percentage</button>
+                <div class="pct-result" id="pctResult" style="display:none">
+                    <span class="pct-result-value" id="pctResultValue">0%</span>
+                </div>
+            </div>
+
+            <!-- Percentage to Marks -->
+            <div class="pct-content glass-card" id="pctPercentToMarks">
+                <div class="form-group">
+                    <label class="form-label" for="pctTotalMarks2">Total Marks</label>
+                    <input type="number" id="pctTotalMarks2" class="form-input" placeholder="e.g. 500">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="pctTargetPercent">Target Percentage</label>
+                    <input type="number" id="pctTargetPercent" class="form-input" placeholder="e.g. 75">
+                </div>
+                <button class="calculate-btn" id="calcMarksBtn">Calculate Marks</button>
+                <div class="pct-result" id="marksResult" style="display:none">
+                    <span class="pct-result-label">Marks Needed:</span>
+                    <span class="pct-result-value" id="marksResultValue">0</span>
+                </div>
+            </div>
+
+            <!-- Goal -->
+            <div class="pct-content glass-card" id="pctGoal">
+                <div class="form-group">
+                    <label class="form-label" for="goalTotalMarks">Total Marks</label>
+                    <input type="number" id="goalTotalMarks" class="form-input" placeholder="e.g. 100">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="goalCurrentMarks">Current Marks</label>
+                    <input type="number" id="goalCurrentMarks" class="form-input" placeholder="e.g. 40">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="goalRemainingMax">Remaining Max Marks</label>
+                    <input type="number" id="goalRemainingMax" class="form-input" placeholder="e.g. 50">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="goalTargetPct">Target Percentage (%)</label>
+                    <input type="number" id="goalTargetPct" class="form-input" placeholder="e.g. 80">
+                </div>
+                <button class="calculate-btn" id="calcGoalBtn">Calculate Goal</button>
+                <div class="pct-result" id="goalResult" style="display:none">
+                    <span class="pct-result-label">You need to score:</span>
+                    <span class="pct-result-value" id="goalResultValue">0</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bonus Attendance Page -->
+        <section class="page" id="page-attendance">
+            <div class="page-header">
+                <h2 class="page-title gradient-text-purple">Bonus Attendance</h2>
+                <p class="page-subtitle">Calculate your bonus attendance criteria</p>
+            </div>
+
+            <div class="attendance-layout">
+                <div class="attendance-form glass-card">
+                    <div class="background-pattern"></div>
+                    <div class="form-group">
+                        <label class="form-label" for="currentAggregate">Current Aggregate % <span class="info-icon" data-tooltip="Your total overall attendance so far. Must be > 50% to be eligible for any bonus.">i</span></label>
+                        <input type="number" id="currentAggregate" class="form-input" placeholder="e.g. 70" min="0" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="currentSubject">Current Subject % <span class="info-icon" data-tooltip="Your attendance in a specific subject. You need at least 65% to avoid a backlog.">i</span></label>
+                        <input type="number" id="currentSubject" class="form-input" placeholder="e.g. 60" min="0" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="prevAvg">1st Semester Attendance % <span class="info-icon" data-tooltip="Your previous semester's attendance score. Affects the size of the 1st week bonus (+2% to +10%).">i</span></label>
+                        <input type="number" id="prevAvg" class="form-input" placeholder="e.g. 82" min="0" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Attended 1st Week Classes? <span class="info-icon" data-tooltip="Did you attend classes during the 1st week of this semester? 'Yes' grants you a performance bonus.">i</span></label>
+                        <div class="toggle-group" id="attendedFirstWeekToggle">
+                            <button class="toggle-btn active" data-value="yes">Yes</button>
+                            <button class="toggle-btn" data-value="no">No</button>
+                        </div>
+                    </div>
+                    <div class="form-group" id="missedClassesGroup">
+                        <label class="form-label" for="missedClasses">Missed Classes in 1st Week <span class="info-icon" data-tooltip="Missing 1-2 classes is fine. Missing >2 classes will penalize your bonus by 2% for every extra miss.">i</span></label>
+                        <input type="number" id="missedClasses" class="form-input" placeholder="e.g. 0, 1, 2" min="0">
+                    </div>
+                    <button class="calculate-btn" id="calcAttendanceBtn">Calculate Bonus</button>
+                </div>
+
+                <div class="attendance-result" id="attendanceResult">
+                    <div class="attendance-card" id="attendanceCard">
+                        <div class="attendance-status" id="attendanceStatus">Bonus Allocation</div>
+                        <div class="attendance-percent" id="attendancePercent" style="font-size: 3rem; margin: 12px 0;">+0%</div>
+                        
+                        <div style="display: flex; gap: 20px; justify-content: center; margin: 20px 0;">
+                            <div style="background: var(--bg-input); padding: 12px 20px; border-radius: var(--border-radius-md); border: 1px solid var(--border-color); flex: 1;">
+                                <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 4px;">Final Aggregate</div>
+                                <div id="finalAggregate" style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">-</div>
+                            </div>
+                            <div style="background: var(--bg-input); padding: 12px 20px; border-radius: var(--border-radius-md); border: 1px solid var(--border-color); flex: 1;">
+                                <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 4px;">Final Subject</div>
+                                <div id="finalSubject" style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">-</div>
+                            </div>
+                        </div>
+
+                        <p class="attendance-advice" id="attendanceAdvice">Enter your details to calculate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subject Resources Page -->
+        <section class="page" id="page-resources">
+            <div class="page-header">
+                <h2 class="page-title gradient-text-purple">Subject Resources-CREATED BY RON x OG</h2>
+                <p class="page-subtitle">Tap a unit to read the notes inline —  no GitHub login needed</p>
+            </div>
+
+            <!-- Subject Tabs -->
+            <div class="res-subject-tabs" id="resSubjectTabs">
+                <button class="res-subject-tab active" data-subject="c-lang" id="tabCLang">
+                    <span>💻</span> C Language
+                </button>
+                <!-- Future subjects can be added here -->
+            </div>
+
+            <!-- C Language Section -->
+            <div class="res-subject-section active" id="resSecCLang">
+                <!-- Units Grid -->
+                <div class="res-units-grid" id="resUnitsGrid">
+                    <div class="res-loading" id="resLoadingMsg">
+                        <div class="res-spinner"></div>
+                        <p>Loading units…</p>
+                    </div>
+                </div>
+
+                <!-- Notes Viewer Panel -->
+                <div class="res-viewer" id="resViewer" style="display:none;">
+                    <div class="res-viewer-header">
+                        <button class="res-back-btn" id="resBackBtn">← Back to Units</button>
+                        <div class="res-viewer-title" id="resViewerTitle"></div>
+                    </div>
+                    </div>
+                    <div class="res-viewer-loading" id="resViewerLoading" style="display:none;">
+                        <div class="res-spinner"></div>
+                        <p>Fetching notes…</p>
+                    </div>
+                    <div class="res-markdown-body" id="resMarkdownBody"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle" id="chatbotToggle">
+            💬
+        </button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span class="chat-title">🤖 OG Assistant</span>
+                <button class="chat-close" id="chatClose">✖</button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-message bot">
+                    Hi! I'm your OG Assistant. I can help you understand the Bonus Attendance rules. What would you like to know?
+                    <div class="chat-suggestions" id="chatSuggestions">
+                        <span class="chat-suggestion-chip">Bonus Criteria</span>
+                        <span class="chat-suggestion-chip">Grace Rules</span>
+                        <span class="chat-suggestion-chip">Backlog Rule</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Ask a question..." autocomplete="off">
+                <button class="chat-send-btn" id="chatSendBtn">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

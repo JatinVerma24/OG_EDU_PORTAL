@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OGEDU-PORTAL - Your Academic Companion</title>
+    <link rel="stylesheet" href="/landing.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="/" class="nav-logo">⚡ <span>OGEDU-PORTAL</span></a>
+        
+        <ul class="nav-links">
+            <li><a href="#" class="nav-link active">Home</a></li>
+            <li class="dropdown-wrapper">
+                <a href="/senior/dashboard.html" class="nav-link">Tools</a>
+                <div class="mega-dropdown">
+                    <a href="/senior/dashboard.html" class="dropdown-item">
+                        <span class="dropdown-icon">📋</span>
+                        <div class="dropdown-text">
+                            <h4>Pass Checker</h4>
+                            <p>Know instantly if you'll pass each subject</p>
+                        </div>
+                    </a>
+                    <a href="/senior/dashboard.html" class="dropdown-item">
+                        <span class="dropdown-icon">🎓</span>
+                        <div class="dropdown-text">
+                            <h4>TGPA Calc</h4>
+                            <p>Calculate semester GPA</p>
+                        </div>
+                    </a>
+                    <a href="/senior/dashboard.html" class="dropdown-item">
+                        <span class="dropdown-icon">🔮</span>
+                        <div class="dropdown-text">
+                            <h4>CGPA Calc</h4>
+                            <p>Track cumulative performance</p>
+                        </div>
+                    </a>
+                    <a href="/senior/dashboard.html" class="dropdown-item">
+                        <span class="dropdown-icon">📐</span>
+                        <div class="dropdown-text">
+                            <h4>Percentage</h4>
+                            <p>Convert marks & set goals</p>
+                        </div>
+                    </a>
+                    <a href="/senior/dashboard.html" class="dropdown-item">
+                        <span class="dropdown-icon">✨</span>
+                        <div class="dropdown-text">
+                            <h4>Bonus Attendance</h4>
+                            <p>Maximize your attendance bonus</p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li><a href="#features" class="nav-link">Features</a></li>
+            <li><a href="#how-it-works" class="nav-link">How it Works</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">🌙</button>
+            <a href="/senior/auth.html" class="btn-ghost">Sign In</a>
+            <a href="/senior/auth.html" class="btn-filled">Get Started</a>
+        </div>
+        
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open Menu">☰</button>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <a href="/" class="nav-logo">⚡ <span>JVOG</span></a>
+            <button class="drawer-close" id="drawerClose" aria-label="Close Menu">✕</button>
+        </div>
+        <div class="drawer-links">
+            <a href="#" class="nav-link">Home</a>
+            <a href="/senior/dashboard.html" class="nav-link">Tools</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#how-it-works" class="nav-link">How it Works</a>
+        </div>
+        <div class="drawer-footer">
+            <a href="/senior/auth.html" class="btn-ghost" style="text-align: center;">Sign In</a>
+            <a href="/senior/auth.html" class="btn-filled" style="text-align: center;">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-blobs">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+        <div class="particles"></div>
+        
+        <div class="hero-content">
+            <div class="badge-pill">🎓 India's Smartest Student Tool</div>
+            <h1>Stop Guessing.<br>Start <span class="gradient-text">Knowing.</span></h1>
+            <p>Calculate TGPA, CGPA, check pass/fail status, and track attendance — all in one place, built for your university.</p>
+            
+            <div class="hero-actions">
+                <a href="/senior/auth.html" class="btn-filled btn-large">Get Started Free 🚀</a>
+                <a href="#how-it-works" class="btn-ghost btn-large">See How It Works ▶</a>
+            </div>
+            
+            <div class="stats-row">
+                <div class="stat-item">👨‍🎓 50,000+ Students</div>
+                <div class="stat-item">🛠️ 5 Tools</div>
+                <div class="stat-item">✨ 100% Free</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <span class="section-tag">✦ What We Offer</span>
+        <h2 class="section-title">Everything You Need to Ace Your Semester</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">📋</div>
+                <h3>Pass Checker</h3>
+                <p>Know instantly if you'll pass each subject. Enter your CA, MTE, and ETE marks and we handle the complex rules.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">🎓</div>
+                <h3>TGPA Calculator</h3>
+                <p>Calculate your semester GPA with grade analysis. Predict what you need to score to hit your target TGPA.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">🔮</div>
+                <h3>CGPA Calculator</h3>
+                <p>Track your cumulative performance across all semesters. See exactly how your current semester affects your overall CGPA.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">📐</div>
+                <h3>Percentage Tools</h3>
+                <p>Convert your CGPA to percentage according to university norms, set goals, and plan your score efficiently.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">✨</div>
+                <h3>Bonus Attendance</h3>
+                <p>Maximize your attendance bonus smartly. Know exactly how many classes you can afford to miss.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Assistant</h3>
+                <p>Get instant answers to complex university rule queries directly from our trained AI Chatbot.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <span class="section-tag">✦ Simple Process</span>
+        <h2 class="section-title">How It Works</h2>
+        
+        <div class="timeline">
+            <div class="step animate-on-scroll">
+                <div class="step-number">1</div>
+                <h3>Enter Your Marks</h3>
+                <p>Input your internal and external assessments easily.</p>
+            </div>
+            <div class="step animate-on-scroll" style="transition-delay: 0.2s">
+                <div class="step-number">2</div>
+                <h3>We Calculate</h3>
+                <p>Our engine applies all the latest university rules.</p>
+            </div>
+            <div class="step animate-on-scroll" style="transition-delay: 0.4s">
+                <div class="step-number">3</div>
+                <h3>See Results</h3>
+                <p>Get instant insights, predictions, and pass/fail status.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2 class="section-title">What Students Say</h2>
+        
+        <div class="testi-grid">
+            <div class="testi-card animate-on-scroll">
+                <div class="stars">★★★★★</div>
+                <p class="quote">"JVOG completely saved me during finals. I knew exactly what I needed in my ETE to pass without stressing over the math."</p>
+                <div class="student-info">
+                    <div class="avatar">R</div>
+                    <div class="student-details">
+                        <h4>Rahul Sharma</h4>
+                        <p>B.Tech CSE, 3rd Year</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card animate-on-scroll" style="transition-delay: 0.2s">
+                <div class="stars">★★★★★</div>
+                <p class="quote">"The attendance calculator is a lifesaver. I optimized my classes to get the perfect 5 bonus marks."</p>
+                <div class="student-info">
+                    <div class="avatar">P</div>
+                    <div class="student-details">
+                        <h4>Priya Patel</h4>
+                        <p>BBA, 2nd Year</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card animate-on-scroll" style="transition-delay: 0.4s">
+                <div class="stars">★★★★★</div>
+                <p class="quote">"Clean UI, fast calculations, and 100% accurate according to the new university guidelines. 10/10."</p>
+                <div class="student-info">
+                    <div class="avatar">A</div>
+                    <div class="student-details">
+                        <h4>Aman Verma</h4>
+                        <p>B.Tech ECE, 4th Year</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <h2>Ready to check your results?</h2>
+        <a href="/senior/auth.html" class="btn-filled">Start Using JVOG — It's 100% Free</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <a href="/" class="nav-logo">⚡ <span>OGEDU-PORTAL</span></a>
+        <p class="footer-credits">Your Academic Companion</p>
+        
+        <div class="footer-socials">
+            <a href="https://www.youtube.com/@JatinVermaTHE-OG" target="_blank" class="social-icon">YT</a>
+            <a href="https://www.instagram.com/ogjatinverma/?hl=en" target="_blank" class="social-icon">IG</a>
+            <a href="https://www.linkedin.com/in/jatinverma24/" target="_blank" class="social-icon">IN</a>
+        </div>
+        
+        <p class="footer-credits">Designed by Jatin Verma &copy; 2026</p>
+    </footer>
+
+    <script type="module" src="/src/landing-handler.ts"></script>
+    <script src="/landing.js"></script>
+</body>
+</html>
