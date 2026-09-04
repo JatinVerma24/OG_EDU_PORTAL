@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "landing/**",
+          "frontend/dist/**",
+          "senior_portal/client/dist/**",
+          "findoglaptop/**",
+          "cuet/**",
+          "python-notes/**",
+          "data/**",
+          "data.json",
+          "server.js",
+          "src/**"
+        ]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "api/index.js"
+    }
+  ]
+}

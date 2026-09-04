@@ -1,0 +1,176 @@
+{
+  "unit_number": 1,
+  "icon": "🚀",
+  "title": "Variables, Expressions & Statements",
+  "short_title": "Variables & Statements",
+  "short_description": "Learn how to store data, write expressions, and use operators.",
+  "bro_quote": "A variable is a named container that holds a value—the foundation of all programming logic.",
+  "subtopics": [
+    {
+      "name": "What is a Variable?",
+      "explanation": "<ul>\n<li>📦 <b>A variable is a named storage container.</b> When you write <code>age = 20</code>, you are telling Python: \"Create a box, label it 'age', and put the number 20 inside it.\"</li>\n<li>🏷️ <b>The name is on the left, the value is on the right.</b> The <code>=</code> sign means \"store this value\".</li>\n<li>🔄 <b>You can change a variable's value anytime.</b> The old value is simply replaced.</li>\n<li>🧩 <b>Variable names should be descriptive.</b> Use <code>age</code> instead of just <code>x</code>.</li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Store values in variables",
+          "filename": "variables.py",
+          "code": "name = \"Alice\"\nage = 20\nprint(name, age)"
+        },
+        {
+          "comment": "Update a variable",
+          "filename": "update.py",
+          "code": "score = 10\nscore = 50\nprint(score)  # Prints 50"
+        }
+      ]
+    },
+    {
+      "name": "Naming Rules for Variables",
+      "explanation": "<ul>\n<li>✅ <b>Names can contain letters, numbers, and underscores ( _ ).</b></li>\n<li>🚫 <b>Names CANNOT start with a number.</b></li>\n<li>🚫 <b>Names CANNOT have spaces.</b> Use an underscore instead.</li>\n<li>🔡 <b>Python is case-sensitive.</b> <code>age</code> and <code>Age</code> are different.</li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Good variable names",
+          "filename": "naming.py",
+          "code": "user_name = \"Bob\"\ntotal_score = 95\nprint(user_name)"
+        },
+        {
+          "comment": "Case sensitivity",
+          "filename": "case.py",
+          "code": "name = \"Alice\"\nName = \"Bob\"\nprint(name, Name)"
+        }
+      ]
+    },
+    {
+      "name": "The print() Function",
+      "explanation": "<ul>\n<li>🖨️ <b><code>print()</code> shows output on the screen.</b> It is how your program talks to you.</li>\n<li>📝 <b>You can print text, variables, or numbers.</b> Just put them inside the parentheses.</li>\n<li>➕ <b>You can print multiple things at once.</b> Separate them with commas.</li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Printing text and variables",
+          "filename": "print.py",
+          "code": "name = \"Alice\"\nprint(\"Hello\")\nprint(name)"
+        },
+        {
+          "comment": "Printing multiple items",
+          "filename": "print_multiple.py",
+          "code": "age = 20\nprint(\"I am\", age, \"years old.\")"
+        }
+      ]
+    },
+    {
+      "name": "Understanding f-strings (Formatted Strings)",
+      "explanation": "<ul>\n<li>✨ <b>The <code>f</code> in <code>f\"...\"</code> stands for \"formatted.\"</b> It tells Python to format the string with variables inside.</li>\n<li>🔤 <b>Inside an f-string, use curly braces <code>{}</code> to insert variables.</b> Example: <code>f\"Hello {name}\"</code></li>\n<li>💡 <b>Variables inside <code>{}</code> are replaced with their actual values.</b> NOT printed as literal text.</li>\n<li>⚡ <b>f-strings are cleaner and easier to read than other string joining methods.</b></li>\n<li>🎯 <b>You can put expressions inside <code>{}</code>, not just variable names.</b> Example: <code>f\"Sum: {5 + 3}\"</code></li>\n<li>💾 <b>f-strings must start with the letter <code>f</code> before the opening quote.</b> Write <code>f\"...\"</code>, not <code>\"...\"</code></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Basic f-string with one variable",
+          "filename": "fstring_basic.py",
+          "code": "name = \"Alice\"\nprint(f\"Hello, {name}!\")  # Hello, Alice!"
+        },
+        {
+          "comment": "f-string with multiple variables",
+          "filename": "fstring_multiple.py",
+          "code": "name = \"Bob\"\nage = 25\nprint(f\"My name is {name} and I'm {age} years old.\")"
+        },
+        {
+          "comment": "f-string with calculations inside",
+          "filename": "fstring_calc.py",
+          "code": "a = 10\nb = 5\nprint(f\"Sum: {a + b}\")        # Sum: 15\nprint(f\"Product: {a * b}\")   # Product: 50"
+        },
+        {
+          "comment": "Without f-string (harder to read)",
+          "filename": "without_fstring.py",
+          "code": "name = \"Alice\"\nage = 25\n# The old way (messier)\nprint(\"My name is \" + name + \" and I'm \" + str(age) + \" years old.\")\n# The f-string way (cleaner)\nprint(f\"My name is {name} and I'm {age} years old.\")"
+        }
+      ]
+    },
+    {
+      "name": "Data Types — What Kind of Data Can You Store?",
+      "explanation": "<ul>\n<li>🔢 <b>Integer (int) — Whole numbers.</b> Like <code>5</code> or <code>100</code>.</li>\n<li>🌊 <b>Float — Decimal numbers.</b> Like <code>3.14</code> or <code>9.99</code>.</li>\n<li>📝 <b>String (str) — Text wrapped in quotes.</b> Like <code>\"Hello\"</code>.</li>\n<li>✅ <b>Boolean (bool) — True or False.</b> Like a light switch.</li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "The four main types",
+          "filename": "types.py",
+          "code": "age = 20        # int\nprice = 9.99    # float\nname = \"Alice\"  # str\nis_on = True    # bool"
+        },
+        {
+          "comment": "Checking types",
+          "filename": "check.py",
+          "code": "age = 20\nprint(type(age))  # <class 'int'>"
+        }
+      ]
+    },
+    {
+      "name": "Basic Operators — Doing Math in Python",
+      "explanation": "<ul>\n<li>➕ <b>Addition ( + )</b> and <b>Subtraction ( - )</b></li>\n<li>✖️ <b>Multiplication ( * )</b> and <b>Division ( / )</b></li>\n<li>📐 <b>Floor Division ( // ) — removes the decimal.</b></li>\n<li>🔁 <b>Modulus ( % ) — gives the remainder.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Basic math",
+          "filename": "math.py",
+          "code": "a = 10\nb = 3\nprint(a + b)  # 13\nprint(a * b)  # 30"
+        },
+        {
+          "comment": "Remainder (Modulus)",
+          "filename": "mod.py",
+          "code": "number = 10\nprint(number % 3)  # 1 (10 / 3 is 9, remainder 1)"
+        }
+      ]
+    },
+    {
+      "name": "Order of Operations",
+      "explanation": "<ul>\n<li>📚 <b>Follows standard math rules.</b> Parentheses first, then Multiply/Divide, then Add/Subtract.</li>\n<li>💡 <b>When in doubt, use parentheses.</b> They make your code clear.</li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Order matters",
+          "filename": "order.py",
+          "code": "print(2 + 3 * 4)    # 14\nprint((2 + 3) * 4)  # 20"
+        }
+      ]
+    },
+    {
+      "name": "Working with Strings (Text)",
+      "explanation": "<ul>\n<li>➕ <b>Join strings using +.</b> This is called concatenation.</li>\n<li>🔗 <b>f-strings make mixing text and variables easy.</b> Use <code>f\"Text {variable}\"</code>.</li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Joining text",
+          "filename": "join.py",
+          "code": "word1 = \"Hello\"\nword2 = \"World\"\nprint(word1 + \" \" + word2)"
+        },
+        {
+          "comment": "Using f-strings",
+          "filename": "fstring.py",
+          "code": "name = \"Alice\"\nprint(f\"My name is {name}\")"
+        }
+      ]
+    },
+    {
+      "name": "Taking User Input",
+      "explanation": "<ul>\n<li>⌨️ <b><code>input()</code> lets your program ask the user for data.</b> It pauses and waits for the user to type and press Enter.</li>\n<li>📝 <b>The prompt text appears before the input field.</b> Example: <code>input(\"What's your name? \")</code></li>\n<li>🔤 <b><code>input()</code> always returns a string.</b> Even if the user types a number, it's stored as text.</li>\n<li>🔢 <b>Convert to other types using <code>int()</code>, <code>float()</code>, <code>bool()</code>.</b></li>\n<li>⚠️ <b>Be careful with type conversion.</b> Converting \"abc\" to int will cause an error.</li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Basic string input",
+          "filename": "input_basic.py",
+          "code": "name = input(\"What is your name? \")\nprint(f\"Hello, {name}!\")"
+        },
+        {
+          "comment": "Convert input to integer",
+          "filename": "input_int.py",
+          "code": "age = int(input(\"How old are you? \"))\nprint(f\"Next year: {age + 1}\")"
+        },
+        {
+          "comment": "Convert input to float",
+          "filename": "input_float.py",
+          "code": "price = float(input(\"Enter price: \"))\nprint(f\"Total with tax: ${price * 1.1:.2f}\")"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    "1. Use input() to ask the user for their name and then print a greeting. (Basic input)",
+    "2. Ask the user for their age as input and convert it to an integer. (Integer input)",
+    "3. Take a price as input from the user and convert it to a float. (Float input)",
+    "4. Ask the user for two numbers, add them together, and print the result. (Integer calculations)",
+    "5. Take three different inputs (name, age, height) and store them in variables. (Multiple inputs)",
+    "6. Ask the user for a number and calculate the remainder when divided by 3. (Modulus with input)",
+    "7. Take two prices from the user and calculate the total with tax (10%). (Float calculations)",
+    "8. Ask the user for their name and use f-string to display a formatted message. (F-strings with input)",
+    "9. Take an integer input and print its data type using type(). (Type checking input)",
+    "10. Take user input for a base and height, then calculate the area of a rectangle. (Practical problem)"
+  ]
+}

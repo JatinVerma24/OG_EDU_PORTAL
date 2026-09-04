@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2034578803232828"
+         crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZT0FTDEWMH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZT0FTDEWMH');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Year Academic Resources | OGEDU AI</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        :root {
+            --primary-orange: #a855f7;
+            --primary-purple: #8b5cf6;
+            --primary-blue: #a855f7;
+            --bg-color: #09090b;
+            --panel-bg: rgba(18, 18, 21, 0.75);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #71717a;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Tech Grid Overlay */
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+            mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+        }
+
+        /* Glowing Blurs */
+        .bg-blur {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        .blur-1 {
+            width: 45vw;
+            height: 45vw;
+            top: -10vw;
+            right: -10vw;
+            background: radial-gradient(circle, var(--primary-blue) 0%, transparent 70%);
+        }
+
+        .blur-2 {
+            width: 40vw;
+            height: 40vw;
+            bottom: 10%;
+            left: -10vw;
+            background: radial-gradient(circle, var(--primary-purple) 0%, transparent 70%);
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 99;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+        }
+
+        .logo-title span {
+            color: var(--primary-blue);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: rgba(14, 165, 233, 0.1);
+            border-color: var(--primary-blue);
+        }
+
+        main {
+            flex: 1;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 48px 24px 80px 24px;
+            z-index: 10;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-subtitle {
+            color: var(--primary-blue);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .page-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text-primary) 30%, var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 10px 20px;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn:hover {
+            color: var(--text-primary);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab-btn.active {
+            background: rgba(14, 165, 233, 0.1);
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        /* Resources Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-cols: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .resource-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.1);
+        }
+
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .resource-category {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 10px;
+            border-radius: 99px;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--primary-blue);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .resource-category.math-physics {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--primary-purple);
+            border-color: rgba(139, 92, 246, 0.2);
+        }
+
+        .resource-category.syllabus-guides {
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--primary-orange);
+            border-color: rgba(249, 115, 22, 0.2);
+        }
+
+        .resource-icon {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        .resource-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .resource-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .resource-action {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .resource-action:hover {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: #fff;
+        }
+
+        .resource-action.inactive {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .resource-action.inactive:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        /* Loading & Error States */
+        .loading-container, .error-container {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(12px);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.05);
+            border-top: 3px solid var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px auto;
+        }
+
+        .error-icon {
+            font-size: 2rem;
+            color: #ef4444;
+            margin-bottom: 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 24px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: auto;
+        }
+
+        footer span {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-blur blur-1"></div>
+    <div class="bg-blur blur-2"></div>
+
+    <header>
+        <div class="header-container">
+            <a href="/" onclick="window.location.href='/'; return false;" class="logo-area">
+                <i class="fa-solid fa-bolt logo-icon"></i>
+                <span class="logo-title">OGEDU <span>AI</span></span>
+            </a>
+            <a href="/" onclick="window.location.href='/'; return false;" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <span class="page-subtitle">Academic & Notes Vault</span>
+            <h1 class="page-title">First Year Resources & LPU Notes Vault</h1>
+            <p class="page-desc">Handpicked syllabus details, LPU unit-wise notes, practice MCQs, Python course notes, mathematics guides, and physics formulas to optimize your semester prep.</p>
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                <a href="/sih" style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #a855f7, #9333ea); color: #fff; padding: 12px 24px; border-radius: 99px; font-weight: 700; font-size: 0.9rem; text-decoration: none; box-shadow: 0 4px 20px rgba(168, 85, 247, 0.35); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <i class="fa-solid fa-trophy" style="color: #fde047;"></i> SIH 2026 Master Playbook <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="/lpu-notes" style="display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(168, 85, 247, 0.4); color: #e9d5ff; padding: 12px 24px; border-radius: 99px; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: all 0.3s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.background='rgba(168, 85, 247, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'">
+                    <i class="fa-solid fa-book-open-reader"></i> Open Interactive LPU Notes Vault
+                </a>
+            </div>
+        </div>
+
+        <div class="category-tabs" id="semester-filter-tabs">
+            <button class="tab-btn active" onclick="filterCategory('All')">All Resources</button>
+            <button class="tab-btn" onclick="filterCategory('Sem1')">Sem 1</button>
+            <button class="tab-btn" onclick="filterCategory('Sem2')">Sem 2</button>
+            <button class="tab-btn" onclick="filterCategory('Sem3')">Sem 3</button>
+            <button class="tab-btn" onclick="filterCategory('Sem4')">Sem 4</button>
+            <button class="tab-btn" onclick="filterCategory('Sem5')">Sem 5</button>
+            <button class="tab-btn" onclick="filterCategory('Sem6')">Sem 6</button>
+            <button class="tab-btn" onclick="filterCategory('Sem7')">Sem 7</button>
+            <button class="tab-btn" onclick="filterCategory('Sem8')">Sem 8</button>
+            <button class="tab-btn" onclick="filterCategory('CSE/IT Core')">CSE/IT Core</button>
+            <button class="tab-btn" onclick="filterCategory('Coding & AI')">Coding & AI</button>
+            <button class="tab-btn" onclick="filterCategory('Mathematics & Physics')">Maths & Physics</button>
+        </div>
+
+        <div class="resources-grid" id="resources-grid">
+            <div class="loading-container">
+                <div class="spinner"></div>
+                <p>Retrieving academic resources from MVC controller...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OGEDU AI. Designed by <span>Jatin Verma</span> Full Stack Developer.</p>
+    </footer>
+
+    <script>
+        let allResources = [];
+
+        async function fetchResources() {
+            const grid = document.getElementById('resources-grid');
+            try {
+                const res = await fetch('/api/resources');
+                const responseData = await res.json();
+                allResources = Array.isArray(responseData) ? responseData : (responseData.data || []);
+                renderResources(allResources);
+            } catch (err) {
+                console.error(err);
+                grid.innerHTML = `
+                    <div class="error-container">
+                        <i class="fa-solid fa-circle-exclamation error-icon"></i>
+                        <h4>Connection Error</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 8px;">We could not reach the resources controller API. Please ensure the local server is running.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function getCategoryClass(category) {
+            if (category === 'Mathematics & Physics') return 'math-physics';
+            if (category === 'Syllabus & Guides') return 'syllabus-guides';
+            return '';
+        }
+
+        function getCategoryIcon(category) {
+            if (category === 'Mathematics & Physics') return 'fa-solid fa-calculator';
+            if (category === 'Syllabus & Guides') return 'fa-solid fa-book';
+            return 'fa-solid fa-code';
+        }
+
+        function renderResources(resources) {
+            const grid = document.getElementById('resources-grid');
+            if (resources.length === 0) {
+                grid.innerHTML = `
+                    <div class="error-container">
+                        <i class="fa-solid fa-folder-open error-icon" style="color: var(--text-muted);"></i>
+                        <h4>No Resources Found</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 8px;">No materials available in this category yet.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = resources.map(item => {
+                const semBadge = item.semester ? `<span style="font-size: 0.7rem; font-weight: 800; background: linear-gradient(135deg, #a855f7, #7c3aed); color: #fff; padding: 4px 10px; border-radius: 99px; letter-spacing: 0.5px; text-transform: uppercase;">${item.semester}</span>` : '';
+                const creditsBadge = item.credits ? `<span style="font-size: 0.68rem; font-weight: 700; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); color: #d8b4fe; padding: 3px 8px; border-radius: 6px; margin-left: 6px;">${item.credits} Credits</span>` : '';
+                const codeTag = item.code ? `<strong style="color: #c084fc; font-size: 0.85rem; margin-right: 6px;">[${item.code}]</strong>` : '';
+
+                // Units Pill Grid if present
+                let unitsHtml = '';
+                if (item.units && item.units.length > 0) {
+                    const localSubUrl = item.code ? `/lpu-notes?sem=${item.semester || 'Sem1'}&code=${item.code}` : '/lpu-notes';
+                    unitsHtml = `
+                        <div style="margin-top: 14px; margin-bottom: 16px;">
+                            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Available Units:</div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                                ${item.units.map(u => `
+                                    <a href="${u.url || localSubUrl}" target="${u.url ? '_blank' : '_self'}" style="font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: var(--text-primary); text-decoration: none; transition: all 0.2s;" onmouseover="this.style.borderColor='#c084fc'; this.style.color='#c084fc';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='var(--text-primary)';" title="${u.name || u.unit}">
+                                        ${u.unit || u.name}
+                                    </a>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                const targetLink = item.link || (item.code ? `/lpu-notes?sem=${item.semester || 'Sem1'}&code=${item.code}` : `/lpu-notes`);
+                const isExternal = targetLink.startsWith('http');
+                const targetAttr = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+                const actionClass = 'resource-action';
+                const actionText = isExternal ? `Open Resource Link <i class="fa-solid fa-arrow-up-right-from-square"></i>` : `Explore Subject Vault <i class="fa-solid fa-arrow-right"></i>`;
+
+                return `
+                    <div class="resource-card">
+                        <div>
+                            <div class="resource-meta">
+                                <div>
+                                    <span class="resource-category ${getCategoryClass(item.category)}">${item.category}</span>
+                                    ${creditsBadge}
+                                </div>
+                                ${semBadge}
+                            </div>
+                            <h3 class="resource-title">${codeTag}${item.title}</h3>
+                            <p class="resource-desc">${item.description}</p>
+                            ${unitsHtml}
+                        </div>
+                        <a href="${targetLink}" ${targetAttr} class="${actionClass}">
+                            ${actionText}
+                        </a>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterCategory(category) {
+            // Update active tab styling
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.trim().toLowerCase() === category.toLowerCase() || 
+                    (category === 'All' && btn.innerText.includes('All'))) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            if (category === 'All') {
+                renderResources(allResources);
+            } else {
+                const filtered = allResources.filter(item => {
+                    const matchCategory = item.category && item.category.toLowerCase() === category.toLowerCase();
+                    const matchSem = item.semester && item.semester.toLowerCase() === category.toLowerCase();
+                    return matchCategory || matchSem;
+                });
+                renderResources(filtered);
+            }
+        }
+
+        // Fetch resources when the page loads
+        window.addEventListener('DOMContentLoaded', fetchResources);
+    </script>
+</body>
+</html>

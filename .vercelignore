@@ -1,0 +1,19 @@
+# Ignore node_modules
+node_modules/
+frontend/node_modules/
+senior_portal/client/node_modules/
+
+# Ignore git
+.git/
+.vercel/
+.vercelignore
+
+# Do NOT ignore dist folders because they are served statically by Express.
+# By default, Vercel CLI respects .gitignore. Creating this file overrides .gitignore,
+# allowing us to upload frontend/dist/ and senior_portal/client/dist/.
+
+# Ignore source directories to minimize upload payload size
+frontend/src/
+frontend/public/
+senior_portal/client/src/
+senior_portal/client/public/

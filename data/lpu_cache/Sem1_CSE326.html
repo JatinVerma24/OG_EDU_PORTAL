@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Inline theme detection EARLY to prevent FOUC -->
+    <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}})();
+    </script>
+        <title>CSE326 Notes &amp; Materials | B. Tech. CSE | LPU Notes</title>
+    <meta name="description" content="Complete study material for CSE326 (Semester 1). Access unit-wise notes, mock tests, practice questions, and exam preparation guides.">
+    <meta name="keywords" content="LPU notes, semester notes, study material, mock tests, unit-wise notes, exam preparation, LPU study guide, academic notes">
+    <link rel="canonical" href="https://notes.lpuverto.xyz/Sem1/CSE326">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://notes.lpuverto.xyz/Sem1/CSE326">
+    <meta property="og:title" content="CSE326 Notes &amp; Materials | B. Tech. CSE | LPU Notes">
+    <meta property="og:description" content="Complete study material for CSE326 (Semester 1). Access unit-wise notes, mock tests, practice questions, and exam preparation guides.">
+    <meta property="og:image" content="https://notes.lpuverto.xyz/assets/lpunotes_header.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://notes.lpuverto.xyz/Sem1/CSE326">
+    <meta property="twitter:title" content="CSE326 Notes &amp; Materials | B. Tech. CSE | LPU Notes">
+    <meta property="twitter:description" content="Complete study material for CSE326 (Semester 1). Access unit-wise notes, mock tests, practice questions, and exam preparation guides.">
+    <meta property="twitter:image" content="https://notes.lpuverto.xyz/assets/lpunotes_header.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+
+    <!-- Self-hosted Inter font: preload + inline @font-face eliminates font chain -->
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Preload logo image -->
+    <link rel="preload" href="/assets/lpunotes_header_sm.png" as="image">
+
+    
+    <!-- Critical CSS: Tailwind (render-blocking, must load before paint) -->
+    <link rel="stylesheet" href="/assets/css/tailwind.min.css?v=1780315238">
+    
+    <!-- Preconnect to external domains -->
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    
+        
+    <!-- Critical CSS Inlined -->
+    <style>
+        /* Critical animations and transitions */
+        @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes scaleIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+        .animate-fade-in-down{animation:fadeInDown .6s ease-out}
+        .animate-fade-in-up{animation:fadeInUp .6s ease-out}
+        .animate-scale-in{animation:scaleIn .3s ease-out}
+        .transition-smooth{transition:all .3s cubic-bezier(.4,0,.2,1)}
+        .hover-lift{transition:transform .3s ease,box-shadow .3s ease}
+        .hover-lift:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,.15)}
+        .hover-grow{transition:transform .3s ease}
+        .hover-grow:hover{transform:scale(1.05)}
+        .ripple{position:relative;overflow:hidden}
+        .ripple-effect{position:absolute;border-radius:50%;background:rgba(249,115,22,.3);transform:scale(0);animation:ripple-animation .6s ease-out;pointer-events:none}
+        @keyframes ripple-animation{to{transform:scale(2);opacity:0}}
+        #back-to-top{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#f97316;color:#fff;border:none;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;box-shadow:0 4px 12px rgba(249,115,22,.3);z-index:1000;display:flex;align-items:center;justify-content:center}
+        #back-to-top.visible{opacity:1;visibility:visible}
+        @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/inter-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+        body{font-family:'Inter',sans-serif}
+        ::-webkit-scrollbar{width:8px}
+        ::-webkit-scrollbar-track{background:#f1f1f1}
+        ::-webkit-scrollbar-thumb{background:#888;border-radius:4px}
+        ::-webkit-scrollbar-thumb:hover{background:#555}
+        .dark ::-webkit-scrollbar-track{background:#1f2937}
+        .dark ::-webkit-scrollbar-thumb{background:#4b5563}
+        .animation-delay-2000{animation-delay:2s}
+        .animation-delay-4000{animation-delay:4s}
+        /* KaTeX display math inline (for MCQ questions/options) */
+        .katex-display-inline{display:inline-block;text-align:center;margin:0.25em 0}
+        .katex-display-inline .katex-display{margin:0;text-align:center}
+
+        /* Reading progress bar */
+        #reading-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#f97316,#fb923c);z-index:9999;transition:width .1s linear;width:0;pointer-events:none}
+        /* Keyboard shortcut badge */
+        .kbd{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;font-size:11px;font-family:ui-monospace,monospace;color:#94a3b8;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:4px;line-height:1.4}
+        .dark .kbd{background:#1e293b;border-color:#334155;color:#64748b}
+        /* Anchor ad (sticky bottom mobile) */
+        .ad-anchor{position:fixed;bottom:0;left:0;right:0;z-index:40;background:#fff;border-top:1px solid #e5e7eb;padding:4px 0;text-align:center;transform:translateY(100%);transition:transform .3s ease}
+        .ad-anchor.visible{transform:translateY(0)}
+        .dark .ad-anchor{background:#0f172a;border-color:#1e293b}
+        .ad-anchor-close{position:absolute;top:-28px;right:8px;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#64748b;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+        .dark .ad-anchor-close{background:#1e293b;border-color:#334155;color:#94a3b8}
+        /* In-content ad styling */
+        .ad-in-content{margin:2rem 0;padding:12px 0;border-top:1px solid #f1f5f9;border-bottom:1px solid #f1f5f9;text-align:center;min-height:90px}
+        .dark .ad-in-content{border-color:#1e293b}
+        .ad-in-content::before{content:'';display:block;font-size:10px;color:#94a3b8;letter-spacing:0.5px;margin-bottom:4px}
+        /* Mobile performance: disable expensive blur & reduce motion */
+        @media (max-width:768px){
+            .animate-blob{animation:none !important}
+            .bg-blob-mobile-off{display:none !important}
+        }
+        @media (prefers-reduced-motion:reduce){
+            .animate-fade-in-down,.animate-fade-in-up,.animate-scale-in,.animate-blob{animation:none !important}
+            .transition-smooth,.hover-lift,.hover-grow{transition:none !important}
+        }
+        /* Below-fold content: let browser skip rendering until near viewport */
+        .content-below-fold{content-visibility:auto;contain-intrinsic-size:auto 500px}
+        /* Score/progress tracker bar */
+        .progress-tracker{position:sticky;top:64px;z-index:30;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+        .progress-bar-fill{height:4px;border-radius:2px;background:linear-gradient(90deg,#f97316,#22c55e);transition:width .4s ease}
+        /* Floating TOC sidebar */
+        @media (min-width:1280px){
+            .toc-floating{position:sticky;top:80px;max-height:calc(100vh - 100px);overflow-y:auto}
+        }
+    </style>
+    
+    <!-- Interactive JS - Deferred -->
+    <script defer src="/assets/js/interactive.js?v=1780315238"></script>
+    
+    <script>
+        const BASE_PATH = "";
+        const SUB_DIR = "";
+            </script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "LPU Notes",
+      "description": "Comprehensive study materials and notes for LPU students",
+      "url": "https://notes.lpuverto.xyz",
+      "logo": "https://notes.lpuverto.xyz/assets/lpunotes_header.png",
+      "sameAs": [],
+      "offers": {
+        "@type": "Offer",
+        "category": "Education",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-lpu-bg text-gray-900 dark:text-lpu-text transition-colors duration-300 min-h-screen flex flex-col relative overflow-x-hidden font-sans">
+    
+    <!-- Animated Background (blobs hidden on mobile for performance) -->
+    <div class="fixed inset-0 -z-10 pointer-events-none" aria-hidden="true">
+        <div class="absolute top-0 left-0 w-full h-full bg-orange-50/30 dark:bg-lpu-bg transition-colors duration-300"></div>
+        <div class="hidden md:block absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-lpu-primary/30 dark:bg-lpu-primary/20 blur-3xl animate-blob" style="will-change:transform"></div>
+        <div class="hidden md:block absolute top-[20%] right-[-10%] w-[30%] h-[30%] rounded-full bg-yellow-400/30 dark:bg-yellow-400/20 blur-3xl animate-blob animation-delay-2000" style="will-change:transform"></div>
+        <div class="hidden md:block absolute bottom-[-10%] left-[20%] w-[35%] h-[35%] rounded-full bg-orange-200/30 dark:bg-orange-900/20 blur-3xl animate-blob animation-delay-4000" style="will-change:transform"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-lpu-bg/80 border-b border-gray-200 dark:border-lpu-border animate-fade-in-down transition-smooth">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2 group hover-grow">
+                        <img src="/assets/lpunotes_header_sm.png" alt="LPU Notes" class="h-10 w-auto transition-smooth" width="152" height="40" fetchpriority="high" decoding="async">
+                    </a>
+                </div>
+                
+                <div class="hidden md:block flex-1 max-w-md mx-8">
+                    <div class="relative" id="search-container">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <input type="text" id="search-input" class="block w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-lpu-border rounded-lg leading-5 bg-white dark:bg-lpu-surface placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-lpu-primary focus:border-lpu-primary sm:text-sm transition duration-150 ease-in-out text-gray-900 dark:text-white" placeholder="Search notes, subjects...">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <span class="kbd">Ctrl+K</span>
+                        </div>
+                        
+                        <!-- Search Results Dropdown -->
+                        <div id="search-results" class="hidden absolute top-full left-0 w-full mt-2 bg-white dark:bg-lpu-surface rounded-xl shadow-xl border border-slate-100 dark:border-lpu-border max-h-96 overflow-y-auto z-50">
+                            <div id="search-results-content" class="py-2">
+                                <!-- Results will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center space-x-4">
+                        <a href="/" class="text-gray-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth ripple">Home</a>
+                        <a href="/exam-generator" class="inline-flex items-center gap-1 text-gray-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth ripple">Exam Center</a>
+                        <a href="/about" class="text-gray-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth ripple">About</a>
+                        <a href="/contact" class="text-gray-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth ripple">Contact</a>
+                        <a href="/request-material" class="inline-flex items-center gap-1 text-gray-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth ripple">Request Material</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <!-- Updates Bell -->
+                    <div class="relative hidden md:block" id="updates-container">
+                        <button id="updates-btn" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-lpu-surface transition-smooth text-gray-600 dark:text-lpu-muted hover-grow ripple" aria-label="Recent updates" aria-haspopup="true" aria-expanded="false">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                            </svg>
+                        </button>
+                        <span id="updates-badge" style="display:none" class="pointer-events-none absolute top-0.5 right-0.5 w-2.5 h-2.5 bg-lpu-primary rounded-full ring-2 ring-white dark:ring-gray-900"></span>
+
+                        <!-- Updates Dropdown -->
+                        <div id="updates-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white dark:bg-lpu-surface rounded-xl shadow-2xl border border-gray-100 dark:border-lpu-border z-50 overflow-hidden" role="menu">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-lpu-border">
+                                <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Recent Updates</h3>
+                                <button id="updates-mark-read" class="text-xs text-lpu-primary hover:underline font-medium">Mark all read</button>
+                            </div>
+                            <div id="updates-list" class="max-h-72 overflow-y-auto divide-y divide-gray-50 dark:divide-lpu-border" role="list">
+                                <div class="py-6 text-center text-sm text-gray-400 dark:text-lpu-muted">Loading…</div>
+                            </div>
+                            <div class="px-4 py-2.5 border-t border-gray-100 dark:border-lpu-border text-center">
+                                <a href="/updates" class="text-xs text-lpu-primary hover:underline font-medium">View all updates →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-lpu-surface transition-smooth text-gray-600 dark:text-lpu-muted hover-grow ripple" data-tooltip="Toggle theme" aria-label="Toggle theme">
+                        <!-- Sun Icon -->
+                        <svg id="sun-icon" class="hidden w-5 h-5 animate-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <!-- Moon Icon -->
+                        <svg id="moon-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+                    
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-lpu-surface text-gray-600 dark:text-lpu-muted transition-smooth hover-grow ripple" aria-label="Open menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 dark:border-lpu-border bg-white dark:bg-lpu-bg animate-slide-in-up">
+            <div class="px-4 pt-4 pb-2 relative">
+                <input type="text" id="mobile-search-input" class="block w-full pl-4 pr-3 py-2 border border-gray-300 dark:border-lpu-border rounded-lg leading-5 bg-white dark:bg-lpu-surface placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-lpu-primary focus:border-lpu-primary sm:text-sm transition-smooth text-gray-900 dark:text-white focus-glow" placeholder="Search subjects...">
+                <!-- Mobile Search Results Dropdown -->
+                <div id="mobile-search-results" class="hidden absolute top-full left-0 w-full mt-2 bg-white dark:bg-lpu-surface rounded-xl shadow-xl border border-slate-100 dark:border-lpu-border max-h-96 overflow-y-auto z-50 mx-4">
+                    <div id="mobile-search-results-content" class="py-2">
+                        <!-- Results will be inserted here -->
+                    </div>
+                </div>
+            </div>
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">Home</a>
+                <a href="/exam-generator" class="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">Exam Center</a>
+                <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">About</a>
+                <a href="/contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">Contact</a>
+                <a href="/request-material" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">Request Material</a>
+                <a href="/updates" class="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">
+                    Updates
+                    <span id="mobile-updates-badge" style="display:none" class="w-2 h-2 bg-lpu-primary rounded-full"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Reading Progress Bar (shown on content pages) -->
+    
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+<div class="space-y-8">
+    <div class="flex items-center space-x-2 text-sm text-gray-500 dark:text-lpu-muted animate-fade-in-down">
+        <a href="/" class="hover:text-lpu-primary transition-smooth ripple">Home</a>
+        <span>/</span>
+        <a href="/Sem1" class="hover:text-lpu-primary transition-smooth ripple">Semester 1</a>
+        <span>/</span>
+                <span class="text-gray-900 dark:text-lpu-text font-medium">CSE326</span>
+    </div>
+
+    
+        <!-- End Term Notification Banner -->
+    <div class="bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 border-l-4 border-lpu-primary rounded-lg px-4 py-3 mb-6 animate-fade-in-down delay-100 shadow-sm">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+            <!-- Icon -->
+            <div class="flex-shrink-0">
+                <div class="w-9 h-9 bg-lpu-primary/10 dark:bg-lpu-primary/20 rounded-full flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-lpu-primary">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Message -->
+            <div class="flex-1 min-w-0">
+                <p class="text-sm font-semibold text-slate-800 dark:text-lpu-text">
+                    <span class="inline-flex items-center gap-1.5">
+                        <span>End Term Available:</span>
+                    </span>
+                    <span class="text-slate-700 dark:text-lpu-muted font-medium ml-1">Mock Test</span>
+                </p>
+            </div>
+            
+            <!-- Action Button -->
+            <div class="flex-shrink-0 w-full sm:w-auto">
+                <button onclick="document.getElementById('exams-section')?.scrollIntoView({behavior: 'smooth', block: 'start'})" class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-lpu-primary text-white rounded-lg hover:bg-orange-600 transition-smooth text-sm font-medium ripple hover-grow shadow-sm whitespace-nowrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <polyline points="19 12 12 19 5 12"></polyline>
+                    </svg>
+                    Jump to Exams
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Subject Header -->
+    <div class="flex flex-col gap-2 animate-fade-in-left delay-100">
+        <a href="/Sem1" class="inline-flex items-center text-slate-500 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary transition-smooth w-fit ripple hover-grow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+            <span>Back to Subjects</span>
+        </a>
+                <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-orange-100 dark:bg-orange-900/50 p-2 rounded-lg text-lpu-primary dark:text-lpu-primary hover-grow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                </div>
+                <h1 class="text-3xl font-bold text-slate-800 dark:text-lpu-text">CSE326 Units</h1>
+            </div>
+            <a href="/exam-generator?program=B.+Tech.+CSE&amp;sem=Sem1&amp;subject=CSE326&amp;step=2" class="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-m font-bold bg-lpu-primary hover:bg-orange-600 text-white shadow-md shadow-orange-500/20 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                </svg>
+                Practice
+            </a>
+        </div>
+    </div>
+
+    <!-- Subject Overview Card -->
+        <div id="subject-overview" class="bg-white dark:bg-lpu-surface rounded-xl shadow-sm border border-slate-200 dark:border-lpu-border overflow-hidden expanded scroll-reveal animate-scale-in delay-200">
+        <div class="p-6 cursor-pointer hover:bg-slate-50 dark:hover:bg-white/5 transition-smooth ripple" onclick="document.getElementById('subject-overview').classList.toggle('expanded')">
+            <div class="flex justify-between items-start gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800 dark:text-lpu-text mb-2">
+                        INTERNET PROGRAMMING LABORATORY                    </h2>
+                    <div class="flex flex-wrap gap-3 text-sm text-slate-600 dark:text-lpu-muted">
+                        <span class="flex items-center gap-1 bg-slate-100 dark:bg-lpu-bg/50 px-2 py-1 rounded">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                            CSE326                        </span>
+                        <span class="flex items-center gap-1 bg-slate-100 dark:bg-lpu-bg/50 px-2 py-1 rounded">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                            2 Credits
+                        </span>
+                                                <span class="flex items-center gap-1 bg-slate-100 dark:bg-lpu-bg/50 px-2 py-1 rounded" title="Lectures-Tutorials-Practicals">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            L:0 
+                            T:0 
+                            P:3                        </span>
+                                                                                            </div>
+                </div>
+                <button class="text-slate-400 hover:text-lpu-primary transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down"><path d="M6 9l6 6 6-6"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-up hidden"><path d="M18 15l-6-6-6 6"></path></svg>
+                </button>
+            </div>
+            
+            <p class="mt-4 text-slate-600 dark:text-lpu-muted line-clamp-2 overview-preview">
+                This course focuses on internet programming techniques including HTML5 for structure, CSS for responsive design and layout, and JavaScript for client-side logic and DOM manipulation.            </p>
+        </div>
+
+        <div class="overview-details hidden px-6 pb-6 border-t border-slate-100 dark:border-lpu-border">
+            <div class="mt-6 space-y-6">
+                <!-- Overview Section -->
+                <section>
+                    <h3 class="text-lg font-semibold text-slate-800 dark:text-lpu-text mb-3 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-lpu-primary"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        Course Description
+                    </h3>
+                    <p class="text-slate-600 dark:text-lpu-muted leading-relaxed">
+                        This course focuses on internet programming techniques including HTML5 for structure, CSS for responsive design and layout, and JavaScript for client-side logic and DOM manipulation.                    </p>
+                </section>
+
+                <!-- Grading Distribution -->
+                                <section>
+                    <h3 class="text-lg font-semibold text-slate-800 dark:text-lpu-text mb-3 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-lpu-secondary"><circle cx="12" cy="12" r="10"></circle><polyline points="16 12 12 8 8 12"></polyline><line x1="12" y1="16" x2="12" y2="8"></line></svg>
+                        Grading Scheme
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                                    <div class="bg-slate-50 dark:bg-lpu-bg/50 p-3 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-lpu-primary">5</div>
+                                <div class="text-xs text-slate-500 dark:text-lpu-muted uppercase tracking-wider mt-1">
+                                    attendance                                </div>
+                            </div>
+                                                    <div class="bg-slate-50 dark:bg-lpu-bg/50 p-3 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-lpu-primary">45</div>
+                                <div class="text-xs text-slate-500 dark:text-lpu-muted uppercase tracking-wider mt-1">
+                                    continuous assessment                                </div>
+                            </div>
+                                                    <div class="bg-slate-50 dark:bg-lpu-bg/50 p-3 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-lpu-primary">0</div>
+                                <div class="text-xs text-slate-500 dark:text-lpu-muted uppercase tracking-wider mt-1">
+                                    mid term examination                                </div>
+                            </div>
+                                                    <div class="bg-slate-50 dark:bg-lpu-bg/50 p-3 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-lpu-primary">50</div>
+                                <div class="text-xs text-slate-500 dark:text-lpu-muted uppercase tracking-wider mt-1">
+                                    end term                                </div>
+                            </div>
+                                            </div>
+                </section>
+                            </div>
+        </div>
+    </div>
+
+    <style>
+        #subject-overview .chevron-down,
+        #subject-overview.expanded .chevron-up { display: block; }
+        #subject-overview.expanded .chevron-down,
+        #subject-overview .chevron-up { display: none; }
+        #subject-overview.expanded .overview-preview { display: none; }
+        #subject-overview.expanded .overview-details { display: block; }
+        .line-clamp-2 {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+    </style>
+    
+    <!-- Units Section -->
+        <div class="space-y-6">
+        <h3 class="text-xl font-bold text-slate-800 dark:text-lpu-text flex items-center gap-2 animate-fade-in-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-lpu-primary"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            Study Units
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-stagger>
+                                            <div class="group bg-white dark:bg-lpu-surface rounded-2xl shadow-sm border border-slate-200 dark:border-lpu-border hover:border-lpu-primary/50 dark:hover:border-lpu-primary/50 hover:shadow-lg transition-smooth flex flex-col overflow-hidden stagger-item card-hover hover-shine" data-hover-effect>
+                    <div class="p-6 relative">
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl bg-orange-50 dark:bg-orange-900/20 text-lpu-primary dark:text-lpu-primary font-bold text-sm">
+                                    Unit 1                                </span>
+                            </div>
+                            
+                                                        <h3 class="text-lg font-bold text-slate-800 dark:text-lpu-text group-hover:text-lpu-primary transition-colors line-clamp-2">
+                                Fundamentals of HTML                            </h3>
+                                                    </div>
+                    </div>
+
+                    <div class="mt-auto p-4 bg-slate-50/50 dark:bg-lpu-bg/30 border-t border-slate-100 dark:border-lpu-border">
+                                                <div class="grid grid-cols-2 gap-2">
+                            <a href="/Sem1/CSE326/Unit1/notes" 
+                               class="flex flex-col items-center justify-center gap-1.5 py-2 rounded-lg hover:bg-white dark:hover:bg-lpu-surface hover:shadow-sm transition-smooth group/btn ripple btn-press">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-lpu-muted group-hover/btn:text-lpu-primary transition-smooth"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                                <span class="text-xs font-medium text-slate-600 dark:text-lpu-muted group-hover/btn:text-slate-900 dark:group-hover/btn:text-lpu-text">Notes</span>
+                            </a>
+                            
+                            <a href="/Sem1/CSE326/Unit1/mcq" 
+                               class="flex flex-col items-center justify-center gap-1.5 py-2 rounded-lg hover:bg-white dark:hover:bg-lpu-surface hover:shadow-sm transition-smooth group/btn ripple btn-press">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-lpu-muted group-hover/btn:text-lpu-primary transition-smooth"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                <span class="text-xs font-medium text-slate-600 dark:text-lpu-muted group-hover/btn:text-slate-900 dark:group-hover/btn:text-lpu-text">MCQ</span>
+                            </a>
+                            
+                                                    </div>
+                    </div>
+                </div>
+                                            <div class="group bg-white dark:bg-lpu-surface rounded-2xl shadow-sm border border-slate-200 dark:border-lpu-border hover:border-lpu-primary/50 dark:hover:border-lpu-primary/50 hover:shadow-lg transition-smooth flex flex-col overflow-hidden stagger-item card-hover hover-shine" data-hover-effect>
+                    <div class="p-6 relative">
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl bg-orange-50 dark:bg-orange-900/20 text-lpu-primary dark:text-lpu-primary font-bold text-sm">
+                                    Unit 2                                </span>
+                            </div>
+                            
+                                                        <h3 class="text-lg font-bold text-slate-800 dark:text-lpu-text group-hover:text-lpu-primary transition-colors line-clamp-2">
+                                Expanding HTML Knowledge                            </h3>
+                                                    </div>
+                    </div>
+
+                    <div class="mt-auto p-4 bg-slate-50/50 dark:bg-lpu-bg/30 border-t border-slate-100 dark:border-lpu-border">
+                                                <div class="grid grid-cols-2 gap-2">
+                            <a href="/Sem1/CSE326/Unit2/notes" 
+                               class="flex flex-col items-center justify-center gap-1.5 py-2 rounded-lg hover:bg-white dark:hover:bg-lpu-surface hover:shadow-sm transition-smooth group/btn ripple btn-press">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-lpu-muted group-hover/btn:text-lpu-primary transition-smooth"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                                <span class="text-xs font-medium text-slate-600 dark:text-lpu-muted group-hover/btn:text-slate-900 dark:group-hover/btn:text-lpu-text">Notes</span>
+                            </a>
+                            
+                            <a href="/Sem1/CSE326/Unit2/mcq" 
+                               class="flex flex-col items-center justify-center gap-1.5 py-2 rounded-lg hover:bg-white dark:hover:bg-lpu-surface hover:shadow-sm transition-smooth group/btn ripple btn-press">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-lpu-muted group-hover/btn:text-lpu-primary transition-smooth"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                <span class="text-xs font-medium text-slate-600 dark:text-lpu-muted group-hover/btn:text-slate-900 dark:group-hover/btn:text-lpu-text">MCQ</span>
+                            </a>
+                            
+                                                    </div>
+                    </div>
+                </div>
+                                            <div class="group bg-white dark:bg-lpu-surface rounded-2xl shadow-sm border border-slate-200 dark:border-lpu-border hover:border-lpu-primary/50 dark:hover:border-lpu-primary/50 hover:shadow-lg transition-smooth flex flex-col overflow-hidden stagger-item card-hover hover-shine" data-hover-effect>
+                    <div class="p-6 relative">
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl bg-orange-50 dark:bg-orange-900/20 text-lpu-primary dark:text-lpu-primary font-bold text-sm">
+                                    Unit 3                                </span>
+                            </div>
+                            
+                                                        <h3 class="text-lg font-bold text-slate-800 dark:text-lpu-text group-hover:text-lpu-primary transition-colors line-clamp-2">
+                                Introduction to Cascading Style Sheets                            </h3>
+                                                    </div>
+                    </div>
+
+                    <div class="mt-auto p-4 bg-slate-50/50 dark:bg-lpu-bg/30 border-t border-slate-100 dark:border-lpu-border">
+                                                <div class="grid grid-cols-2 gap-2">
+                            <a href="/Sem1/CSE326/Unit3/notes" 
+                               class="flex flex-col items-center justify-center gap-1.5 py-2 rounded-lg hover:bg-white dark:hover:bg-lpu-surface hover:shadow-sm transition-smooth group/btn ripple btn-press">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-lpu-muted group-hover/btn:text-lpu-primary transition-smooth"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                                <span class="text-xs font-medium text-slate-600 dark:text-lpu-muted group-hover/btn:text-slate-900 dark:group-hover/btn:text-lpu-text">Notes</span>
+                            </a>
+                            
+                            <a href="/Sem1/CSE326/Unit3/mcq" 
+                               class="flex flex-col items-center justify-center gap-1.5 py-2 rounded-lg hover:bg-white dark:hover:bg-lpu-surface hover:shadow-sm transition-smooth group/btn ripple btn-press">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-lpu-muted group-hover/btn:text-lpu-primary transition-smooth"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                <span class="text-xs font-medium text-slate-600 dark:text-lpu-muted group-hover/btn:text-slate-900 dark:group-hover/btn:text-lpu-text">MCQ</span>
+                            </a>
+                            
+                                                    </div>
+                    </div>
+                </div>
+                                            <div class="group bg-white dark:bg-lpu-surface rounded-2xl shadow-sm border border-slate-200 dark:border-lpu-border hover:border-lpu-primary/50 dark:hover:border-lpu-primary/50 hover:shadow-lg transition-smooth flex flex-col overflow-hidden stagger-item card-hover hover-shine" data-hover-effect>
+                    <div class="p-6 relative">
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl bg-orange-50 dark:bg-orange-900/20 text-lpu-primary dark:text-lpu-primary font-bold text-sm">
+                                    Unit 4                                </span>
+                            </div>
+                            
+                                                        <h3 class="text-lg font-bold text-slate-800 dark:text-lpu-text group-hover:text-lpu-primary transition-colors line-clamp-2">
+                                JavaScript Application Development                            </h3>
+                                                    </div>
+                    </div>
+
+                    <div class="mt-auto p-4 bg-slate-50/50 dark:bg-lpu-bg/30 border-t border-slate-100 dark:border-lpu-border">
+                                                <div class="grid grid-cols-2 gap-2">
+                            <a href="/Sem1/CSE326/Unit4/notes" 
+                               class="flex flex-col items-center justify-center gap-1.5 py-2 rounded-lg hover:bg-white dark:hover:bg-lpu-surface hover:shadow-sm transition-smooth group/btn ripple btn-press">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-lpu-muted group-hover/btn:text-lpu-primary transition-smooth"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                                <span class="text-xs font-medium text-slate-600 dark:text-lpu-muted group-hover/btn:text-slate-900 dark:group-hover/btn:text-lpu-text">Notes</span>
+                            </a>
+                            
+                            <a href="/Sem1/CSE326/Unit4/mcq" 
+                               class="flex flex-col items-center justify-center gap-1.5 py-2 rounded-lg hover:bg-white dark:hover:bg-lpu-surface hover:shadow-sm transition-smooth group/btn ripple btn-press">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-lpu-muted group-hover/btn:text-lpu-primary transition-smooth"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                <span class="text-xs font-medium text-slate-600 dark:text-lpu-muted group-hover/btn:text-slate-900 dark:group-hover/btn:text-lpu-text">MCQ</span>
+                            </a>
+                            
+                                                    </div>
+                    </div>
+                </div>
+                                            <div class="group bg-white dark:bg-lpu-surface rounded-2xl shadow-sm border border-slate-200 dark:border-lpu-border hover:border-lpu-primary/50 dark:hover:border-lpu-primary/50 hover:shadow-lg transition-smooth flex flex-col overflow-hidden stagger-item card-hover hover-shine" data-hover-effect>
+                    <div class="p-6 relative">
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl bg-orange-50 dark:bg-orange-900/20 text-lpu-primary dark:text-lpu-primary font-bold text-sm">
+                                    Unit 5                                </span>
+                            </div>
+                            
+                                                        <h3 class="text-lg font-bold text-slate-800 dark:text-lpu-text group-hover:text-lpu-primary transition-colors line-clamp-2">
+                                JavaScript Functions, Events and Validation                            </h3>
+                                                    </div>
+                    </div>
+
+                    <div class="mt-auto p-4 bg-slate-50/50 dark:bg-lpu-bg/30 border-t border-slate-100 dark:border-lpu-border">
+                                                <div class="grid grid-cols-2 gap-2">
+                            <a href="/Sem1/CSE326/Unit5/notes" 
+                               class="flex flex-col items-center justify-center gap-1.5 py-2 rounded-lg hover:bg-white dark:hover:bg-lpu-surface hover:shadow-sm transition-smooth group/btn ripple btn-press">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-lpu-muted group-hover/btn:text-lpu-primary transition-smooth"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                                <span class="text-xs font-medium text-slate-600 dark:text-lpu-muted group-hover/btn:text-slate-900 dark:group-hover/btn:text-lpu-text">Notes</span>
+                            </a>
+                            
+                            <a href="/Sem1/CSE326/Unit5/mcq" 
+                               class="flex flex-col items-center justify-center gap-1.5 py-2 rounded-lg hover:bg-white dark:hover:bg-lpu-surface hover:shadow-sm transition-smooth group/btn ripple btn-press">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-lpu-muted group-hover/btn:text-lpu-primary transition-smooth"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                <span class="text-xs font-medium text-slate-600 dark:text-lpu-muted group-hover/btn:text-slate-900 dark:group-hover/btn:text-lpu-text">MCQ</span>
+                            </a>
+                            
+                                                    </div>
+                    </div>
+                </div>
+                                            <div class="group bg-white dark:bg-lpu-surface rounded-2xl shadow-sm border border-slate-200 dark:border-lpu-border hover:border-lpu-primary/50 dark:hover:border-lpu-primary/50 hover:shadow-lg transition-smooth flex flex-col overflow-hidden stagger-item card-hover hover-shine" data-hover-effect>
+                    <div class="p-6 relative">
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="inline-flex items-center justify-center px-3 py-1.5 rounded-xl bg-orange-50 dark:bg-orange-900/20 text-lpu-primary dark:text-lpu-primary font-bold text-sm">
+                                    Unit 6                                </span>
+                            </div>
+                            
+                                                        <h3 class="text-lg font-bold text-slate-800 dark:text-lpu-text group-hover:text-lpu-primary transition-colors line-clamp-2">
+                                Javascript DOM                            </h3>
+                                                    </div>
+                    </div>
+
+                    <div class="mt-auto p-4 bg-slate-50/50 dark:bg-lpu-bg/30 border-t border-slate-100 dark:border-lpu-border">
+                                                <div class="grid grid-cols-2 gap-2">
+                            <a href="/Sem1/CSE326/Unit6/notes" 
+                               class="flex flex-col items-center justify-center gap-1.5 py-2 rounded-lg hover:bg-white dark:hover:bg-lpu-surface hover:shadow-sm transition-smooth group/btn ripple btn-press">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-lpu-muted group-hover/btn:text-lpu-primary transition-smooth"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                                <span class="text-xs font-medium text-slate-600 dark:text-lpu-muted group-hover/btn:text-slate-900 dark:group-hover/btn:text-lpu-text">Notes</span>
+                            </a>
+                            
+                            <a href="/Sem1/CSE326/Unit6/mcq" 
+                               class="flex flex-col items-center justify-center gap-1.5 py-2 rounded-lg hover:bg-white dark:hover:bg-lpu-surface hover:shadow-sm transition-smooth group/btn ripple btn-press">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 dark:text-lpu-muted group-hover/btn:text-lpu-primary transition-smooth"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                <span class="text-xs font-medium text-slate-600 dark:text-lpu-muted group-hover/btn:text-slate-900 dark:group-hover/btn:text-lpu-text">MCQ</span>
+                            </a>
+                            
+                                                    </div>
+                    </div>
+                </div>
+                    </div>
+    </div>
+    
+    <!-- Practicals Section -->
+    
+    <!-- Assessment Overview Section -->
+        <div class="space-y-8 mt-12 mb-8">
+        <!-- CA Details -->
+                                <section class="bg-white dark:bg-lpu-surface rounded-xl shadow-sm border border-slate-200 dark:border-lpu-border overflow-hidden scroll-reveal animate-fade-in-up">
+            <!-- Header -->
+            <div class="flex justify-between items-center px-6 py-4 select-none border-b border-slate-100 dark:border-lpu-border/60 bg-slate-50/60 dark:bg-white/[0.02]">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-800 dark:text-lpu-text leading-tight">Continuous Assessment</h3>
+                        <p class="text-xs text-slate-500 dark:text-lpu-muted mt-0.5">2 components</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2"></div>
+            </div>
+
+            
+            <div id="ca-details" class="px-6 pb-6 pt-4 space-y-2">
+                                        <div class="ca-card rounded-lg border border-slate-100 dark:border-lpu-border bg-slate-50/50 dark:bg-white/[0.02] overflow-hidden">
+                        <!-- Always-visible row -->
+                        <div class="flex items-center gap-3 p-3 cursor-pointer select-none" onclick="this.closest('.ca-card').classList.toggle('expanded')">
+                            <span class="w-1.5 h-8 rounded-full bg-green-500 shrink-0"></span>
+                            <span class="text-green-500 dark:text-green-400 shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></span>
+                            <span class="flex-1 font-medium text-slate-700 dark:text-lpu-text text-sm">Visual Implementation</span>
+                                                        <span class="hidden sm:flex items-center gap-1 text-xs text-slate-400 dark:text-lpu-muted">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                Wk 4 / 5                            </span>
+                                                        <span class="text-xs font-bold bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 px-2.5 py-1 rounded-full shrink-0">
+                                50%
+                            </span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ca-card-chevron text-slate-400 shrink-0 transition-transform duration-300"><path d="M6 9l6 6 6-6"></path></svg>
+                                                    </div>
+                                                <!-- Expanded-only detail area -->
+                        <div class="ca-row-detail">
+                        <div class="ca-row-detail-inner border-t border-slate-100 dark:border-lpu-border/60 px-4 pb-4 pt-3 space-y-3">
+                                                        <p class="text-xs text-slate-500 dark:text-lpu-muted leading-relaxed">The Visual Implementation Assessment will evaluate students&#039; HTML skills by providing static images of assignments or outputbased visual questions. Students must implement these visual designs using proper HTML structure, syntax, and common tags.</p>
+                                                                                    <span class="inline-flex items-center gap-1.5 bg-slate-100 dark:bg-lpu-bg/60 text-slate-600 dark:text-lpu-muted text-xs px-2.5 py-1 rounded-full font-medium">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                Week 4 / 5                            </span>
+                                                                                                            </div>
+                        </div>
+                                            </div>
+                                        <div class="ca-card rounded-lg border border-slate-100 dark:border-lpu-border bg-slate-50/50 dark:bg-white/[0.02] overflow-hidden">
+                        <!-- Always-visible row -->
+                        <div class="flex items-center gap-3 p-3 cursor-pointer select-none" onclick="this.closest('.ca-card').classList.toggle('expanded')">
+                            <span class="w-1.5 h-8 rounded-full bg-blue-400 shrink-0"></span>
+                            <span class="text-blue-500 dark:text-blue-400 shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></span>
+                            <span class="flex-1 font-medium text-slate-700 dark:text-lpu-text text-sm">Test - Code based</span>
+                                                        <span class="hidden sm:flex items-center gap-1 text-xs text-slate-400 dark:text-lpu-muted">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                Wk 11 / 12                            </span>
+                                                        <span class="text-xs font-bold bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 px-2.5 py-1 rounded-full shrink-0">
+                                50%
+                            </span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="ca-card-chevron text-slate-400 shrink-0 transition-transform duration-300"><path d="M6 9l6 6 6-6"></path></svg>
+                                                    </div>
+                                                <!-- Expanded-only detail area -->
+                        <div class="ca-row-detail">
+                        <div class="ca-row-detail-inner border-t border-slate-100 dark:border-lpu-border/60 px-4 pb-4 pt-3 space-y-3">
+                                                        <p class="text-xs text-slate-500 dark:text-lpu-muted leading-relaxed">The task is an MCQ-based assessment designed to test students’ understanding of CSS syntax, properties, selectors, and layout concepts, along with basic JavaScript knowledge.</p>
+                                                                                    <span class="inline-flex items-center gap-1.5 bg-slate-100 dark:bg-lpu-bg/60 text-slate-600 dark:text-lpu-muted text-xs px-2.5 py-1 rounded-full font-medium">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                Week 11 / 12                            </span>
+                                                                                                                <a href="/Sem1/CSE326/ca/ca2/mock" class="inline-flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white text-xs font-semibold w-full shadow-sm hover:shadow-md transition-all duration-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                Practice Mock Test
+                            </a>
+                                                    </div>
+                        </div>
+                                            </div>
+                                </div>
+        </section>
+
+        <style>
+            .ca-card-chevron { transform: rotate(0deg); }
+            .ca-card.expanded .ca-card-chevron { transform: rotate(180deg); }
+            .ca-row-detail { display: none; }
+            .ca-card.expanded .ca-row-detail { display: block; }
+        </style>
+        
+        <!-- Examinations & Tests -->
+                <section id="exams-section" class="bg-white dark:bg-lpu-surface rounded-xl shadow-sm border border-slate-200 dark:border-lpu-border p-6 scroll-mt-6">
+            <h3 class="text-xl font-bold text-slate-800 dark:text-lpu-text mb-6 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-lpu-primary"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                Exams & Practice
+            </h3>
+            
+            <div class="grid gap-6 md:grid-cols-2">
+                <!-- Mid Term -->
+                
+                <!-- End Term -->
+                                <div class="border border-slate-200 dark:border-lpu-border rounded-lg p-6 text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-slate-50 dark:bg-white/5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    <div class="relative z-10">
+                        <h4 class="text-lg font-semibold text-slate-800 dark:text-lpu-text mb-2">End Term Examination</h4>
+                        <p class="text-slate-500 dark:text-lpu-muted text-sm mb-4">Final semester comprehensive evaluation</p>
+                        <span class="inline-block bg-lpu-primary/10 text-lpu-primary text-lg font-bold px-4 py-2 rounded-full mb-3">
+                            50%
+                        </span>
+                        <div class="text-xs text-slate-500 dark:text-lpu-muted mb-4">
+                                                        <p>Type: Examination</p>
+                                                                                    <p>All MCQ</p>
+                                                    </div>
+                        <div class="flex flex-col gap-2 items-center">
+                                                                                            <a href="/Sem1/CSE326/ete" class="inline-flex items-center gap-1.5 py-2 px-4 rounded-lg bg-orange-50 dark:bg-orange-900/20 text-lpu-primary dark:text-lpu-primary hover:bg-orange-100 dark:hover:bg-orange-900/30 transition-colors text-sm font-medium">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                    Mock Test
+                                </a>
+                                                                                                                                                                                                                </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FAQ Section for SEO -->
+        <div class="scroll-reveal mt-6">
+            <div class="bg-white dark:bg-lpu-surface rounded-2xl shadow-sm border border-slate-200 dark:border-lpu-border p-6">
+                <h2 class="text-xl font-bold text-slate-800 dark:text-lpu-text mb-4 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-lpu-primary"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    CSE326 - FAQs
+                </h2>
+                <div class="space-y-3" itemscope itemtype="https://schema.org/FAQPage">
+                    <details class="group border border-slate-200 dark:border-lpu-border rounded-lg" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <summary class="flex items-center justify-between cursor-pointer p-3 font-semibold text-slate-800 dark:text-lpu-text hover:text-lpu-primary transition-colors text-sm">
+                            <span itemprop="name">How many units are in CSE326?</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform group-open:rotate-180 text-slate-400 flex-shrink-0"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="px-3 pb-3" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p class="text-slate-600 dark:text-lpu-muted text-sm" itemprop="text">CSE326 has 6 units. Each unit includes detailed notes and MCQ practice questions.</p>
+                        </div>
+                    </details>
+                    <details class="group border border-slate-200 dark:border-lpu-border rounded-lg" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <summary class="flex items-center justify-between cursor-pointer p-3 font-semibold text-slate-800 dark:text-lpu-text hover:text-lpu-primary transition-colors text-sm">
+                            <span itemprop="name">What exam resources are available for CSE326?</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform group-open:rotate-180 text-slate-400 flex-shrink-0"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="px-3 pb-3" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p class="text-slate-600 dark:text-lpu-muted text-sm" itemprop="text">Available resources include: ETE Mock Test.</p>
+                        </div>
+                    </details>
+                    <details class="group border border-slate-200 dark:border-lpu-border rounded-lg" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <summary class="flex items-center justify-between cursor-pointer p-3 font-semibold text-slate-800 dark:text-lpu-text hover:text-lpu-primary transition-colors text-sm">
+                            <span itemprop="name">How to prepare for CSE326 exams?</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform transition-transform group-open:rotate-180 text-slate-400 flex-shrink-0"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="px-3 pb-3" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p class="text-slate-600 dark:text-lpu-muted text-sm" itemprop="text">Study each unit's notes thoroughly, practice MCQs to test understanding, and attempt mock tests before exams. Focus on important topics and previous year questions.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+        <!-- AdSense Bottom (lazy-loaded, after content) -->
+        <div class="mt-10 text-center overflow-hidden content-below-fold">
+             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6155060420672692"
+                data-ad-slot="8171693585" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+
+    <!-- Mobile Anchor Ad (sticky bottom, appears after scroll) -->
+    <div id="anchor-ad" class="ad-anchor md:hidden">
+        <button class="ad-anchor-close" onclick="document.getElementById('anchor-ad').remove()" aria-label="Close ad">&times;</button>
+        <ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-6155060420672692"
+            data-ad-slot="8171693585"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    
+<!-- Feedback Modal -->
+<div id="feedback-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div class="flex min-h-full items-center justify-center p-4 text-center">
+            <div class="relative transform overflow-hidden rounded-2xl bg-white dark:bg-lpu-surface text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg border border-slate-200 dark:border-lpu-border animate-scale-in">
+                <!-- Close Button -->
+                <button onclick="closeFeedbackModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-lpu-text transition-colors p-1 rounded-full hover:bg-slate-100 dark:hover:bg-lpu-border/50">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+
+                <div class="px-6 py-6">
+                    <div class="text-center mb-6">
+                        <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900/30 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-600 dark:text-orange-400"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold leading-6 text-slate-900 dark:text-lpu-text" id="modal-title">Give Feedback</h3>
+                        <p class="mt-2 text-sm text-slate-500 dark:text-lpu-muted">
+                            Help us improve by sharing your thoughts or reporting issues.
+                        </p>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div id="feedback-success" class="hidden text-center py-8">
+                        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 dark:text-green-400"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-lpu-text mb-2">Thank You!</h3>
+                        <p class="text-slate-500 dark:text-lpu-muted">Your feedback has been sent successfully.</p>
+                    </div>
+
+                    <form id="feedback-form" class="space-y-4 text-left">
+                        <input type="hidden" name="type" value="feedback">
+                        <input type="hidden" name="context" value="CSE326 - Subject">
+                        <input type="hidden" name="_csrf" value="3c5cc48cf7f28a0f79f2bea15995bb5ea49a409da472af845bc726c871c2fdfa">
+                        
+                        <!-- Error Message -->
+                        <div id="feedback-error" class="hidden p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl">
+                            <p class="text-sm text-red-600 dark:text-red-400 text-center"></p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 dark:text-lpu-text mb-1.5">Feedback Type</label>
+                            <select name="feedbackType" class="w-full rounded-xl border-slate-300 dark:border-lpu-border bg-slate-50 dark:bg-lpu-bg text-slate-900 dark:text-lpu-text shadow-sm focus:border-orange-500 focus:ring-orange-500 py-2.5 px-3 transition-all">
+                                <option value="Suggestion">Suggestion</option>
+                                <option value="Report Issue">Report Issue</option>
+                                <option value="Question">Question</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 dark:text-lpu-text mb-1.5">Description <span class="text-red-500">*</span></label>
+                            <textarea name="description" rows="3" required class="w-full rounded-xl border-slate-300 dark:border-lpu-border bg-slate-50 dark:bg-lpu-bg text-slate-900 dark:text-lpu-text shadow-sm focus:border-orange-500 focus:ring-orange-500 py-2.5 px-3 transition-all resize-none" placeholder="Tell us more..."></textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 dark:text-lpu-text mb-1.5">Email (Optional)</label>
+                            <input type="email" name="email" class="w-full rounded-xl border-slate-300 dark:border-lpu-border bg-slate-50 dark:bg-lpu-bg text-slate-900 dark:text-lpu-text shadow-sm focus:border-orange-500 focus:ring-orange-500 py-2.5 px-3 transition-all" placeholder="For follow-up...">
+                        </div>
+                        
+                        <div class="mt-6 flex flex-col-reverse sm:flex-row sm:justify-end gap-3">
+                            <button type="button" onclick="closeFeedbackModal()" class="inline-flex w-full justify-center rounded-xl bg-white dark:bg-lpu-bg px-4 py-2.5 text-sm font-semibold text-slate-700 dark:text-lpu-text shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-lpu-border hover:bg-slate-50 dark:hover:bg-lpu-border/50 sm:w-auto transition-all">Cancel</button>
+                            <button type="submit" class="inline-flex w-full justify-center rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:shadow-md hover:from-orange-600 hover:to-orange-700 sm:w-auto transition-all">Submit Feedback</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const feedbackModal = document.getElementById('feedback-modal');
+    const feedbackForm = document.getElementById('feedback-form');
+    const successMessage = document.getElementById('feedback-success');
+    const errorMessage = document.getElementById('feedback-error');
+
+    if (!feedbackModal || !feedbackForm) return;
+
+    window.openFeedbackModal = function() {
+        feedbackModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        feedbackForm.classList.remove('hidden');
+        successMessage.classList.add('hidden');
+        errorMessage.classList.add('hidden');
+        feedbackForm.reset();
+    };
+
+    window.closeFeedbackModal = function() {
+        feedbackModal.classList.add('hidden');
+        document.body.style.overflow = '';
+    };
+
+    feedbackForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = feedbackForm.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+
+        btn.disabled = true;
+        btn.innerHTML = '<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Sending...';
+
+        errorMessage.classList.add('hidden');
+
+        try {
+            const formData = new FormData(feedbackForm);
+            const payload = {};
+            formData.forEach((v, k) => payload[k] = v);
+
+            const response = await fetch('/api/feedback', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+            if (!response.ok) {
+                throw new Error(result.error || 'Network response was not ok');
+            }
+
+            feedbackForm.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+
+            setTimeout(() => {
+                closeFeedbackModal();
+            }, 2000);
+
+        } catch (error) {
+            errorMessage.classList.remove('hidden');
+            errorMessage.querySelector('p').textContent = error.message || 'Failed to send feedback. Please try again.';
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+        }
+    });
+
+    feedbackModal.addEventListener('click', (e) => {
+        if (e.target === feedbackModal) closeFeedbackModal();
+    });
+})();
+</script>
+
+    <!-- Footer -->
+    <!-- Footer (Standardized Premium Design) -->
+    <footer class="relative mt-auto border-t border-gray-200 dark:border-lpu-border bg-white dark:bg-lpu-bg text-gray-900 dark:text-lpu-text">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr] gap-8 mb-8">
+                <!-- Brand -->
+                <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                    <a href="/" class="mb-5 block">
+                        <img src="/assets/lpunotes_header_sm.png" alt="LPU Notes" class="h-[40px] w-auto transition-transform hover:scale-105" width="152" height="40" loading="lazy">
+                    </a>
+                    <p class="max-w-xs text-[0.95rem] leading-relaxed text-gray-500 dark:text-lpu-muted mb-6">
+                        Comprehensive study materials, notes, and resources for LPU students. Built by Vertos, for Vertos.
+                    </p>
+
+                </div>
+
+                <!-- Navigate (Internal) -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-gray-900 dark:text-white text-[1.1rem] font-semibold mb-6 relative inline-block after:content-[''] after:absolute after:left-1/2 after:-bottom-2 after:w-6 after:h-[3px] after:bg-lpu-primary after:rounded-full md:after:left-0 after:-translate-x-1/2 md:after:translate-x-0">Navigate</h3>
+                    <ul class="space-y-3">
+                        <li><a href="/" class="text-gray-600 dark:text-lpu-muted text-[0.95rem] hover:text-lpu-primary hover:translate-x-1 transition-all inline-flex items-center">Home</a></li>
+                        <li><a href="/about" class="text-gray-600 dark:text-lpu-muted text-[0.95rem] hover:text-lpu-primary hover:translate-x-1 transition-all inline-flex items-center">About</a></li>
+                        <li><a href="/contact" class="text-gray-600 dark:text-lpu-muted text-[0.95rem] hover:text-lpu-primary hover:translate-x-1 transition-all inline-flex items-center">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Network (External) -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-gray-900 dark:text-white text-[1.1rem] font-semibold mb-6 relative inline-block after:content-[''] after:absolute after:left-1/2 after:-bottom-2 after:w-6 after:h-[3px] after:bg-lpu-primary after:rounded-full md:after:left-0 after:-translate-x-1/2 md:after:translate-x-0">Network</h3>
+                    <ul class="space-y-3">
+                        <li><a href="https://www.lpuverto.xyz" target="_blank" class="text-gray-600 dark:text-lpu-muted text-[0.95rem] hover:text-lpu-primary hover:translate-x-1 transition-all inline-flex items-center">Main Site</a></li>
+                        <li><a href="https://tools.lpuverto.xyz" target="_blank" class="text-gray-600 dark:text-lpu-muted text-[0.95rem] hover:text-lpu-primary hover:translate-x-1 transition-all inline-flex items-center">Academic Tools</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-black/20 border-t border-gray-200 dark:border-lpu-border py-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-[0.9rem] text-gray-600 dark:text-lpu-muted">
+                    &copy; 2026 LPU Notes. Part of the <a href="https://www.lpuverto.xyz" class="text-orange-700 dark:text-orange-400 underline decoration-orange-700/50 dark:decoration-orange-400/50 underline-offset-2 hover:decoration-orange-700 dark:hover:decoration-orange-400">LPU Verto Network</a>.
+                </p>
+                <p class="text-[0.9rem] text-gray-600 dark:text-lpu-muted mt-1">Made with <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="inline-block w-3.5 h-3.5 text-red-500 animate-[heartbeat_1.5s_infinite] align-text-bottom"><path d="M12 21.593c-.525-.445-4.617-3.978-6.26-5.534C3.498 13.866 2 11.963 2 9.5A5.5 5.5 0 0 1 12 5.95 5.5 5.5 0 0 1 22 9.5c0 2.463-1.498 4.366-3.74 6.559C16.617 17.615 12.525 21.148 12 21.593z"/></svg> for Vertos</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+    (function(){
+        var SNOOZE_KEY = 'lpu_ab_s4';
+        var SNOOZE_MS  = 24 * 60 * 60 * 1000;
+
+        function _isSnoozed() {
+            try {
+                var v = localStorage.getItem(SNOOZE_KEY);
+                return v && (Date.now() - parseInt(v, 10)) < SNOOZE_MS;
+            } catch(e) { return false; }
+        }
+        function _snooze() {
+            try { localStorage.setItem(SNOOZE_KEY, Date.now()); } catch(e) {}
+        }
+        function _clearSnooze() {
+            try { localStorage.removeItem(SNOOZE_KEY); } catch(e) {}
+        }
+
+        // Inject baits NOW (at script execution time, before load) so uBlock's
+        // MutationObserver and cosmetic injection have the most time to process them.
+        // ins.adsbygoogle — targeted by uBlock's own filters (##ins.adsbygoogle)
+        // div.adsbox     — targeted by EasyList (##.adsbox)
+        function _mkBait(tag, cls) {
+            var el = document.createElement(tag);
+            el.className = cls;
+            // NO !important — we want uBlock's display:none!important to WIN the cascade.
+            // Inline !important beats stylesheet !important in author-origin CSS (Chrome MV2 uBlock
+            // injects as author origin), so if we use !important here uBlock's filter loses and
+            // offsetHeight stays 1. Without !important, uBlock always overrides and collapses it to 0.
+            el.setAttribute('style', 'display:block;height:1px;width:1px;' +
+                'position:absolute;top:-9999px;left:-9999px;pointer-events:none');
+            document.body.appendChild(el);
+            return el;
+        }
+        var _b1 = _mkBait('ins', 'adsbygoogle');
+        var _b2 = _mkBait('div', 'adsbox');
+
+        function _baitBlocked(el) {
+            if (!el || !el.parentNode) return true; // removed from DOM by blocker
+            var cs = window.getComputedStyle(el);
+            return cs.display === 'none' || cs.visibility === 'hidden' || el.offsetHeight === 0;
+        }
+        function _cleanBaits() {
+            [_b1, _b2].forEach(function(el) { if (el && el.parentNode) el.parentNode.removeChild(el); });
+        }
+
+        var _shown = false;
+        var _id = 'lpu-' + Math.random().toString(36).slice(2, 7);
+
+        function _dismiss() {
+            var el = document.getElementById(_id);
+            if (el && el.parentNode) el.parentNode.removeChild(el);
+            _shown = false;
+        }
+
+        function _show() {
+            if (_shown || document.getElementById(_id)) return;
+            _shown = true;
+            var isDark = document.documentElement.classList.contains('dark');
+            var bg = isDark ? '#1e293b' : '#fff';
+            var h2c = isDark ? '#f1f5f9' : '#111827';
+            var pc  = isDark ? '#94a3b8' : '#6b7280';
+            var mc  = isDark ? '#64748b' : '#9ca3af';
+            var sBg = isDark ? '#431407' : '#fff7ed';
+            var sBr = isDark ? '#7c2d12' : '#fed7aa';
+            var sCl = isDark ? '#fdba74' : '#9a3412';
+            var btnId   = _id + '-b';
+            var closeId = _id + '-x';
+
+            var wrap = document.createElement('div');
+            wrap.id = _id;
+            wrap.setAttribute('style',
+                'position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:0!important;' +
+                'z-index:2147483647!important;background:rgba(0,0,0,.72)!important;' +
+                'display:flex!important;align-items:center!important;justify-content:center!important;' +
+                'padding:16px!important;font-family:Inter,sans-serif!important;' +
+                'backdrop-filter:blur(6px)!important;-webkit-backdrop-filter:blur(6px)!important');
+
+            wrap.innerHTML =
+                '<div style="position:relative!important;background:' + bg + '!important;border-radius:20px!important;max-width:460px!important;' +
+                'width:100%!important;padding:40px 32px 32px!important;text-align:center!important;' +
+                'box-shadow:0 25px 60px rgba(0,0,0,.35)!important">' +
+                '<button id="' + closeId + '" title="Remind me later (24h)" style="position:absolute!important;top:14px!important;right:14px!important;' +
+                'width:32px!important;height:32px!important;border-radius:50%!important;border:none!important;' +
+                'background:transparent!important;cursor:pointer!important;display:flex!important;align-items:center!important;' +
+                'justify-content:center!important;color:' + mc + '!important;padding:0!important">' +
+                '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+                '</button>' +
+                '<div style="width:64px!important;height:64px!important;border-radius:50%!important;' +
+                'background:linear-gradient(135deg,#f97316,#fb923c)!important;display:flex!important;' +
+                'align-items:center!important;justify-content:center!important;margin:0 auto 20px!important">' +
+                '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' +
+                '</div>' +
+                '<h2 style="font-size:1.35rem!important;font-weight:700!important;color:' + h2c + '!important;margin:0 0 10px!important">Ad Blocker Detected</h2>' +
+                '<p style="font-size:.95rem!important;color:' + pc + '!important;line-height:1.6!important;margin:0 0 20px!important">' +
+                'LPU Notes is free and always will be. We rely on ads to keep the lights on. Please whitelist this site to support us!</p>' +
+                '<div style="text-align:left!important;background:' + sBg + '!important;border:1px solid ' + sBr + '!important;' +
+                'border-radius:12px!important;padding:14px 16px!important;margin-bottom:20px!important;font-size:.875rem!important;color:' + sCl + '!important">' +
+                '<ol style="padding-left:20px!important;margin:0!important;line-height:1.8!important">' +
+                '<li>Click your ad blocker icon in the browser toolbar</li>' +
+                '<li>Select <strong>"Disable on this site"</strong> or <strong>"Whitelist"</strong></li>' +
+                '<li>Refresh the page</li>' +
+                '</ol></div>' +
+                '<button id="' + btnId + '" style="display:inline-flex!important;align-items:center!important;gap:7px!important;' +
+                'background:linear-gradient(135deg,#f97316,#fb923c)!important;color:#fff!important;' +
+                'font-weight:600!important;font-size:.95rem!important;padding:10px 24px!important;' +
+                'border-radius:12px!important;border:none!important;cursor:pointer!important;' +
+                'box-shadow:0 4px 14px rgba(249,115,22,.4)!important">' +
+                '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
+                " I\u2019ve disabled it, continue</button>" +
+                '<p style="margin:14px 0 0!important;font-size:.8rem!important;color:' + mc + '!important">' +
+                'Or <button id="' + closeId + '-t" style="background:none!important;border:none!important;padding:0!important;' +
+                'font-size:.8rem!important;color:' + mc + '!important;cursor:pointer!important;text-decoration:underline!important">' +
+                'remind me tomorrow</button></p>' +
+                '</div>';
+
+            document.body.appendChild(wrap);
+
+            document.getElementById(btnId).addEventListener('click', function() {
+                var btn = document.getElementById(btnId);
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Refreshing\u2026';
+                _clearSnooze();
+                setTimeout(function() { window.location.reload(); }, 600);
+            });
+            document.getElementById(closeId).addEventListener('click', function() { _snooze(); _dismiss(); });
+            var textBtn = document.getElementById(closeId + '-t');
+            if (textBtn) textBtn.addEventListener('click', function() { _snooze(); _dismiss(); });
+        }
+
+        function _detect(cb) {
+            var done = false;
+            function finish(v) { if (!done) { done = true; cb(v); } }
+
+            // CSS bait: uBlock cosmetic filters apply display:none !important which beats
+            // our non-!important inline style → offsetHeight collapses to 0 → detected
+            if (_baitBlocked(_b1) || _baitBlocked(_b2)) { _cleanBaits(); finish(true); return; }
+            _cleanBaits();
+
+            // Network bait: dynamically inject <script> from the ad network domain.
+            // uBlock cancels network requests to pagead2.googlesyndication.com → onerror fires.
+            // No blocker → script loads (from browser cache or network) → onload fires.
+            // This is more reliable than fetch() which uBlock spoofs with a synthetic response.
+            var s = document.createElement('script');
+            var t = setTimeout(function() {
+                if (s.parentNode) s.parentNode.removeChild(s);
+                finish(true); // timed out = treated as blocked
+            }, 3000);
+            s.onload = function() {
+                clearTimeout(t);
+                if (s.parentNode) s.parentNode.removeChild(s);
+                finish(false);
+            };
+            s.onerror = function() {
+                clearTimeout(t);
+                if (s.parentNode) s.parentNode.removeChild(s);
+                finish(true);
+            };
+            s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6155060420672692';
+            document.head.appendChild(s);
+        }
+
+        window.addEventListener('load', function() {
+            if (_isSnoozed()) return;
+            setTimeout(function() {
+                _detect(function(blocked) { if (blocked) _show(); });
+            }, 500);
+        });
+    })();
+    </script>
+
+
+    <!-- Google tag (gtag.js) - loaded after content paint -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-333H64S4VH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-333H64S4VH');
+    </script>
+    
+    <!-- Google AdSense - loaded after content paint -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6155060420672692" crossorigin="anonymous"></script>
+
+    <script>
+        // Keyboard shortcut: Ctrl+K to focus search
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                const searchInput = document.getElementById('search-input');
+                if (searchInput) { searchInput.focus(); searchInput.select(); }
+            }
+        });
+
+        // Reading progress bar
+        (function() {
+            const progressBar = document.getElementById('reading-progress');
+            if (!progressBar) return;
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                        const scrolled = (window.scrollY / docHeight) * 100;
+                        progressBar.style.width = Math.min(scrolled, 100) + '%';
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        })();
+
+        // Anchor ad: show after scrolling 600px
+        (function() {
+            const anchor = document.getElementById('anchor-ad');
+            if (!anchor) return;
+            let shown = false;
+            window.addEventListener('scroll', function() {
+                if (!shown && window.scrollY > 600) {
+                    anchor.classList.add('visible');
+                    shown = true;
+                }
+            }, { passive: true });
+        })();
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const html = document.documentElement;
+
+        function updateTheme(isDark) {
+            if (isDark) {
+                html.classList.add('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.classList.remove('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Icons only — class already set by inline <head> script
+        if (html.classList.contains('dark')) {
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        } else {
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            updateTheme(!html.classList.contains('dark'));
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Search Functionality
+        function setupSearch(inputId, resultsId, contentId) {
+            const searchInput = document.getElementById(inputId);
+            const searchResults = document.getElementById(resultsId);
+            const searchResultsContent = document.getElementById(contentId);
+            let searchTimeout;
+
+            if (!searchInput || !searchResults || !searchResultsContent) return;
+
+            async function performSearch(query) {
+                if (!query || query.length < 3) {
+                    searchResults.classList.add('hidden');
+                    return;
+                }
+
+                // Show loading state
+                searchResultsContent.innerHTML = '<div class="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">Searching...</div>';
+                searchResults.classList.remove('hidden');
+
+                try {
+                    const response = await fetch(`${BASE_PATH}/index.php/api/search?q=${encodeURIComponent(query)}&program=${encodeURIComponent(SUB_DIR)}`);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const results = await response.json();
+                    
+                    if (results.length > 0) {
+                        // Helper to highlight text
+                        const highlight = (text) => {
+                            if (!text) return '';
+                            const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                            const regex = new RegExp(`(${escapedQuery})`, 'gi');
+                            return text.replace(regex, '<strong class="text-blue-600 dark:text-blue-400">$1</strong>');
+                        };
+
+                        searchResultsContent.innerHTML = results.map(result => {
+                            const icon = getSearchIcon(result.type);
+                            const highlightedTitle = highlight(result.title);
+                            const highlightedSnippet = result.snippet ? highlight(result.snippet) : '';
+
+                            return `
+                                <a href="${BASE_PATH}${result.path}" class="block px-4 py-3 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors border-b border-slate-50 dark:border-white/5 last:border-0">
+                                    <div class="flex items-start gap-3">
+                                        <div class="mt-1">${icon}</div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="font-medium text-slate-700 dark:text-slate-200 text-sm">
+                                                ${highlightedTitle}
+                                            </div>
+                                            ${highlightedSnippet ? `<div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-2">${highlightedSnippet}</div>` : ''}
+                                        </div>
+                                    </div>
+                                </a>
+                            `;
+                        }).join('');
+                    } else {
+                        searchResultsContent.innerHTML = '<div class="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">No results found</div>';
+                    }
+                    searchResults.classList.remove('hidden');
+                } catch (error) {
+                    searchResultsContent.innerHTML = '<div class="px-4 py-3 text-sm text-red-500">Search failed. Please try again.</div>';
+                    searchResults.classList.remove('hidden');
+                }
+            }
+
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.trim();
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => performSearch(query), 300);
+            });
+
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const query = e.target.value.trim();
+                    
+                    if (!searchResults.classList.contains('hidden') && searchResultsContent.querySelector('a')) {
+                        const firstLink = searchResultsContent.querySelector('a');
+                        if (firstLink) {
+                            firstLink.click();
+                            return;
+                        }
+                    }
+                    
+                    clearTimeout(searchTimeout);
+                    performSearch(query);
+                }
+            });
+
+            // Close search results when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.classList.add('hidden');
+                }
+            });
+            
+            searchInput.addEventListener('focus', () => {
+                if (searchInput.value.trim().length >= 3 && searchResultsContent.children.length > 0) {
+                    searchResults.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Initialize search for desktop and mobile
+        setupSearch('search-input', 'search-results', 'search-results-content');
+        setupSearch('mobile-search-input', 'mobile-search-results', 'mobile-search-results-content');
+
+        function getSearchIcon(type) {
+            const icons = {
+                semester: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>',
+                subject: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>',
+                unit: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-500"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>',
+                content: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>'
+            };
+            return icons[type] || icons.content;
+        }
+
+        // ── Updates bell ───────────────────────────────────────────
+        (function () {
+            const LS_KEY = 'lpunotes_updates_lastseen';
+            const btn = document.getElementById('updates-btn');
+            const dropdown = document.getElementById('updates-dropdown');
+            const badge = document.getElementById('updates-badge');
+            const mobileBadge = document.getElementById('mobile-updates-badge');
+            const list = document.getElementById('updates-list');
+            const markReadBtn = document.getElementById('updates-mark-read');
+
+            if (!btn || !dropdown) return;
+
+            let updates = null; // cached fetch result
+            let open = false;
+
+            function getLastSeen() {
+                return parseInt(localStorage.getItem(LS_KEY) || '0', 10);
+            }
+
+            function setLastSeen(ts) {
+                localStorage.setItem(LS_KEY, String(ts));
+            }
+
+            function renderUpdates(items, lastSeen) {
+                if (!items || items.length === 0) {
+                    list.innerHTML = '<div class="py-8 text-center text-sm text-gray-400 dark:text-lpu-muted">No updates in the last 7 days</div>';
+                    return;
+                }
+                const bookIcon = '<svg class="w-4 h-4 text-lpu-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>';
+                list.innerHTML = items.map(function (u) {
+                    const isNew = u.mtime > lastSeen;
+                    return `<a href="${u.url}" role="listitem" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors ${isNew ? 'bg-orange-50/60 dark:bg-orange-900/10' : ''}">
+                        ${bookIcon}
+                        <div class="flex-1 min-w-0">
+                            <p class="text-xs font-semibold text-gray-800 dark:text-lpu-text leading-snug">${u.subject}</p>
+                            <p class="text-[11px] text-gray-400 dark:text-lpu-muted mt-0.5">${u.sem}</p>
+                        </div>
+                        ${isNew ? '<span class="shrink-0 w-2 h-2 rounded-full bg-lpu-primary"></span>' : ''}
+                    </a>`;
+                }).join('');
+            }
+
+            function updateBadge(items, lastSeen) {
+                const unread = items ? items.filter(function (u) { return u.mtime > lastSeen; }).length : 0;
+                if (unread > 0) {
+                    if (badge) badge.style.display = 'block';
+                    if (mobileBadge) mobileBadge.style.display = 'block';
+                } else {
+                    if (badge) badge.style.display = 'none';
+                    if (mobileBadge) mobileBadge.style.display = 'none';
+                }
+            }
+
+            async function fetchUpdates() {
+                if (updates !== null) return updates;
+                if (window.__lpuUpdates !== undefined) {
+                    updates = window.__lpuUpdates;
+                    return updates;
+                }
+                try {
+                    const res = await fetch(BASE_PATH + '/index.php/api/updates');
+                    updates = res.ok ? await res.json() : [];
+                } catch (e) {
+                    updates = [];
+                }
+                return updates;
+            }
+
+            // Eagerly fetch (low priority) to show badge on page load
+            (function () {
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(async function () {
+                        const items = await fetchUpdates();
+                        updateBadge(items, getLastSeen());
+                    });
+                } else {
+                    setTimeout(async function () {
+                        const items = await fetchUpdates();
+                        updateBadge(items, getLastSeen());
+                    }, 2000);
+                }
+            })();
+
+            btn.addEventListener('click', async function (e) {
+                e.stopPropagation();
+                open = !open;
+                dropdown.classList.toggle('hidden', !open);
+                btn.setAttribute('aria-expanded', String(open));
+
+                if (open) {
+                    const lastSeen = getLastSeen();
+                    const items = await fetchUpdates();
+                    renderUpdates(items, lastSeen);
+                    // Mark as seen after a short delay so user sees highlights briefly
+                    setTimeout(function () {
+                        setLastSeen(Math.floor(Date.now() / 1000));
+                        updateBadge(items, Math.floor(Date.now() / 1000));
+                    }, 1500);
+                }
+            });
+
+            markReadBtn && markReadBtn.addEventListener('click', function () {
+                setLastSeen(Math.floor(Date.now() / 1000));
+                updateBadge(updates || [], Math.floor(Date.now() / 1000));
+                if (updates) renderUpdates(updates, Math.floor(Date.now() / 1000));
+            });
+
+            // Close on outside click
+            document.addEventListener('click', function (e) {
+                if (open && !btn.contains(e.target) && !dropdown.contains(e.target)) {
+                    open = false;
+                    dropdown.classList.add('hidden');
+                    btn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+
+    </script>
+    <script defer src="/assets/js/code-copy.js"></script>
+</body>
+</html>

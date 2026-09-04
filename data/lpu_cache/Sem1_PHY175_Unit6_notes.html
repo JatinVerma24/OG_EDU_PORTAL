@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Inline theme detection EARLY to prevent FOUC -->
+    <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}})();
+    </script>
+        <!--
+      Is this the installed app, or a browser tab?
+
+      Offline material is a PWA feature: the save controls, the offline library
+      and the offline banner are all hidden in a normal tab, where a student has
+      their own history, bookmarks and reload button and never asked this site to
+      occupy storage. Deliberately inline and in <head> — the banner below and
+      the deferred offline scripts both read it, so it has to exist before either
+      runs.
+
+      display-mode covers Android/desktop installs; navigator.standalone is
+      iOS Safari, which does not report display-mode. Both are checked because
+      neither alone covers every platform.
+    -->
+    <script>
+    window.IS_PWA = (function () {
+        try {
+            var modes = ['standalone', 'minimal-ui', 'fullscreen', 'window-controls-overlay'];
+            for (var i = 0; i < modes.length; i++) {
+                if (window.matchMedia('(display-mode: ' + modes[i] + ')').matches) return true;
+            }
+        } catch (e) { /* matchMedia unsupported — fall through to the iOS check */ }
+        return navigator.standalone === true;
+    })();
+
+    /*
+      Mark the document so CSS can hide the install promotion before first
+      paint. A deferred script cannot do this without the panel flashing into
+      view first — and inviting someone to install the app they are already
+      using reads as a bug.
+    */
+    if (window.IS_PWA) document.documentElement.classList.add('is-pwa');
+
+    /*
+      Capture the install prompt.
+
+      beforeinstallprompt is fired once, early, and only Chromium fires it. The
+      event object is the only handle on the native install dialog and the
+      browser discards it the moment the handler returns without
+      preventDefault(), so it is stashed here — in <head>, before any deferred
+      script exists — and pwa-install.js picks it up from the global.
+    */
+    window.addEventListener('beforeinstallprompt', function (e) {
+        e.preventDefault();
+        window.__pwaInstallPrompt = e;
+    });
+    </script>
+
+    <title>PHY175 Unit 6: Introduction of Arduino and Sensors - Notes | B. Tech. CSE | LPU Notes</title>
+    <meta name="description" content="Notes for Introduction of Arduino and Sensors — Unit 6 of PHY175 — Modern Physics And Electronics, Semester 1.">
+    <meta name="keywords" content="LPU notes, semester notes, study material, mock tests, unit-wise notes, exam preparation, LPU study guide, academic notes">
+    <link rel="canonical" href="https://notes.lpuverto.xyz/Sem1/PHY175/Unit6/notes">
+    
+    
+        <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+        <meta property="article:modified_time" content="2026-08-07T07:06:14+00:00">
+        <meta property="og:url" content="https://notes.lpuverto.xyz/Sem1/PHY175/Unit6/notes">
+    <meta property="og:title" content="PHY175 Unit 6: Introduction of Arduino and Sensors - Notes | B. Tech. CSE | LPU Notes">
+    <meta property="og:description" content="Notes for Introduction of Arduino and Sensors — Unit 6 of PHY175 — Modern Physics And Electronics, Semester 1.">
+    <meta property="og:image" content="https://notes.lpuverto.xyz/assets/lpunotes_header.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://notes.lpuverto.xyz/Sem1/PHY175/Unit6/notes">
+    <meta property="twitter:title" content="PHY175 Unit 6: Introduction of Arduino and Sensors - Notes | B. Tech. CSE | LPU Notes">
+    <meta property="twitter:description" content="Notes for Introduction of Arduino and Sensors — Unit 6 of PHY175 — Modern Physics And Electronics, Semester 1.">
+    <meta property="twitter:image" content="https://notes.lpuverto.xyz/assets/lpunotes_header.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+
+    <!-- PWA: installable + offline support -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#f97316" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="LPU Notes">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+
+    <!-- Self-hosted Inter font: preload + inline @font-face eliminates font chain -->
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Preload logo image -->
+    <link rel="preload" href="/assets/lpunotes_header_sm.png" as="image">
+
+    
+    <!-- Critical CSS: Tailwind (render-blocking, must load before paint) -->
+    <link rel="stylesheet" href="/assets/css/tailwind.min.css?v=1787296663">
+    
+    <!-- Preconnect to external domains -->
+        <link rel="preconnect" href="https://cdn.jsdelivr.net">
+        <!-- Ads: preconnect, not just dns-prefetch. The TLS handshake to the ad host
+         is on the critical path to the first ad request, and an ad that arrives
+         after the reader has scrolled past its slot earns nothing. -->
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin>
+    <link rel="dns-prefetch" href="https://tpc.googlesyndication.com">
+
+        <!-- KaTeX CSS with preload -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" as="style" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    
+    <!-- KaTeX JS - Deferred -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script defer src="/assets/js/katex-init.js?v=1787296663"></script>
+    
+        
+    <!-- Critical CSS Inlined -->
+    <style>
+        /* Critical animations and transitions */
+        @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes scaleIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+        .animate-fade-in-down{animation:fadeInDown .6s ease-out}
+        .animate-fade-in-up{animation:fadeInUp .6s ease-out}
+        .animate-scale-in{animation:scaleIn .3s ease-out}
+        .transition-smooth{transition:all .3s cubic-bezier(.4,0,.2,1)}
+        .hover-lift{transition:transform .3s ease,box-shadow .3s ease}
+        .hover-lift:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,.15)}
+        .hover-grow{transition:transform .3s ease}
+        .hover-grow:hover{transform:scale(1.05)}
+        .ripple{position:relative;overflow:hidden}
+        .ripple-effect{position:absolute;border-radius:50%;background:rgba(249,115,22,.3);transform:scale(0);animation:ripple-animation .6s ease-out;pointer-events:none}
+        @keyframes ripple-animation{to{transform:scale(2);opacity:0}}
+        #back-to-top{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#f97316;color:#fff;border:none;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;box-shadow:0 4px 12px rgba(249,115,22,.3);z-index:1000;display:flex;align-items:center;justify-content:center}
+        #back-to-top.visible{opacity:1;visibility:visible}
+        @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/inter-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+        body{font-family:'Inter',sans-serif}
+        ::-webkit-scrollbar{width:8px}
+        ::-webkit-scrollbar-track{background:#f1f1f1}
+        ::-webkit-scrollbar-thumb{background:#888;border-radius:4px}
+        ::-webkit-scrollbar-thumb:hover{background:#555}
+        .dark ::-webkit-scrollbar-track{background:#1f2937}
+        .dark ::-webkit-scrollbar-thumb{background:#4b5563}
+        .animation-delay-2000{animation-delay:2s}
+        .animation-delay-4000{animation-delay:4s}
+        /* KaTeX display math inline (for MCQ questions/options) */
+        .katex-display-inline{display:inline-block;text-align:center;margin:0.25em 0}
+        .katex-display-inline .katex-display{margin:0;text-align:center}
+
+        /* Reading progress bar */
+        #reading-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#f97316,#fb923c);z-index:9999;transition:width .1s linear;width:0;pointer-events:none}
+        /* Keyboard shortcut badge */
+        .kbd{display:inline-flex;align-items:center;gap:2px;padding:1px 5px;font-size:11px;font-family:ui-monospace,monospace;color:#94a3b8;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:4px;line-height:1.4}
+        .dark .kbd{background:#1e293b;border-color:#334155;color:#64748b}
+        /* Anchor ad (sticky bottom mobile) */
+        .ad-anchor{position:fixed;bottom:0;left:0;right:0;z-index:40;background:#fff;border-top:1px solid #e5e7eb;padding:4px 0;text-align:center;transform:translateY(100%);transition:transform .3s ease}
+        .ad-anchor.visible{transform:translateY(0)}
+        .dark .ad-anchor{background:#0f172a;border-color:#1e293b}
+        .ad-anchor-close{position:absolute;top:-28px;right:8px;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#64748b;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+        .dark .ad-anchor-close{background:#1e293b;border-color:#334155;color:#94a3b8}
+        /* Ad placements.
+           min-height is set inline per placement by ad_unit() so the space is
+           reserved before the ad arrives — a responsive unit that loads into an
+           unreserved box shoves the article down and costs us CLS, which costs
+           ranking. Labelled because AdSense expects ads be distinguishable from
+           content, and an unlabelled block next to notes invites misclicks
+           (invalid traffic gets clawed back). */
+        .ad-slot{margin:2rem 0;padding:12px 0;border-top:1px solid #f1f5f9;border-bottom:1px solid #f1f5f9;text-align:center;overflow:hidden}
+        .dark .ad-slot{border-color:#1e293b}
+        .ad-slot::before{content:'Advertisement';display:block;font-size:10px;color:#94a3b8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px}
+        .ad-slot .adsbygoogle{display:block}
+        /* Collapse a unit AdSense declined to fill, so no dead gap is left where
+           the reserved height was. */
+        .ad-slot:has(> .adsbygoogle[data-ad-status="unfilled"]){display:none}
+        .ad-slot.ad-unfilled{display:none}
+        /* The anchor supplies its own chrome and sits over content — no rule,
+           no margin, and no label pushing it taller than the viewport strip. */
+        .ad-anchor .ad-slot{margin:0;padding:0;border:0;min-height:0 !important}
+        .ad-anchor .ad-slot::before{display:none}
+        /* Mobile performance: disable expensive blur & reduce motion */
+        @media (max-width:768px){
+            .animate-blob{animation:none !important}
+            .bg-blob-mobile-off{display:none !important}
+        }
+        @media (prefers-reduced-motion:reduce){
+            .animate-fade-in-down,.animate-fade-in-up,.animate-scale-in,.animate-blob{animation:none !important}
+            .transition-smooth,.hover-lift,.hover-grow{transition:none !important}
+        }
+        /* Below-fold content: let browser skip rendering until near viewport */
+        .content-below-fold{content-visibility:auto;contain-intrinsic-size:auto 500px}
+        /* Install promotion: never shown inside the installed app. Set in <head>
+           so the panel never paints before pwa-install.js removes it. */
+        .is-pwa [data-pwa-promo]{display:none !important}
+        /* The hidden attribute and a display utility have equal specificity, and
+           Tailwind's preflight [hidden] rule sits earlier in the sheet than
+           .inline-flex — so the install button and the "installed" note, which
+           are both inline-flex, would stay visible when the script hides them.
+           Scoped to the promo so hidden keeps its normal behaviour elsewhere. */
+        [data-pwa-promo] [hidden]{display:none !important}
+        /* Score/progress tracker bar */
+        .progress-tracker{position:sticky;top:64px;z-index:30;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+        .progress-bar-fill{height:4px;border-radius:2px;background:linear-gradient(90deg,#f97316,#22c55e);transition:width .4s ease}
+        /* Floating TOC sidebar */
+        @media (min-width:1280px){
+            .toc-floating{position:sticky;top:80px;max-height:calc(100vh - 100px);overflow-y:auto}
+        }
+    </style>
+    
+    <!-- Interactive JS - Deferred -->
+    <script defer src="/assets/js/interactive.js?v=1787296663"></script>
+    
+    <script>
+        const BASE_PATH = "";
+        const SUB_DIR = "";
+        // Header search labels its "no results here" state with the program the
+        // reader is in, and only offers the all-programs fallback when there is
+        // in fact somewhere else to look.
+        const CURRENT_PROGRAM = "B. Tech. CSE";
+        const PROGRAM_COUNT = 6;
+            </script>
+    
+    <script type="application/ld+json">{"@context":"https:\/\/schema.org","@graph":[{"@type":"EducationalOrganization","@id":"https:\/\/notes.lpuverto.xyz\/#organization","name":"LPU Notes","description":"Comprehensive study materials and notes for LPU students","url":"https:\/\/notes.lpuverto.xyz","logo":"https:\/\/notes.lpuverto.xyz\/assets\/lpunotes_header.png","sameAs":[]},{"@type":"BreadcrumbList","@id":"https:\/\/notes.lpuverto.xyz\/Sem1\/PHY175\/Unit6\/notes#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"B. Tech. CSE","item":"https:\/\/notes.lpuverto.xyz\/"},{"@type":"ListItem","position":2,"name":"Semester 1","item":"https:\/\/notes.lpuverto.xyz\/Sem1"},{"@type":"ListItem","position":3,"name":"PHY175 — Modern Physics And Electronics","item":"https:\/\/notes.lpuverto.xyz\/Sem1\/PHY175"},{"@type":"ListItem","position":4,"name":"Unit 6: Introduction of Arduino and Sensors","item":"https:\/\/notes.lpuverto.xyz\/Sem1\/PHY175\/Unit6\/notes"}]},{"@type":"LearningResource","@id":"https:\/\/notes.lpuverto.xyz\/Sem1\/PHY175\/Unit6\/notes#resource","name":"Introduction of Arduino and Sensors","description":"Notes for Introduction of Arduino and Sensors — Unit 6 of PHY175 — Modern Physics And Electronics, Semester 1.","url":"https:\/\/notes.lpuverto.xyz\/Sem1\/PHY175\/Unit6\/notes","inLanguage":"en","isAccessibleForFree":true,"learningResourceType":"Lecture notes","educationalLevel":"Undergraduate","about":{"@type":"Thing","name":"PHY175 — Modern Physics And Electronics"},"publisher":{"@id":"https:\/\/notes.lpuverto.xyz\/#organization"},"dateModified":"2026-08-07T07:06:14+00:00"}]}</script></head>
+<body class="bg-gray-50 dark:bg-lpu-bg text-gray-900 dark:text-lpu-text transition-colors duration-300 min-h-screen flex flex-col relative overflow-x-hidden font-sans">
+    
+    <!-- Animated Background (blobs hidden on mobile for performance) -->
+    <div class="fixed inset-0 -z-10 pointer-events-none" aria-hidden="true">
+        <div class="absolute top-0 left-0 w-full h-full bg-orange-50/30 dark:bg-lpu-bg transition-colors duration-300"></div>
+        <div class="hidden md:block absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-lpu-primary/30 dark:bg-lpu-primary/20 blur-3xl animate-blob" style="will-change:transform"></div>
+        <div class="hidden md:block absolute top-[20%] right-[-10%] w-[30%] h-[30%] rounded-full bg-yellow-400/30 dark:bg-yellow-400/20 blur-3xl animate-blob animation-delay-2000" style="will-change:transform"></div>
+        <div class="hidden md:block absolute bottom-[-10%] left-[20%] w-[35%] h-[35%] rounded-full bg-orange-200/30 dark:bg-orange-900/20 blur-3xl animate-blob animation-delay-4000" style="will-change:transform"></div>
+    </div>
+
+    <!--
+      Offline reminder, above the header.
+
+      Deliberately a plain block in the normal flow, not sticky: a sticky banner
+      and a sticky navbar both anchored at top:0 overlap, and the only fix is to
+      push the navbar down at runtime. Letting this scroll away instead keeps the
+      navbar untouched.
+
+      Shown in the tab as well as the installed app — a tab cannot open new pages
+      offline either, so the warning is just as true there. Only the message; the
+      saved-material link lives on /offline.html, which is where the service
+      worker sends a failed navigation anyway.
+    -->
+    <div id="offline-banner" hidden role="status" aria-live="polite"
+         class="bg-black text-white animate-fade-in-down">
+        <div class="flex items-center justify-center gap-2 px-4 py-2 text-[13px] sm:text-sm leading-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 opacity-90" aria-hidden="true"><path d="m2 2 20 20"></path><path d="M5.782 5.782A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.307-.193"></path><path d="M21.532 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7.008 7.008 0 0 0 10 5.07"></path></svg>
+            <span class="font-medium">You're offline</span>
+        </div>
+    </div>
+    <script>
+    (function () {
+        var banner = document.getElementById('offline-banner');
+        if (!banner) return;
+
+        var offline = !navigator.onLine;
+
+        function paint() {
+            banner.hidden = !offline;
+            // The home page sizes its hero against the viewport minus banners.
+            // Nothing else needs adjusting: this banner is in the normal flow, so
+            // the navbar below it is left exactly as the markup declares it.
+            if (typeof window.__syncHero === 'function') window.__syncHero();
+        }
+
+        // Repaint only on a real change, so nothing replays the slide-in.
+        function setState(next) {
+            if (next === offline) return;
+            offline = next;
+            paint();
+        }
+
+        // Run now so an already-offline load never flashes without the banner,
+        // then again once the rest of the page exists — the hero script that
+        // __syncHero belongs to is further down the document than this.
+        paint();
+        document.addEventListener('DOMContentLoaded', paint);
+
+        // navigator.onLine only reports whether a network interface exists. On
+        // wifi with a dead uplink, a captive portal, or a phone showing
+        // "connected, no internet", it stays true and the browser never fires
+        // `offline` — the case people actually notice. So ask the server once.
+        //
+        // HEAD /manifest.webmanifest: tiny, always present, and sw.js ignores
+        // non-GET requests, so this reaches the network instead of being answered
+        // from a cache and reporting a connection that is not there.
+        function probe() {
+            if (!window.fetch || !window.AbortController) return;
+
+            var ctrl = new AbortController();
+            var abortAt = setTimeout(function () { ctrl.abort(); }, 4000);
+
+            fetch('/manifest.webmanifest', {
+                method: 'HEAD',
+                cache: 'no-store',
+                signal: ctrl.signal
+            }).then(function () {
+                // Any answer at all proves the server is reachable; even a 404
+                // means the request completed a round trip.
+                clearTimeout(abortAt);
+                setState(false);
+            }).catch(function () {
+                clearTimeout(abortAt);
+                setState(true);
+            });
+        }
+
+        // Once per page load. No polling: the next navigation checks again, and
+        // the events below cover changes that happen while the page is open
+        // without costing a request.
+        probe();
+
+        // `offline` is trustworthy on its own — the interface really did go away,
+        // so show the banner at once rather than waiting on a probe that cannot
+        // succeed. `online` only means an interface came back, which is exactly
+        // the claim worth a single confirming request.
+        window.addEventListener('offline', function () { setState(true); });
+        window.addEventListener('online', probe);
+    })();
+    </script>
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-lpu-bg/80 border-b border-gray-200 dark:border-lpu-border animate-fade-in-down transition-smooth">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2 group hover-grow">
+                        <img src="/assets/lpunotes_header_sm.png" alt="LPU Notes" class="h-10 w-auto transition-smooth" width="152" height="40" fetchpriority="high" decoding="async">
+                    </a>
+                </div>
+                
+                <div class="hidden md:block flex-1 max-w-md mx-8">
+                    <div class="relative" id="search-container">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <input type="text" id="search-input" class="block w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-lpu-border rounded-lg leading-5 bg-white dark:bg-lpu-surface placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-lpu-primary focus:border-lpu-primary sm:text-sm transition duration-150 ease-in-out text-gray-900 dark:text-white" placeholder="Search notes, subjects...">
+                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <span class="kbd">Ctrl+K</span>
+                        </div>
+                        
+                        <!-- Search Results Dropdown -->
+                        <div id="search-results" class="hidden absolute top-full left-0 w-full mt-2 bg-white dark:bg-lpu-surface rounded-xl shadow-xl border border-slate-100 dark:border-lpu-border max-h-96 overflow-y-auto z-50">
+                            <div id="search-results-content" class="py-2">
+                                <!-- Results will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center space-x-4">
+                        <a href="/" class="text-gray-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth ripple">Home</a>
+                        <a href="/exam-generator" class="inline-flex items-center gap-1 text-gray-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth ripple">Exam Center</a>
+                        <a href="/revision" class="inline-flex items-center gap-1 text-gray-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth ripple">
+                            Revision
+                            <span data-srs-nav-badge class="hidden ml-0.5 px-1.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 text-[10px] font-bold leading-none"></span>
+                        </a>
+                        <a href="#" data-offline-library class="inline-flex items-center gap-1 text-gray-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth ripple">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                            Offline
+                        </a>
+                        <a href="/about" class="text-gray-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth ripple">About</a>
+                        <a href="/contact" class="text-gray-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth ripple">Contact</a>
+                        <a href="/request-material" class="inline-flex items-center gap-1 text-gray-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary px-3 py-2 rounded-md text-sm font-medium transition-smooth ripple">Request Material</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <!--
+                      Support: an icon, not another word in the link row. That row
+                      already carries seven items beside a search field and starts
+                      wrapping at the md breakpoint; an eighth would break it. The
+                      real entry points are the card under each unit and the
+                      footer link, so this is a shortcut, not the pitch.
+                    -->
+                    <a href="/support" class="hidden md:flex p-2 rounded-full hover:bg-gray-100 dark:hover:bg-lpu-surface transition-smooth text-gray-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover-grow ripple" data-tooltip="Support LPU Notes" aria-label="Support LPU Notes">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </a>
+
+                    <!-- Updates Bell -->
+                    <div class="relative hidden md:block" id="updates-container">
+                        <button id="updates-btn" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-lpu-surface transition-smooth text-gray-600 dark:text-lpu-muted hover-grow ripple" aria-label="Recent updates" aria-haspopup="true" aria-expanded="false">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                            </svg>
+                        </button>
+                        <span id="updates-badge" style="display:none" class="pointer-events-none absolute top-0.5 right-0.5 w-2.5 h-2.5 bg-lpu-primary rounded-full ring-2 ring-white dark:ring-gray-900"></span>
+
+                        <!-- Updates Dropdown -->
+                        <div id="updates-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white dark:bg-lpu-surface rounded-xl shadow-2xl border border-gray-100 dark:border-lpu-border z-50 overflow-hidden" role="menu">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-lpu-border">
+                                <h3 class="text-sm font-semibold text-gray-900 dark:text-white">Recent Updates</h3>
+                                <button id="updates-mark-read" class="text-xs text-lpu-primary hover:underline font-medium">Mark all read</button>
+                            </div>
+                            <div id="updates-list" class="max-h-72 overflow-y-auto divide-y divide-gray-50 dark:divide-lpu-border" role="list">
+                                <div class="py-6 text-center text-sm text-gray-400 dark:text-lpu-muted">Loading…</div>
+                            </div>
+                            <div class="px-4 py-2.5 border-t border-gray-100 dark:border-lpu-border text-center">
+                                <a href="/updates" class="text-xs text-lpu-primary hover:underline font-medium">View all updates →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-lpu-surface transition-smooth text-gray-600 dark:text-lpu-muted hover-grow ripple" data-tooltip="Toggle theme" aria-label="Toggle theme">
+                        <!-- Sun Icon -->
+                        <svg id="sun-icon" class="hidden w-5 h-5 animate-rotate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <!-- Moon Icon -->
+                        <svg id="moon-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+                    
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-lpu-surface text-gray-600 dark:text-lpu-muted transition-smooth hover-grow ripple" aria-label="Open menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 dark:border-lpu-border bg-white dark:bg-lpu-bg animate-slide-in-up">
+            <div class="px-4 pt-4 pb-2 relative">
+                <input type="text" id="mobile-search-input" class="block w-full pl-4 pr-3 py-2 border border-gray-300 dark:border-lpu-border rounded-lg leading-5 bg-white dark:bg-lpu-surface placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-lpu-primary focus:border-lpu-primary sm:text-sm transition-smooth text-gray-900 dark:text-white focus-glow" placeholder="Search subjects...">
+                <!-- Mobile Search Results Dropdown -->
+                <div id="mobile-search-results" class="hidden absolute top-full left-0 w-full mt-2 bg-white dark:bg-lpu-surface rounded-xl shadow-xl border border-slate-100 dark:border-lpu-border max-h-96 overflow-y-auto z-50 mx-4">
+                    <div id="mobile-search-results-content" class="py-2">
+                        <!-- Results will be inserted here -->
+                    </div>
+                </div>
+            </div>
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">Home</a>
+                <a href="/exam-generator" class="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">Exam Center</a>
+                <a href="/revision" class="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">
+                    Revision
+                    <span data-srs-nav-badge class="hidden px-1.5 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 text-[10px] font-bold leading-none"></span>
+                </a>
+                <a href="#" data-offline-library class="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                    Offline Library
+                </a>
+                <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">About</a>
+                <a href="/contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">Contact</a>
+                <a href="/request-material" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">Request Material</a>
+                <a href="/updates" class="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary hover:bg-gray-50 dark:hover:bg-lpu-surface transition-smooth ripple">
+                    Updates
+                    <span id="mobile-updates-badge" style="display:none" class="w-2 h-2 bg-lpu-primary rounded-full"></span>
+                </a>
+                <a href="/support" class="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-lpu-primary hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-smooth ripple">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.593c-.525-.445-4.617-3.978-6.26-5.534C3.498 13.866 2 11.963 2 9.5A5.5 5.5 0 0 1 12 5.95 5.5 5.5 0 0 1 22 9.5c0 2.463-1.498 4.366-3.74 6.559C16.617 17.615 12.525 21.148 12 21.593z"></path></svg>
+                    Support Us
+                </a>
+            </div>
+        </div>
+    </nav>
+
+        
+    <!--
+      Offline save context. Describes what the current page is so
+      offline-ui.js knows what a "Save offline" press should download. Only
+      emitted for pages that actually work without a network — see
+      $offlineSavablePages above.
+
+      OFFLINE_HOME_URLS is separate and unconditional: the installed app saves
+      the landing pages by itself on first run, whichever page that run starts
+      on, including pages that are not themselves savable.
+    -->
+    <script>
+        window.OFFLINE_HOME_URLS = ["/","/B.Sc+Hons+Agriculture","/BA+-+ODL","/BBA","/M.Com+-+ODL","/MCA"];
+    </script>
+        <script>
+        window.OFFLINE_CTX = {"page":"notes","program":"B. Tech. CSE","programPath":"","sem":"Sem1","session":"","subject":"PHY175","unit":"Unit6","practical":"","contentType":"notes","title":"PHY175 Unit6","subtitle":""};
+    </script>
+    
+    <!-- Reading Progress Bar (shown on content pages) -->
+        <div id="reading-progress"></div>
+    
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+<!-- Highlight.js for Code Syntax Highlighting -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" integrity="sha384-wH75j6z1lH97ZOpMOInqhgKzFkAInZPPSPlZpYKYTOqsaizPvhQZmAtLcPKXpLyH" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha384-F/bZzf7p3Joyp5psL90p/p89AZJsndkSoGwRpXcZhleCWhd8SnRuoYo4d0yirjJp" crossorigin="anonymous"></script>
+
+<!-- Markdown Styles -->
+<link rel="stylesheet" href="/assets/css/markdown.css?v=1787296663">
+
+<div class="max-w-4xl mx-auto">
+    <!-- Breadcrumb Navigation -->
+    <nav class="flex items-center text-sm text-slate-500 dark:text-lpu-muted mb-4 flex-wrap gap-1">
+        <a href="/" class="hover:text-lpu-primary transition-colors">Home</a>
+        <span>/</span>
+        <a href="/Sem1" class="hover:text-lpu-primary transition-colors">Sem 1</a>
+                <span>/</span>
+        <a href="/Sem1/PHY175" class="hover:text-lpu-primary transition-colors">PHY175</a>
+        <span>/</span>
+        <span class="text-slate-900 dark:text-lpu-text font-medium">Unit 6</span>
+    </nav>
+
+    <!-- Navigation Header -->
+    <div class="flex items-center justify-between mb-6">
+        <a href="/Sem1/PHY175" class="flex items-center text-slate-600 dark:text-lpu-muted hover:text-lpu-primary dark:hover:text-lpu-primary transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1"><path d="M15 18l-6-6 6-6"></path></svg>
+            Back to Subject
+        </a>
+        <div class="flex items-center space-x-2">
+            <!-- Switch to MCQ -->
+            <a href="/Sem1/PHY175/Unit6/mcq" class="p-2 sm:px-4 sm:py-2 rounded-lg bg-slate-100 dark:bg-lpu-surface hover:bg-slate-200 dark:hover:bg-lpu-border text-slate-700 dark:text-lpu-text hover:text-slate-900 dark:hover:text-white transition-smooth text-sm font-medium flex items-center gap-2 ripple btn-press" title="Practice MCQ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <span class="hidden sm:inline">Practice MCQ</span>
+            </a>
+            
+            <!-- Switch to Subjective (if available) -->
+                            <a href="/Sem1/PHY175/Unit6/subjective" class="p-2 sm:px-4 sm:py-2 rounded-lg bg-slate-100 dark:bg-lpu-surface hover:bg-green-100 dark:hover:bg-green-900/30 text-slate-700 dark:text-lpu-text hover:text-green-600 dark:hover:text-green-400 transition-smooth text-sm font-medium flex items-center gap-2 ripple btn-press" title="Subjective">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    <span class="hidden sm:inline">Subjective</span>
+                </a>
+                        
+            <!-- Navigation arrows -->
+                            <a href="/Sem1/PHY175/Unit5/notes" class="p-2 rounded-lg bg-slate-100 dark:bg-lpu-surface hover:bg-slate-200 dark:hover:bg-lpu-border text-slate-700 dark:text-lpu-text transition-smooth ripple" title="Previous Unit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+                </a>
+                                </div>
+    </div>
+
+    <div class="bg-white dark:bg-lpu-surface rounded-2xl shadow-sm border border-slate-200 dark:border-lpu-border overflow-hidden">
+        <div class="p-6 md:p-8 border-b border-slate-200 dark:border-lpu-border">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+                <div class="min-w-0">
+                                        <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-lpu-text mb-2 break-words">Unit 6: Introduction of Arduino and Sensors</h1>
+                    <div class="flex flex-wrap items-center gap-3 text-slate-500 dark:text-lpu-muted text-sm">
+                        <span>PHY175 — Modern Physics And Electronics</span>
+                        <span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-lpu-border"></span>
+                        <span class="flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            8 min read
+                        </span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 sm:shrink-0">
+                    <span data-offline-save="unit" data-label="Save offline"></span>
+                    <button onclick="openFeedbackModal()" class="flex items-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-xl shadow-sm hover:shadow transition-all group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        <span class="font-medium">Feedback</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-6 md:p-8">
+                            <!-- In-content Ad (between header and content) -->
+                    <div class="ad-slot"
+         style="min-height:280px"
+         data-ad-placement="content-top">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6155060420672692"
+             data-ad-slot="5055715970"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+    </div>
+    
+                <!-- Table of Contents -->
+                <div id="toc-container" class="mb-8 bg-slate-50 dark:bg-lpu-border/20 rounded-xl p-6 border border-slate-200 dark:border-lpu-border/40 hidden">
+                    <div class="flex items-center justify-between mb-4 cursor-pointer" onclick="document.getElementById('toc-content').classList.toggle('hidden')">
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-lpu-text flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-600 dark:text-lpu-muted">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                            </svg>
+                            Table of Contents
+                        </h3>
+                        <button class="text-slate-400 hover:text-slate-600 dark:hover:text-lpu-text transition-smooth">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 15l-6-6-6 6"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <nav id="toc-content" class="toc-links space-y-1"></nav>
+                </div>
+
+                <div id="markdown-content" class="markdown-content">
+                    <h2>I. Foundations of Sensor-Based Electronics</h2>
+<p>Arduino-based sensing systems connect physical quantities in the environment to electronic computation and control. A sensor detects a quantity such as light, distance, temperature, or infrared radiation; its electrical output is read by a microcontroller, processed according to a program, and used to drive an output device.</p>
+<h3>A. Defining Characteristics</h3>
+<p>The operation of every system in this unit depends on a chain from physical input to useful response.</p>
+<ul>
+<li><strong>Measurement chain</strong>: A typical system follows <code>physical quantity -&gt; sensor -&gt; electrical signal -&gt; Arduino -&gt; output</code>, where the output may be an LED, buzzer, display, motor, or transmitted data.</li>
+<li><strong>Transduction</strong>: A sensor is a transducer because it converts one form of energy or physical variation into an electrical quantity such as voltage, resistance, or timed pulses.</li>
+<li><strong>Signal conditioning</strong>: Components such as voltage dividers, amplifiers, and comparators adapt a raw sensor output to the voltage and logic levels accepted by Arduino.</li>
+<li><strong>Microcontroller role</strong>: The Arduino executes stored instructions, samples input pins, performs calculations, and changes output pins in response.</li>
+<li><strong>Electrical reference</strong>: Voltage is measured relative to ground (<code>GND</code>), so connected modules normally require a common ground with the Arduino.</li>
+<li><strong>Safe operation</strong>: On a 5 V Arduino Uno, input voltages should remain between <code>0 V</code> and <code>5 V</code>; excessive voltage or current can damage the ATmega328P microcontroller.</li>
+</ul>
+<h2>II. Electrical Signal Forms</h2>
+<p>Electrical information reaches a microcontroller mainly as continuously variable analog levels or discrete digital states.</p>
+<h3>A. Analog and digital signals</h3>
+<p>Analog signals represent a range of values, whereas digital signals use a finite set of logic states.</p>
+<ol>
+<li><strong>Analog signals</strong>
+<ul>
+<li><strong>Continuous variation</strong>: An analog voltage can ideally take any value within a range; an LDR voltage might change from <code>1.2 V</code> to <code>3.7 V</code> as illumination changes.</li>
+<li><strong>Arduino conversion</strong>: The Uno has a 10-bit analog-to-digital converter (ADC), so <code>analogRead()</code> converts approximately <code>0-5 V</code> into integers from <code>0</code> to <code>1023</code>.</li>
+<li><strong>Resolution</strong>: With a 5 V reference, one ADC count represents approximately:</li>
+</ul></li>
+</ol>
+<div class="code-block"><div class="code-header"><span class="code-lang">TEXT</span></div><pre><code class="language-text">Resolution = Vref / 1024 = 5 V / 1024 = 4.88 mV per count</code></pre></div>
+<p>Here, <code>Vref</code> is the ADC reference voltage.</p>
+<ol start="2">
+<li><strong>Digital signals</strong>
+<ul>
+<li><strong>Discrete levels</strong>: Binary signals use <code>LOW</code> and <code>HIGH</code>, conventionally associated with logic <code>0</code> and logic <code>1</code>.</li>
+<li><strong>Input and output</strong>: <code>digitalRead(pin)</code> detects a state, while <code>digitalWrite(pin, HIGH)</code> drives an output near the board's supply voltage.</li>
+<li><strong>Timed digital data</strong>: Digital information may also be encoded in pulse duration or pulse sequences, as in ultrasonic Echo pulses and DHT sensor communication.</li>
+<li><strong>Contrast</strong>: Analog transmission preserves magnitude but is sensitive to noise; digital transmission gives clear states and supports encoded data but has finite resolution or timing constraints.</li>
+</ul></li>
+</ol>
+<h2>III. Arduino Uno Board</h2>
+<p>The Arduino Uno is a development board built around the ATmega328P microcontroller, providing accessible pins, power regulation, USB communication, and a programmable environment.</p>
+<h3>A. Arduino board (pin configuration and description)</h3>
+<p>The Uno's pin groups connect sensors and actuators to a 5 V, 16 MHz microcontroller.</p>
+<ul>
+<li><strong>Digital pins <code>0-13</code></strong>: Fourteen pins can be configured with <code>pinMode()</code> as <code>INPUT</code>, <code>INPUT_PULLUP</code>, or <code>OUTPUT</code>.
+<ul>
+<li>Pins <code>0</code> (<code>RX</code>) and <code>1</code> (<code>TX</code>) support serial communication.</li>
+<li>Pins <code>2</code> and <code>3</code> support external interrupts.</li>
+<li>Pins marked <code>~</code> (<code>3, 5, 6, 9, 10, 11</code>) provide pulse-width modulation through <code>analogWrite()</code>.</li>
+</ul></li>
+<li><strong>Analog pins <code>A0-A5</code></strong>: Six ADC inputs measure analog voltage; they may also be used as digital I/O. <code>A4</code> is SDA and <code>A5</code> is SCL for I2C communication.</li>
+<li><strong>SPI pins</strong>: Digital pins <code>10-13</code> provide <code>SS</code>, <code>MOSI</code>, <code>MISO</code>, and <code>SCK</code> functions; these are also available through the ICSP header.</li>
+<li><strong>Power pins</strong>: <code>5V</code> and <code>3.3V</code> supply modules, <code>GND</code> is the zero-volt reference, and <code>Vin</code> accepts an external input before regulation. <code>IOREF</code> indicates board logic voltage.</li>
+<li><strong>Reference and reset</strong>: <code>AREF</code> can provide an external analog reference, while pulling <code>RESET</code> low restarts the program.</li>
+<li><strong>Board interfaces</strong>: The USB connector supports programming, serial communication, and power; the DC jack accepts a suitable external supply. The onboard <code>L</code> LED is connected to pin <code>13</code>.</li>
+<li><strong>Programming pattern</strong>: Initialization belongs in <code>setup()</code>, which runs once; repeated sensing and control belong in <code>loop()</code>.</li>
+</ul>
+<div class="code-block"><div class="code-header"><span class="code-lang">CPP</span></div><pre><code class="language-cpp">void setup() {
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(500);
+  digitalWrite(13, LOW);
+  delay(500);
+}</code></pre></div>
+<h3>B. Applications and Limitations</h3>
+<p>Arduino simplifies prototyping but does not remove electrical and timing constraints.</p>
+<ul>
+<li><strong>Applications</strong>: Common uses include data logging, alarms, automatic lighting, environmental monitoring, robotics, and basic Internet of Things nodes.</li>
+<li><strong>Current limit</strong>: I/O pins are intended for small currents, commonly designed around <code>20 mA</code> or less per pin; motors and high-power loads require driver circuits.</li>
+<li><strong>ADC limitation</strong>: The Uno ADC measures voltage, not resistance or physical quantities directly, and its 10-bit readings can fluctuate because of noise or supply variation.</li>
+<li><strong>Memory and speed</strong>: The ATmega328P has limited memory and processing capacity compared with a computer, so complex imaging or large datasets need more capable hardware.</li>
+</ul>
+<h2>IV. Infrared Detection</h2>
+<p>An infrared sensing module detects infrared radiation, often to identify nearby objects without mechanical contact.</p>
+<h3>A. IR sensor</h3>
+<p>A common reflective IR sensor emits invisible infrared light and tests whether an object reflects part of it back.</p>
+<ul>
+<li><strong>Emitter</strong>: An IR LED commonly radiates near <code>940 nm</code>, beyond visible red light.</li>
+<li><strong>Receiver</strong>: A photodiode or phototransistor changes current when reflected IR reaches it; dark and shiny surfaces produce different reflection levels.</li>
+<li><strong>Comparator module</strong>: Modules often use an <code>LM393</code> comparator and an adjustable potentiometer to convert the receiver voltage into a digital output.</li>
+<li><strong>Connections</strong>: Typical pins are <code>VCC</code>, <code>GND</code>, and <code>OUT</code>; some boards also expose an analog output. Many obstacle modules make <code>OUT</code> LOW when an object is detected.</li>
+<li><strong>Arduino reading</strong>:</li>
+</ul>
+<div class="code-block"><div class="code-header"><span class="code-lang">CPP</span></div><pre><code class="language-cpp">const int irPin = 2;
+
+void setup() {
+  pinMode(irPin, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  Serial.println(digitalRead(irPin));
+  delay(50);
+}</code></pre></div>
+<ul>
+<li><strong>Applications</strong>: IR sensing supports obstacle detection, line-following robots, object counters, and short-range proximity switches.</li>
+<li><strong>Limitations</strong>: Sunlight, remote controls, target color, angle, and surface reflectivity can cause unreliable readings; reflective modules do not measure distance accurately.</li>
+</ul>
+<h2>V. Light-Dependent Resistance</h2>
+<p>An LDR is a passive light sensor whose resistance changes with incident illumination.</p>
+<h3>A. LDR</h3>
+<p>An LDR, or photoresistor, normally has high resistance in darkness and lower resistance under bright light.</p>
+<ul>
+<li><strong>Material behavior</strong>: Incident photons create additional charge carriers in the photosensitive semiconductor, increasing conductivity.</li>
+<li><strong>Nonlinear response</strong>: Resistance may fall from hundreds of kilohms or more in darkness to a few kilohms in strong light, but exact values depend on the device.</li>
+<li><strong>Voltage divider</strong>: Because Arduino measures voltage rather than resistance, the LDR is paired with a fixed resistor <code>R</code>:</li>
+</ul>
+<div class="code-block"><div class="code-header"><span class="code-lang">TEXT</span></div><pre><code class="language-text">Vout = Vcc x R / (RLDR + R)</code></pre></div>
+<p>Here, <code>Vcc</code> is the supply voltage, <code>RLDR</code> is LDR resistance, <code>R</code> is the fixed resistor connected to ground, and <code>Vout</code> goes to an analog pin.</p>
+<ul>
+<li><strong>Interpretation</strong>: In this arrangement, brighter light lowers <code>RLDR</code>, increasing <code>Vout</code> and the <code>analogRead()</code> result. Reversing the divider reverses that trend.</li>
+<li><strong>Applications</strong>: LDRs are used in automatic streetlights, display brightness control, light alarms, and day-night detection.</li>
+<li><strong>Limitations</strong>: They respond relatively slowly, vary between units, and do not provide calibrated lux measurements without calibration.</li>
+</ul>
+<h2>VI. Ultrasonic Distance Measurement</h2>
+<p>An ultrasonic sensor determines distance by timing the round trip of a sound pulse whose frequency is above human hearing.</p>
+<h3>A. Basic principle of ultrasonic sensor</h3>
+<p>A module such as the HC-SR04 transmits an ultrasonic burst and measures the echo time from a target.</p>
+<ul>
+<li><strong>Triggering</strong>: A HIGH pulse of about <code>10 microseconds</code> on <code>Trig</code> commands the module to transmit a burst, typically eight cycles at <code>40 kHz</code>.</li>
+<li><strong>Echo timing</strong>: The <code>Echo</code> pin remains HIGH for the measured round-trip travel time <code>t</code>.</li>
+<li><strong>Distance equation</strong>:</li>
+</ul>
+<div class="code-block"><div class="code-header"><span class="code-lang">TEXT</span></div><pre><code class="language-text">d = v x t / 2</code></pre></div>
+<p>Here, <code>d</code> is one-way distance, <code>v</code> is the speed of sound, and <code>t</code> is round-trip time. Division by <code>2</code> accounts for travel to the object and back.</p>
+<ul>
+<li><strong>Practical conversion</strong>: Near room temperature, <code>v</code> is approximately <code>343 m/s</code>, giving:</li>
+</ul>
+<div class="code-block"><div class="code-header"><span class="code-lang">TEXT</span></div><pre><code class="language-text">d (cm) approximately t (microseconds) / 58</code></pre></div>
+<ul>
+<li><strong>Worked example</strong>: For an Echo duration of <code>1160 microseconds</code>, distance is approximately <code>1160 / 58 = 20 cm</code>.</li>
+<li><strong>Applications</strong>: Ultrasonic sensors support parking aids, tank-level estimation, robot navigation, and non-contact presence detection.</li>
+<li><strong>Limitations</strong>: Soft materials absorb sound, angled surfaces deflect echoes, nearby objects create false returns, and common modules have a blind zone near <code>2 cm</code>. Temperature also changes sound speed.</li>
+</ul>
+<h2>VII. Digital Temperature and Humidity Sensing</h2>
+<p>DHT sensors combine a temperature element, humidity element, and internal controller that sends calibrated digital data to Arduino.</p>
+<h3>A. Temperature sensor (DHT11/DHT22)</h3>
+<p>The DHT11 and DHT22 measure both ambient temperature and relative humidity but differ in range, accuracy, and sampling rate.</p>
+<ol>
+<li>
+<p><strong>DHT11</strong></p>
+<ul>
+<li><strong>Temperature</strong>: Typical specified range is <code>0-50 degrees C</code>, with accuracy around <code>+/-2 degrees C</code>.</li>
+<li><strong>Humidity</strong>: Typical range is <code>20-80% RH</code>, with accuracy around <code>+/-5% RH</code>.</li>
+<li><strong>Sampling</strong>: Readings should generally be spaced by at least <code>1 second</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>DHT22</strong></p>
+<ul>
+<li><strong>Temperature</strong>: Typical specified range is <code>-40 to 80 degrees C</code>, with accuracy around <code>+/-0.5 degrees C</code>.</li>
+<li><strong>Humidity</strong>: Its range extends approximately <code>0-100% RH</code>, with typical accuracy around <code>+/-2% to +/-5% RH</code>.</li>
+<li><strong>Sampling</strong>: Readings should generally be spaced by at least <code>2 seconds</code>.</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><strong>Sensing principle</strong>: A capacitive humidity element changes capacitance with absorbed water vapor, while a thermistor changes resistance with temperature.</li>
+<li><strong>Digital interface</strong>: The sensor uses one data line with precisely timed pulses; it is not read with <code>analogRead()</code>. A pull-up resistor, often <code>4.7-10 kilohms</code>, holds the data line HIGH.</li>
+<li><strong>Library use</strong>: A DHT library handles timing and checksum validation, returning temperature in degrees Celsius and humidity as percent relative humidity.</li>
+<li><strong>Heat-index context</strong>: Temperature and relative humidity can be combined to estimate perceived heat, but this calculated value is not another direct sensor measurement.</li>
+<li><strong>Limitations</strong>: DHT devices are slow, can return invalid <code>NaN</code> readings when sampled too quickly, and should be positioned away from self-heating electronics, condensation, and direct sunlight.</li>
+</ul>                </div>
+                    </div>
+    </div>
+</div>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const markdownContent = document.getElementById('markdown-content');
+    if (!markdownContent) return;
+    
+    // Apply syntax highlighting to code blocks
+    if (typeof hljs !== 'undefined') {
+        markdownContent.querySelectorAll('pre code').forEach(function(block) {
+            hljs.highlightElement(block);
+        });
+    }
+    
+    // Smooth scroll for anchor links
+    markdownContent.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').slice(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+    
+    // Auto-scroll to hash on page load
+    if (window.location.hash) {
+        setTimeout(function() {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 100);
+    }
+
+    // Generate Table of Contents
+    function generateTOC() {
+        const headings = markdownContent.querySelectorAll('h1, h2, h3, h4');
+        if (headings.length === 0) return;
+
+        const tocContainer = document.getElementById('toc-container');
+        const tocContent = document.getElementById('toc-content');
+        
+        headings.forEach((heading, index) => {
+            // Generate ID if not present
+            if (!heading.id) {
+                const id = 'heading-' + index;
+                heading.id = id;
+            }
+            
+            const level = parseInt(heading.tagName.substring(1));
+            const link = document.createElement('a');
+            link.href = '#' + heading.id;
+            link.textContent = heading.textContent;
+            link.className = 'block py-1.5 px-3 text-sm text-slate-600 dark:text-lpu-muted hover:text-slate-900 dark:hover:text-lpu-text hover:bg-slate-100 dark:hover:bg-lpu-border/30 rounded transition-smooth';
+            
+            // Add indentation based on heading level
+            if (level === 2) link.style.paddingLeft = '0.75rem';
+            if (level === 3) link.style.paddingLeft = '1.5rem';
+            if (level === 4) link.style.paddingLeft = '2.25rem';
+            
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                window.history.pushState(null, null, '#' + heading.id);
+                
+                // Highlight active link
+                tocContent.querySelectorAll('a').forEach(a => a.classList.remove('font-semibold', 'text-slate-900', 'dark:text-lpu-text'));
+                link.classList.add('font-semibold', 'text-slate-900', 'dark:text-lpu-text');
+            });
+            
+            tocContent.appendChild(link);
+        });
+        
+        // Show TOC if headings exist
+        tocContainer.classList.remove('hidden');
+
+        // Highlight active heading on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    tocContent.querySelectorAll('a').forEach(a => {
+                        a.classList.remove('font-semibold', 'text-slate-900', 'dark:text-lpu-text', 'bg-slate-100', 'dark:bg-lpu-border/30');
+                        if (a.getAttribute('href') === '#' + id) {
+                            a.classList.add('font-semibold', 'text-slate-900', 'dark:text-lpu-text', 'bg-slate-100', 'dark:bg-lpu-border/30');
+                        }
+                    });
+                }
+            });
+        }, {
+            rootMargin: '-80px 0px -80% 0px',
+            threshold: 0
+        });
+
+        headings.forEach(heading => observer.observe(heading));
+    }
+    
+    generateTOC();
+
+    // Ensure KaTeX math is rendered (fallback if CDN was still loading at defer-time)
+    if (window.renderAllMath) window.renderAllMath();
+
+    // Image Lightbox functionality
+    function setupImageLightbox() {
+        const images = markdownContent.querySelectorAll('img');
+        if (images.length === 0) return;
+
+        // Create lightbox element
+        const lightbox = document.createElement('div');
+        lightbox.className = 'image-lightbox';
+        lightbox.innerHTML = `
+            <button class="lightbox-close" aria-label="Close">&times;</button>
+            <img src="" alt="">
+            <div class="lightbox-caption"></div>
+        `;
+        document.body.appendChild(lightbox);
+
+        const lightboxImg = lightbox.querySelector('img');
+        const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+
+        // Click on image to open lightbox
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxCaption.textContent = img.alt || '';
+                lightboxCaption.style.display = img.alt ? 'block' : 'none';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeLightbox();
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    }
+
+    setupImageLightbox();
+});
+</script>
+
+<!--
+  Support ask, above the unit navigation rather than below it. Those links are
+  where a reader leaves this page — anything placed after them is placed after
+  the exit. Width-matched to the nav below so the two read as one closing block.
+-->
+<div class="max-w-4xl mx-auto">
+        <section data-support-card hidden aria-labelledby="support-cta-heading"
+             class="mt-12 rounded-2xl border border-orange-200/70 dark:border-orange-900/40 bg-gradient-to-br from-orange-50 to-white dark:from-orange-950/20 dark:to-lpu-surface p-6 sm:p-8">
+        <div class="flex flex-col sm:flex-row gap-5">
+            <div class="shrink-0 w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-lpu-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.593c-.525-.445-4.617-3.978-6.26-5.534C3.498 13.866 2 11.963 2 9.5A5.5 5.5 0 0 1 12 5.95 5.5 5.5 0 0 1 22 9.5c0 2.463-1.498 4.366-3.74 6.559C16.617 17.615 12.525 21.148 12 21.593z"/></svg>
+            </div>
+
+            <div class="flex-1 min-w-0">
+                <h2 id="support-cta-heading" class="text-lg font-bold text-slate-800 dark:text-lpu-text">
+                    Did this save you a night before the exam?
+                </h2>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-lpu-muted">
+                    LPU Notes is free, and it stays free. Ads cover part of the server bill.
+                    The rest comes out of a student's own pocket: the domain, the storage,
+                    and keeping the site up through the weeks everyone needs it at once.
+                </p>
+
+                <div class="mt-5">
+                        <div data-support-button>
+        <form></form>
+
+        <!--
+          Shown only if the button never mounts. Worth having: this button is a
+          third-party frame, and between ad blockers, campus networks and
+          filtered DNS a blank space where a payment button should be is a
+          perfectly ordinary outcome. Saying so is better than leaving someone
+          to conclude the site is broken.
+        -->
+        <p data-support-fallback hidden class="text-sm text-slate-500 dark:text-lpu-muted">
+            The payment button didn't load. An ad blocker or a filtered network is the usual reason.
+            <button type="button" data-support-retry class="font-semibold text-lpu-primary hover:underline">Reload the page</button>
+            to try again.
+        </p>
+
+        <noscript>
+            <p class="text-sm text-slate-500 dark:text-lpu-muted">
+                The payment button needs JavaScript. Everything else on LPU Notes works without it.
+            </p>
+        </noscript>
+    </div>
+
+    <script>
+    (function () {
+        var BUTTON_ID  = "pl_TNmkCJJnDMHuBk";
+        var HIDE_KEY   = "lpunotes_support_hidden";
+        var HIDE_MS    = 180 * 24 * 60 * 60 * 1000;
+
+        function hiddenUntilNow() {
+            try {
+                var at = parseInt(localStorage.getItem(HIDE_KEY) || '0', 10);
+                return at > 0 && (Date.now() - at) < HIDE_MS;
+            } catch (e) { return false; }
+        }
+
+        /*
+          Someone who has already paid should stop being asked. The card is
+          removed outright rather than merely hidden, so the observer below
+          never sees the button inside it and Razorpay is never fetched.
+
+          The /support page is left alone on purpose — arriving there is a
+          deliberate act, and hiding the button on the one page that exists to
+          show it would just look broken.
+        */
+        var card = document.querySelector('[data-support-card]');
+        if (card) {
+            if (hiddenUntilNow()) {
+                card.remove();
+                card = null;
+            } else {
+                card.hidden = false;
+            }
+        }
+
+        var dismiss = card && card.querySelector('[data-support-dismiss]');
+        if (dismiss) {
+            dismiss.addEventListener('click', function () {
+                try { localStorage.setItem(HIDE_KEY, String(Date.now())); } catch (e) {}
+                card.remove();
+            });
+        }
+
+        var mount = document.querySelector('[data-support-button]');
+        if (!mount) return;
+
+        var retry = mount.querySelector('[data-support-retry]');
+        if (retry) {
+            retry.addEventListener('click', function () { window.location.reload(); });
+        }
+
+        var loaded = false;
+        function load() {
+            if (loaded) return;
+            loaded = true;
+
+            var form = mount.querySelector('form');
+            if (!form) return;
+
+            // Razorpay resolves its mount point from the script's own parent
+            // node, so this has to be appended to the form rather than to
+            // <head> — the attributes alone are not enough.
+            var s = document.createElement('script');
+            s.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+            s.setAttribute('data-payment_button_id', BUTTON_ID);
+            s.async = true;
+            s.onerror = showFallback;
+            form.appendChild(s);
+
+            /*
+              Nothing fires when a filter silently drops the request, so a
+              mounted button has to be detected by looking for it.
+
+              Do NOT test for a specific tag. This first checked for an iframe,
+              which is what Razorpay used to inject and is what opens on click —
+              but the button itself mounts as ordinary markup in the form, so
+              the test never passed and every reader got a "didn't load" notice
+              underneath a button that had loaded. Anything the script put in
+              the form that is not the script counts: the button, a wrapper, a
+              hidden input. All of them mean the request got through, which is
+              the only thing this notice is about.
+            */
+            function mounted() {
+                var kids = form.children;
+                for (var i = 0; i < kids.length; i++) {
+                    if (kids[i].tagName !== 'SCRIPT') return true;
+                }
+                return false;
+            }
+
+            // Eight seconds is long past a working load and short enough that
+            // a reader is still on the page. The poll carries on to twenty in
+            // case a slow network gets there in the end, at which point the
+            // notice comes back down.
+            var waited = 0;
+            var poll = setInterval(function () {
+                if (mounted()) { clearInterval(poll); hideFallback(); return; }
+                waited += 500;
+                if (waited >= 8000) showFallback();
+                if (waited >= 20000) clearInterval(poll);
+            }, 500);
+        }
+
+        function fallbackNote() {
+            return mount.querySelector('[data-support-fallback]');
+        }
+
+        function showFallback() {
+            var note = fallbackNote();
+            if (note) note.hidden = false;
+        }
+
+        function hideFallback() {
+            var note = fallbackNote();
+            if (note) note.hidden = true;
+        }
+
+        if (mount.hasAttribute('data-support-eager') || !('IntersectionObserver' in window)) {
+            load();
+            return;
+        }
+
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                io.disconnect();
+                load();
+            });
+        }, { rootMargin: '300px 0px' });
+        io.observe(mount);
+    })();
+    </script>
+                    </div>
+
+                <p class="mt-4 text-xs text-slate-500 dark:text-lpu-muted">
+                    Nothing here is ever locked, and nothing unlocks. Chip in only if it was worth it.
+                    <a href="/support" class="font-medium text-lpu-primary hover:underline">What it pays for →</a>
+                </p>
+
+                <button type="button" data-support-dismiss
+                        class="mt-3 text-xs text-slate-400 dark:text-lpu-muted hover:text-slate-600 dark:hover:text-lpu-text underline underline-offset-2 transition-colors">
+                    Already supported? Hide this
+                </button>
+            </div>
+        </div>
+    </section>
+    </div>
+
+<!-- Bottom Unit Navigation -->
+<div class="max-w-4xl mx-auto mt-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <a href="/Sem1/PHY175/Unit5/notes" class="group flex items-center gap-3 p-4 bg-white dark:bg-lpu-surface rounded-xl border border-slate-200 dark:border-lpu-border hover:border-lpu-primary/50 hover:shadow-md transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400 group-hover:text-lpu-primary transition-colors flex-shrink-0"><path d="M15 18l-6-6 6-6"></path></svg>
+                <div>
+                    <div class="text-xs text-slate-400 dark:text-lpu-muted uppercase tracking-wider">Previous</div>
+                    <div class="font-semibold text-slate-800 dark:text-lpu-text group-hover:text-lpu-primary transition-colors">Unit 5</div>
+                </div>
+            </a>
+                    </div>
+</div>
+
+        
+        <!--
+          Bottom ad. Note there is no content-visibility wrapper here: this used
+          to sit inside .content-below-fold, which let the browser skip rendering
+          the subtree, so adsbygoogle measured the container at width 0 and
+          collapsed the unit permanently. That silently killed the bottom ad on
+          every page on the site. The observer below handles the deferral that
+          content-visibility was being asked to do.
+        -->
+            <div class="ad-slot mt-10"
+         style="min-height:280px"
+         data-ad-placement="content-bottom">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6155060420672692"
+             data-ad-slot="7206649864"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+    </div>
+        </main>
+
+    <!-- Mobile Anchor Ad (sticky bottom, appears after scroll) -->
+    <div id="anchor-ad" class="ad-anchor md:hidden">
+        <button class="ad-anchor-close" onclick="document.getElementById('anchor-ad').remove()" aria-label="Close ad">&times;</button>
+            <div class="ad-slot"
+         style="min-height:100px"
+         data-ad-placement="anchor">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6155060420672692"
+             data-ad-slot="8171693585"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+    </div>
+        </div>
+
+    
+<!-- Feedback Modal -->
+<div id="feedback-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div class="flex min-h-full items-center justify-center p-4 text-center">
+            <div class="relative transform overflow-hidden rounded-2xl bg-white dark:bg-lpu-surface text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg border border-slate-200 dark:border-lpu-border animate-scale-in">
+                <!-- Close Button -->
+                <button onclick="closeFeedbackModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-lpu-text transition-colors p-1 rounded-full hover:bg-slate-100 dark:hover:bg-lpu-border/50">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+
+                <div class="px-6 py-6">
+                    <div class="text-center mb-6">
+                        <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900/30 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-600 dark:text-orange-400"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold leading-6 text-slate-900 dark:text-lpu-text" id="modal-title">Give Feedback</h3>
+                        <p class="mt-2 text-sm text-slate-500 dark:text-lpu-muted">
+                            Help us improve by sharing your thoughts or reporting issues.
+                        </p>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div id="feedback-success" class="hidden text-center py-8">
+                        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 dark:text-green-400"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-lpu-text mb-2">Thank You!</h3>
+                        <p class="text-slate-500 dark:text-lpu-muted">Your feedback has been sent successfully.</p>
+                    </div>
+
+                    <form id="feedback-form" class="space-y-4 text-left">
+                        <input type="hidden" name="type" value="feedback">
+                        <input type="hidden" name="context" value="PHY175 - Notes">
+                        <input type="hidden" name="_csrf" value="a0dbe6b41db576f7b70ff73738cb18bc2f8a09aa30fee1c6f1d84a84e7de4f5f">
+                        
+                        <!-- Error Message -->
+                        <div id="feedback-error" class="hidden p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl">
+                            <p class="text-sm text-red-600 dark:text-red-400 text-center"></p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 dark:text-lpu-text mb-1.5">Feedback Type</label>
+                            <select name="feedbackType" class="w-full rounded-xl border-slate-300 dark:border-lpu-border bg-slate-50 dark:bg-lpu-bg text-slate-900 dark:text-lpu-text shadow-sm focus:border-orange-500 focus:ring-orange-500 py-2.5 px-3 transition-all">
+                                <option value="Suggestion">Suggestion</option>
+                                <option value="Report Issue">Report Issue</option>
+                                <option value="Question">Question</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 dark:text-lpu-text mb-1.5">Description <span class="text-red-500">*</span></label>
+                            <textarea name="description" rows="3" required class="w-full rounded-xl border-slate-300 dark:border-lpu-border bg-slate-50 dark:bg-lpu-bg text-slate-900 dark:text-lpu-text shadow-sm focus:border-orange-500 focus:ring-orange-500 py-2.5 px-3 transition-all resize-none" placeholder="Tell us more..."></textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 dark:text-lpu-text mb-1.5">WhatsApp Number (Optional)</label>
+                            <input type="tel" name="whatsapp" pattern="[6-9][0-9]{9}" maxlength="10" inputmode="numeric" autocomplete="tel-national" title="10-digit Indian mobile number, starting with 6-9" class="w-full rounded-xl border-slate-300 dark:border-lpu-border bg-slate-50 dark:bg-lpu-bg text-slate-900 dark:text-lpu-text shadow-sm focus:border-orange-500 focus:ring-orange-500 py-2.5 px-3 transition-all" placeholder="For follow-up...">
+                        </div>
+                        
+                        <div class="mt-6 flex flex-col-reverse sm:flex-row sm:justify-end gap-3">
+                            <button type="button" onclick="closeFeedbackModal()" class="inline-flex w-full justify-center rounded-xl bg-white dark:bg-lpu-bg px-4 py-2.5 text-sm font-semibold text-slate-700 dark:text-lpu-text shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-lpu-border hover:bg-slate-50 dark:hover:bg-lpu-border/50 sm:w-auto transition-all">Cancel</button>
+                            <button type="submit" class="inline-flex w-full justify-center rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:shadow-md hover:from-orange-600 hover:to-orange-700 sm:w-auto transition-all">Submit Feedback</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const feedbackModal = document.getElementById('feedback-modal');
+    const feedbackForm = document.getElementById('feedback-form');
+    const successMessage = document.getElementById('feedback-success');
+    const errorMessage = document.getElementById('feedback-error');
+
+    if (!feedbackModal || !feedbackForm) return;
+
+    window.openFeedbackModal = function() {
+        feedbackModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        feedbackForm.classList.remove('hidden');
+        successMessage.classList.add('hidden');
+        errorMessage.classList.add('hidden');
+        feedbackForm.reset();
+    };
+
+    window.closeFeedbackModal = function() {
+        feedbackModal.classList.add('hidden');
+        document.body.style.overflow = '';
+    };
+
+    feedbackForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = feedbackForm.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+
+        btn.disabled = true;
+        btn.innerHTML = '<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>Sending...';
+
+        errorMessage.classList.add('hidden');
+
+        try {
+            const formData = new FormData(feedbackForm);
+            const payload = {};
+            formData.forEach((v, k) => payload[k] = v);
+
+            const response = await fetch('/api/feedback', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+            if (!response.ok) {
+                throw new Error(result.error || 'Network response was not ok');
+            }
+
+            feedbackForm.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+
+            setTimeout(() => {
+                closeFeedbackModal();
+            }, 2000);
+
+        } catch (error) {
+            errorMessage.classList.remove('hidden');
+            errorMessage.querySelector('p').textContent = error.message || 'Failed to send feedback. Please try again.';
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+        }
+    });
+
+    feedbackModal.addEventListener('click', (e) => {
+        if (e.target === feedbackModal) closeFeedbackModal();
+    });
+})();
+</script>
+
+    <!-- Footer -->
+    <!-- Footer (Standardized Premium Design) -->
+    <footer class="relative mt-auto border-t border-gray-200 dark:border-lpu-border bg-white dark:bg-lpu-bg text-gray-900 dark:text-lpu-text">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr] gap-8 mb-8">
+                <!-- Brand -->
+                <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                    <a href="/" class="mb-5 block">
+                        <img src="/assets/lpunotes_header_sm.png" alt="LPU Notes" class="h-[40px] w-auto transition-transform hover:scale-105" width="152" height="40" loading="lazy">
+                    </a>
+                    <p class="max-w-xs text-[0.95rem] leading-relaxed text-gray-500 dark:text-lpu-muted mb-6">
+                        Comprehensive study materials, notes, and resources for LPU students. Built by Vertos, for Vertos.
+                    </p>
+
+                </div>
+
+                <!-- Navigate (Internal) -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-gray-900 dark:text-white text-[1.1rem] font-semibold mb-6 relative inline-block after:content-[''] after:absolute after:left-1/2 after:-bottom-2 after:w-6 after:h-[3px] after:bg-lpu-primary after:rounded-full md:after:left-0 after:-translate-x-1/2 md:after:translate-x-0">Navigate</h3>
+                    <ul class="space-y-3">
+                        <li><a href="/" class="text-gray-600 dark:text-lpu-muted text-[0.95rem] hover:text-lpu-primary hover:translate-x-1 transition-all inline-flex items-center">Home</a></li>
+                        <li><a href="/about" class="text-gray-600 dark:text-lpu-muted text-[0.95rem] hover:text-lpu-primary hover:translate-x-1 transition-all inline-flex items-center">About</a></li>
+                        <li><a href="/contact" class="text-gray-600 dark:text-lpu-muted text-[0.95rem] hover:text-lpu-primary hover:translate-x-1 transition-all inline-flex items-center">Contact</a></li>
+                        <li><a href="/support" class="text-gray-600 dark:text-lpu-muted text-[0.95rem] hover:text-lpu-primary hover:translate-x-1 transition-all inline-flex items-center gap-1.5">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-lpu-primary" aria-hidden="true"><path d="M12 21.593c-.525-.445-4.617-3.978-6.26-5.534C3.498 13.866 2 11.963 2 9.5A5.5 5.5 0 0 1 12 5.95 5.5 5.5 0 0 1 22 9.5c0 2.463-1.498 4.366-3.74 6.559C16.617 17.615 12.525 21.148 12 21.593z"></path></svg>
+                            Support Us
+                        </a></li>
+                    </ul>
+                </div>
+
+                <!-- Network (External) -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-gray-900 dark:text-white text-[1.1rem] font-semibold mb-6 relative inline-block after:content-[''] after:absolute after:left-1/2 after:-bottom-2 after:w-6 after:h-[3px] after:bg-lpu-primary after:rounded-full md:after:left-0 after:-translate-x-1/2 md:after:translate-x-0">Network</h3>
+                    <ul class="space-y-3">
+                        <li><a href="https://www.lpuverto.xyz" target="_blank" class="text-gray-600 dark:text-lpu-muted text-[0.95rem] hover:text-lpu-primary hover:translate-x-1 transition-all inline-flex items-center">Main Site</a></li>
+                        <li><a href="https://tools.lpuverto.xyz" target="_blank" class="text-gray-600 dark:text-lpu-muted text-[0.95rem] hover:text-lpu-primary hover:translate-x-1 transition-all inline-flex items-center">Academic Tools</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-black/20 border-t border-gray-200 dark:border-lpu-border py-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-[0.9rem] text-gray-600 dark:text-lpu-muted">
+                    &copy; 2026 LPU Notes. Part of the <a href="https://www.lpuverto.xyz" class="text-orange-700 dark:text-orange-400 underline decoration-orange-700/50 dark:decoration-orange-400/50 underline-offset-2 hover:decoration-orange-700 dark:hover:decoration-orange-400">LPU Verto Network</a>.
+                </p>
+                <p class="text-[0.9rem] text-gray-600 dark:text-lpu-muted mt-1">Made with <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="inline-block w-3.5 h-3.5 text-red-500 animate-[heartbeat_1.5s_infinite] align-text-bottom"><path d="M12 21.593c-.525-.445-4.617-3.978-6.26-5.534C3.498 13.866 2 11.963 2 9.5A5.5 5.5 0 0 1 12 5.95 5.5 5.5 0 0 1 22 9.5c0 2.463-1.498 4.366-3.74 6.559C16.617 17.615 12.525 21.148 12 21.593z"/></svg> for Vertos</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+    (function(){
+        var SNOOZE_KEY = 'lpu_ab_s4';
+        var SNOOZE_MS  = 24 * 60 * 60 * 1000;
+
+        function _isSnoozed() {
+            try {
+                var v = localStorage.getItem(SNOOZE_KEY);
+                return v && (Date.now() - parseInt(v, 10)) < SNOOZE_MS;
+            } catch(e) { return false; }
+        }
+        function _snooze() {
+            try { localStorage.setItem(SNOOZE_KEY, Date.now()); } catch(e) {}
+        }
+        function _clearSnooze() {
+            try { localStorage.removeItem(SNOOZE_KEY); } catch(e) {}
+        }
+
+        // Inject baits NOW (at script execution time, before load) so uBlock's
+        // MutationObserver and cosmetic injection have the most time to process them.
+        // ins.adsbygoogle — targeted by uBlock's own filters (##ins.adsbygoogle)
+        // div.adsbox     — targeted by EasyList (##.adsbox)
+        function _mkBait(tag, cls) {
+            var el = document.createElement(tag);
+            el.className = cls;
+            // NO !important — we want uBlock's display:none!important to WIN the cascade.
+            // Inline !important beats stylesheet !important in author-origin CSS (Chrome MV2 uBlock
+            // injects as author origin), so if we use !important here uBlock's filter loses and
+            // offsetHeight stays 1. Without !important, uBlock always overrides and collapses it to 0.
+            el.setAttribute('style', 'display:block;height:1px;width:1px;' +
+                'position:absolute;top:-9999px;left:-9999px;pointer-events:none');
+            document.body.appendChild(el);
+            return el;
+        }
+        var _b1 = _mkBait('ins', 'adsbygoogle');
+        var _b2 = _mkBait('div', 'adsbox');
+
+        function _baitBlocked(el) {
+            if (!el || !el.parentNode) return true; // removed from DOM by blocker
+            var cs = window.getComputedStyle(el);
+            return cs.display === 'none' || cs.visibility === 'hidden' || el.offsetHeight === 0;
+        }
+        function _cleanBaits() {
+            [_b1, _b2].forEach(function(el) { if (el && el.parentNode) el.parentNode.removeChild(el); });
+        }
+
+        var _shown = false;
+        var _id = 'lpu-' + Math.random().toString(36).slice(2, 7);
+
+        function _dismiss() {
+            var el = document.getElementById(_id);
+            if (el && el.parentNode) el.parentNode.removeChild(el);
+            _shown = false;
+        }
+
+        function _show() {
+            if (_shown || document.getElementById(_id)) return;
+            _shown = true;
+            var isDark = document.documentElement.classList.contains('dark');
+            var bg = isDark ? '#1e293b' : '#fff';
+            var h2c = isDark ? '#f1f5f9' : '#111827';
+            var pc  = isDark ? '#94a3b8' : '#6b7280';
+            var mc  = isDark ? '#64748b' : '#9ca3af';
+            var sBg = isDark ? '#431407' : '#fff7ed';
+            var sBr = isDark ? '#7c2d12' : '#fed7aa';
+            var sCl = isDark ? '#fdba74' : '#9a3412';
+            var btnId   = _id + '-b';
+            var closeId = _id + '-x';
+
+            var wrap = document.createElement('div');
+            wrap.id = _id;
+            wrap.setAttribute('style',
+                'position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:0!important;' +
+                'z-index:2147483647!important;background:rgba(0,0,0,.72)!important;' +
+                'display:flex!important;align-items:center!important;justify-content:center!important;' +
+                'padding:16px!important;font-family:Inter,sans-serif!important;' +
+                'backdrop-filter:blur(6px)!important;-webkit-backdrop-filter:blur(6px)!important');
+
+            wrap.innerHTML =
+                '<div style="position:relative!important;background:' + bg + '!important;border-radius:20px!important;max-width:460px!important;' +
+                'width:100%!important;padding:40px 32px 32px!important;text-align:center!important;' +
+                'box-shadow:0 25px 60px rgba(0,0,0,.35)!important">' +
+                '<button id="' + closeId + '" title="Remind me later (24h)" style="position:absolute!important;top:14px!important;right:14px!important;' +
+                'width:32px!important;height:32px!important;border-radius:50%!important;border:none!important;' +
+                'background:transparent!important;cursor:pointer!important;display:flex!important;align-items:center!important;' +
+                'justify-content:center!important;color:' + mc + '!important;padding:0!important">' +
+                '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+                '</button>' +
+                '<div style="width:64px!important;height:64px!important;border-radius:50%!important;' +
+                'background:linear-gradient(135deg,#f97316,#fb923c)!important;display:flex!important;' +
+                'align-items:center!important;justify-content:center!important;margin:0 auto 20px!important">' +
+                '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' +
+                '</div>' +
+                '<h2 style="font-size:1.35rem!important;font-weight:700!important;color:' + h2c + '!important;margin:0 0 10px!important">Ad Blocker Detected</h2>' +
+                '<p style="font-size:.95rem!important;color:' + pc + '!important;line-height:1.6!important;margin:0 0 20px!important">' +
+                'LPU Notes is free and always will be. We rely on ads to keep the lights on. Please whitelist this site to support us!</p>' +
+                '<div style="text-align:left!important;background:' + sBg + '!important;border:1px solid ' + sBr + '!important;' +
+                'border-radius:12px!important;padding:14px 16px!important;margin-bottom:20px!important;font-size:.875rem!important;color:' + sCl + '!important">' +
+                '<ol style="padding-left:20px!important;margin:0!important;line-height:1.8!important">' +
+                '<li>Click your ad blocker icon in the browser toolbar</li>' +
+                '<li>Select <strong>"Disable on this site"</strong> or <strong>"Whitelist"</strong></li>' +
+                '<li>Refresh the page</li>' +
+                '</ol></div>' +
+                '<button id="' + btnId + '" style="display:inline-flex!important;align-items:center!important;gap:7px!important;' +
+                'background:linear-gradient(135deg,#f97316,#fb923c)!important;color:#fff!important;' +
+                'font-weight:600!important;font-size:.95rem!important;padding:10px 24px!important;' +
+                'border-radius:12px!important;border:none!important;cursor:pointer!important;' +
+                'box-shadow:0 4px 14px rgba(249,115,22,.4)!important">' +
+                '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
+                " I\u2019ve disabled it, continue</button>" +
+                '<p style="margin:14px 0 0!important;font-size:.8rem!important;color:' + mc + '!important">' +
+                'Or <button id="' + closeId + '-t" style="background:none!important;border:none!important;padding:0!important;' +
+                'font-size:.8rem!important;color:' + mc + '!important;cursor:pointer!important;text-decoration:underline!important">' +
+                'remind me tomorrow</button></p>' +
+                '</div>';
+
+            document.body.appendChild(wrap);
+
+            document.getElementById(btnId).addEventListener('click', function() {
+                var btn = document.getElementById(btnId);
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Refreshing\u2026';
+                _clearSnooze();
+                setTimeout(function() { window.location.reload(); }, 600);
+            });
+            document.getElementById(closeId).addEventListener('click', function() { _snooze(); _dismiss(); });
+            var textBtn = document.getElementById(closeId + '-t');
+            if (textBtn) textBtn.addEventListener('click', function() { _snooze(); _dismiss(); });
+        }
+
+        function _detect(cb) {
+            var done = false;
+            function finish(v) { if (!done) { done = true; cb(v); } }
+
+            // CSS bait: uBlock cosmetic filters apply display:none !important which beats
+            // our non-!important inline style → offsetHeight collapses to 0 → detected
+            if (_baitBlocked(_b1) || _baitBlocked(_b2)) { _cleanBaits(); finish(true); return; }
+            _cleanBaits();
+
+            // Network bait: dynamically inject <script> from the ad network domain.
+            // uBlock cancels network requests to pagead2.googlesyndication.com → onerror fires.
+            // No blocker → script loads (from browser cache or network) → onload fires.
+            // This is more reliable than fetch() which uBlock spoofs with a synthetic response.
+            var s = document.createElement('script');
+            var t = setTimeout(function() {
+                if (s.parentNode) s.parentNode.removeChild(s);
+                finish(true); // timed out = treated as blocked
+            }, 3000);
+            s.onload = function() {
+                clearTimeout(t);
+                if (s.parentNode) s.parentNode.removeChild(s);
+                finish(false);
+            };
+            s.onerror = function() {
+                clearTimeout(t);
+                if (s.parentNode) s.parentNode.removeChild(s);
+                finish(true);
+            };
+            s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6155060420672692';
+            document.head.appendChild(s);
+        }
+
+        window.addEventListener('load', function() {
+            if (_isSnoozed()) return;
+            setTimeout(function() {
+                _detect(function(blocked) { if (blocked) _show(); });
+            }, 500);
+        });
+    })();
+    </script>
+
+
+    <!-- Google tag (gtag.js) - loaded after content paint -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-333H64S4VH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-333H64S4VH');
+    </script>
+    
+    <!-- Google AdSense - loaded after content paint -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6155060420672692" crossorigin="anonymous"></script>
+
+    <script>
+        // Keyboard shortcut: Ctrl+K to focus search
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                const searchInput = document.getElementById('search-input');
+                if (searchInput) { searchInput.focus(); searchInput.select(); }
+            }
+        });
+
+        // Reading progress bar
+        (function() {
+            const progressBar = document.getElementById('reading-progress');
+            if (!progressBar) return;
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                        const scrolled = (window.scrollY / docHeight) * 100;
+                        progressBar.style.width = Math.min(scrolled, 100) + '%';
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        })();
+
+        /*
+          Ad loading.
+
+          ad_unit() renders the <ins> but does not push it. Pushing every unit at
+          parse time serves ads the reader may never scroll to: they count as
+          served but are never viewed, and a low viewable rate is precisely what
+          advertisers bid down. Pushing each unit shortly before it reaches the
+          viewport trades a few raw impressions for a much better viewable rate.
+
+          rootMargin is generous — the ad still has to be requested, filled and
+          painted, so starting a screenful early is what makes it feel eager
+          rather than lazy.
+        */
+        window.adPush = (function() {
+            function collapseIfUnfilled(wrapper, ins) {
+                // Belt and braces for the CSS :has() rule, which older Safari and
+                // Firefox lack — without this the reserved height stays as a gap.
+                new MutationObserver(function(_, obs) {
+                    if (ins.getAttribute('data-ad-status') === 'unfilled') {
+                        wrapper.classList.add('ad-unfilled');
+                        obs.disconnect();
+                    } else if (ins.getAttribute('data-ad-status') === 'filled') {
+                        obs.disconnect();
+                    }
+                }).observe(ins, { attributes: true, attributeFilter: ['data-ad-status'] });
+            }
+
+            function push(wrapper) {
+                if (!wrapper || wrapper.dataset.adPushed) return true;
+                var ins = wrapper.querySelector('ins.adsbygoogle');
+                if (!ins) return true;
+                // A zero-width container makes adsbygoogle collapse the unit for
+                // good, so never push one that has not been laid out yet. Width 0
+                // here means the slot sits in a subtree the browser has not
+                // rendered: a content-visibility:auto section that has not
+                // activated, or a panel still display:none (the mock test
+                // scorecard). Retry rather than give up — the observer entry will
+                // not fire again while the slot stays intersecting.
+                if (!ins.offsetWidth) return false;
+                wrapper.dataset.adPushed = '1';
+                collapseIfUnfilled(wrapper, ins);
+                try {
+                    (window.adsbygoogle = window.adsbygoogle || []).push({});
+                } catch (e) {}
+                return true;
+            }
+
+            // Bounded retry for slots not yet laid out. Gives up after ~5s so a
+            // permanently hidden slot costs nothing; a panel revealed later than
+            // that pushes explicitly through window.adPush.
+            function pushWhenLaidOut(wrapper, attempt) {
+                if (push(wrapper)) return;
+                if ((attempt || 0) > 25) return;
+                setTimeout(function() { pushWhenLaidOut(wrapper, (attempt || 0) + 1); }, 200);
+            }
+
+            // The anchor is transform:translateY(100%) until revealed, so it never
+            // intersects; it is pushed by the reveal handler instead.
+            var slots = Array.prototype.slice.call(
+                document.querySelectorAll('.ad-slot:not([data-ad-placement="anchor"])')
+            );
+
+            if (!('IntersectionObserver' in window)) {
+                slots.forEach(function(s) { pushWhenLaidOut(s); });
+                return pushWhenLaidOut;
+            }
+
+            var io = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (!entry.isIntersecting) return;
+                    io.unobserve(entry.target);
+                    pushWhenLaidOut(entry.target);
+                });
+            }, { rootMargin: '400px 0px' });
+
+            slots.forEach(function(s) { io.observe(s); });
+            return pushWhenLaidOut;
+        })();
+
+        // Anchor ad: show after scrolling 600px
+        (function() {
+            const anchor = document.getElementById('anchor-ad');
+            if (!anchor) return;
+            let shown = false;
+            window.addEventListener('scroll', function() {
+                if (!shown && window.scrollY > 600) {
+                    anchor.classList.add('visible');
+                    shown = true;
+                    // Push only once on screen — measuring it while it is still
+                    // translated off-viewport is what collapsed the old unit.
+                    window.adPush(anchor.querySelector('.ad-slot'));
+                }
+            }, { passive: true });
+        })();
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const html = document.documentElement;
+
+        function updateTheme(isDark) {
+            if (isDark) {
+                html.classList.add('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.classList.remove('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Icons only — class already set by inline <head> script
+        if (html.classList.contains('dark')) {
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        } else {
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            updateTheme(!html.classList.contains('dark'));
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Search Functionality
+        function setupSearch(inputId, resultsId, contentId) {
+            const searchInput = document.getElementById(inputId);
+            const searchResults = document.getElementById(resultsId);
+            const searchResultsContent = document.getElementById(contentId);
+            let searchTimeout;
+            /*
+              A global search loads one index per program, so it can easily
+              outlive a program-scoped search started after it. Every request is
+              stamped and a response whose stamp is no longer the current one is
+              dropped, rather than allowed to overwrite fresher results.
+            */
+            let requestSeq = 0;
+
+            if (!searchInput || !searchResults || !searchResultsContent) return;
+
+            // Search index titles/snippets are harvested from note markdown, so
+            // they are untrusted text. Escape every piece and let only the
+            // <strong> wrapper in highlight() be markup — otherwise a heading in
+            // any .md file becomes script that runs for everyone who searches.
+            const escapeHtml = (s) => String(s ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+
+            const highlight = (text, query) => {
+                const raw = String(text ?? '');
+                if (!raw) return '';
+                const needle = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                if (!needle) return escapeHtml(raw);
+                // Capturing split puts the matched runs at odd
+                // indices, so matches are located on the raw text
+                // but every emitted slice is escaped.
+                return raw
+                    .split(new RegExp(`(${needle})`, 'gi'))
+                    .map((part, i) => i % 2 === 1
+                        ? `<strong class="text-blue-600 dark:text-blue-400">${escapeHtml(part)}</strong>`
+                        : escapeHtml(part))
+                    .join('');
+            };
+
+            function renderResults(results, query, scope) {
+                // Only the all-programs list gets a heading: it is the one whose
+                // rows come from somewhere other than the site the reader is on,
+                // so it has to say so.
+                const heading = scope === 'all'
+                    ? `<div class="px-4 py-2 border-b border-slate-100 dark:border-white/5 text-xs font-semibold uppercase tracking-wide text-slate-400 dark:text-slate-500">Results from all programs</div>`
+                    : '';
+
+                return heading + results.map(result => {
+                    const icon = getSearchIcon(result.type);
+                    const highlightedTitle = highlight(result.title, query);
+                    const highlightedSnippet = result.snippet ? highlight(result.snippet, query) : '';
+                    // Present on all-programs results only. Without it a row for
+                    // a subject in another program is indistinguishable from one
+                    // in this program, and the link quietly changes program.
+                    // nowrap because a program name is a label, not prose: left
+                    // to wrap it breaks mid-name inside the narrow dropdown.
+                    const programBadge = result.program
+                        ? `<span class="ml-1.5 inline-block whitespace-nowrap rounded-full bg-slate-100 dark:bg-white/10 px-1.5 py-0.5 text-[10px] font-medium text-slate-500 dark:text-slate-400">${escapeHtml(result.program)}</span>`
+                        : '';
+
+                    return `
+                        <a href="${escapeHtml(BASE_PATH + result.path)}" class="block px-4 py-3 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors border-b border-slate-50 dark:border-white/5 last:border-0">
+                            <div class="flex items-start gap-3">
+                                <div class="mt-1">${icon}</div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="font-medium text-slate-700 dark:text-slate-200 text-sm">
+                                        ${highlightedTitle}${programBadge}
+                                    </div>
+                                    ${highlightedSnippet ? `<div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-2">${highlightedSnippet}</div>` : ''}
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                }).join('');
+            }
+
+            /*
+              Empty state. A program-scoped miss is not the end of the search:
+              the material may well exist under another program, and a reader on
+              the BBA site has no way to guess that. So the miss offers the wider
+              search instead of dead-ending — but only when there is in fact
+              another program to look in, and only on request, because searching
+              every program costs an index load each.
+            */
+            function renderEmpty(scope) {
+                if (scope !== 'all' && PROGRAM_COUNT > 1) {
+                    return `
+                        <div class="px-4 py-3">
+                            <p class="text-sm text-slate-500 dark:text-slate-400">
+                                No results in <span class="font-medium text-slate-700 dark:text-slate-200">${escapeHtml(CURRENT_PROGRAM)}</span>.
+                            </p>
+                            <button type="button" data-search-all-programs class="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-lpu-primary hover:underline">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                                Search all programs
+                            </button>
+                        </div>
+                    `;
+                }
+
+                return scope === 'all'
+                    ? '<div class="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">No results in any program.</div>'
+                    : '<div class="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">No results found</div>';
+            }
+
+            async function performSearch(query, scope = 'program') {
+                if (!query || query.length < 3) {
+                    searchResults.classList.add('hidden');
+                    return;
+                }
+
+                const seq = ++requestSeq;
+
+                // Show loading state
+                searchResultsContent.innerHTML = scope === 'all'
+                    ? '<div class="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">Searching all programs...</div>'
+                    : '<div class="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">Searching...</div>';
+                searchResults.classList.remove('hidden');
+
+                const params = scope === 'all'
+                    ? `q=${encodeURIComponent(query)}&scope=all`
+                    : `q=${encodeURIComponent(query)}&program=${encodeURIComponent(SUB_DIR)}`;
+
+                try {
+                    const response = await fetch(`${BASE_PATH}/index.php/api/search?${params}`);
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const results = await response.json();
+                    if (seq !== requestSeq) return; // a newer search has taken over
+
+                    searchResultsContent.innerHTML = results.length > 0
+                        ? renderResults(results, query, scope)
+                        : renderEmpty(scope);
+
+                    // Wired after the render because the markup above replaces
+                    // whatever node the previous listener was attached to.
+                    const searchAllBtn = searchResultsContent.querySelector('[data-search-all-programs]');
+                    if (searchAllBtn) {
+                        searchAllBtn.addEventListener('click', () => {
+                            // Focus goes back to the input so the results stay
+                            // reachable by keyboard once the button is replaced.
+                            searchInput.focus();
+                            performSearch(query, 'all');
+                        });
+                    }
+
+                    searchResults.classList.remove('hidden');
+                } catch (error) {
+                    if (seq !== requestSeq) return;
+                    searchResultsContent.innerHTML = '<div class="px-4 py-3 text-sm text-red-500">Search failed. Please try again.</div>';
+                    searchResults.classList.remove('hidden');
+                }
+            }
+
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.trim();
+                clearTimeout(searchTimeout);
+                // Typing always returns to the current program: the wider search
+                // is a decision about one specific term, not a mode to stay in.
+                searchTimeout = setTimeout(() => performSearch(query), 300);
+            });
+
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const query = e.target.value.trim();
+
+                    if (!searchResults.classList.contains('hidden') && searchResultsContent.querySelector('a')) {
+                        const firstLink = searchResultsContent.querySelector('a');
+                        if (firstLink) {
+                            firstLink.click();
+                            return;
+                        }
+                    }
+
+                    // Nothing to open, but the all-programs offer is on screen —
+                    // Enter takes it rather than re-running the same empty query.
+                    const searchAllBtn = searchResultsContent.querySelector('[data-search-all-programs]');
+                    if (!searchResults.classList.contains('hidden') && searchAllBtn) {
+                        searchAllBtn.click();
+                        return;
+                    }
+
+                    clearTimeout(searchTimeout);
+                    performSearch(query);
+                }
+            });
+
+            // Close search results when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.classList.add('hidden');
+                }
+            });
+            
+            searchInput.addEventListener('focus', () => {
+                if (searchInput.value.trim().length >= 3 && searchResultsContent.children.length > 0) {
+                    searchResults.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Initialize search for desktop and mobile
+        setupSearch('search-input', 'search-results', 'search-results-content');
+        setupSearch('mobile-search-input', 'mobile-search-results', 'mobile-search-results-content');
+
+        function getSearchIcon(type) {
+            const icons = {
+                semester: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-500"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>',
+                subject: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>',
+                unit: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-500"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>',
+                content: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>'
+            };
+            return icons[type] || icons.content;
+        }
+
+        // ── Updates bell ───────────────────────────────────────────
+        (function () {
+            const LS_KEY = 'lpunotes_updates_lastseen';
+            const btn = document.getElementById('updates-btn');
+            const dropdown = document.getElementById('updates-dropdown');
+            const badge = document.getElementById('updates-badge');
+            const mobileBadge = document.getElementById('mobile-updates-badge');
+            const list = document.getElementById('updates-list');
+            const markReadBtn = document.getElementById('updates-mark-read');
+
+            if (!btn || !dropdown) return;
+
+            let updates = null; // cached fetch result
+            let open = false;
+
+            function getLastSeen() {
+                return parseInt(localStorage.getItem(LS_KEY) || '0', 10);
+            }
+
+            function setLastSeen(ts) {
+                localStorage.setItem(LS_KEY, String(ts));
+            }
+
+            function renderUpdates(items, lastSeen) {
+                if (!items || items.length === 0) {
+                    list.innerHTML = '<div class="py-8 text-center text-sm text-gray-400 dark:text-lpu-muted">No updates in the last 7 days</div>';
+                    return;
+                }
+                const bookIcon = '<svg class="w-4 h-4 text-lpu-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>';
+                list.innerHTML = items.map(function (u) {
+                    const isNew = u.mtime > lastSeen;
+                    return `<a href="${u.url}" role="listitem" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors ${isNew ? 'bg-orange-50/60 dark:bg-orange-900/10' : ''}">
+                        ${bookIcon}
+                        <div class="flex-1 min-w-0">
+                            <p class="text-xs font-semibold text-gray-800 dark:text-lpu-text leading-snug">${u.subject}</p>
+                            <p class="text-[11px] text-gray-400 dark:text-lpu-muted mt-0.5">${u.sem}</p>
+                        </div>
+                        ${isNew ? '<span class="shrink-0 w-2 h-2 rounded-full bg-lpu-primary"></span>' : ''}
+                    </a>`;
+                }).join('');
+            }
+
+            function updateBadge(items, lastSeen) {
+                const unread = items ? items.filter(function (u) { return u.mtime > lastSeen; }).length : 0;
+                if (unread > 0) {
+                    if (badge) badge.style.display = 'block';
+                    if (mobileBadge) mobileBadge.style.display = 'block';
+                } else {
+                    if (badge) badge.style.display = 'none';
+                    if (mobileBadge) mobileBadge.style.display = 'none';
+                }
+            }
+
+            async function fetchUpdates() {
+                if (updates !== null) return updates;
+                if (window.__lpuUpdates !== undefined) {
+                    updates = window.__lpuUpdates;
+                    return updates;
+                }
+                try {
+                    const res = await fetch(BASE_PATH + '/index.php/api/updates');
+                    updates = res.ok ? await res.json() : [];
+                } catch (e) {
+                    updates = [];
+                }
+                return updates;
+            }
+
+            // Eagerly fetch (low priority) to show badge on page load
+            (function () {
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(async function () {
+                        const items = await fetchUpdates();
+                        updateBadge(items, getLastSeen());
+                    });
+                } else {
+                    setTimeout(async function () {
+                        const items = await fetchUpdates();
+                        updateBadge(items, getLastSeen());
+                    }, 2000);
+                }
+            })();
+
+            btn.addEventListener('click', async function (e) {
+                e.stopPropagation();
+                open = !open;
+                dropdown.classList.toggle('hidden', !open);
+                btn.setAttribute('aria-expanded', String(open));
+
+                if (open) {
+                    const lastSeen = getLastSeen();
+                    const items = await fetchUpdates();
+                    renderUpdates(items, lastSeen);
+                    // Mark as seen after a short delay so user sees highlights briefly
+                    setTimeout(function () {
+                        setLastSeen(Math.floor(Date.now() / 1000));
+                        updateBadge(items, Math.floor(Date.now() / 1000));
+                    }, 1500);
+                }
+            });
+
+            markReadBtn && markReadBtn.addEventListener('click', function () {
+                setLastSeen(Math.floor(Date.now() / 1000));
+                updateBadge(updates || [], Math.floor(Date.now() / 1000));
+                if (updates) renderUpdates(updates, Math.floor(Date.now() / 1000));
+            });
+
+            // Close on outside click
+            document.addEventListener('click', function (e) {
+                if (open && !btn.contains(e.target) && !dropdown.contains(e.target)) {
+                    open = false;
+                    dropdown.classList.add('hidden');
+                    btn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+
+    </script>
+
+    <!--
+      Revision badge. Reads the SRS store directly; srs.js is only loaded on the
+      pages that use it, so this is a no-op elsewhere and the badge stays hidden.
+    -->
+    <script>
+    (function () {
+        if (!window.LPUSRS) return;
+        var badges = document.querySelectorAll('[data-srs-nav-badge]');
+        if (!badges.length) return;
+        try {
+            var due = window.LPUSRS.getOverallStats().due;
+            if (!due) return;
+            var label = due > 99 ? '99+' : String(due);
+            badges.forEach(function (el) {
+                el.textContent = label;
+                el.classList.remove('hidden');
+            });
+        } catch (e) { /* a broken store must not break the navbar */ }
+    })();
+    </script>
+
+    <script defer src="/assets/js/code-copy.js"></script>
+
+    <!--
+      Offline library. offline-library.js owns the storage; offline-ui.js draws
+      the buttons and the manage dialog. Loaded on every page so the navbar
+      entry works everywhere, not just on savable pages.
+    -->
+    <script defer src="/assets/js/offline-library.js?v=1787296663"></script>
+    <script defer src="/assets/js/offline-ui.js?v=1787296663"></script>
+
+    
+    <!-- PWA: register the service worker for offline support -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js').then(function (reg) {
+                    // If an updated SW is waiting, activate it on next load without prompting.
+                    reg.addEventListener('updatefound', function () {
+                        var sw = reg.installing;
+                        if (!sw) return;
+                        sw.addEventListener('statechange', function () {
+                            if (sw.state === 'installed' && navigator.serviceWorker.controller) {
+                                sw.postMessage('SKIP_WAITING');
+                            }
+                        });
+                    });
+                }).catch(function () { /* offline support unavailable — non-fatal */ });
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+{
+  "unit_number": 4,
+  "icon": "⚙️",
+  "title": "Functions",
+  "short_title": "Functions",
+  "short_description": "Write reusable blocks of code and pass inputs.",
+  "bro_quote": "Functions transform repetitive code into reusable tools—write once, use everywhere.",
+  "subtopics": [
+    {
+      "name": "Creating Functions",
+      "explanation": "<ul>\n<li>📦 <b>Use <code>def</code> to create a function.</b></li>\n<li>📞 <b>Call it by its name with parentheses.</b></li>\n<li>💡 <b>Functions group code for reusability and clarity.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "A simple function",
+          "filename": "func.py",
+          "code": "def greet():\n    print(\"Hi there!\")\n\ngreet()"
+        },
+        {
+          "comment": "Another simple function",
+          "filename": "welcome.py",
+          "code": "def say_goodbye():\n    print(\"See you later!\")\n    print(\"Goodbye!\")\n\nsay_goodbye()"
+        },
+        {
+          "comment": "Function called multiple times",
+          "filename": "multiple_calls.py",
+          "code": "def celebrate():\n    print(\"🎉 Party time!\")\n\ncelebrate()\ncelebrate()\ncelebrate()"
+        }
+      ]
+    },
+    {
+      "name": "Parameters and Returns",
+      "explanation": "<ul>\n<li>🎛️ <b>Parameters are inputs that functions receive.</b></li>\n<li>🎁 <b><code>return</code> sends results back to the caller.</b></li>\n<li>✅ <b>Return stops the function immediately.</b></li>\n<li>📊 <b>Functions can return any data type: numbers, strings, lists, etc.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Function with input and output",
+          "filename": "return.py",
+          "code": "def add(a, b):\n    return a + b\n\nresult = add(5, 3)\nprint(result)"
+        },
+        {
+          "comment": "Function with one parameter",
+          "filename": "personalize.py",
+          "code": "def greet_person(name):\n    return f\"Hello, {name}!\"\n\nmsg = greet_person(\"Alice\")\nprint(msg)"
+        },
+        {
+          "comment": "Return different types",
+          "filename": "varied_returns.py",
+          "code": "def get_info():\n    return 42\n\ndef get_name():\n    return \"Python\"\n\nprint(get_info())\nprint(get_name())"
+        }
+      ]
+    },
+    {
+      "name": "Default Parameters",
+      "explanation": "<ul>\n<li>🎯 <b>Set default values for parameters.</b></li>\n<li>⚡ <b>Call function without that parameter to use the default.</b></li>\n<li>💼 <b>Makes functions flexible and easier to use.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Function with default parameter",
+          "filename": "defaults.py",
+          "code": "def greet(name=\"Guest\"):\n    print(f\"Welcome, {name}!\")\n\ngreet()           # Uses default\ngreet(\"Bob\")     # Overrides default"
+        },
+        {
+          "comment": "Multiple defaults",
+          "filename": "multiple_defaults.py",
+          "code": "def power(base, exponent=2):\n    return base ** exponent\n\nprint(power(5))      # 25 (5^2)\nprint(power(5, 3))   # 125 (5^3)"
+        }
+      ]
+    },
+    {
+      "name": "Multiple Return Values",
+      "explanation": "<ul>\n<li>📦 <b>Return multiple values as a tuple.</b></li>\n<li>🔀 <b>Unpack them into separate variables.</b></li>\n<li>🎪 <b>Useful for functions that compute several things.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Return multiple values",
+          "filename": "multi_return.py",
+          "code": "def divide(a, b):\n    quotient = a // b\n    remainder = a % b\n    return quotient, remainder\n\nq, r = divide(17, 5)\nprint(f\"Quotient: {q}, Remainder: {r}\")"
+        },
+        {
+          "comment": "Return list and count",
+          "filename": "list_stats.py",
+          "code": "def analyze_list(nums):\n    total = sum(nums)\n    count = len(nums)\n    return total, count\n\ntotal, size = analyze_list([10, 20, 30])\nprint(f\"Sum: {total}, Count: {size}\")"
+        }
+      ]
+    },
+    {
+      "name": "Scope: Local vs Global",
+      "explanation": "<ul>\n<li>🔒 <b>Local variables only exist inside functions.</b></li>\n<li>🌍 <b>Global variables exist throughout the program.</b></li>\n<li>⚠️ <b>Use <code>global</code> keyword to modify global variables in functions.</b></li>\n<li>🎯 <b>Local scope is usually safer and cleaner.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Local variable inside function",
+          "filename": "local_scope.py",
+          "code": "def calculate():\n    x = 100\n    print(x)\n\ncalculate()  # Prints 100\n# print(x)   # Error! x doesn't exist outside"
+        },
+        {
+          "comment": "Global variable",
+          "filename": "global_scope.py",
+          "code": "counter = 0\n\ndef increment():\n    global counter\n    counter += 1\n\nincrement()\nincrement()\nprint(counter)  # 2"
+        }
+      ]
+    },
+    {
+      "name": "Docstrings",
+      "explanation": "<ul>\n<li>📝 <b>Document what your function does with docstrings.</b></li>\n<li>📖 <b>Use triple quotes <code>\"\"\"...</code>\"\"\"` at the start of the function.</b></li>\n<li>🔍 <b>Helps others (and future you) understand the code.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Function with docstring",
+          "filename": "docstring.py",
+          "code": "def calculate_area(length, width):\n    \"\"\"Calculate the area of a rectangle.\n    Args: length and width\n    Returns: area as a number\"\"\"\n    return length * width\n\nprint(calculate_area(5, 10))"
+        }
+      ]
+    },
+    {
+      "name": "Lambda Functions (Quick Functions)",
+      "explanation": "<ul>\n<li>⚡ <b>One-line functions using <code>lambda</code> keyword.</b></li>\n<li>🎯 <b>Perfect for short, simple operations.</b></li>\n<li>🔧 <b>Often used with <code>map()</code>, <code>filter()</code>, <code>sorted()</code>.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Lambda function",
+          "filename": "lambda.py",
+          "code": "square = lambda x: x ** 2\nprint(square(5))  # 25\n\nadd = lambda x, y: x + y\nprint(add(3, 7))  # 10"
+        },
+        {
+          "comment": "Lambda with map",
+          "filename": "lambda_map.py",
+          "code": "numbers = [1, 2, 3, 4]\nsquares = list(map(lambda x: x ** 2, numbers))\nprint(squares)  # [1, 4, 9, 16]"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    "1. Define a function called say_hello that prints a greeting. (Defining function)",
+    "2. Call a function you just defined to execute its code. (Calling function)",
+    "3. Write a function that takes one parameter (a name) and greets that person. (Single parameter)",
+    "4. Create a function that accepts two numbers and calculates their product. (Multiple parameters)",
+    "5. Write a function that returns the square of a number instead of printing it. (Return value)",
+    "6. Make a function return both the sum and difference of two numbers. (Returning multiple values)",
+    "7. Add a default value of 'Guest' to a name parameter in a greeting function. (Default parameter)",
+    "8. Call a function explicitly mentioning the parameter names. (Keyword args)",
+    "9. Create a variable inside a function and try to print it outside to see what happens. (Local scope)",
+    "10. Call a previously created math function twice with different sets of numbers. (Reusability)"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "unit_number": 8,
+  "icon": "🧱",
+  "title": "Classes (OOP)",
+  "short_title": "OOP",
+  "short_description": "Learn Object-Oriented Programming basics.",
+  "bro_quote": "Objects organize code into logic bundles—classes are how Python structures large programs.",
+  "subtopics": [
+    {
+      "name": "What is a Class?",
+      "explanation": "<ul>\n<li>🏠 <b>A class is a blueprint for creating objects.</b> Like an architectural plan before building houses.</li>\n<li>🎯 <b>An object is an instance created from that class.</b> Each house built from the plan is different.</li>\n<li>📦 <b>Classes group related data (attributes) and actions (methods) together.</b></li>\n<li>🔤 <b>Class names usually start with capital letters by convention.</b> Example: <code>Dog</code>, <code>Person</code>.</li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Simple class definition",
+          "filename": "class_basic.py",
+          "code": "class Dog:\n    pass\n\nmy_dog = Dog()\nprint(my_dog)"
+        }
+      ]
+    },
+    {
+      "name": "Attributes and __init__",
+      "explanation": "<ul>\n<li>⚙️ <b><code>__init__</code> is the constructor — it runs when you create an object.</b></li>\n<li>🏷️ <b>Set up initial data (attributes) inside <code>__init__</code>.</b></li>\n<li>🔗 <b><code>self</code> refers to the specific object being created.</b></li>\n<li>💾 <b>Attributes are stored as <code>self.attribute_name</code></b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Class with __init__ and attributes",
+          "filename": "init.py",
+          "code": "class Dog:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n\nmy_dog = Dog(\"Buddy\", 3)\nprint(my_dog.name)  # Buddy"
+        },
+        {
+          "comment": "Multiple objects with different data",
+          "filename": "multiple_objects.py",
+          "code": "dog1 = Dog(\"Buddy\", 3)\ndog2 = Dog(\"Max\", 5)\nprint(dog1.name)  # Buddy\nprint(dog2.name)  # Max"
+        }
+      ]
+    },
+    {
+      "name": "Methods (Actions)",
+      "explanation": "<ul>\n<li>⚙️ <b>Methods are functions inside a class that perform actions.</b></li>\n<li>🔗 <b>First parameter is always <code>self</code> — refers to the object calling the method.</b></li>\n<li>🎯 <b>Call methods using dot notation: <code>object.method()</code></b></li>\n<li>📊 <b>Methods can access and modify the object's attributes.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Class with a method",
+          "filename": "methods.py",
+          "code": "class Dog:\n    def __init__(self, name):\n        self.name = name\n    \n    def bark(self):\n        print(f\"{self.name} says Woof!\")\n\nmy_dog = Dog(\"Buddy\")\nmy_dog.bark()  # Buddy says Woof!"
+        },
+        {
+          "comment": "Methods with parameters",
+          "filename": "method_params.py",
+          "code": "class Person:\n    def __init__(self, name):\n        self.name = name\n    \n    def greet(self, other):\n        print(f\"{self.name} says Hi to {other}\")\n\np1 = Person(\"Alice\")\np1.greet(\"Bob\")"
+        }
+      ]
+    },
+    {
+      "name": "Understanding self",
+      "explanation": "<ul>\n<li>🔗 <b><code>self</code> is a reference to the current object.</b> It's how methods know which object is calling them.</li>\n<li>🎯 <b>You don't pass <code>self</code> manually — Python does it automatically.</b></li>\n<li>📦 <b>Use <code>self.attribute</code> to access the object's data.</b></li>\n<li>💡 <b>When you call <code>object.method()</code>, Python converts it to <code>Class.method(object)</code> behind the scenes.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Demonstrating self",
+          "filename": "self_demo.py",
+          "code": "class Car:\n    def __init__(self, brand):\n        self.brand = brand\n    \n    def info(self):\n        print(f\"This is a {self.brand}\")\n\ncar1 = Car(\"Toyota\")\ncar2 = Car(\"Honda\")\ncar1.info()  # This is a Toyota\ncar2.info()  # This is a Honda"
+        }
+      ]
+    },
+    {
+      "name": "Instance Attributes vs Class Attributes",
+      "explanation": "<ul>\n<li>👤 <b>Instance attributes belong to individual objects.</b> Set in <code>__init__</code> with <code>self</code>.</li>\n<li>🏫 <b>Class attributes belong to the whole class.</b> Defined outside methods, shared by all instances.</li>\n<li>📊 <b>Each object has its own copy of instance attributes.</b> Changing one doesn't affect others.</li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Instance attributes in __init__",
+          "filename": "instance_attr.py",
+          "code": "class Animal:\n    def __init__(self, name):\n        self.name = name      # Instance attribute\n\ndog = Animal(\"Buddy\")\ncat = Animal(\"Whiskers\")\ndog.name = \"Max\"  # Only dog changes\nprint(dog.name)   # Max\nprint(cat.name)   # Whiskers (unchanged)"
+        }
+      ]
+    },
+    {
+      "name": "Building a Complete Class",
+      "explanation": "<ul>\n<li>🏗️ <b>Combine __init__, attributes, and methods to create useful classes.</b></li>\n<li>🎯 <b>Design classes to represent real-world objects or concepts.</b></li>\n<li>📝 <b>Good classes have clear purposes and well-organized code.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Complete class example",
+          "filename": "complete_class.py",
+          "code": "class Student:\n    def __init__(self, name, grade):\n        self.name = name\n        self.grade = grade\n    \n    def study(self, hours):\n        print(f\"{self.name} studies for {hours} hours\")\n    \n    def pass_test(self):\n        print(f\"{self.name} passed the test!\")\n\nstudent = Student(\"Alice\", \"A\")\nstudent.study(3)\nstudent.pass_test()"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    "1. Define an empty class named Robot. (Defining class)",
+    "2. Add an __init__ method to initialize a robot's name. (Init method)",
+    "3. Create a specific instance (object) from your class and store it in a variable. (Creating instance)",
+    "4. Print out the name attribute of your created instance. (Instance attribute)",
+    "5. Write a method inside the class that makes the robot say 'Beep boop!'. (Instance method)",
+    "6. Create two entirely separate robot instances with different names. (Multiple instances)",
+    "7. Change the name attribute of one of your robots after it has been created. (Modifying attributes)",
+    "8. Call the speaking method you wrote on one of your robot instances. (Calling methods)",
+    "9. Understand the 'self' parameter by writing a method that prints the robot's own name. (Self parameter)",
+    "10. Create a method that takes an external parameter and adds it to the robot's power level. (Method parameters)"
+  ]
+}

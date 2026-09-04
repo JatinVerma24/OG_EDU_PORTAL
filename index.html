@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2034578803232828"
+         crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ogeduAI 2026 | LPU Freshers Guide & Schedule</title>
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Welcome freshers to Lovely Professional University. Find your dynamic induction schedule, reporting steps, document checklist, and FAQs here. Created by OG Jatin Verma.">
+    <meta name="keywords" content="LPU, Lovely Professional University, LPU Induction 2026, freshers induction, LPU reporting steps, Jatin Verma">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="dark-theme">
+    <!-- Background Elements -->
+    <div class="bg-blur-circle bg-blur-1"></div>
+    <div class="bg-blur-circle bg-blur-2"></div>
+    <div class="bg-blur-circle bg-blur-3"></div>
+
+    <!-- Header Navigation -->
+    <header class="app-header">
+        <div class="container header-container">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <span class="logo-letter">L</span>
+                    <span class="logo-letter orange">P</span>
+                    <span class="logo-letter">U</span>
+                </div>
+                <span class="logo-text">ogeduAI <span class="year-badge">2026</span></span>
+            </div>
+            
+            <div class="og-badge-wrapper d-none-mobile">
+                <span class="og-badge"><i class="fas fa-crown"></i> DESIGNED BY JATIN VERMA FULL STACK DEVELOPER, CREATOR AND INFLUENCER</span>
+            </div>
+
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="#schedule-section" class="btn btn-primary btn-sm">
+                    Find Schedule <i class="fas fa-search"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <span class="welcome-tag"><i class="fas fa-star-of-david"></i> LPU Class of 2026 Orientation Portal</span>
+                <h1>Begin Your LPU Journey Confidently</h1>
+                <p class="hero-subtitle">
+                    Access the complete induction schedule database. View custom reporting timelines, generate personalized checklist documents, and follow the official on-arrival process.
+                </p>
+                
+                <!-- Countdown Timer -->
+                <div class="countdown-card glass-panel">
+                    <h3 class="countdown-title">Induction Countdown</h3>
+                    <div class="countdown-grid">
+                        <div class="countdown-item">
+                            <span id="days" class="countdown-val">00</span>
+                            <span class="countdown-label">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="hours" class="countdown-val">00</span>
+                            <span class="countdown-label">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="minutes" class="countdown-val">00</span>
+                            <span class="countdown-label">Mins</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="seconds" class="countdown-val">00</span>
+                            <span class="countdown-label">Secs</span>
+                        </div>
+                    </div>
+                    <p class="countdown-note">Portal synced with LPUADMIT 2026 schedules.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Reporting Guidelines Section -->
+        <section class="reporting-steps-section">
+            <div class="section-title-wrapper text-center">
+                <h2><i class="fas fa-route text-orange"></i> Official Reporting & Admission Guidelines</h2>
+                <p>Learn what you need to do before arriving, on campus, and to get your hostel room keys.</p>
+            </div>
+
+            <!-- Category Selector Tabs -->
+            <div class="reporting-category-tabs">
+                <button class="rep-tab-btn active" data-category="preArrival">
+                    <i class="fas fa-plane-arrival"></i> 1. Before Arrival
+                </button>
+                <button class="rep-tab-btn" data-category="onCampus">
+                    <i class="fas fa-building-columns"></i> 2. On-Campus Process
+                </button>
+                <button class="rep-tab-btn" data-category="hostelAllocation">
+                    <i class="fas fa-key"></i> 3. Hostel Room Keys
+                </button>
+                <button class="rep-tab-btn" data-category="scheduleNotes">
+                    <i class="far fa-calendar-alt"></i> 4. Important Schedules
+                </button>
+                <button class="rep-tab-btn" data-category="minuteToMinute">
+                    <i class="fas fa-stopwatch"></i> 5. Minute-to-Minute Schedule
+                </button>
+            </div>
+            
+            <!-- Steps Progress Bar -->
+            <div class="steps-progress-bar-container" id="reporting-steps-progress">
+                <!-- Dynamically injected via app.js -->
+            </div>
+
+            <!-- Details Card -->
+            <div class="step-details-card glass-panel" id="step-details-card">
+                <div class="step-details-header">
+                    <span class="step-badge" id="step-badge-num">Step 1 of 6</span>
+                    <h3 id="step-detail-title">Document Upload Guidelines</h3>
+                </div>
+                <p id="step-detail-description">
+                    Details here.
+                </p>
+                <div class="step-details-actions">
+                    <button class="btn btn-secondary btn-sm" id="prev-step-btn" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                    <button class="btn btn-primary btn-sm" id="next-step-btn">Next Step <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Schedule Notes Container -->
+            <div class="schedule-notes-grid hidden" id="schedule-notes-container">
+                <!-- Dynamically injected via app.js -->
+            </div>
+
+            <!-- Minute to Minute Container -->
+            <div class="minute-to-minute-container hidden" id="minute-to-minute-container">
+                <!-- Dynamically injected via app.js -->
+            </div>
+        </section>
+
+        <!-- Pinned / Active Programme Dashboard -->
+        <section id="my-plan-section" class="my-plan-section hidden">
+            <div class="section-header">
+                <h2><i class="fas fa-thumbtack text-orange font-spark"></i> Your Selected Plan</h2>
+                <button id="unpin-btn" class="btn btn-text btn-sm"><i class="fas fa-times"></i> Unselect</button>
+            </div>
+            
+            <div class="pinned-dashboard-grid">
+                <!-- Programme details and timeline -->
+                <div class="pinned-info-card glass-panel">
+                    <div class="pinned-header">
+                        <div>
+                            <span class="faculty-tag" id="pinned-faculty">LFTS</span>
+                            <h3 id="pinned-title">-</h3>
+                            <p class="pinned-meta">
+                                <span id="pinned-code"><i class="fas fa-barcode"></i> -</span> • 
+                                <span id="pinned-duration"><i class="fas fa-clock"></i> -</span> • 
+                                <span id="pinned-eligibility"><i class="fas fa-graduation-cap"></i> -</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="pinned-timeline">
+                        <div class="timeline-step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <h4>Reporting & Physical Verification</h4>
+                                <p id="pinned-reporting-date" class="date-val">-</p>
+                                <span class="step-desc">Report to <strong>Baldev Raj Mittal Unipolis</strong> on these dates for document verification & residential slip collection.</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <h4>Induction Program Sessions</h4>
+                                <p id="pinned-induction-date" class="date-val">-</p>
+                                <span class="step-desc">Attend expert orientations, departmental briefings, and icebreaker sessions.</span>
+                            </div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <h4>Academic Classes Begin</h4>
+                                <p id="pinned-class-date" class="date-val">-</p>
+                                <span class="step-desc">Official curriculum teaching starts. Ensure you have activated your LPU Touch app.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pinned-actions">
+                        <button id="add-calendar-btn" class="btn btn-primary btn-sm"><i class="far fa-calendar-check"></i> Add to Calendar (.ics)</button>
+                        <button id="share-schedule-btn" class="btn btn-secondary btn-sm"><i class="fas fa-share-nodes"></i> Copy Share Link</button>
+                    </div>
+                </div>
+
+                <!-- Generated Checklist -->
+                <div class="pinned-checklist-card glass-panel">
+                    <div class="checklist-header">
+                        <h3><i class="fas fa-list-check text-green"></i> Required Document Checklist</h3>
+                        <span id="checklist-progress" class="progress-badge">0/0 Done</span>
+                    </div>
+                    <p class="checklist-sub">Please upload colored scans on LPUADMIT and carry originals + 3 copies.</p>
+                    
+                    <ul class="checklist-items" id="checklist-items-list">
+                        <!-- Filled dynamically based on eligibility base -->
+                    </ul>
+                    <div class="checklist-footer">
+                        <button id="reset-checklist-btn" class="btn btn-text btn-sm"><i class="fas fa-arrows-rotate"></i> Reset Progress</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search and Filter Section -->
+        <section id="schedule-section" class="schedule-section">
+            <div class="section-title-wrapper">
+                <h2>Search & Filter Programme Schedule</h2>
+                <p>Enter your course keyword or filter by qualification levels to find your direct dates.</p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="filter-controls glass-panel">
+                <div class="search-box-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Type programme name (e.g. CSE, Agriculture, MBA, Law) or code..." autocomplete="off">
+                    <button id="clear-search-btn" class="clear-search-btn hidden"><i class="fas fa-times"></i></button>
+                </div>
+                
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label for="eligibility-filter">Eligibility Base</label>
+                        <select id="eligibility-filter">
+                            <option value="">All Eligibility Levels</option>
+                            <option value="After 10th">After 10th</option>
+                            <option value="After 10+2">After 12th (10+2)</option>
+                            <option value="Lateral Entry">Lateral Entry (Diploma / ITI)</option>
+                            <option value="After Graduation">After Graduation (PG / Masters)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="discipline-filter">Discipline</label>
+                        <select id="discipline-filter">
+                            <option value="">All Disciplines</option>
+                            <!-- Dynamically populated -->
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="faculty-filter">Faculty Block</label>
+                        <select id="faculty-filter">
+                            <option value="">All Faculty Blocks</option>
+                            <option value="LFTS">LFTS (Tech & Sciences)</option>
+                            <option value="LFBA">LFBA (Business & Arts)</option>
+                            <option value="LFAMS">LFAMS (Medical Sciences)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-footer">
+                    <span id="results-count" class="results-count">Loading programmes...</span>
+                    <button id="reset-filters-btn" class="btn btn-text btn-sm"><i class="fas fa-trash-can"></i> Clear All</button>
+                </div>
+            </div>
+
+            <!-- Loader -->
+            <div id="loader" class="loader-container">
+                <div class="spinner"></div>
+                <p>Loading LPU dataset...</p>
+            </div>
+
+            <!-- Results Grid -->
+            <div id="results-grid" class="results-grid">
+                <!-- Cards injected via JavaScript -->
+            </div>
+            
+            <!-- Empty State -->
+            <div id="empty-state" class="empty-state glass-panel hidden">
+                <i class="fas fa-search-minus empty-icon"></i>
+                <h3>No Matches Found</h3>
+                <p>No programmes match your current filter. Try searching for a broader keyword or resetting filters.</p>
+                <button id="empty-reset-btn" class="btn btn-primary btn-sm">Reset Filters</button>
+            </div>
+        </section>
+
+        <!-- Freshmen Induction Events Vibe Section -->
+        <section class="events-vibe-section">
+            <div class="section-title-wrapper text-center">
+                <h2><i class="fas fa-champagne-glasses text-orange animate-spin-slow"></i> LPU Induction Highlights</h2>
+                <p>It's not just paperwork. The 3-day induction program is packed with culture, guidance, and networking.</p>
+            </div>
+
+            <div class="vibe-tabs-container">
+                <div class="vibe-tabs">
+                    <button class="vibe-tab-btn active" data-tab="orientation">Academic Systems</button>
+                    <button class="vibe-tab-btn" data-tab="career">Career Roadmap</button>
+                    <button class="vibe-tab-btn" data-tab="culture">Cultural Showcase</button>
+                    <button class="vibe-tab-btn" data-tab="connect">LPU Engage</button>
+                </div>
+                
+                <div class="vibe-tab-content glass-panel" id="vibe-tab-content">
+                    <!-- Dynamic Tab Content -->
+                    <div class="tab-pane active" id="tab-orientation">
+                        <div class="tab-grid">
+                            <div class="tab-text">
+                                <h3>Mastering Academic Platforms</h3>
+                                <p>Get a complete walkthrough of LPU's academic ecosystem. Seniors and technical guides will help you set up and understand:</p>
+                                <ul class="vibe-list">
+                                    <li><i class="fas fa-circle-check"></i> <strong>UMS (University Management System):</strong> For attendance, grades, and timetables.</li>
+                                    <li><i class="fas fa-circle-check"></i> <strong>Evaluation System:</strong> How internal assessments, mid-terms, and end-term exams work.</li>
+                                    <li><i class="fas fa-circle-check"></i> <strong>LPU Touch:</strong> Accessing your student portal on-the-go from your mobile.</li>
+                                </ul>
+                            </div>
+                            <div class="tab-icon-box">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Campus Faculty Glossary & Guide -->
+        <section class="campus-guide-section">
+            <div class="section-title-wrapper">
+                <h2>Faculty Block Guide</h2>
+                <p>Abbreviations like LFTS, LFBA, and LFAMS represent major academic faculties at LPU. Learn where they are located.</p>
+            </div>
+
+            <div class="glossary-grid">
+                <div class="glossary-card glass-panel" style="--accent: var(--lfts-color)">
+                    <div class="glossary-header">
+                        <span class="fac-tag lfts-bg">LFTS</span>
+                        <h3>Lovely Faculty of Technology & Sciences</h3>
+                    </div>
+                    <p>Primarily handles CSE, IT, ECE, Mechanical, Civil, Biotech, Food Tech, Pure Sciences, and Agriculture programs.</p>
+                    <ul class="fac-details">
+                        <li><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Blocks 27-38 (Near Central Library/Gate 2)</li>
+                        <li><i class="fas fa-building"></i> <strong>Key Venues:</strong> Shanti Devi Mittal Auditorium, Uni-Mall auditoriums.</li>
+                    </ul>
+                </div>
+
+                <div class="glossary-card glass-panel" style="--accent: var(--lfba-color)">
+                    <div class="glossary-header">
+                        <span class="fac-tag lfba-bg">LFBA</span>
+                        <h3>Lovely Faculty of Business & Arts</h3>
+                    </div>
+                    <p>Handles Business, Economics, Hotel Management, Fine Arts, Fashion Design, Law, Journalism, and Humanities.</p>
+                    <ul class="fac-details">
+                        <li><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Blocks 14, 25, 26, & 30 (Middle Campus)</li>
+                        <li><i class="fas fa-building"></i> <strong>Key Venues:</strong> Baldev Raj Mittal Auditorium, Block 30 Seminar halls.</li>
+                    </ul>
+                </div>
+
+                <div class="glossary-card glass-panel" style="--accent: var(--lfams-color)">
+                    <div class="glossary-header">
+                        <span class="fac-tag lfams-bg">LFAMS</span>
+                        <h3>Lovely Faculty of Applied Medical Sciences</h3>
+                    </div>
+                    <p>Handles Pharmaceutical Sciences, Ayurvedic Medicine, Physiotherapy, and Medical Lab Technology programs.</p>
+                    <ul class="fac-details">
+                        <li><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Blocks 17, 18, & 19 (South Campus)</li>
+                        <li><i class="fas fa-building"></i> <strong>Key Venues:</strong> Block 18 Seminar Auditoriums.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Freshers FAQ Accordion -->
+        <section class="faq-section">
+            <div class="section-title-wrapper">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about joining LPU as a fresher.</p>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item glass-panel">
+                    <button class="faq-question">
+                        <span>Is attendance at the Induction Program mandatory?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, attendance at the LPU Induction Program is highly mandatory. During these days, you will be registered into the university systems, complete biometric verification, activate your LPU Touch portal, and get introduced to your faculty mentors and curriculum structure. Missing it will delay your integration into classes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel">
+                    <button class="faq-question">
+                        <span>What is the Anti-Ragging Affidavit requirement?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>LPU has a strict zero-tolerance policy for ragging. You must submit a self-attested Anti-Ragging Affidavit signed by both you and your parent/guardian. You can fill out the form online on the anti-ragging web portal or LPUADMIT dashboard, print it, sign it, and bring the hard copy to campus during verification.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel">
+                    <button class="faq-question">
+                        <span>How can I register for the free Pick-up Facility?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>LPU provides a free pick-up service from Phagwara Railway Station, Jalandhar Cantt Railway Station, and Phagwara Bus Stand. You can book this service under 'Travel Arrangements' on your LPUADMIT portal. Ensure you book at least 48 hours prior to arrival so the transport team can coordinate your pickup.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel">
+                    <button class="faq-question">
+                        <span>What if I have an outstanding fee balance when reporting?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Ensure that all outstanding fees are settled before physical reporting. Dues can be cleared online via the LPUADMIT portal. If you have queries about scholarship adjustments or loan updates, raise a query under the 'Ask Your Query' section on the portal or visit the accounts help desk at the reporting venue (Unipolis) immediately upon arrival.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel">
+                    <button class="faq-question">
+                        <span>Is carrying a laptop mandatory from Day 1?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>While not mandatory for the first day of document verification, it is highly recommended to have a laptop for your coursework, especially for Engineering, Computer Applications, Management, and Design disciplines. You will need it to access study material, take exams, and complete UMS tasks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="container footer-content">
+            <div class="og-jatin-footer">
+                <span class="jatin-brand"><i class="fas fa-code"></i> DESIGNED BY JATIN VERMA FULL STACK DEVELOPER, CREATOR AND INFLUENCER</span>
+            </div>
+            <p>&copy; 2026 ogeduAI. Designed for freshers' convenience.</p>
+            <p class="disclaimer">Disclaimer: This is an interactive schedule assistant. For official notifications, please cross-verify with your LPU UMS/Admissions dashboard.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <i class="fas fa-check-circle toast-icon"></i>
+        <span id="toast-message">Action successful!</span>
+    </div>
+
+    <!-- Floating Chat Bubble Button -->
+    <button class="chatbot-bubble pulse-effect" id="chatbot-bubble-btn" aria-label="Toggle offline assistant" title="ogeduAI Offline Helper">
+        <i class="fa-solid fa-robot"></i>
+        <span class="chatbot-badge">1</span>
+    </button>
+
+    <!-- Chat Window Panel -->
+    <div class="chatbot-window glass-panel" id="chatbot-window-panel">
+        <div class="chatbot-header">
+            <div class="chatbot-header-logo">
+                <i class="fa-solid fa-robot text-orange"></i>
+                <div>
+                    <h4 class="chatbot-title">ogeduAI Chatbot</h4>
+                    <span class="chatbot-status"><span class="status-dot"></span> Offline Assistant</span>
+                </div>
+            </div>
+            <button class="chatbot-close-btn" id="chatbot-close-btn">
+                <i class="fa-solid fa-minus"></i>
+            </button>
+        </div>
+        <div class="chatbot-body" id="chatbot-messages-body"></div>
+        <div class="chatbot-suggestions" id="chatbot-suggestions-chips"></div>
+        <div class="chatbot-footer">
+            <input type="text" placeholder="Type a message (e.g. docs, hostel)..." id="chatbot-user-input" />
+            <button class="chatbot-send-btn" id="chatbot-send-btn">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Core App Logic -->
+    <script src="steps_data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

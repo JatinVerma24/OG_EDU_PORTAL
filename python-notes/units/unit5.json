@@ -1,0 +1,182 @@
+{
+  "unit_number": 5,
+  "icon": "🎯",
+  "title": "Strings & Text",
+  "short_title": "Strings",
+  "short_description": "Index, slice, and manipulate text.",
+  "bro_quote": "Strings are the language of text—master them to build powerful text-processing applications.",
+  "subtopics": [
+    {
+      "name": "String Basics",
+      "explanation": "<ul>\n<li>📝 <b>A string is a sequence of characters in quotes.</b> Use single or double quotes.</li>\n<li>🔗 <b>Strings can contain letters, numbers, spaces, and symbols.</b></li>\n<li>🎯 <b>Strings are immutable — once created, they cannot be changed.</b> You create new strings instead.</li>\n<li>📏 <b>Use <code>len()</code> to find the length of a string.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Creating strings",
+          "filename": "strings_basic.py",
+          "code": "name = \"Alice\"\ngreeting = 'Hello'\nmessage = \"Python is awesome!\"\nprint(len(message))  # 20"
+        },
+        {
+          "comment": "Multi-line strings with triple quotes",
+          "filename": "multiline.py",
+          "code": "story = \"\"\"Once upon a time,\nthere was a programmer.\nThe end.\"\"\"\nprint(story)"
+        }
+      ]
+    },
+    {
+      "name": "Indexing and Negative Indexing",
+      "explanation": "<ul>\n<li>💺 <b>Start counting from 0 for positive indexing.</b> First character is [0].</li>\n<li>🔙 <b>Use negative indices to count from the end.</b> Last character is [-1].</li>\n<li>🚫 <b>Going out of bounds raises an IndexError.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Positive and negative indexing",
+          "filename": "indexing.py",
+          "code": "word = \"Python\"\nprint(word[0])     # P\nprint(word[5])     # n\nprint(word[-1])    # n (last char)\nprint(word[-2])    # o (second to last)"
+        },
+        {
+          "comment": "Accessing characters",
+          "filename": "char_access.py",
+          "code": "text = \"Hello\"\nprint(text[1])     # e\nprint(text[3])     # l\nprint(text[-3])    # l"
+        }
+      ]
+    },
+    {
+      "name": "Slicing Strings",
+      "explanation": "<ul>\n<li>✂️ <b>Use <code>[start:end]</code> to slice — includes start, excludes end.</b></li>\n<li>🚀 <b>Omit start to begin from 0: <code>[:end]</code></b></li>\n<li>🏁 <b>Omit end to go to the last character: <code>[start:]</code></b></li>\n<li>📊 <b>Use <code>[start:end:step]</code> to skip characters.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Basic slicing",
+          "filename": "slicing.py",
+          "code": "word = \"Python\"\nprint(word[0:2])   # Py\nprint(word[2:5])   # tho\nprint(word[:3])    # Pyt\nprint(word[3:])    # hon"
+        },
+        {
+          "comment": "Slicing with step",
+          "filename": "step_slice.py",
+          "code": "text = \"ABCDEFGH\"\nprint(text[::2])    # ACEG (every 2nd)\nprint(text[1::2])   # BDFH (start at 1, every 2nd)\nprint(text[::-1])   # HGFEDCBA (reverse)"
+        }
+      ]
+    },
+    {
+      "name": "String Methods — Case Changes",
+      "explanation": "<ul>\n<li>🔤 <b><code>.upper()</code> converts to UPPERCASE.</b></li>\n<li>🔡 <b><code>.lower()</code> converts to lowercase.</b></li>\n<li>📝 <b><code>.title()</code> capitalizes first letter of each word.</b></li>\n<li>🔄 <b><code>.swapcase()</code> swaps upper to lower and vice versa.</b></li>\n<li>💡 <b><code>.capitalize()</code> capitalizes only the first letter.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Change string case",
+          "filename": "case_methods.py",
+          "code": "text = \"hello World\"\nprint(text.upper())       # HELLO WORLD\nprint(text.lower())       # hello world\nprint(text.title())       # Hello World\nprint(text.capitalize())  # Hello world"
+        },
+        {
+          "comment": "Swap case",
+          "filename": "swapcase.py",
+          "code": "text = \"PyThOn\"\nprint(text.swapcase())  # pYtHoN"
+        }
+      ]
+    },
+    {
+      "name": "String Methods — Finding & Replacing",
+      "explanation": "<ul>\n<li>🔍 <b><code>.find()</code> returns the index of substring, or -1 if not found.</b></li>\n<li>📍 <b><code>.index()</code> is like find() but raises error if not found.</b></li>\n<li>✔️ <b><code>.count()</code> counts how many times a substring appears.</b></li>\n<li>🔄 <b><code>.replace(old, new)</code> replaces all occurrences.</b></li>\n<li>✅ <b><code>.startswith()/.endswith()</code> check the beginning/end.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Finding substrings",
+          "filename": "find_methods.py",
+          "code": "text = \"Hello World\"\nprint(text.find(\"o\"))       # 4 (first o)\nprint(text.find(\"xyz\"))     # -1 (not found)\nprint(text.count(\"l\"))      # 3 (three l's)"
+        },
+        {
+          "comment": "Replace and check",
+          "filename": "replace_methods.py",
+          "code": "text = \"Hello World\"\nprint(text.replace(\"World\", \"Python\"))  # Hello Python\nprint(text.startswith(\"Hello\"))  # True\nprint(text.endswith(\"orld\"))     # True"
+        }
+      ]
+    },
+    {
+      "name": "String Methods — Splitting & Joining",
+      "explanation": "<ul>\n<li>✂️ <b><code>.split()</code> breaks a string into a list by a delimiter.</b></li>\n<li>🔗 <b><code>.join()</code> combines a list into a single string.</b></li>\n<li>🧹 <b><code>.strip()</code> removes leading/trailing whitespace.</b></li>\n<li>🔲 <b><code>.lstrip()/.rstrip()</code> removes from left/right only.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Split and join",
+          "filename": "split_join.py",
+          "code": "sentence = \"Hello World Python\"\nwords = sentence.split()          # ['Hello', 'World', 'Python']\njoined = \" \".join(words)           # 'Hello World Python'\ncsv = \"apple,banana,cherry\".split(\",\")  # ['apple', 'banana', 'cherry']"
+        },
+        {
+          "comment": "Stripping whitespace",
+          "filename": "strip.py",
+          "code": "text = \"  Hello World  \"\nprint(text.strip())     # Hello World\nprint(text.lstrip())    # Hello World  \nprint(text.rstrip())    #   Hello World"
+        }
+      ]
+    },
+    {
+      "name": "String Formatting",
+      "explanation": "<ul>\n<li>🎬 <b>f-strings (Python 3.6+) — simplest way with <code>f\"text {variable}\"</code></b></li>\n<li>📊 <b><code>.format()</code> method using <code>\"text {}\".format(value)</code></b></li>\n<li>🔢 <b>Format numbers with precision: <code>{value:.2f}</code> for 2 decimals.</b></li>\n<li>🎯 <b><code>%</code> operator (older style) — <code>\"Hello %s\" % name</code></b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "f-strings (most modern)",
+          "filename": "fstring.py",
+          "code": "name = \"Alice\"\nage = 25\nprint(f\"My name is {name} and I'm {age} years old.\")\nprint(f\"Sum: {5 + 3}\")"
+        },
+        {
+          "comment": "Format method",
+          "filename": "format_method.py",
+          "code": "name = \"Bob\"\nscore = 95.5\nprint(\"Name: {}, Score: {:.1f}\".format(name, score))"
+        }
+      ]
+    },
+    {
+      "name": "String Checking Methods",
+      "explanation": "<ul>\n<li>✔️ <b><code>.isalpha()</code> checks if all characters are letters.</b></li>\n<li>🔢 <b><code>.isdigit()</code> checks if all characters are numbers.</b></li>\n<li>🔤 <b><code>.isalnum()</code> checks if all are letters or numbers.</b></li>\n<li>🔍 <b><code>.isspace()</code> checks if all are whitespace.</b></li>\n<li>📝 <b><code>.isupper()/.islower()</code> checks case.</b></li>\n<li>🎯 <b><code>in</code> operator checks if substring exists.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Check string properties",
+          "filename": "is_methods.py",
+          "code": "print(\"hello\".isalpha())     # True\nprint(\"123\".isdigit())       # True\nprint(\"hello123\".isalnum())  # True\nprint(\"HELLO\".isupper())     # True\nprint(\"hello\".islower())     # True"
+        },
+        {
+          "comment": "Check for substring",
+          "filename": "in_operator.py",
+          "code": "text = \"Python Programming\"\nprint(\"Python\" in text)   # True\nprint(\"Java\" in text)     # False"
+        }
+      ]
+    },
+    {
+      "name": "String Immutability",
+      "explanation": "<ul>\n<li>🔒 <b>Strings cannot be modified after creation.</b></li>\n<li>🆕 <b>Methods create and return NEW strings.</b></li>\n<li>💾 <b>You must reassign the variable to \"change\" it.</b></li>\n<li>⚡ <b>This makes strings safe and predictable.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "String immutability",
+          "filename": "immutable.py",
+          "code": "text = \"hello\"\n# text[0] = \"H\"  # ERROR! Cannot change\ntext = text.upper()  # Create new string\nprint(text)  # HELLO"
+        },
+        {
+          "comment": "Methods return new strings",
+          "filename": "immutable_methods.py",
+          "code": "original = \"abc\"\nmodified = original.upper()  # New string created\nprint(original)   # abc (unchanged)\nprint(modified)   # ABC (new string)"
+        }
+      ]
+    },
+    {
+      "name": "Escape Characters",
+      "explanation": "<ul>\n<li>🎯 <b><code>\\n</code> creates a new line.</b></li>\n<li>🔲 <b><code>\\t</code> inserts a tab (indentation).</b></li>\n<li>\\🔸 <b><code>\\\\</code> includes a backslash character.</b></li>\n<li>🔕 <b><code>\\\\'</code> or <code>\\\\\"</code> includes quotes inside strings.</b></li>\n<li>🔄 <b>Use raw strings <code>r\"text\"</code> to ignore escapes.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Using escape characters",
+          "filename": "escape.py",
+          "code": "print(\"Line 1\\nLine 2\")     # Newline\nprint(\"Name\\tAge\")         # Tab\nprint(\"She said \\\"Hi!\\\"\")  # Quotes"
+        },
+        {
+          "comment": "Raw strings",
+          "filename": "raw_string.py",
+          "code": "path = r\"C:\\Users\\Name\\file.txt\"\nprint(path)  # Backslashes printed as-is"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    "1. Extract the very first character of the string 'Programming'. (Indexing)",
+    "2. Use negative indexing to get the last character of a string. (Negative indexing)",
+    "3. Slice the first three letters out of a word. (Slicing)",
+    "4. Use the len() function to find out how many characters are in a sentence. (String length)",
+    "5. Convert a messy string like 'hElLo' completely into uppercase. (Changing case)",
+    "6. Replace the word 'bad' with 'good' in a sentence. (Replace text)",
+    "7. Split a sentence by spaces to turn it into a list of individual words. (Splitting)",
+    "8. Use the 'in' keyword to check if the letter 'z' is inside a word. (Checking contents)",
+    "9. Remove the extra spaces from the beginning and end of a padded string. (Stripping)",
+    "10. Count how many times the letter 'a' appears in 'banana'. (Counting)"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "unit_number": 2,
+  "icon": "🔀",
+  "title": "Conditional Statements",
+  "short_title": "Conditionals",
+  "short_description": "Learn to make your program take decisions using if, elif, and else.",
+  "bro_quote": "Every decision in your program starts with a condition—master if, elif, and else to control flow.",
+  "subtopics": [
+    {
+      "name": "Comparison Operators",
+      "explanation": "<ul>\n<li>⚖️ <b><code>==</code> checks if two values are equal.</b> Example: <code>5 == 5</code> gives True.</li>\n<li>🚫 <b><code>!=</code> checks if two values are NOT equal.</b> Example: <code>5 != 3</code> gives True.</li>\n<li>📊 <b><code>&gt;</code> checks if the left value is bigger.</b> Example: <code>10 &gt; 3</code> gives True.</li>\n<li>📉 <b><code>&lt;</code> checks if the left value is smaller.</b> Example: <code>2 &lt; 8</code> gives True.</li>\n<li>💡 <b>All comparison operators always return either True or False.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Equal == and Not Equal !=",
+          "filename": "equal.py",
+          "code": "print(5 == 5)   # True\nprint(5 != 3)   # True\nprint(5 != 5)   # False"
+        },
+        {
+          "comment": "Greater and Less Than",
+          "filename": "compare.py",
+          "code": "a = 10\nb = 5\nprint(a > b)   # True\nprint(a < b)   # False"
+        }
+      ]
+    },
+    {
+      "name": "The if Statement",
+      "explanation": "<ul>\n<li>🚦 <b><code>if</code> runs code ONLY if true.</b></li>\n<li>🔵 <b><code>else</code> runs if false.</b></li>\n<li>🔶 <b><code>elif</code> checks additional conditions.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Making a decision",
+          "filename": "if_else.py",
+          "code": "age = 18\nif age >= 18:\n    print(\"Adult\")\nelse:\n    print(\"Minor\")"
+        },
+        {
+          "comment": "Multiple choices",
+          "filename": "elif.py",
+          "code": "score = 85\nif score >= 90:\n    print(\"A\")\nelif score >= 80:\n    print(\"B\")\nelse:\n    print(\"C\")"
+        }
+      ]
+    },
+    {
+      "name": "Logical Operators",
+      "explanation": "<ul>\n<li>✅ <b><code>and</code> — BOTH must be True.</b></li>\n<li>🔓 <b><code>or</code> — AT LEAST ONE must be True.</b></li>\n<li>🔄 <b><code>not</code> — Reverses True/False.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Combining rules",
+          "filename": "logic.py",
+          "code": "is_sunny = True\nhas_time = True\nif is_sunny and has_time:\n    print(\"Go to park!\")"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    "1. Write a condition that checks if a number is strictly greater than 100. (Greater than)",
+    "2. Check if two string variables contain the exact same text. (Equality)",
+    "3. Use the != operator to verify that a number is not zero. (Not equal)",
+    "4. Write a simple if statement that prints 'Passed!' if a score is over 50. (Simple If)",
+    "5. Create an if-else block that prints 'Even' or 'Odd' based on a condition. (If-Else)",
+    "6. Use an if-elif-else structure to print a letter grade (A, B, or C). (If-Elif-Else)",
+    "7. Use the 'and' operator to check if a user is logged in AND has admin rights. (Logical AND)",
+    "8. Use the 'or' operator to check if it's Saturday OR Sunday. (Logical OR)",
+    "9. Use the 'not' keyword to execute code only when a condition is false. (Logical NOT)",
+    "10. Combine a comparison and a logical operator to check if a number is between 1 and 10. (Combining conditions)"
+  ]
+}

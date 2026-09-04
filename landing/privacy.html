@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2034578803232828"
+         crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZT0FTDEWMH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZT0FTDEWMH');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | OGEdu Portal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        :root {
+            --primary-orange: #f97316;
+            --primary-purple: #8b5cf6;
+            --bg-color: #030712;
+            --panel-bg: rgba(10, 15, 30, 0.7);
+            --border-color: rgba(255, 255, 255, 0.06);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --radius-lg: 32px;
+            --radius-md: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Tech Grid Overlay */
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+            mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 99;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            font-size: 1.3rem;
+            color: var(--primary-orange);
+            background: linear-gradient(135deg, var(--primary-orange), #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+        }
+
+        .logo-title span {
+            color: var(--primary-orange);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: rgba(249, 115, 22, 0.1);
+            border-color: var(--primary-orange);
+        }
+
+        main {
+            flex: 1;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 48px 24px 80px 24px;
+            z-index: 10;
+        }
+
+        .privacy-card {
+            background: var(--panel-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--primary-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .last-updated {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .content-section {
+            margin-bottom: 28px;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        li {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        li i {
+            color: var(--primary-orange);
+            font-size: 0.8rem;
+            margin-top: 6px;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.9);
+            padding: 32px 24px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            .privacy-card {
+                padding: 24px 16px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-area">
+                <i class="fa-solid fa-graduation-cap logo-icon"></i>
+                <div class="logo-title">OGEdu<span>Portal</span></div>
+            </a>
+            <a href="/" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Home</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="privacy-card">
+            <h1>Privacy Policy</h1>
+            <div class="last-updated">
+                <i class="fa-regular fa-clock"></i> Last Updated: June 25, 2026
+            </div>
+
+            <div class="content-section">
+                <h2><i class="fa-solid fa-shield-halved"></i> 1. Introduction</h2>
+                <p>Welcome to OGEdu Portal (accessible via https://ogedu-portal.vercel.app). We are committed to protecting the privacy of our visitors and students. This Privacy Policy document contains types of information collected and recorded by OGEdu Portal and how we use it.</p>
+                <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at jv242buisness@gmail.com.</p>
+            </div>
+
+            <div class="content-section">
+                <h2><i class="fa-solid fa-database"></i> 2. Information We Collect</h2>
+                <p>The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide it.</p>
+                <ul>
+                    <li><i class="fa-solid fa-circle-chevron-right"></i> <span><strong>Student Identification:</strong> When utilizing the AI Classifier routing tool, you enter your Student Registration ID to identify your academic batch. This data is processed client-side and is not permanently logged on our servers.</span></li>
+                    <li><i class="fa-solid fa-circle-chevron-right"></i> <span><strong>Contact Form & Feedback:</strong> If you contact us directly via our Doubt or Feedback desks, we collect your Name, Email Address, optional CUET/academic scores, and the contents of the message you send.</span></li>
+                    <li><i class="fa-solid fa-circle-chevron-right"></i> <span><strong>Log Files:</strong> OGEdu Portal follows a standard procedure of using log files. These files log visitors when they visit websites. The information collected includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamp, and referring/exit pages.</span></li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2><i class="fa-solid fa-cookie-bite"></i> 3. Cookies and Web Beacons</h2>
+                <p>Like any other website, OGEdu Portal uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
+            </div>
+
+            <div class="content-section">
+                <h2><i class="fa-solid fa-rectangle-ad"></i> 4. Google DoubleClick DART Cookie & AdSense</h2>
+                <p>Google is one of the third-party vendors on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.website.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL – <a href="https://policies.google.com/technologies/ads" style="color: var(--primary-orange); text-decoration: none;">https://policies.google.com/technologies/ads</a></p>
+                <p>Google AdSense may use cookies, JavaScript, or Web Beacons in the advertisements that appear on OGEdu Portal, which are sent directly to users' browsers. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.</p>
+            </div>
+
+            <div class="content-section">
+                <h2><i class="fa-solid fa-user-shield"></i> 5. GDPR & CCPA Privacy Rights</h2>
+                <p>We want to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:</p>
+                <ul>
+                    <li><i class="fa-solid fa-circle-chevron-right"></i> <span><strong>The right to access:</strong> You have the right to request copies of your personal data.</span></li>
+                    <li><i class="fa-solid fa-circle-chevron-right"></i> <span><strong>The right to rectification:</strong> You have the right to request that we correct any information you believe is inaccurate.</span></li>
+                    <li><i class="fa-solid fa-circle-chevron-right"></i> <span><strong>The right to erasure:</strong> You have the right to request that we erase your personal data, under certain conditions.</span></li>
+                    <li><i class="fa-solid fa-circle-chevron-right"></i> <span><strong>The right to object to processing:</strong> You have the right to object to our processing of your personal data, under certain conditions.</span></li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h2><i class="fa-solid fa-child"></i> 6. Children's Information</h2>
+                <p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>
+                <p>OGEdu Portal does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OGEdu Portal. DESIGNED BY JATIN VERMA FULL STACK DEVELOPER, CREATOR AND INFLUENCER. All rights reserved.</p>
+    </footer>
+</body>
+</html>

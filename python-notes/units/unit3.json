@@ -1,0 +1,64 @@
+{
+  "unit_number": 3,
+  "icon": "🔄",
+  "title": "Loops",
+  "short_title": "Loops",
+  "short_description": "Repeat actions automatically using while and for loops.",
+  "bro_quote": "Don't repeat yourself manually—let loops do the work and automate your tasks.",
+  "subtopics": [
+    {
+      "name": "The while Loop",
+      "explanation": "<ul>\n<li>🔄 <b>Keeps running as long as it's True.</b></li>\n<li>🛑 <b>Use <code>break</code> to stop early.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Count to 3",
+          "filename": "while.py",
+          "code": "count = 1\nwhile count <= 3:\n    print(count)\n    count += 1"
+        },
+        {
+          "comment": "Multiplication table of 2 using while",
+          "filename": "while_table2.py",
+          "code": "i = 1\nwhile i <= 10:\n    print(f\"2 × {i} = {2 * i}\")\n    i += 1"
+        }
+      ]
+    },
+    {
+      "name": "The for Loop",
+      "explanation": "<ul>\n<li>📋 <b>Goes through items one by one.</b></li>\n<li>🔢 <b>Use <code>range()</code> for numbers.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Loop with range",
+          "filename": "for_range.py",
+          "code": "for i in range(3):\n    print(\"Hello\")"
+        },
+        {
+          "comment": "Loop through a list",
+          "filename": "for_list.py",
+          "code": "items = [\"apple\", \"banana\"]\nfor item in items:\n    print(item)"
+        },
+        {
+          "comment": "Multiplication table of 2 using for",
+          "filename": "for_table2.py",
+          "code": "for i in range(1, 11):\n    print(f\"2 × {i} = {2 * i}\")"
+        },
+        {
+          "comment": "Multiplication table of 5 using for",
+          "filename": "for_table5.py",
+          "code": "for i in range(1, 11):\n    print(f\"5 × {i} = {5 * i}\")"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    "1. Write a while loop that counts down from 5 to 1. (While Loop)",
+    "2. Create a while loop that runs until a variable named 'power' reaches 0. (While condition)",
+    "3. Use a for loop and range() to print 'Hello' exactly 10 times. (For with range)",
+    "4. Use a for loop to print the numbers from 5 to 10. (For with range start/end)",
+    "5. Loop over a list of your three favorite movies and print each one. (Iterating list)",
+    "6. Loop through the word 'Python' and print each letter on a new line. (Iterating string)",
+    "7. Use a break statement to exit a loop prematurely when a target is found. (Break)",
+    "8. Use a continue statement to skip printing the number 3 in a loop. (Continue)",
+    "9. Write a loop inside another loop (a nested loop) to print coordinates. (Nested loops)",
+    "10. Write a loop that adds numbers together until the sum is greater than 50. (Accumulation loop)"
+  ]
+}

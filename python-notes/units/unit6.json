@@ -1,0 +1,118 @@
+{
+  "unit_number": 6,
+  "icon": "📦",
+  "title": "Lists",
+  "short_title": "Lists",
+  "short_description": "Store and modify collections of data.",
+  "bro_quote": "Lists are your data containers—learn to organize, manipulate, and iterate through your data.",
+  "subtopics": [
+    {
+      "name": "Creating Lists",
+      "explanation": "<ul>\n<li>📋 <b>A list is a collection that holds multiple items in order.</b></li>\n<li>🔢 <b>Use square brackets <code>[]</code> to create a list.</b></li>\n<li>🎯 <b>Items are separated by commas.</b> Example: <code>[1, 2, 3]</code></li>\n<li>✅ <b>Lists can hold any data type: numbers, strings, booleans, even other lists.</b></li>\n<li>🔄 <b>Lists are mutable — you can change, add, or remove items.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Creating different lists",
+          "filename": "lists_basic.py",
+          "code": "fruits = [\"apple\", \"banana\", \"orange\"]\nnumbers = [1, 2, 3, 4, 5]\nmixed = [\"Alice\", 25, True, 3.14]\nprint(fruits)"
+        },
+        {
+          "comment": "Empty list and appending",
+          "filename": "empty_list.py",
+          "code": "colors = []\ncolors.append(\"red\")\ncolors.append(\"blue\")\nprint(colors)"
+        }
+      ]
+    },
+    {
+      "name": "Indexing and Accessing Items",
+      "explanation": "<ul>\n<li>💺 <b>Items are numbered starting from 0 (first item is at index 0).</b></li>\n<li>🔙 <b>Use negative indices to count from the end: -1 is last, -2 is second to last.</b></li>\n<li>🎯 <b>Use square brackets to access: <code>list[index]</code></b></li>\n<li>⚠️ <b>Index out of range causes an error.</b> Check list length first.</li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Positive and negative indexing",
+          "filename": "indexing.py",
+          "code": "fruits = [\"apple\", \"banana\", \"orange\"]\nprint(fruits[0])    # apple\nprint(fruits[2])    # orange\nprint(fruits[-1])   # orange (last item)"
+        },
+        {
+          "comment": "Accessing with loops",
+          "filename": "loop_access.py",
+          "code": "items = [10, 20, 30, 40]\nfor item in items:\n    print(item)"
+        }
+      ]
+    },
+    {
+      "name": "Modifying Lists",
+      "explanation": "<ul>\n<li>✏️ <b>Change an item using <code>list[index] = new_value</code></b></li>\n<li>➕ <b><code>.append()</code> adds an item to the END.</b></li>\n<li>📍 <b><code>.insert(index, value)</code> adds at a specific position.</b></li>\n<li>❌ <b><code>.remove(value)</code> deletes the first matching item.</b></li>\n<li>🔤 <b><code>.pop(index)</code> removes and returns an item (default: last item).</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Append and insert",
+          "filename": "modify_basic.py",
+          "code": "fruits = [\"apple\", \"banana\"]\nfruits.append(\"orange\")\nfruits.insert(0, \"mango\")\nprint(fruits)"
+        },
+        {
+          "comment": "Remove and pop",
+          "filename": "remove_pop.py",
+          "code": "items = [1, 2, 3, 4, 5]\nitems.remove(3)\nlast = items.pop()\nprint(items)  # [1, 2, 4]"
+        }
+      ]
+    },
+    {
+      "name": "List Methods",
+      "explanation": "<ul>\n<li>📊 <b><code>.sort()</code> arranges items in order (modifies original list).</b></li>\n<li>🔄 <b><code>.reverse()</code> flips the order (modifies original list).</b></li>\n<li>📏 <b><code>len()</code> returns how many items are in the list.</b></li>\n<li>🔍 <b><code>.count(value)</code> counts how many times a value appears.</b></li>\n<li>📍 <b><code>.index(value)</code> returns the position of a value.</b></li>\n<li>🧹 <b><code>.clear()</code> removes all items.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Sort and reverse",
+          "filename": "sort_reverse.py",
+          "code": "numbers = [3, 1, 4, 1, 5]\nnumbers.sort()\nprint(numbers)  # [1, 1, 3, 4, 5]\nnumbers.reverse()\nprint(numbers)  # [5, 4, 3, 1, 1]"
+        },
+        {
+          "comment": "Length, count, and index",
+          "filename": "list_info.py",
+          "code": "colors = [\"red\", \"blue\", \"red\", \"green\"]\nprint(len(colors))        # 4\nprint(colors.count(\"red\"))  # 2\nprint(colors.index(\"blue\")) # 1"
+        }
+      ]
+    },
+    {
+      "name": "Slicing Lists",
+      "explanation": "<ul>\n<li>✂️ <b>Use <code>list[start:end]</code> to get a portion of the list.</b></li>\n<li>📌 <b>Start is included, end is excluded.</b> Example: <code>[0:2]</code> gets items at index 0 and 1.</li>\n<li>🚀 <b>Omit start or end to slice from beginning or to the end.</b></li>\n<li>📊 <b>Use step to skip items: <code>list[start:end:step]</code></b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Basic slicing",
+          "filename": "slicing.py",
+          "code": "nums = [0, 1, 2, 3, 4, 5]\nprint(nums[1:4])    # [1, 2, 3]\nprint(nums[:3])     # [0, 1, 2]\nprint(nums[2:])     # [2, 3, 4, 5]"
+        },
+        {
+          "comment": "Slicing with step",
+          "filename": "slice_step.py",
+          "code": "items = [10, 20, 30, 40, 50]\nprint(items[::2])   # [10, 30, 50]\nprint(items[::-1])  # [50, 40, 30, 20, 10] (reverse)"
+        }
+      ]
+    },
+    {
+      "name": "List Iteration and Comprehension",
+      "explanation": "<ul>\n<li>🔁 <b>Loop through lists with <code>for item in list</code></b></li>\n<li>🔢 <b>Use <code>for i in range(len(list))</code> when you need the index.</b></li>\n<li>💡 <b>List comprehensions create new lists concisely.</b></li>\n<li>🎯 <b><code>[expression for item in list]</code> applies operation to each item.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Basic loop and index loop",
+          "filename": "iteration.py",
+          "code": "fruits = [\"apple\", \"banana\", \"orange\"]\nfor fruit in fruits:\n    print(fruit)\nfor i in range(len(fruits)):\n    print(f\"Index {i}: {fruits[i]}\")"
+        },
+        {
+          "comment": "List comprehension",
+          "filename": "comprehension.py",
+          "code": "numbers = [1, 2, 3, 4, 5]\nsquares = [x**2 for x in numbers]\nprint(squares)  # [1, 4, 9, 16, 25]"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    "1. Create a list containing four different types of fruit. (Creating list)",
+    "2. Print the third item in your list using its index number. (Accessing)",
+    "3. Change the value of the second item in your list to something else. (Modifying)",
+    "4. Add a completely new item to the very end of your list. (Appending)",
+    "5. Insert a new item exactly at the beginning (index 0) of the list. (Inserting)",
+    "6. Remove a specific value (like 'apple') from your list. (Removing)",
+    "7. Use the .pop() method to remove and print the last item. (Popping)",
+    "8. Sort a list of numbers from lowest to highest. (Sorting)",
+    "9. Reverse the order of all items currently in your list. (Reversing)",
+    "10. Use len() to figure out exactly how many items your list currently holds. (List length)"
+  ]
+}

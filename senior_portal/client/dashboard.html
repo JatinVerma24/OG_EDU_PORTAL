@@ -1,0 +1,2865 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZT0FTDEWMH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZT0FTDEWMH');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OGTOOLS - Academic Suite & Result Checker</title>
+    <meta name="description" content="OGTOOLS - Check pass/fail status, calculate TGPA, CGPA, percentage, and track attendance for university students.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+    
+
+</head>
+<body>
+    <!-- Aceternity Background Layer -->
+    <div class="aceternity-bg">
+        <div class="spotlight"></div>
+    </div>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h1 class="logo"><em>OGTOOLS <span style="background: linear-gradient(135deg, #a78bfa, #f472b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.8rem; font-weight: 900; text-transform: uppercase; margin-left: 2px; vertical-align: super;">AI</span></em></h1>
+            <p class="logo-sub">RESULT CHECKER</p>
+        </div>
+
+        <nav class="sidebar-nav" id="sidebarNav">
+            <button class="nav-item active" data-page="pass-checker" id="nav-pass-checker">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">Pass Checker</span>
+                <span class="active-dot"></span>
+            </button>
+            <button class="nav-item" data-page="reappear-strategy" id="nav-reappear-strategy">
+                <span class="nav-icon">🔄</span>
+                <span class="nav-text">Reappear & Improvement</span>
+            </button>
+            <button class="nav-item" data-page="tgpa-calculator" id="nav-tgpa-calculator">
+                <span class="nav-icon">🎓</span>
+                <span class="nav-text">TGPA Calculator</span>
+            </button>
+            <button class="nav-item" data-page="cgpa-calculator" id="nav-cgpa-calculator">
+                <span class="nav-icon">🔮</span>
+                <span class="nav-text">CGPA Calculator</span>
+            </button>
+            <button class="nav-item" data-page="percentage" id="nav-percentage">
+                <span class="nav-icon">📐</span>
+                <span class="nav-text">Percentage</span>
+            </button>
+            <button class="nav-item" data-page="attendance" id="nav-attendance">
+                <span class="nav-icon">✨</span>
+                <span class="nav-text">Bonus Attendance</span>
+            </button>
+            <button class="nav-item" data-page="resources" id="nav-resources">
+                <span class="nav-icon">📚</span>
+                <span class="nav-text">Subject Resources</span>
+            </button>
+            <button class="nav-item" data-page="feedback" id="nav-feedback">
+                <span class="nav-icon">💬</span>
+                <span class="nav-text">Send Feedback</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            
+            <div class="appearance-toggle" id="themeToggle">
+                <span class="appearance-label">Appearance</span>
+                <span class="theme-icon" id="themeIcon">🌙</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.youtube.com/@JatinVermaTHE-OG" target="_blank" class="social-icon" aria-label="YouTube">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3 3 0 0 0-2.11-2.12C19.53 3.5 12 3.5 12 3.5s-7.53 0-9.39.57A3 3 0 0 0 .5 6.19 31.25 31.25 0 0 0 0 12a31.25 31.25 0 0 0 .5 5.81 3 3 0 0 0 2.11 2.12c1.86.57 9.39.57 9.39.57s7.53 0 9.39-.57a3 3 0 0 0 2.11-2.12A31.25 31.25 0 0 0 24 12a31.25 31.25 0 0 0-.5-5.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/ogjatinverma/?hl=en" target="_blank" class="social-icon" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.86 3.9 2.31 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.63-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm6.41-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/jatinverma24/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 2.06-2.06 2.06 2.06 0 0 1-2.06 2.06zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77A1.75 1.75 0 0 0 0 1.73v20.54A1.75 1.75 0 0 0 1.77 24h20.45A1.75 1.75 0 0 0 24 22.27V1.73A1.75 1.75 0 0 0 22.22 0z"/></svg>
+                </a>
+            </div>
+            <p class="credits" style="font-size: 0.65rem; line-height: 1.4;">DESIGNED BY JATIN VERMA<br>FULL STACK DEVELOPER, CREATOR AND INFLUENCER</p>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header" id="mobileHeader">
+        <div class="mobile-logo">
+        <h1><em>OGEDU-PORTAL <span style="background: linear-gradient(135deg, #a78bfa, #f472b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.8rem; font-weight: 900; text-transform: uppercase; margin-left: 2px; vertical-align: super;">AI</span></em></h1>
+            <p>RESULT CHECKER</p>
+        </div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Pass Checker Page -->
+        <section class="page active" id="page-pass-checker">
+            <div class="page-header">
+                <h2 class="page-title gradient-text-purple">Pass Checker</h2>
+                <p class="page-subtitle">Check if you meet the passing criteria</p>
+                
+                <!-- Reappear Strategy Info Banner -->
+                <div class="reappear-strategy-banner">
+                    <div class="banner-text">
+                        <h4>💡 LPU Reappear & Improvement Strategy</h4>
+                        <p>Read our smart & practical guide to clear reappears easily.</p>
+                    </div>
+                    <button class="banner-btn" id="openReappearBtn">Read Strategy</button>
+                </div>
+            </div>
+
+            <div class="pass-checker-layout glass-card">
+                <div class="form-section">
+                    <div class="form-group">
+                        <label class="form-label" for="subjectName">Subject Name</label>
+                        <input type="text" id="subjectName" class="form-input" placeholder="e.g. Programming in Java">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Examination Type</label>
+                        <div class="toggle-group" id="examType">
+                            <button class="toggle-btn active" data-value="regular">Regular</button>
+                            <button class="toggle-btn" data-value="reappear">Reappear</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Subject Type</label>
+                        <div class="toggle-group" id="subjectType">
+                            <button class="toggle-btn active" data-value="theory">Theory</button>
+                            <button class="toggle-btn" data-value="practical">Practical</button>
+                        </div>
+                    </div>
+
+                    <div class="marks-section">
+                        <div class="marks-row">
+                            <label class="form-label">Attendance</label>
+                            <div class="marks-inputs">
+                                <input type="number" id="attObt" class="form-input marks-input" value="0" min="0">
+                                <span class="marks-separator">/</span>
+                                <input type="number" id="attMax" class="form-input marks-input" value="5" min="0">
+                            </div>
+                        </div>
+
+                        <div class="marks-row">
+                            <label class="form-label">Continuous Assessment</label>
+                            <div class="marks-inputs">
+                                <input type="number" id="caObt" class="form-input marks-input" value="0" min="0">
+                                <span class="marks-separator">/</span>
+                                <input type="number" id="caMax" class="form-input marks-input" value="25" min="0">
+                            </div>
+                        </div>
+
+                        <div class="marks-row">
+                            <label class="form-label">Mid Term (MTE)</label>
+                            <div class="marks-inputs">
+                                <input type="number" id="mteObt" class="form-input marks-input" value="0" min="0">
+                                <span class="marks-separator">/</span>
+                                <input type="number" id="mteMax" class="form-input marks-input" value="20" min="0">
+                            </div>
+                        </div>
+
+                        <div class="marks-row">
+                            <label class="form-label">End Term (ETE)</label>
+                            <div class="marks-inputs">
+                                <input type="number" id="eteObt" class="form-input marks-input" value="0" min="0">
+                                <span class="marks-separator">/</span>
+                                <input type="number" id="eteMax" class="form-input marks-input" value="50" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="verdict-section" id="verdictSection">
+                    <div class="verdict-content" id="verdictContent">
+                        <p class="verdict-text gradient-text-purple" id="verdictText">Enter your marks to see the verdict</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reappear & Improvement Page -->
+        <section class="page" id="page-reappear-strategy">
+            <style>
+                /* Scoped variables and custom styles for Re-Appear Portal */
+                #page-reappear-strategy {
+                    --re-orange: #f97316;
+                    --re-purple: #8b5cf6;
+                    --re-blue: #3b82f6;
+                    --re-green: #10b981;
+                    --re-dark-card: rgba(30, 41, 59, 0.4);
+                    --re-border: rgba(255, 255, 255, 0.08);
+                    font-family: 'Inter', sans-serif;
+                }
+
+                #page-reappear-strategy.high-contrast {
+                    --re-dark-card: #0f172a !important;
+                    --re-border: rgba(255, 255, 255, 0.3) !important;
+                    --re-orange: #ff7c1f !important;
+                    --re-purple: #a78bfa !important;
+                    --re-blue: #60a5fa !important;
+                    background-color: #000000 !important;
+                }
+
+                .re-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 32px;
+                    padding-bottom: 48px;
+                }
+
+                /* Header Controls */
+                .re-controls-row {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 16px;
+                    border-bottom: 1px solid var(--re-border);
+                    padding-bottom: 16px;
+                }
+
+                .re-toggles {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                }
+
+                .re-toggle-label {
+                    font-size: 0.85rem;
+                    color: var(--text-secondary);
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    cursor: pointer;
+                }
+
+                .re-toggle-input {
+                    cursor: pointer;
+                    accent-color: var(--re-purple);
+                }
+
+                .re-lang-select {
+                    background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid var(--re-border);
+                    color: #fff;
+                    padding: 6px 12px;
+                    border-radius: 8px;
+                    font-size: 0.85rem;
+                    outline: none;
+                    cursor: pointer;
+                }
+
+                /* Hero Section */
+                .re-hero {
+                    position: relative;
+                    background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15) 0%, transparent 60%),
+                                radial-gradient(circle at bottom left, rgba(249, 115, 22, 0.08) 0%, transparent 50%);
+                    border: 1px solid var(--re-border);
+                    border-radius: 24px;
+                    padding: 48px 32px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    overflow: hidden;
+                    backdrop-filter: blur(12px);
+                }
+
+                .re-hero-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    background: rgba(249, 115, 22, 0.1);
+                    border: 1px solid rgba(249, 115, 22, 0.2);
+                    color: var(--re-orange);
+                    padding: 6px 16px;
+                    border-radius: 30px;
+                    font-size: 0.85rem;
+                    font-weight: 700;
+                    align-self: flex-start;
+                }
+
+                .re-hero h1 {
+                    font-family: 'Outfit', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 900;
+                    letter-spacing: -0.5px;
+                    line-height: 1.2;
+                    background: linear-gradient(135deg, #ffffff 40%, #c084fc 80%, #f472b6 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+
+                .re-hero-subtitle {
+                    color: var(--text-secondary);
+                    font-size: 1.1rem;
+                    line-height: 1.5;
+                    max-width: 600px;
+                }
+
+                .re-hero-actions {
+                    display: flex;
+                    gap: 16px;
+                    flex-wrap: wrap;
+                    margin-top: 12px;
+                }
+
+                .re-btn {
+                    padding: 12px 24px;
+                    border-radius: 12px;
+                    font-weight: 700;
+                    font-size: 0.95rem;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    transition: all 0.2s ease;
+                    border: 1px solid transparent;
+                }
+
+                .re-btn-primary {
+                    background: linear-gradient(135deg, var(--re-purple), #ec4899);
+                    color: #fff;
+                    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+                }
+
+                .re-btn-primary:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+                }
+
+                .re-btn-secondary {
+                    background: rgba(255, 255, 255, 0.05);
+                    border-color: var(--re-border);
+                    color: #fff;
+                }
+
+                .re-btn-secondary:hover {
+                    background: rgba(255, 255, 255, 0.08);
+                    transform: translateY(-2px);
+                }
+
+                /* Alert Notice Card */
+                .re-alert-card {
+                    background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(249, 115, 22, 0.03) 100%);
+                    border: 1px solid rgba(239, 68, 68, 0.2);
+                    border-radius: 16px;
+                    padding: 24px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 24px;
+                }
+
+                @media (max-width: 768px) {
+                    .re-alert-card { grid-template-columns: 1fr; }
+                }
+
+                .re-alert-title {
+                    font-weight: 800;
+                    font-size: 1.15rem;
+                    color: #f87171;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 12px;
+                }
+
+                .re-alert-dates {
+                    list-style: none;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    font-size: 0.9rem;
+                    color: var(--text-secondary);
+                }
+
+                .re-alert-dates strong { color: #fff; }
+
+                .re-countdown-box {
+                    background: rgba(0, 0, 0, 0.2);
+                    border: 1px solid var(--re-border);
+                    border-radius: 12px;
+                    padding: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 8px;
+                    text-align: center;
+                }
+
+                .re-countdown-timer {
+                    font-family: monospace;
+                    font-size: 1.6rem;
+                    font-weight: 800;
+                    color: var(--re-orange);
+                    letter-spacing: 1px;
+                }
+
+                /* Student Dashboard Trackers */
+                .re-dash-grid {
+                    display: grid;
+                    grid-template-cols: 1fr 1fr;
+                    gap: 24px;
+                }
+
+                @media (max-width: 900px) {
+                    .re-dash-grid { grid-template-columns: 1fr; }
+                }
+
+                .re-panel {
+                    background: var(--re-dark-card);
+                    border: 1px solid var(--re-border);
+                    border-radius: 20px;
+                    padding: 24px;
+                    backdrop-filter: blur(8px);
+                }
+
+                .re-panel-title {
+                    font-weight: 800;
+                    font-size: 1.2rem;
+                    margin-bottom: 20px;
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                .re-panel-subtitle {
+                    font-size: 0.85rem;
+                    color: var(--text-secondary);
+                    font-weight: 500;
+                }
+
+                /* Checklist styling */
+                .re-checklist-item {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 12px;
+                    border-radius: 10px;
+                    background: rgba(255, 255, 255, 0.02);
+                    border: 1px solid var(--re-border);
+                    margin-bottom: 10px;
+                    transition: all 0.2s ease;
+                }
+
+                .re-checklist-item:hover {
+                    background: rgba(255, 255, 255, 0.04);
+                }
+
+                .re-checkbox-group {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                }
+
+                .re-checklist-check {
+                    cursor: pointer;
+                    width: 18px;
+                    height: 18px;
+                    accent-color: var(--re-purple);
+                }
+
+                .re-checklist-text {
+                    font-size: 0.95rem;
+                    color: var(--text-secondary);
+                    transition: all 0.2s ease;
+                }
+
+                .re-checklist-item.checked .re-checklist-text {
+                    text-decoration: line-through;
+                    opacity: 0.5;
+                }
+
+                .re-progress-bar-bg {
+                    width: 100%;
+                    height: 8px;
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 4px;
+                    overflow: hidden;
+                    margin-top: 16px;
+                }
+
+                .re-progress-bar-fill {
+                    height: 100%;
+                    background: linear-gradient(90deg, var(--re-purple), #f472b6);
+                    width: 0%;
+                    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+
+                /* Leaderboard & Gamification */
+                .re-streak-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    background: rgba(239, 68, 68, 0.1);
+                    border: 1px solid rgba(239, 68, 68, 0.25);
+                    color: #f87171;
+                    padding: 4px 12px;
+                    border-radius: 12px;
+                    font-size: 0.8rem;
+                    font-weight: 700;
+                }
+
+                .re-badges-row {
+                    display: flex;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                    margin-top: 14px;
+                }
+
+                .re-badge-chip {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    background: rgba(139, 92, 246, 0.08);
+                    border: 1px solid rgba(139, 92, 246, 0.2);
+                    padding: 6px 12px;
+                    border-radius: 10px;
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                    color: #c084fc;
+                    opacity: 0.4;
+                    transition: all 0.3s ease;
+                }
+
+                .re-badge-chip.unlocked {
+                    opacity: 1;
+                    background: rgba(139, 92, 246, 0.15);
+                    box-shadow: 0 0 10px rgba(139, 92, 246, 0.15);
+                }
+
+                .re-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    font-size: 0.85rem;
+                }
+
+                .re-table th, .re-table td {
+                    padding: 8px 12px;
+                    text-align: left;
+                    border-bottom: 1px solid var(--re-border);
+                }
+
+                .re-table th {
+                    color: var(--text-secondary);
+                    font-weight: 600;
+                }
+
+                /* Mode Comparison Section */
+                .re-mode-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 24px;
+                }
+
+                @media (max-width: 768px) {
+                    .re-mode-grid { grid-template-columns: 1fr; }
+                }
+
+                .re-mode-card {
+                    background: var(--re-dark-card);
+                    border: 1px solid var(--re-border);
+                    border-radius: 20px;
+                    padding: 32px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                    transition: all 0.3s ease;
+                }
+
+                .re-mode-card:hover {
+                    border-color: rgba(139, 92, 246, 0.3);
+                    transform: translateY(-4px);
+                    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+                }
+
+                .re-mode-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .re-mode-fee {
+                    font-size: 1.4rem;
+                    font-weight: 800;
+                    color: var(--re-orange);
+                }
+
+                .re-mode-features {
+                    list-style: none;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    margin: 12px 0;
+                    font-size: 0.9rem;
+                    color: var(--text-secondary);
+                }
+
+                .re-mode-features li {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                .re-mode-features li::before {
+                    content: '✓';
+                    color: var(--re-green);
+                    font-weight: bold;
+                }
+
+                /* Mode Decision Quiz */
+                .re-quiz-panel {
+                    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(59, 130, 246, 0.03) 100%);
+                    border: 1px solid var(--re-border);
+                    border-radius: 20px;
+                    padding: 24px;
+                }
+
+                .re-quiz-q {
+                    margin-bottom: 18px;
+                }
+
+                .re-quiz-q-title {
+                    font-weight: 700;
+                    font-size: 0.95rem;
+                    color: #fff;
+                    margin-bottom: 10px;
+                }
+
+                .re-quiz-options {
+                    display: flex;
+                    gap: 12px;
+                    flex-wrap: wrap;
+                }
+
+                .re-quiz-opt {
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px solid var(--re-border);
+                    color: var(--text-secondary);
+                    padding: 10px 18px;
+                    border-radius: 10px;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                }
+
+                .re-quiz-opt:hover {
+                    background: rgba(255, 255, 255, 0.06);
+                    color: #fff;
+                }
+
+                .re-quiz-opt.active {
+                    background: var(--re-purple);
+                    color: #fff;
+                    border-color: transparent;
+                    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.25);
+                }
+
+                .re-quiz-result {
+                    margin-top: 20px;
+                    padding: 16px;
+                    border-radius: 12px;
+                    background: rgba(0, 0, 0, 0.2);
+                    border: 1px solid rgba(139, 92, 246, 0.25);
+                    display: none;
+                    animation: fadeIn 0.4s ease;
+                }
+
+                /* Resource Center Styles */
+                .re-filter-row {
+                    display: flex;
+                    gap: 12px;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                .re-search-wrapper {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px solid var(--re-border);
+                    border-radius: 10px;
+                    padding: 8px 14px;
+                    flex: 1;
+                    max-width: 400px;
+                }
+
+                .re-search-wrapper input {
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    color: #fff;
+                    font-size: 0.9rem;
+                    width: 100%;
+                }
+
+                .re-mic-btn {
+                    background: none;
+                    border: none;
+                    color: var(--text-secondary);
+                    cursor: pointer;
+                    padding: 2px;
+                }
+
+                .re-mic-btn:hover { color: var(--re-purple); }
+
+                .re-select-group {
+                    display: flex;
+                    gap: 12px;
+                    flex-wrap: wrap;
+                }
+
+                .re-select {
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px solid var(--re-border);
+                    color: #fff;
+                    padding: 8px 14px;
+                    border-radius: 10px;
+                    font-size: 0.85rem;
+                    outline: none;
+                    cursor: pointer;
+                }
+
+                .re-res-tabs {
+                    display: flex;
+                    gap: 8px;
+                    border-bottom: 1px solid var(--re-border);
+                    padding-bottom: 8px;
+                }
+
+                .re-res-tab-btn {
+                    background: none;
+                    border: none;
+                    color: var(--text-secondary);
+                    font-weight: 700;
+                    padding: 8px 16px;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                    border-radius: 8px;
+                    transition: all 0.2s ease;
+                }
+
+                .re-res-tab-btn.active {
+                    background: rgba(139, 92, 246, 0.1);
+                    color: #c084fc;
+                }
+
+                /* Resource Grid */
+                .re-res-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                    gap: 20px;
+                }
+
+                .re-res-card {
+                    background: var(--re-dark-card);
+                    border: 1px solid var(--re-border);
+                    border-radius: 16px;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    gap: 12px;
+                    transition: all 0.25s ease;
+                    position: relative;
+                }
+
+                .re-res-card:hover {
+                    transform: translateY(-4px);
+                    border-color: rgba(139, 92, 246, 0.25);
+                }
+
+                .re-res-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                }
+
+                .re-res-badge {
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    padding: 4px 8px;
+                    border-radius: 6px;
+                }
+
+                .re-res-badge.ver {
+                    background: rgba(16, 185, 129, 0.1);
+                    border: 1px solid rgba(16, 185, 129, 0.2);
+                    color: var(--re-green);
+                }
+
+                .re-res-badge.tag {
+                    background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid var(--re-border);
+                    color: var(--text-secondary);
+                }
+
+                .re-res-title {
+                    font-weight: 700;
+                    font-size: 1.05rem;
+                    color: #fff;
+                }
+
+                .re-res-stars {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                    font-size: 0.8rem;
+                    color: #fbbf24;
+                }
+
+                .re-star {
+                    cursor: pointer;
+                }
+
+                .re-res-meta {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 0.75rem;
+                    color: var(--text-muted);
+                    border-top: 1px solid var(--re-border);
+                    padding-top: 12px;
+                }
+
+                .re-res-actions {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 8px;
+                }
+
+                .re-res-actions button {
+                    background: rgba(255, 255, 255, 0.04);
+                    border: 1px solid var(--re-border);
+                    color: #fff;
+                    padding: 8px;
+                    border-radius: 8px;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 4px;
+                    transition: all 0.2s ease;
+                }
+
+                .re-res-actions button:hover {
+                    background: rgba(255, 255, 255, 0.08);
+                }
+
+                .re-res-actions button.bookmark-btn.active {
+                    color: var(--re-orange);
+                    border-color: rgba(249, 115, 22, 0.3);
+                }
+
+                .re-ai-sum-btn {
+                    grid-column: 1 / -1;
+                    background: var(--re-purple) !important;
+                    border-color: transparent !important;
+                    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2);
+                }
+
+                .re-ai-sum-btn:hover {
+                    background: #7c3aed !important;
+                }
+
+                /* Custom AI Summary Modal */
+                .re-ai-modal {
+                    position: fixed;
+                    inset: 0;
+                    background: rgba(0, 0, 0, 0.7);
+                    z-index: 10000;
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 24px;
+                }
+
+                .re-ai-modal-box {
+                    background: #1e293b;
+                    border: 1px solid var(--re-border);
+                    border-radius: 20px;
+                    max-width: 500px;
+                    width: 100%;
+                    padding: 28px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+                    animation: fadeIn 0.3s ease;
+                }
+
+                .re-ai-modal-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-bottom: 1px solid var(--re-border);
+                    padding-bottom: 12px;
+                }
+
+                .re-ai-modal-title {
+                    font-weight: 800;
+                    font-size: 1.15rem;
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                .re-ai-modal-content {
+                    font-size: 0.95rem;
+                    color: var(--text-secondary);
+                    line-height: 1.6;
+                    min-height: 150px;
+                }
+
+                .re-ai-modal-close {
+                    background: none;
+                    border: none;
+                    color: var(--text-muted);
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                }
+
+                .re-ai-modal-close:hover { color: #fff; }
+
+                /* Video section */
+                .re-vid-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                    gap: 20px;
+                }
+
+                .re-vid-card {
+                    background: var(--re-dark-card);
+                    border: 1px solid var(--re-border);
+                    border-radius: 16px;
+                    padding: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                }
+
+                .re-vid-thumbnail {
+                    width: 100%;
+                    aspect-ratio: 16/9;
+                    background: #0f172a;
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: var(--text-muted);
+                    position: relative;
+                    overflow: hidden;
+                    border: 1px solid var(--re-border);
+                    cursor: pointer;
+                }
+
+                .re-vid-thumbnail::before {
+                    content: '▶';
+                    font-size: 2rem;
+                    color: #fff;
+                    width: 60px;
+                    height: 60px;
+                    background: rgba(139, 92, 246, 0.8);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding-left: 4px;
+                    z-index: 2;
+                }
+
+                .re-vid-duration {
+                    position: absolute;
+                    bottom: 8px;
+                    right: 8px;
+                    background: rgba(0, 0, 0, 0.7);
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    font-size: 0.75rem;
+                    color: #fff;
+                }
+
+                .re-vid-notes-panel {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    background: rgba(0, 0, 0, 0.2);
+                    border: 1px solid var(--re-border);
+                    border-radius: 8px;
+                    padding: 10px;
+                }
+
+                .re-vid-notes-input {
+                    background: transparent;
+                    border: none;
+                    color: #fff;
+                    font-size: 0.8rem;
+                    outline: none;
+                    width: 100%;
+                }
+
+                /* Accordion UI */
+                .re-accordion {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                }
+
+                .re-acc-item {
+                    background: var(--re-dark-card);
+                    border: 1px solid var(--re-border);
+                    border-radius: 12px;
+                    overflow: hidden;
+                }
+
+                .re-acc-header {
+                    padding: 16px 20px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    cursor: pointer;
+                    user-select: none;
+                }
+
+                .re-acc-header h4 {
+                    font-weight: 700;
+                    font-size: 0.95rem;
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                }
+
+                .re-acc-body {
+                    padding: 0 20px;
+                    height: 0;
+                    overflow: hidden;
+                    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                    color: var(--text-secondary);
+                    font-size: 0.9rem;
+                    line-height: 1.6;
+                    border-top: 1px solid transparent;
+                }
+
+                .re-acc-item.active .re-acc-body {
+                    padding: 16px 20px;
+                    height: auto;
+                    border-color: var(--re-border);
+                }
+
+                .re-acc-actions {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 12px;
+                    padding-top: 8px;
+                    border-top: 1px solid rgba(255,255,255,0.03);
+                }
+
+                /* Timeline Section */
+                .re-timeline-row {
+                    display: flex;
+                    justify-content: space-between;
+                    position: relative;
+                    margin: 20px 0;
+                }
+
+                .re-timeline-line {
+                    position: absolute;
+                    top: 15px;
+                    left: 0;
+                    width: 100%;
+                    height: 4px;
+                    background: rgba(255, 255, 255, 0.05);
+                    z-index: 1;
+                }
+
+                .re-timeline-fill {
+                    position: absolute;
+                    top: 15px;
+                    left: 0;
+                    width: 10%; /* Current position */
+                    height: 4px;
+                    background: linear-gradient(90deg, var(--re-purple), var(--re-orange));
+                    z-index: 2;
+                    transition: width 0.5s ease;
+                }
+
+                .re-timeline-step {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 8px;
+                    z-index: 3;
+                    width: 20%;
+                    text-align: center;
+                }
+
+                .re-timeline-dot {
+                    width: 32px;
+                    height: 32px;
+                    background: #1e293b;
+                    border: 3px solid var(--re-border);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 0.8rem;
+                    font-weight: bold;
+                    color: var(--text-muted);
+                    transition: all 0.3s ease;
+                }
+
+                .re-timeline-step.active .re-timeline-dot {
+                    border-color: var(--re-purple);
+                    color: var(--re-purple);
+                    box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+                }
+
+                .re-timeline-step.current .re-timeline-dot {
+                    border-color: var(--re-orange);
+                    color: var(--re-orange);
+                    animation: pulse-glow 2s infinite alternate;
+                }
+
+                .re-timeline-label {
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    color: var(--text-secondary);
+                }
+
+                .re-timeline-step.current .re-timeline-label {
+                    color: var(--re-orange);
+                }
+
+                /* Community Forum */
+                .re-forum-post {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    background: rgba(255,255,255,0.01);
+                    border: 1px solid var(--re-border);
+                    border-radius: 12px;
+                    padding: 16px;
+                    margin-bottom: 12px;
+                }
+
+                .re-forum-header {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 0.75rem;
+                    color: var(--text-muted);
+                }
+
+                .re-forum-body {
+                    color: #fff;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                }
+
+                .re-forum-footer {
+                    display: flex;
+                    gap: 16px;
+                    font-size: 0.8rem;
+                }
+
+                .re-forum-action {
+                    background: none;
+                    border: none;
+                    color: var(--text-secondary);
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                }
+
+                .re-forum-action:hover { color: #fff; }
+
+                /* Admin settings */
+                .re-admin-form {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 16px;
+                }
+
+                @media (max-width: 600px) {
+                    .re-admin-form { grid-template-columns: 1fr; }
+                }
+
+                .re-form-input {
+                    background: rgba(0, 0, 0, 0.2);
+                    border: 1px solid var(--re-border);
+                    color: #fff;
+                    padding: 10px 14px;
+                    border-radius: 8px;
+                    font-size: 0.85rem;
+                    width: 100%;
+                    outline: none;
+                }
+
+                .re-form-input:focus {
+                    border-color: var(--re-purple);
+                }
+            </style>
+
+            <div class="re-container">
+                <!-- Translation, Accessibility, and PWA Chips Row -->
+                <div class="re-controls-row">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="re-hero-badge" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2); color: var(--re-green); margin: 0;">
+                            <i class="fa-solid fa-cloud-arrow-down"></i> <span id="pwa-status">PWA Offline Ready</span>
+                        </span>
+                        <select class="re-lang-select" id="lang-selector" onchange="translatePage()">
+                            <option value="en">English (EN)</option>
+                            <option value="hi">हिन्दी (HI)</option>
+                            <option value="pu">ਪੰਜਾਬੀ (PU)</option>
+                        </select>
+                    </div>
+
+                    <div class="re-toggles">
+                        <label class="re-toggle-label">
+                            <input type="checkbox" class="re-toggle-input" id="high-contrast-toggle" onchange="toggleHighContrast()">
+                            <span id="hc-lbl">♿ High Contrast</span>
+                        </label>
+                        <label class="re-toggle-label">
+                            <input type="checkbox" class="re-toggle-input" id="pref-push" checked onchange="toggleNotifyMe()">
+                            <span id="push-lbl">🔔 Push Alerts</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Hero Section -->
+                <div class="re-hero">
+                    <div class="re-hero-badge" id="exam-countdown-chip">
+                        ⌛ Loading Countdown...
+                    </div>
+                    <h1 id="hero-title">LPU Re-Appear & Improvement Portal</h1>
+                    <p class="re-hero-subtitle" id="hero-subtitle">
+                        Everything you need for your Re-Appear exams in one place. Access schedules, select registration modes, download resources, and track your prep.
+                    </p>
+                    <div class="re-hero-actions">
+                        <button class="re-btn re-btn-primary" onclick="document.getElementById('resource-center').scrollIntoView({behavior: 'smooth'})">
+                            📚 <span id="hero-btn-res">Explore Resources</span>
+                        </button>
+                        <button class="re-btn re-btn-secondary" onclick="document.getElementById('guide-section').scrollIntoView({behavior: 'smooth'})">
+                            🚀 <span id="hero-btn-guide">Register Guide</span>
+                        </button>
+                        <button class="re-btn re-btn-secondary" onclick="openFloatingChatWidget()">
+                            🤖 <span id="hero-btn-ai">Ask AI Assistant</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Animated Timeline -->
+                <div class="re-panel">
+                    <h3 class="re-panel-title">
+                        <span id="timeline-title">Interactive Timeline & Progress</span>
+                        <span class="re-panel-subtitle" id="timeline-sub">Pulsing indicator shows today's date sheet index</span>
+                    </h3>
+                    <div class="re-timeline-row">
+                        <div class="re-timeline-line"></div>
+                        <div class="re-timeline-fill" id="timeline-fill-bar"></div>
+                        
+                        <div class="re-timeline-step active" id="tl-step-1">
+                            <div class="re-timeline-dot">3</div>
+                            <div class="re-timeline-label">Reg Open<br><small>July 3</small></div>
+                        </div>
+                        <div class="re-timeline-step current" id="tl-step-2">
+                            <div class="re-timeline-dot">8</div>
+                            <div class="re-timeline-label">Reg Close<br><small>July 8</small></div>
+                        </div>
+                        <div class="re-timeline-step" id="tl-step-3">
+                            <div class="re-timeline-dot">9</div>
+                            <div class="re-timeline-label">Date Sheet<br><small>July 9</small></div>
+                        </div>
+                        <div class="re-timeline-step" id="tl-step-4">
+                            <div class="re-timeline-dot">11</div>
+                            <div class="re-timeline-label">Exams Start<br><small>July 11</small></div>
+                        </div>
+                        <div class="re-timeline-step" id="tl-step-5">
+                            <div class="re-timeline-dot">🏆</div>
+                            <div class="re-timeline-label">Results<br><small>Aug 2026</small></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Important Notice Card -->
+                <div class="re-alert-card">
+                    <div>
+                        <div class="re-alert-title">
+                            📢 <span id="alert-title">Official Deadlines & notices</span>
+                        </div>
+                        <ul class="re-alert-dates">
+                            <li>📅 <strong id="alert-reg">Registration Dates:</strong> 3 July – 8 July 2026</li>
+                            <li>⚠️ <strong id="alert-starts">Exam Starts:</strong> 11 July 2026 (Tentative)</li>
+                            <li>📑 <strong id="alert-sheet">Date Sheet Release:</strong> 9 July 2026 (Tentative)</li>
+                        </ul>
+                    </div>
+                    <div class="re-countdown-box">
+                        <span id="countdown-label">Registration closes in:</span>
+                        <div class="re-countdown-timer" id="reg-timer-clock">00d 00h 00m 00s</div>
+                        <button class="re-btn re-btn-secondary" style="padding: 6px 12px; font-size: 0.85rem;" onclick="toggleNotifyMe()">
+                            🔔 <span id="alert-notify-btn">Notify Me on Date Sheet Release</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Personal Student Dashboard Tracker -->
+                <div class="re-panel">
+                    <div class="re-panel-title">
+                        <span id="dash-title">Student Dashboard</span>
+                        <span class="re-streak-badge" id="streak-counter">🔥 0 Day Streak</span>
+                    </div>
+                    <p class="re-panel-subtitle" style="margin-top: -12px; margin-bottom: 20px;" id="dash-welcome">Welcome back, Student! Here is your current preparation status:</p>
+                    
+                    <div class="re-checklist-item" id="dash-chk-1">
+                        <div class="re-checkbox-group">
+                            <span class="re-checklist-text" id="chk-reg-step">Registration Checklist status</span>
+                        </div>
+                        <span class="re-hero-badge" style="background: rgba(139, 92, 246, 0.1); border-color: transparent; color: var(--re-purple);" id="dash-chk-ratio">0/5 Done</span>
+                    </div>
+
+                    <div class="re-checklist-item">
+                        <div class="re-checkbox-group">
+                            <span class="re-checklist-text" id="chk-mastery">Overall Subject Mastery progress</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 16px;">
+                        <span class="re-panel-subtitle" id="prog-lbl">Exam preparation completeness</span>
+                        <div class="re-progress-bar-bg">
+                            <div class="re-progress-bar-fill" id="master-prep-progress-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="re-badges-row">
+                        <span class="re-badge-chip" id="badge-chk">🏅 Guide Completed</span>
+                        <span class="re-badge-chip" id="badge-res">📚 Notes Saver</span>
+                        <span class="re-badge-chip" id="badge-qa">🧠 MCQ Master</span>
+                    </div>
+                </div>
+
+
+                <!-- Registration Guide Steps -->
+                <div class="re-panel" id="guide-section">
+                    <h3 class="re-panel-title" id="guide-title">Step-by-Step Registration Guide</h3>
+                    <p class="re-panel-subtitle" style="margin-top: -12px; margin-bottom: 20px;" id="guide-desc">Follow these steps carefully on UMS to register. Tick them off to save your progress.</p>
+                    
+                    <div class="re-checklist-item" id="guide-step-0">
+                        <div class="re-checkbox-group">
+                            <input type="checkbox" class="re-checklist-check" onchange="toggleGuideStep(0)">
+                            <div>
+                                <strong style="color: #fff;" id="step-0-title">Step 1: Open UMS</strong>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);" id="step-0-desc">Log into the LPU UMS Portal using your student registration credentials.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="re-checklist-item" id="guide-step-1">
+                        <div class="re-checkbox-group">
+                            <input type="checkbox" class="re-checklist-check" onchange="toggleGuideStep(1)">
+                            <div>
+                                <strong style="color: #fff;" id="step-1-title">Step 2: Navigate to Examination System</strong>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);" id="step-1-desc">Click on 'Academics' then go to the 'Examination System' sub-menu.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="re-checklist-item" id="guide-step-2">
+                        <div class="re-checkbox-group">
+                            <input type="checkbox" class="re-checklist-check" onchange="toggleGuideStep(2)">
+                            <div>
+                                <strong style="color: #fff;" id="step-2-title">Step 3: Re-Appear Registration</strong>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);" id="step-2-desc">Select 'Re-Appear & Improvement Registration', check your eligibility backlog subjects, and select your Mode.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="re-checklist-item" id="guide-step-3">
+                        <div class="re-checkbox-group">
+                            <input type="checkbox" class="re-checklist-check" onchange="toggleGuideStep(3)">
+                            <div>
+                                <strong style="color: #fff;" id="step-3-title">Step 4: Payment Confirmation</strong>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);" id="step-3-desc">Authorize payment. Double check if the fee amount was debited and status displays 'Successful'. Many students miss confirming this payment step!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="re-checklist-item" id="guide-step-4">
+                        <div class="re-checkbox-group">
+                            <input type="checkbox" class="re-checklist-check" onchange="toggleGuideStep(4)">
+                            <div>
+                                <strong style="color: #fff;" id="step-4-title">Step 5: Download Confirmation Receipt</strong>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);" id="step-4-desc">Always download the PDF transaction receipt for proof of registration in case of any future disputes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mode Comparison Section -->
+                <div id="mode-section" style="display: flex; flex-direction: column; gap: 24px;">
+                    <div class="re-panel">
+                        <h3 class="re-panel-title" id="mode-title">Registration Modes Comparison</h3>
+                        <p class="re-panel-subtitle" style="margin-top: -12px; margin-bottom: 20px;" id="mode-desc">Select the mode that best matches your CA score and grade goals.</p>
+                        
+                        <div class="re-mode-grid">
+                            <div class="re-mode-card">
+                                <div class="re-mode-header">
+                                    <h4 style="font-size: 1.25rem; font-weight: 800; color: #fff;">Mode A</h4>
+                                    <span class="re-mode-fee">₹500 <small style="font-size: 0.75rem; color: var(--text-muted);">/ Subject</small></span>
+                                </div>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary);" id="mode-a-desc">Without CA Improvement. Your existing UMS Continuous Assessment (CA) marks are carried forward.</p>
+                                <ul class="re-mode-features">
+                                    <li id="ma-f1">Regular exam syllabus load</li>
+                                    <li id="ma-f2">Great if you already scored 20+ in CA</li>
+                                    <li id="ma-f3">Lower risk & lower registration cost</li>
+                                </ul>
+                                <button class="re-btn re-btn-primary" style="width: 100%; margin-top: auto;" onclick="alert('You chose Mode A. Follow the guide to register on UMS!')">Choose Mode A</button>
+                            </div>
+
+                            <div class="re-mode-card">
+                                <div class="re-mode-header">
+                                    <h4 style="font-size: 1.25rem; font-weight: 800; color: #fff;">Mode B</h4>
+                                    <span class="re-mode-fee">₹3000 <small style="font-size: 0.75rem; color: var(--text-muted);">/ Subject</small></span>
+                                </div>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary);" id="mode-b-desc">With CA Improvement. Combines CA, MTE, and ETE into a single 70-mark comprehensive exam. Existing CA is ignored.</p>
+                                <ul class="re-mode-features">
+                                    <li id="mb-f1">Complete syllabus coverage required</li>
+                                    <li id="mb-f2">Best if CA score was extremely poor (&lt; 15)</li>
+                                    <li id="mb-f3">Enables maximum grade improvement possibility</li>
+                                </ul>
+                                <button class="re-btn re-btn-primary" style="width: 100%; margin-top: auto;" onclick="alert('You chose Mode B. Follow the guide to register on UMS!')">Choose Mode B</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Which Mode fits me quiz -->
+                    <div class="re-quiz-panel">
+                        <h4 style="font-weight: 800; font-size: 1.1rem; color: #fff; margin-bottom: 8px;" id="quiz-title">Interactive Mode Recommender</h4>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px;" id="quiz-subtitle">Answer these questions to automatically find the most strategic mode for your case.</p>
+                        
+                        <div class="re-quiz-q">
+                            <div class="re-quiz-q-title" id="q1-title">1. What are your current Continuous Assessment (CA) marks?</div>
+                            <div class="re-quiz-options" id="quiz-q1-opts">
+                                <button class="re-quiz-opt" onclick="setQuizAnswer(1, 'low')">Very low (&lt; 15)</button>
+                                <button class="re-quiz-opt" onclick="setQuizAnswer(1, 'mid')">Average (15 - 25)</button>
+                                <button class="re-quiz-opt" onclick="setQuizAnswer(1, 'high')">Good (> 25)</button>
+                            </div>
+                        </div>
+
+                        <div class="re-quiz-q">
+                            <div class="re-quiz-q-title" id="q2-title">2. What is your target grade for this subject?</div>
+                            <div class="re-quiz-options" id="quiz-q2-opts">
+                                <button class="re-quiz-opt" onclick="setQuizAnswer(2, 'pass')">Just want to pass</button>
+                                <button class="re-quiz-opt" onclick="setQuizAnswer(2, 'good')">Targeting B+ or A</button>
+                                <button class="re-quiz-opt" onclick="setQuizAnswer(2, 'excel')">Targeting A+ or O (Outstanding)</button>
+                            </div>
+                        </div>
+
+                        <div class="re-quiz-q">
+                            <div class="re-quiz-q-title" id="q3-title">3. What is your budget limit for registration?</div>
+                            <div class="re-quiz-options" id="quiz-q3-opts">
+                                <button class="re-quiz-opt" onclick="setQuizAnswer(3, 'low')">Tight budget (₹500)</button>
+                                <button class="re-quiz-opt" onclick="setQuizAnswer(3, 'high')">Can afford ₹3000</button>
+                            </div>
+                        </div>
+
+                        <button class="re-btn re-btn-primary" style="margin-top: 10px;" onclick="calculateQuizRecommendation()">
+                            🔮 <span id="quiz-btn">Calculate Best Mode</span>
+                        </button>
+
+                        <div class="re-quiz-result" id="quiz-result-box">
+                            <h5 style="color: var(--re-orange); font-weight: 800; margin-bottom: 8px;" id="quiz-res-header">Recommendation</h5>
+                            <p style="font-size: 0.9rem; line-height: 1.5;" id="quiz-res-text">Please complete all 3 questions first.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resource Center -->
+                <div class="re-panel" id="resource-center">
+                    <h3 class="re-panel-title" id="res-center-title">Reappear Prep Library</h3>
+                    <p class="re-panel-subtitle" style="margin-top: -12px; margin-bottom: 20px;" id="res-center-desc">Search, download, and review verified senior notes, PYQs, and formula cheat sheets.</p>
+                    
+                    <!-- Search and filters -->
+                    <div class="re-filter-row">
+                        <div class="re-search-wrapper">
+                            <i class="fa-solid fa-magnifying-glass" style="color: var(--text-secondary);"></i>
+                            <input type="text" id="resource-search" placeholder="Search by name, code (e.g. CSE316), or tag..." oninput="filterResources()">
+                            <button class="re-mic-btn" onclick="startVoiceSearch()"><i class="fa-solid fa-microphone"></i></button>
+                        </div>
+
+                        <div class="re-select-group">
+                            <select class="re-select" id="filter-sem" onchange="filterResources()">
+                                <option value="all">All Semesters</option>
+                                <option value="sem3">Semester 3</option>
+                                <option value="sem4">Semester 4</option>
+                                <option value="sem5">Semester 5</option>
+                            </select>
+                            <select class="re-select" id="filter-tag" onchange="filterResources()">
+                                <option value="all">All Tags</option>
+                                <option value="DBMS">DBMS</option>
+                                <option value="DSA">DSA</option>
+                                <option value="OS">OS</option>
+                                <option value="Python">Python</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Library tab toggles -->
+                    <div class="re-res-tabs" style="margin-top: 20px;">
+                        <button class="re-res-tab-btn active" id="tab-res-all" onclick="toggleResTab('all')">Trending / All</button>
+                        <button class="re-res-tab-btn" id="tab-res-shelf" onclick="toggleResTab('shelf')">My Shelf 🔖 (<span id="shelf-count">0</span>)</button>
+                    </div>
+
+                    <!-- Dynamic Resources Grid -->
+                    <div class="re-res-grid" id="resources-grid-container" style="margin-top: 20px;">
+                        <!-- Injected by script -->
+                    </div>
+                </div>
+
+                <!-- Video, PYQ & Leaderboard sections removed for clean UI -->
+
+                <!-- Community QA Forum -->
+                <div class="re-panel">
+                    <h3 class="re-panel-title" id="forum-title">Peer Doubt Q&A Forum</h3>
+                    <p class="re-panel-subtitle" style="margin-top: -12px; margin-bottom: 20px;" id="forum-desc">Ask queries regarding reappear syllabus or registration steps and get answers from seniors.</p>
+                    
+                    <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+                        <input type="text" class="re-form-input" id="forum-input" placeholder="Ask a subject doubt (e.g. Why Mode B has 70 marks paper?)...">
+                        <button class="re-btn re-btn-primary" onclick="postForumQuestion()">Post Doubt</button>
+                    </div>
+
+                    <div id="forum-questions-list">
+                        <!-- Forum items injected here -->
+                    </div>
+                </div>
+
+                <!-- FAQ section with was helpful buttons -->
+                <div class="re-panel">
+                    <h3 class="re-panel-title" id="faq-title">Frequently Asked Questions</h3>
+                    <div class="re-accordion" id="faq-list">
+                        <!-- Injected by script -->
+                    </div>
+                </div>
+
+                <!-- Support issue reported form -->
+                <div class="re-panel">
+                    <h3 class="re-panel-title" id="report-title">Report Registration Issue</h3>
+                    <form id="reappear-issue-form" onsubmit="submitReappearIssue(event)">
+                        <div class="re-admin-form">
+                            <input type="text" class="re-form-input" id="issue-name" placeholder="Your UMS ID / Registration Name" required>
+                            <input type="email" class="re-form-input" id="issue-email" placeholder="Your University Email" required>
+                            <textarea class="re-form-input" id="issue-msg" placeholder="Describe the payment error or registration issue in detail..." style="grid-column: 1 / -1; min-height: 80px;" required></textarea>
+                        </div>
+                        <button type="submit" class="re-btn re-btn-primary" style="margin-top: 14px;">Report Issue</button>
+                    </form>
+                    <div id="issue-success" style="display:none; color: var(--re-green); font-size: 0.9rem; font-weight:700; margin-top: 12px;">
+                        ✔ Issue report submitted successfully! Admin will contact you on your student mail.
+                    </div>
+                </div>
+
+                <!-- Admin panel overlay manager -->
+                <div class="re-panel" style="border-color: rgba(139, 92, 246, 0.4); background: rgba(139, 92, 246, 0.02);">
+                    <h3 class="re-panel-title" style="color: #c084fc;">
+                        <span>🛡 Moderator & Admin Panel</span>
+                        <span class="re-hero-badge" style="background: rgba(139, 92, 246, 0.15); border-color: transparent; color: #c084fc; margin: 0;">Verified Admin</span>
+                    </h3>
+                    <p class="re-panel-subtitle" style="margin-top: -12px; margin-bottom: 20px;">Upload resources, manage doubts, view download analytics, and export student logs.</p>
+                    
+                    <div class="re-admin-form" style="margin-bottom: 20px;">
+                        <input type="text" class="re-form-input" id="admin-res-title" placeholder="Resource Name (e.g. DBMS Cheat Sheet)">
+                        <input type="text" class="re-form-input" id="admin-res-tag" placeholder="Tag (e.g. DBMS, DSA)">
+                        <input type="text" class="re-form-input" id="admin-res-size" placeholder="Size (e.g. 1.2 MB)">
+                        <select class="re-form-input" id="admin-res-sem">
+                            <option value="sem3">Semester 3</option>
+                            <option value="sem4">Semester 4</option>
+                            <option value="sem5">Semester 5</option>
+                        </select>
+                        <button class="re-btn re-btn-primary" style="grid-column: 1 / -1; justify-content: center;" onclick="adminAddResource()">
+                            ➕ Publish Verified Resource
+                        </button>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: 12px; border-top:1px solid var(--re-border); padding-top:16px;">
+                        <div>
+                            <strong style="color: #fff; font-size: 0.9rem;">Weekly Preparation Analytics</strong>
+                            <p style="font-size: 0.75rem; color: var(--text-secondary);">Downloads: 2,410 | Daily Active Users: 890</p>
+                        </div>
+                        <button class="re-btn re-btn-secondary" onclick="exportAnalyticsCSV()">
+                            📥 Export Analytics as CSV
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom AI Summary Modal Box -->
+            <div class="re-ai-modal" id="re-ai-modal">
+                <div class="re-ai-modal-box">
+                    <div class="re-ai-modal-header">
+                        <h4 class="re-ai-modal-title">🤖 AI Note Summary & Flashcards</h4>
+                        <button class="re-ai-modal-close" onclick="closeAiSummaryModal()">&times;</button>
+                    </div>
+                    <div class="re-ai-modal-content" id="re-ai-modal-body">
+                        Generating summary, please wait...
+                    </div>
+                    <button class="re-btn re-btn-secondary" style="align-self: flex-end;" onclick="closeAiSummaryModal()">Close</button>
+                </div>
+            </div>
+
+            <script>
+                // ===== DATA DICTIONARIES =====
+                const reLanguages = {
+                    en: {
+                        heroTitle: "LPU Re-Appear & Improvement Portal",
+                        heroSub: "Everything you need for your Re-Appear exams in one place. Access schedules, select registration modes, download resources, and track your prep.",
+                        heroBtnRes: "Explore Resources",
+                        heroBtnGuide: "Register Guide",
+                        heroBtnAi: "Ask AI Assistant",
+                        alertTitle: "Official Deadlines & notices",
+                        alertReg: "Registration Dates:",
+                        alertStarts: "Exam Starts:",
+                        alertSheet: "Date Sheet Release:",
+                        alertNotify: "Notify Me on Date Sheet Release",
+                        dashTitle: "Student Dashboard",
+                        dashWelcome: "Welcome back, Student! Here is your current preparation status:",
+                        chkReg: "Registration Checklist status",
+                        chkMastery: "Overall Subject Mastery progress",
+                        progLbl: "Exam preparation completeness",
+                        leadTitle: "Batch Leaderboard (DBMS & DSA)",
+                        guideTitle: "Step-by-Step Registration Guide",
+                        guideDesc: "Follow these steps carefully on UMS to register. Tick them off to save your progress.",
+                        modeTitle: "Registration Modes Comparison",
+                        modeDesc: "Select the mode that best matches your CA score and grade goals.",
+                        quizTitle: "Interactive Mode Recommender",
+                        quizSubtitle: "Answer these questions to automatically find the most strategic mode for your case.",
+                        resCenterTitle: "Reappear Prep Library",
+                        resCenterDesc: "Search, download, and review verified senior notes, PYQs, and formula cheat sheets.",
+                        vidTitle: "One-Shot Video Library",
+                        vidDesc: "Click video thumbnail to play. Add personal revision timestamps below.",
+                        pyqTitle: "PYQ & High-Yield Questions",
+                        pyqDesc: "Highlighted topics that repeat across multiple exam terms.",
+                        forumTitle: "Peer Doubt Q&A Forum",
+                        forumDesc: "Ask queries regarding reappear syllabus or registration steps and get answers from seniors.",
+                        faqTitle: "Frequently Asked Questions",
+                        reportTitle: "Report Registration Issue"
+                    },
+                    hi: {
+                        heroTitle: "LPU री-अपीयर और सुधार पोर्टल 2026",
+                        heroSub: "आपकी री-अपीयर परीक्षाओं के लिए आवश्यक सभी चीजें एक ही स्थान पर। शेड्यूल देखें, पंजीकरण मोड चुनें, संसाधन डाउनलोड करें और तैयारी ट्रैक करें।",
+                        heroBtnRes: "संसाधनों का पता लगाएं",
+                        heroBtnGuide: "पंजीकरण गाइड",
+                        heroBtnAi: "एआई सहायक से पूछें",
+                        alertTitle: "आधिकारिक समय सीमा और सूचनाएं",
+                        alertReg: "पंजीकरण तिथियां:",
+                        alertStarts: "परीक्षा शुरू:",
+                        alertSheet: "डेट शीट जारी:",
+                        alertNotify: "डेट शीट जारी होने पर मुझे सूचित करें",
+                        dashTitle: "छात्र डैशबोर्ड",
+                        dashWelcome: "वापस स्वागत है, छात्र! आपकी वर्तमान तैयारी की स्थिति यहां दी गई है:",
+                        chkReg: "पंजीकरण चेकलिस्ट स्थिति",
+                        chkMastery: "समग्र विषय महारत प्रगति",
+                        progLbl: "परीक्षा तैयारी पूर्णता",
+                        leadTitle: "बैच लीडरबोर्ड (DBMS और DSA)",
+                        guideTitle: "चरण-दर-चरण पंजीकरण गाइड",
+                        guideDesc: "पंजीकरण के लिए यूएमएस पर इन चरणों का ध्यानपूर्वक पालन करें। अपनी प्रगति को सहेजने के लिए उन्हें टिक करें।",
+                        modeTitle: "पंजीकरण मोड तुलना",
+                        modeDesc: "उस मोड का चयन करें जो आपके सीए स्कोर और ग्रेड लक्ष्यों से सबसे अच्छा मेल खाता हो।",
+                        quizTitle: "इंटरएक्टिव मोड अनुशंसाकर्ता",
+                        quizSubtitle: "अपने मामले के लिए सबसे रणनीतिक मोड खोजने के लिए इन प्रश्नों के उत्तर दें।",
+                        resCenterTitle: "री-अपीयर तैयारी पुस्तकालय",
+                        resCenterDesc: "सत्यापित सीनियर नोट्स, पीवाईक्यू और फॉर्मूला शीट खोजें, डाउनलोड करें और समीक्षा करें।",
+                        vidTitle: "वन-शॉट वीडियो लाइब्रेरी",
+                        vidDesc: "चलाने के लिए वीडियो थंबनेल पर क्लिक करें। नीचे व्यक्तिगत संशोधन टाइमस्टैम्प जोड़ें।",
+                        pyqTitle: "पीवाईक्यू और उच्च-उपज प्रश्न",
+                        pyqDesc: "वे विषय जो कई परीक्षा शब्दों में दोहराए जाते हैं।",
+                        forumTitle: "पीयर डाउट क्यूएंडए फोरम",
+                        forumDesc: "री-अपीयर सिलेबस या पंजीकरण चरणों के संबंध में प्रश्न पूछें और सीनियर्स से उत्तर प्राप्त करें।",
+                        faqTitle: "अक्सर पूछे जाने वाले प्रश्न",
+                        reportTitle: "पंजीकरण समस्या की रिपोर्ट करें"
+                    },
+                    pu: {
+                        heroTitle: "LPU ਰੀ-ਅਪੀਅਰ ਅਤੇ ਸੁਧਾਰ ਪੋਰਟਲ 2026",
+                        heroSub: "ਤੁਹਾਡੀਆਂ ਰੀ-ਅਪੀਅਰ ਪ੍ਰੀਖਿਆਵਾਂ ਲਈ ਲੋੜੀਂਦੀਆਂ ਸਾਰੀਆਂ ਚੀਜ਼ਾਂ ਇੱਕੋ ਥਾਂ 'ਤੇ। ਸ਼ਡਿਊਲ ਦੇਖੋ, ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਮੋਡ ਚੁਣੋ, ਸਰੋਤ ਡਾਊਨਲੋਡ ਕਰੋ ਅਤੇ ਤਿਆਰੀ ਟ੍ਰੈਕ ਕਰੋ।",
+                        heroBtnRes: "ਸਰੋਤਾਂ ਦੀ ਖੋਜ ਕਰੋ",
+                        heroBtnGuide: "ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਗਾਈਡ",
+                        heroBtnAi: "ਏਆਈ ਸਹਾਇਕ ਨੂੰ ਪੁੱਛੋ",
+                        alertTitle: "ਅਧਿਕਾਰਤ ਸਮਾਂ-ਸੀਮਾ ਅਤੇ ਨੋਟਿਸ",
+                        alertReg: "ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਮਿਤੀਆਂ:",
+                        alertStarts: "ਪ੍ਰੀਖਿਆ ਸ਼ੁਰੂ:",
+                        alertSheet: "ਡੇਟ ਸ਼ੀਟ ਜਾਰੀ:",
+                        alertNotify: "ਡੇਟ ਸ਼ੀਟ ਜਾਰੀ ਹੋਣ 'ਤੇ ਮੈਨੂੰ ਸੂਚਿਤ ਕਰੋ",
+                        dashTitle: "ਵਿਦਿਆਰਥੀ ਡੈਸ਼ਬੋਰਡ",
+                        dashWelcome: "ਜੀ ਆਇਆਂ ਨੂੰ, ਵਿਦਿਆਰਥੀ! ਤੁਹਾਡੀ ਮੌਜੂਦਾ ਤਿਆਰੀ ਦੀ ਸਥਿਤੀ ਇੱਥੇ ਦਿੱਤੀ ਗਈ ਹੈ:",
+                        chkReg: "ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਚੈੱਕਲਿਸਟ ਸਥਿਤੀ",
+                        chkMastery: "ਸਮੁੱਚੀ ਵਿਸ਼ੇ ਦੀ ਮਹਾਰਤ ਪ੍ਰਗਤੀ",
+                        progLbl: "ਪ੍ਰੀਖਿਆ ਦੀ ਤਿਆਰੀ ਦੀ ਸੰਪੂਰਨਤਾ",
+                        leadTitle: "ਬੈਚ ਲੀਡਰਬੋਰਡ (DBMS ਅਤੇ DSA)",
+                        guideTitle: "ਕਦਮ-ਦਰ-ਕਦਮ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਗਾਈਡ",
+                        guideDesc: "ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਕਰਨ ਲਈ UMS 'ਤੇ ਇਹਨਾਂ ਕਦਮਾਂ ਦੀ ਧਿਆਨ ਨਾਲ ਪਾਲਣਾ ਕਰੋ। ਆਪਣੀ ਪ੍ਰਗਤੀ ਨੂੰ ਬਚਾਉਣ ਲਈ ਉਹਨਾਂ ਨੂੰ ਟਿੱਕ ਕਰੋ।",
+                        modeTitle: "ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਮੋਡ ਤੁਲਨਾ",
+                        modeDesc: "ਉਹ ਮੋਡ ਚੁਣੋ ਜੋ ਤੁਹਾਡੇ ਸੀਏ ਸਕੋਰ ਅਤੇ ਗ੍ਰੇਡ ਟੀਚਿਆਂ ਨਾਲ ਸਭ ਤੋਂ ਵਧੀਆ ਮੇਲ ਖਾਂਦਾ ਹੋਵੇ।",
+                        quizTitle: "ਇੰਟਰਐਕਟਿਵ ਮੋਡ ਸਿਫਾਰਸ਼ਕ",
+                        quizSubtitle: "ਆਪਣੇ ਕੇਸ ਲਈ ਸਭ ਤੋਂ ਰਣਨੀਤਕ ਮੋਡ ਲੱਭਣ ਲਈ ਇਹਨਾਂ ਪ੍ਰਸ਼ਨਾਂ ਦੇ ਉੱਤਰ ਦਿਓ।",
+                        resCenterTitle: "ਰੀ-ਅਪੀਅਰ ਤਿਆਰੀ ਲਾਇਬ੍ਰੇਰੀ",
+                        resCenterDesc: "ਸਤਿਆਪਿਤ ਸੀਨੀਅਰ ਨੋਟਸ, ਪੀਵਾਈਕਿਊ ਅਤੇ ਫਾਰਮੂਲਾ ਸ਼ੀਟਾਂ ਖੋਜੋ, ਡਾਊਨਲੋਡ ਕਰੋ ਅਤੇ ਸਮੀਖਿਆ ਕਰੋ।",
+                        vidTitle: "ਵਨ-ਸ਼ਾਟ ਵੀਡੀਓ ਲਾਇਬ੍ਰੇਰੀ",
+                        vidDesc: "ਚਲਾਉਣ ਲਈ ਵੀਡੀਓ ਥੰਬਨੇਲ 'ਤੇ ਕਲਿੱਕ ਕਰੋ। ਹੇਠਾਂ ਨਿੱਜੀ ਸੋਧ ਟਾਈਮਸਟੈਂਪ ਜੋੜੋ।",
+                        pyqTitle: "ਪੀਵਾਈਕਿਊ ਅਤੇ ਉੱਚ-ਉਪਜ ਵਾਲੇ ਪ੍ਰਸ਼ਨ",
+                        pyqDesc: "ਉਹ ਵਿਸ਼ੇ ਜੋ ਕਈ ਪ੍ਰੀਖਿਆ ਸ਼ਬਦਾਂ ਵਿੱਚ ਦੁਹਰਾਏ ਜਾਂਦੇ ਹਨ।",
+                        forumTitle: "ਪੀਅਰ ਡਾਊਟ ਪ੍ਰਸ਼ਨ-ਉੱਤਰ ਫੋਰਮ",
+                        forumDesc: "ਰੀ-ਅਪੀਅਰ ਸਿਲੇਬਸ ਜਾਂ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਕਦਮਾਂ ਬਾਰੇ ਪ੍ਰਸ਼ਨ ਪੁੱਛੋ ਅਤੇ ਸੀਨੀਅਰਾਂ ਤੋਂ ਉੱਤਰ ਪ੍ਰਾਪਤ ਕਰੋ।",
+                        faqTitle: "ਅਕਸਰ ਪੁੱਛੇ ਜਾਣ ਵਾਲੇ ਸਵਾਲ",
+                        reportTitle: "ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਸਮੱਸਿਆ ਦੀ ਰਿਪੋਰਟ ਕਰੋ"
+                    }
+                };
+
+                let reMockResources = [
+                    { id: 1, title: "DBMS SQL Queries Cheat Sheet", sem: "sem3", tag: "DBMS", size: "1.4 MB", date: "June 28, 2026", rating: 4.8, raters: 24, verified: true, bookmarked: false },
+                    { id: 2, title: "DSA Tree & Graph Operations Notes", sem: "sem4", tag: "DSA", size: "2.1 MB", date: "July 01, 2026", rating: 4.9, raters: 42, verified: true, bookmarked: false },
+                    { id: 3, title: "Operating System Semaphore Solved PYQs", sem: "sem4", tag: "OS", size: "3.2 MB", date: "June 15, 2026", rating: 4.7, raters: 18, verified: false, bookmarked: false },
+                    { id: 4, title: "Python Programming One-Shot Prep Guide", sem: "sem3", tag: "Python", size: "950 KB", date: "July 02, 2026", rating: 5.0, raters: 56, verified: true, bookmarked: false }
+                ];
+
+                const reQuizState = { q1: "", q2: "", q3: "" };
+
+                const rePYQList = [
+                    { q: "Explain normalization up to BCNF with a relational example.", ans: "Normalization involves decomposing tables to eliminate redundant data. 1NF removes repeating groups, 2NF removes partial dependencies, 3NF removes transitive dependencies, and BCNF ensures that for every non-trivial functional dependency X -> Y, X must be a super key.", diff: "Hard", repeated: true },
+                    { q: "Implement BFS and DFS traversals on a given graph.", ans: "BFS uses a Queue (FIFO) to explore nodes level-by-level. DFS uses a Stack (LIFO) or Recursion to explore deep along each branch before backtracking.", diff: "Medium", repeated: true },
+                    { q: "What is a Semaphore? Explain Producer-Consumer problem.", ans: "A Semaphore is an integer variable used for process synchronization. The Producer-Consumer problem uses binary and counting semaphores to coordinate access to a shared bounded buffer.", diff: "Medium", repeated: false }
+                ];
+
+                const reFAQList = [
+                    { q: "Difference between Mode A & B?", a: "Mode A (₹500/subject) carries forward your internal CA marks, meaning you only repeat the written exams. Mode B (₹3000/subject) discards previous CA scores and tests you on the full syllabus via a single comprehensive 70-mark paper." },
+                    { q: "What happens if I miss the payment step?", a: "If you register but do not confirm payment, your registration status remains 'Incomplete' on UMS and you will not be issued an admit card. Always verify that status is 'Successful'." },
+                    { q: "Can I switch modes after registering?", a: "No, once registration is submitted and payment is authorized, modes cannot be changed. Ensure you run the Mode quiz before choosing." }
+                ];
+
+                const reForumPosts = [
+                    { author: "Siddharth (Sem 5)", date: "July 03, 10:15 AM", query: "Can someone share solved codes for INT219 (Front-End) PYQ?", upvotes: 12, replies: 3 },
+                    { author: "Mehak (Sem 3)", date: "July 03, 11:30 AM", query: "Is attendance of previous semester carried forward in Re-appear Mode A?", upvotes: 8, replies: 1 }
+                ];
+
+                let reStudyStreak = 0;
+                let reMCQCount = 0;
+
+                // ===== INITIALIZATION =====
+                document.addEventListener('DOMContentLoaded', () => {
+                    initReappearCountdown();
+                    loadReappearChecklists();
+                    renderReappearResources();
+                    renderReappearPYQs();
+                    renderReappearFAQs();
+                    renderForumPosts();
+                    updateMasterPreparationProgressBar();
+                });
+
+                // Workaround for DOM elements not existing during early event listener runs
+                setTimeout(() => {
+                    initReappearCountdown();
+                    loadReappearChecklists();
+                    renderReappearResources();
+                    renderReappearPYQs();
+                    renderReappearFAQs();
+                    renderForumPosts();
+                    updateMasterPreparationProgressBar();
+                }, 500);
+
+                // ===== COUNTDOWNS & TIMERS =====
+                function initReappearCountdown() {
+                    const timerClock = document.getElementById('reg-timer-clock');
+                    const countdownChip = document.getElementById('exam-countdown-chip');
+                    if (!timerClock) return;
+
+                    const deadlineDate = new Date("2026-07-08T23:59:59").getTime();
+                    const examStartDate = new Date("2026-07-11T09:00:00").getTime();
+
+                    const updateClocks = () => {
+                        const now = new Date().getTime();
+                        
+                        // Registration deadline timer
+                        const distanceReg = deadlineDate - now;
+                        if (distanceReg < 0) {
+                            timerClock.textContent = "Registration Closed";
+                        } else {
+                            const days = Math.floor(distanceReg / (1000 * 60 * 60 * 24));
+                            const hours = Math.floor((distanceReg % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            const minutes = Math.floor((distanceReg % (1000 * 60 * 60)) / (1000 * 60));
+                            const seconds = Math.floor((distanceReg % (1000 * 60)) / 1000);
+                            timerClock.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                        }
+
+                        // Exam Countdown Chip
+                        const distanceEx = examStartDate - now;
+                        if (distanceEx < 0) {
+                            countdownChip.innerHTML = "📝 Exams are underway!";
+                        } else {
+                            const daysEx = Math.ceil(distanceEx / (1000 * 60 * 60 * 24));
+                            countdownChip.innerHTML = `⌛ ${daysEx} days to exams`;
+                        }
+                    };
+
+                    updateClocks();
+                    setInterval(updateClocks, 1000);
+                }
+
+                // ===== ACCESSIBILITY & LANGUAGES =====
+                function toggleHighContrast() {
+                    const page = document.getElementById('page-reappear-strategy');
+                    const toggle = document.getElementById('high-contrast-toggle');
+                    if (toggle.checked) {
+                        page.classList.add('high-contrast');
+                    } else {
+                        page.classList.remove('high-contrast');
+                    }
+                }
+
+                function translatePage() {
+                    const lang = document.getElementById('lang-selector').value;
+                    const dict = reLanguages[lang] || reLanguages.en;
+
+                    document.getElementById('hero-title').textContent = dict.heroTitle;
+                    document.getElementById('hero-subtitle').textContent = dict.heroSub;
+                    document.getElementById('hero-btn-res').textContent = dict.heroBtnRes;
+                    document.getElementById('hero-btn-guide').textContent = dict.heroBtnGuide;
+                    document.getElementById('hero-btn-ai').textContent = dict.heroBtnAi;
+                    
+                    document.getElementById('alert-title').textContent = dict.alertTitle;
+                    document.getElementById('alert-reg').textContent = dict.alertReg;
+                    document.getElementById('alert-starts').textContent = dict.alertStarts;
+                    document.getElementById('alert-sheet').textContent = dict.alertSheet;
+                    document.getElementById('alert-notify-btn').textContent = dict.alertNotify;
+                    
+                    document.getElementById('dash-title').textContent = dict.dashTitle;
+                    document.getElementById('dash-welcome').textContent = dict.dashWelcome;
+                    document.getElementById('chk-reg-step').textContent = dict.chkReg;
+                    document.getElementById('chk-mastery').textContent = dict.chkMastery;
+                    document.getElementById('prog-lbl').textContent = dict.progLbl;
+                    if (document.getElementById('lead-title')) document.getElementById('lead-title').textContent = dict.leadTitle;
+                    
+                    document.getElementById('guide-title').textContent = dict.guideTitle;
+                    document.getElementById('guide-desc').textContent = dict.guideDesc;
+                    
+                    document.getElementById('mode-title').textContent = dict.modeTitle;
+                    document.getElementById('mode-desc').textContent = dict.modeDesc;
+                    
+                    document.getElementById('quiz-title').textContent = dict.quizTitle;
+                    document.getElementById('quiz-subtitle').textContent = dict.quizSubtitle;
+                    
+                    document.getElementById('res-center-title').textContent = dict.resCenterTitle;
+                    document.getElementById('res-center-desc').textContent = dict.resCenterDesc;
+                    
+                    if (document.getElementById('vid-title')) document.getElementById('vid-title').textContent = dict.vidTitle;
+                    if (document.getElementById('vid-desc')) document.getElementById('vid-desc').textContent = dict.vidDesc;
+                    
+                    if (document.getElementById('pyq-title')) document.getElementById('pyq-title').textContent = dict.pyqTitle;
+                    if (document.getElementById('pyq-desc')) document.getElementById('pyq-desc').textContent = dict.pyqDesc;
+                    
+                    document.getElementById('forum-title').textContent = dict.forumTitle;
+                    document.getElementById('forum-desc').textContent = dict.forumDesc;
+                    
+                    document.getElementById('faq-title').textContent = dict.faqTitle;
+                    document.getElementById('report-title').textContent = dict.reportTitle;
+                }
+
+                function toggleNotifyMe() {
+                    const notify = document.getElementById('pref-push').checked;
+                    if (notify) {
+                        showLocalToast("🔔 Push Notifications enabled! You will be alerted for date sheets.");
+                    } else {
+                        showLocalToast("🔕 Push Notifications disabled.");
+                    }
+                }
+
+                function showLocalToast(msg) {
+                    // Reuse dashboard's toast or create alert
+                    alert(msg);
+                }
+
+                // ===== REGISTRATION CHECKLIST =====
+                function loadReappearChecklists() {
+                    const savedChecklist = JSON.parse(localStorage.getItem('re_checklist') || '[false, false, false, false, false]');
+                    const savedStreak = parseInt(localStorage.getItem('re_streak') || '0');
+                    const savedSolved = parseInt(localStorage.getItem('re_solved') || '0');
+                    
+                    reStudyStreak = savedStreak;
+                    reMCQCount = savedSolved;
+
+                    document.getElementById('streak-counter').textContent = `🔥 ${reStudyStreak} Day Streak`;
+                    if (document.getElementById('lead-streak')) document.getElementById('lead-streak').textContent = `🔥 ${reStudyStreak} days`;
+                    if (document.getElementById('lead-solved')) document.getElementById('lead-solved').textContent = reMCQCount;
+
+                    const checks = document.querySelectorAll('.re-checklist-check');
+                    savedChecklist.forEach((val, idx) => {
+                        if (checks[idx]) {
+                            checks[idx].checked = val;
+                            if (val) {
+                                document.getElementById(`guide-step-${idx}`)?.classList.add('checked');
+                            }
+                        }
+                    });
+
+                    updateChecklistRatioText(savedChecklist);
+                }
+
+                function toggleGuideStep(idx) {
+                    const checks = document.querySelectorAll('.re-checklist-check');
+                    const isChecked = checks[idx].checked;
+                    
+                    if (isChecked) {
+                        document.getElementById(`guide-step-${idx}`)?.classList.add('checked');
+                    } else {
+                        document.getElementById(`guide-step-${idx}`)?.classList.remove('checked');
+                    }
+
+                    // Save state
+                    const state = [];
+                    checks.forEach(c => state.push(c.checked));
+                    localStorage.setItem('re_checklist', JSON.stringify(state));
+
+                    // Trigger daily streak increment on first check
+                    if (isChecked && reStudyStreak === 0) {
+                        reStudyStreak = 1;
+                        localStorage.setItem('re_streak', '1');
+                        document.getElementById('streak-counter').textContent = `🔥 1 Day Streak`;
+                        if (document.getElementById('lead-streak')) document.getElementById('lead-streak').textContent = `🔥 1 days`;
+                        showLocalToast("🔥 Daily Streak started! Keep up the daily revision.");
+                    }
+
+                    updateChecklistRatioText(state);
+                    updateMasterPreparationProgressBar();
+                }
+
+                function updateChecklistRatioText(state) {
+                    const done = state.filter(Boolean).length;
+                    document.getElementById('dash-chk-ratio').textContent = `${done}/5 Done`;
+                    
+                    const badge = document.getElementById('badge-chk');
+                    if (done === 5) {
+                        badge.classList.add('unlocked');
+                    } else {
+                        badge.classList.remove('unlocked');
+                    }
+                }
+
+                function updateMasterPreparationProgressBar() {
+                    const checklist = JSON.parse(localStorage.getItem('re_checklist') || '[false, false, false, false, false]');
+                    const totalChecklist = checklist.filter(Boolean).length;
+                    
+                    // Count bookmarked resources
+                    const bookmarked = reMockResources.filter(r => r.bookmarked).length;
+                    
+                    // Solve count (capped at 5)
+                    const solvedCap = Math.min(reMCQCount, 5);
+
+                    // Compute ratio (checklist / 5 + bookmarks / 2 + mcq / 5) / 3
+                    const checkRatio = totalChecklist / 5;
+                    const bookRatio = Math.min(bookmarked / 2, 1);
+                    const mcqRatio = solvedCap / 5;
+                    
+                    const overallPercent = Math.round(((checkRatio + bookRatio + mcqRatio) / 3) * 100);
+                    const fillBar = document.getElementById('master-prep-progress-bar');
+                    if (fillBar) {
+                        fillBar.style.width = `${overallPercent}%`;
+                    }
+                }
+
+                // ===== MODE DECISION QUIZ =====
+                function setQuizAnswer(qNum, value) {
+                    reQuizState[`q${qNum}`] = value;
+                    const opts = document.querySelectorAll(`#quiz-q${qNum}-opts .re-quiz-opt`);
+                    opts.forEach(opt => {
+                        const isMatch = opt.textContent.includes(value) || 
+                                        (value === 'low' && opt.textContent.includes('<')) ||
+                                        (value === 'high' && opt.textContent.includes('>')) ||
+                                        (value === 'mid' && opt.textContent.includes('15 - 25')) ||
+                                        (value === 'pass' && opt.textContent.includes('pass')) ||
+                                        (value === 'good' && opt.textContent.includes('B+')) ||
+                                        (value === 'excel' && opt.textContent.includes('Outstanding')) ||
+                                        (value === 'high' && opt.textContent.includes('3000'));
+                        
+                        opt.classList.toggle('active', isMatch);
+                    });
+                }
+
+                function calculateQuizRecommendation() {
+                    if (!reQuizState.q1 || !reQuizState.q2 || !reQuizState.q3) {
+                        alert("Please answer all 3 questions first!");
+                        return;
+                    }
+
+                    const resultBox = document.getElementById('quiz-result-box');
+                    const resultText = document.getElementById('quiz-res-text');
+                    resultBox.style.display = 'block';
+
+                    // logic
+                    let mode = "A";
+                    let reason = "";
+
+                    if (reQuizState.q1 === 'low') {
+                        mode = "B";
+                        reason = "Your CA score is very low (&lt; 15). Under Mode A, you carry this poor score forward, making it hard to get a good grade. Mode B lets you clear the slate completely and write a 100% weightage paper to improve.";
+                    } else if (reQuizState.q2 === 'excel' && reQuizState.q3 === 'high') {
+                        mode = "B";
+                        reason = "You target a top tier grade (A+ or O) and can afford the registration budget. Mode B gives you a fresh start to score maximum marks since internal CA gaps won't drag you down.";
+                    } else {
+                        mode = "A";
+                        reason = "Since you have decent CA marks or a limited budget, Mode A (₹500) is the most strategic choice. It has a lower syllabus stress and carries forward your secure CA credits.";
+                    }
+
+                    resultText.innerHTML = `<strong>Recommended: Mode ${mode}</strong><br>${reason}`;
+                }
+
+                // ===== RESOURCE CENTER =====
+                function renderReappearResources() {
+                    const container = document.getElementById('resources-grid-container');
+                    if (!container) return;
+
+                    // Filter criteria
+                    const query = document.getElementById('resource-search').value.toLowerCase().trim();
+                    const sem = document.getElementById('filter-sem').value;
+                    const tag = document.getElementById('filter-tag').value;
+                    
+                    const showOnlyShelf = document.getElementById('tab-res-shelf').classList.contains('active');
+
+                    let list = reMockResources;
+
+                    if (showOnlyShelf) {
+                        list = list.filter(r => r.bookmarked);
+                    }
+
+                    // Filters
+                    if (sem !== 'all') {
+                        list = list.filter(r => r.sem === sem);
+                    }
+                    if (tag !== 'all') {
+                        list = list.filter(r => r.tag === tag);
+                    }
+                    if (query) {
+                        list = list.filter(r => 
+                            r.title.toLowerCase().includes(query) || 
+                            r.tag.toLowerCase().includes(query) ||
+                            r.sem.toLowerCase().includes(query)
+                        );
+                    }
+
+                    document.getElementById('shelf-count').textContent = reMockResources.filter(r => r.bookmarked).length;
+
+                    if (list.length === 0) {
+                        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); padding: 32px;">No resources found matching filters.</div>`;
+                        return;
+                    }
+
+                    container.innerHTML = list.map(res => {
+                        const verifiedHtml = res.verified ? `<span class="re-res-badge ver">Verified ✔</span>` : '';
+                        const starString = getStarRatingHtml(res.rating, res.id);
+                        const bookmarkClass = res.bookmarked ? 'active' : '';
+
+                        return `
+                            <div class="re-res-card">
+                                <div class="re-res-header">
+                                    <span class="re-res-badge tag">${res.tag.toUpperCase()}</span>
+                                    ${verifiedHtml}
+                                </div>
+                                <h4 class="re-res-title">${res.title}</h4>
+                                <div class="re-res-stars">
+                                    ${starString}
+                                    <span style="color: var(--text-secondary); font-size: 0.75rem;">(${res.raters})</span>
+                                </div>
+                                <div class="re-res-meta">
+                                    <span>💾 ${res.size}</span>
+                                    <span>📅 ${res.date}</span>
+                                </div>
+                                <div class="re-res-actions">
+                                    <button onclick="previewMockNote('${res.title}')">👁 Preview</button>
+                                    <button onclick="downloadMockNote('${res.title}')">📥 Download</button>
+                                    <button class="bookmark-btn ${bookmarkClass}" onclick="toggleBookmarkResource(${res.id})">🔖 Bookmark</button>
+                                    <button class="re-ai-sum-btn" onclick="openAiSummary('${res.title}')">🧠 AI Summary</button>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+
+                function getStarRatingHtml(rating, id) {
+                    let html = '';
+                    const fullStars = Math.floor(rating);
+                    for (let i = 1; i <= 5; i++) {
+                        if (i <= fullStars) {
+                            html += `<span class="re-star" onclick="rateResource(${id}, ${i})">★</span>`;
+                        } else {
+                            html += `<span class="re-star" style="color: var(--re-border);" onclick="rateResource(${id}, ${i})">★</span>`;
+                        }
+                    }
+                    return html;
+                }
+
+                function rateResource(id, ratingValue) {
+                    const res = reMockResources.find(r => r.id === id);
+                    if (res) {
+                        res.rating = ratingValue;
+                        res.raters += 1;
+                        renderReappearResources();
+                        showLocalToast(`⭐ Rated ${res.title} ${ratingValue}/5!`);
+                    }
+                }
+
+                function toggleBookmarkResource(id) {
+                    const res = reMockResources.find(r => r.id === id);
+                    if (res) {
+                        res.bookmarked = !res.bookmarked;
+                        renderReappearResources();
+                        updateMasterPreparationProgressBar();
+                        
+                        const badge = document.getElementById('badge-res');
+                        const bookmarks = reMockResources.filter(r => r.bookmarked).length;
+                        if (bookmarks > 0) {
+                            badge.classList.add('unlocked');
+                        } else {
+                            badge.classList.remove('unlocked');
+                        }
+                    }
+                }
+
+                function filterResources() {
+                    renderReappearResources();
+                }
+
+                function toggleResTab(tab) {
+                    document.getElementById('tab-res-all').classList.toggle('active', tab === 'all');
+                    document.getElementById('tab-res-shelf').classList.toggle('active', tab === 'shelf');
+                    renderReappearResources();
+                }
+
+                // Voice Search Mock
+                function startVoiceSearch() {
+                    if ('webkitSpeechRecognition' in window) {
+                        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                        recognition.lang = 'en-US';
+                        recognition.start();
+                        
+                        showLocalToast("🎙 Voice Search listening...");
+                        
+                        recognition.onresult = (event) => {
+                            const speechToText = event.results[0][0].transcript;
+                            document.getElementById('resource-search').value = speechToText;
+                            filterResources();
+                            showLocalToast(`🔎 Searched for: "${speechToText}"`);
+                        };
+                    } else {
+                        alert("Voice recognition is not supported in this browser. Try Chrome/Safari.");
+                    }
+                }
+
+                // AI Summary Typewriter Mock
+                function openAiSummary(title) {
+                    const modal = document.getElementById('re-ai-modal');
+                    const body = document.getElementById('re-ai-modal-body');
+                    modal.style.display = 'flex';
+                    body.innerHTML = "";
+
+                    const summaries = {
+                        "DBMS SQL Queries Cheat Sheet": [
+                            "📚 Core Concept: SQL query execution and database structure.",
+                            "🔑 Key Topics: JOIN operators (INNER, LEFT, RIGHT), GROUP BY aggregations, and subqueries.",
+                            "🔥 Exam Strategy: Expect a 10-mark question on schema normalization (1NF to BCNF).",
+                            "📝 Flashcard 1: What is a Primary Key? A unique column mapping rows.",
+                            "📝 Flashcard 2: What is ACID? Atomicity, Consistency, Isolation, Durability."
+                        ],
+                        "DSA Tree & Graph Operations Notes": [
+                            "📚 Core Concept: Non-linear hierarchical data structures.",
+                            "🔑 Key Topics: Binary Trees, Traversals (Pre/In/Post Order), BFS, DFS, and Dijkstra's algorithm.",
+                            "🔥 Exam Strategy: High chance of recursion tree depth computations and heap sorting step drawings.",
+                            "📝 Flashcard 1: Tree Height: Maximum path length from root to leaf.",
+                            "📝 Flashcard 2: Dijkstra complexity: O(V^2) or O(E log V) with heaps."
+                        ]
+                    };
+
+                    const points = summaries[title] || [
+                        "📚 Core Summary of: " + title,
+                        "🔑 Key Concepts: Covers standard syllabus points, formulas, and structural definitions.",
+                        "🔥 Preparation Advice: High weightage questions repeat 85% of time from this note.",
+                        "📝 Revision Card: Read the cheat sheet 2 hours before entering exam hall."
+                    ];
+
+                    let currentLine = 0;
+                    let currentChar = 0;
+                    body.innerHTML = "<ul style='list-style:none; padding:0; display:flex; flex-direction:column; gap:12px;'></ul>";
+                    const listElement = body.querySelector('ul');
+
+                    const typeLine = () => {
+                        if (currentLine < points.length) {
+                            if (currentChar === 0) {
+                                const li = document.createElement('li');
+                                li.style.opacity = '0';
+                                li.style.transform = 'translateY(5px)';
+                                li.style.transition = 'all 0.2s ease';
+                                listElement.appendChild(li);
+                            }
+
+                            const activeLi = listElement.lastElementChild;
+                            activeLi.style.opacity = '1';
+                            activeLi.style.transform = 'translateY(0)';
+                            
+                            const text = points[currentLine];
+                            activeLi.textContent += text.charAt(currentChar);
+                            currentChar++;
+
+                            if (currentChar < text.length) {
+                                setTimeout(typeLine, 10);
+                            } else {
+                                currentLine++;
+                                currentChar = 0;
+                                setTimeout(typeLine, 150);
+                            }
+                        }
+                    };
+
+                    typeLine();
+                }
+
+                function closeAiSummaryModal() {
+                    document.getElementById('re-ai-modal').style.display = 'none';
+                }
+
+                function previewMockNote(title) {
+                    alert(`👀 Loading PDF viewer inside browser for: "${title}".`);
+                }
+
+                function downloadMockNote(title) {
+                    alert(`📥 Downloading: "${title}" (PDF) to your local downloads folder.`);
+                }
+
+                // ===== VIDEO PREP AND PLAYBACK =====
+                function playMockVideo(title) {
+                    alert(`🎬 Playing video: "${title}" (Embedded frame loading). Jot down timestamps in the notes box!`);
+                }
+
+                function toggleVideoWatch(code) {
+                    reStudyStreak += 1;
+                    localStorage.setItem('re_streak', reStudyStreak);
+                    document.getElementById('streak-counter').textContent = `🔥 ${reStudyStreak} Day Streak`;
+                    if (document.getElementById('lead-streak')) document.getElementById('lead-streak').textContent = `🔥 ${reStudyStreak} days`;
+                    showLocalToast(`✅ Video watched! Daily streak extended to ${reStudyStreak} days.`);
+                    updateMasterPreparationProgressBar();
+                }
+
+                // ===== ACCORDIONS (PYQ & FAQ) =====
+                function renderReappearPYQs() {
+                    const container = document.getElementById('pyq-accordion-list');
+                    if (!container) return;
+
+                    container.innerHTML = rePYQList.map((item, idx) => {
+                        const repeatTag = item.repeated ? `<span class="re-res-badge ver" style="background:rgba(249,115,22,0.1); color:var(--re-orange); border-color:rgba(249,115,22,0.2);">Repeated 🔥</span>` : '';
+                        
+                        return `
+                            <div class="re-acc-item" id="pyq-acc-${idx}">
+                                <div class="re-acc-header" onclick="toggleAccordion('pyq', ${idx})">
+                                    <h4>
+                                        <input type="checkbox" style="accent-color:var(--re-purple);" onchange="toggleMCQDone(${idx})">
+                                        <span>${item.q}</span>
+                                    </h4>
+                                    <div style="display:flex; align-items:center; gap:8px;">
+                                        ${repeatTag}
+                                        <span class="re-res-badge tag">${item.diff}</span>
+                                        <span class="acc-chevron">▼</span>
+                                    </div>
+                                </div>
+                                <div class="re-acc-body">
+                                    <p>${item.ans}</p>
+                                    <div class="re-acc-actions">
+                                        <label style="font-size:0.75rem; color:var(--text-secondary); display:flex; align-items:center; gap:6px;">
+                                            <input type="checkbox" onchange="toggleSpacedRepetition(${idx})"> 
+                                            🧠 Spaced Repetition (Review in 3 days)
+                                        </label>
+                                        <div style="display:flex; gap:6px;">
+                                            <button style="background:rgba(255,255,255,0.03); border:1px solid var(--re-border); color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; cursor:pointer;" onclick="alert('Helpful flag saved!')">👍 Helpful</button>
+                                            <button style="background:rgba(255,255,255,0.03); border:1px solid var(--re-border); color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; cursor:pointer;" onclick="alert('Flag saved!')">👎 Gaps</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+
+                function renderReappearFAQs() {
+                    const container = document.getElementById('faq-list');
+                    if (!container) return;
+
+                    container.innerHTML = reFAQList.map((item, idx) => {
+                        return `
+                            <div class="re-acc-item" id="faq-acc-${idx}">
+                                <div class="re-acc-header" onclick="toggleAccordion('faq', ${idx})">
+                                    <h4 style="font-weight:700;">❓ ${item.q}</h4>
+                                    <span class="acc-chevron">▼</span>
+                                </div>
+                                <div class="re-acc-body">
+                                    <p>${item.a}</p>
+                                    <div class="re-acc-actions" style="justify-content: flex-end;">
+                                        <span style="font-size:0.75rem; color:var(--text-muted); margin-right:auto;">Was this FAQ helpful?</span>
+                                        <button style="background:rgba(255,255,255,0.03); border:1px solid var(--re-border); color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; cursor:pointer;" onclick="alert('Liked!')">👍 Yes</button>
+                                        <button style="background:rgba(255,255,255,0.03); border:1px solid var(--re-border); color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; cursor:pointer;" onclick="alert('Reported!')">👎 No</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+
+                function toggleAccordion(type, idx) {
+                    const item = document.getElementById(`${type}-acc-${idx}`);
+                    const chevron = item.querySelector('.acc-chevron');
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all
+                    document.querySelectorAll(`.re-acc-item`).forEach(el => {
+                        if (el.id.startsWith(type)) {
+                            el.classList.remove('active');
+                            const ch = el.querySelector('.acc-chevron');
+                            if (ch) ch.textContent = '▼';
+                        }
+                    });
+
+                    if (!isActive) {
+                        item.classList.add('active');
+                        if (chevron) chevron.textContent = '▲';
+                    }
+                }
+
+                function toggleMCQDone(idx) {
+                    reMCQCount += 1;
+                    localStorage.setItem('re_solved', reMCQCount);
+                    if (document.getElementById('lead-solved')) document.getElementById('lead-solved').textContent = reMCQCount;
+                    
+                    const badge = document.getElementById('badge-qa');
+                    if (reMCQCount >= 3) {
+                        badge.classList.add('unlocked');
+                    } else {
+                        badge.classList.remove('unlocked');
+                    }
+
+                    showLocalToast(`🎯 Marked question as mastered! Total MCQs: ${reMCQCount}.`);
+                    updateMasterPreparationProgressBar();
+                }
+
+                function toggleSpacedRepetition(idx) {
+                    showLocalToast("⏰ Spaced Repetition Scheduled! You will be reminded to review this question in 3 days.");
+                }
+
+                // ===== AI CHAT WIDGET INTERACTION =====
+                function openFloatingChatWidget() {
+                    const widgetToggle = document.getElementById('chatbotToggle');
+                    if (widgetToggle) {
+                        widgetToggle.click();
+                        showLocalToast("🤖 Floating AI Academic Advisor opened. Ask about Re-appear rules!");
+                    }
+                }
+
+                // ===== PEER FORUM DOUBTS =====
+                function renderForumPosts() {
+                    const container = document.getElementById('forum-questions-list');
+                    if (!container) return;
+
+                    container.innerHTML = reForumPosts.map((post, idx) => {
+                        return `
+                            <div class="re-forum-post">
+                                <div class="re-forum-header">
+                                    <span>👤 ${post.author}</span>
+                                    <span>🕒 ${post.date}</span>
+                                </div>
+                                <div class="re-forum-body">${post.query}</div>
+                                <div class="re-forum-footer">
+                                    <button class="re-forum-action" onclick="upvoteForumPost(${idx})">🔺 Upvote (${post.upvotes})</button>
+                                    <button class="re-forum-action" onclick="alert('Replies loading...')">💬 Replies (${post.replies})</button>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+
+                function postForumQuestion() {
+                    const input = document.getElementById('forum-input');
+                    const text = input.value.trim();
+                    if (!text) {
+                        alert("Please type a valid question!");
+                        return;
+                    }
+
+                    reForumPosts.unshift({
+                        author: "Jatin Verma (You)",
+                        date: "Just now",
+                        query: text,
+                        upvotes: 0,
+                        replies: 0
+                    });
+
+                    input.value = "";
+                    renderForumPosts();
+                    showLocalToast("💬 Doubt posted in batch Q&A forum! Seniors will answer soon.");
+                }
+
+                function upvoteForumPost(idx) {
+                    reForumPosts[idx].upvotes += 1;
+                    renderForumPosts();
+                }
+
+                // ===== REGISTRATION ISSUE SUBMISSION =====
+                function submitReappearIssue(event) {
+                    event.preventDefault();
+                    document.getElementById('issue-success').style.display = 'block';
+                    document.getElementById('reappear-issue-form').reset();
+                    setTimeout(() => {
+                        document.getElementById('issue-success').style.display = 'none';
+                    }, 5000);
+                }
+
+                // ===== ADMIN CONTROLS =====
+                function adminAddResource() {
+                    const title = document.getElementById('admin-res-title').value.trim();
+                    const tag = document.getElementById('admin-res-tag').value.trim();
+                    const size = document.getElementById('admin-res-size').value.trim() || '1.1 MB';
+                    const sem = document.getElementById('admin-res-sem').value;
+
+                    if (!title || !tag) {
+                        alert("Please enter title and tag!");
+                        return;
+                    }
+
+                    const newId = reMockResources.length + 1;
+                    reMockResources.unshift({
+                        id: newId,
+                        title: title,
+                        sem: sem,
+                        tag: tag,
+                        size: size,
+                        date: "Today",
+                        rating: 5.0,
+                        raters: 1,
+                        verified: true,
+                        bookmarked: false
+                    });
+
+                    document.getElementById('admin-res-title').value = "";
+                    document.getElementById('admin-res-tag').value = "";
+                    
+                    renderReappearResources();
+                    showLocalToast(`📢 Published new verified note: "${title}"!`);
+                }
+
+                function exportAnalyticsCSV() {
+                    const csvContent = "data:text/csv;charset=utf-8," 
+                        + "Resource ID,Resource Title,Semester,Downloads,Rating\n"
+                        + reMockResources.map(r => `${r.id},"${r.title}",${r.sem},${r.raters * 3},${r.rating}`).join("\n");
+                    
+                    const encodedUri = encodeURI(csvContent);
+                    const link = document.createElement("a");
+                    link.setAttribute("href", encodedUri);
+                    link.setAttribute("download", "lpu_reappear_analytics_2026.csv");
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    showLocalToast("📊 Downloaded Analytics CSV successfully!");
+                }
+            </script>
+        </section>
+
+        <!-- TGPA Calculator Page -->
+        <section class="page" id="page-tgpa-calculator">
+            <div class="tgpa-header">
+                <h2 class="page-title-left">TGPA Calculator</h2>
+                <div class="tgpa-tabs">
+                    <button class="tab-btn active" data-tab="marks-input" id="tabMarksInput">📝 Marks Input</button>
+                    <button class="tab-btn" data-tab="analysis" id="tabAnalysis">📊 Analysis</button>
+                </div>
+            </div>
+
+            <div class="tgpa-controls">
+                <div class="preset-buttons">
+                    <button class="preset-btn btech" id="loadBtech">Load B.Tech</button>
+                    <button class="preset-btn bba" id="loadBba">Load BBA</button>
+                </div>
+                <div class="tgpa-actions">
+                    <button class="action-btn reset-btn" id="tgpaReset">Reset 🗑️</button>
+                    <button class="action-btn relative-btn" id="toggleRelative">Enable Relative Grading</button>
+                </div>
+            </div>
+
+            <!-- Marks Input Tab -->
+            <div class="tab-content active" id="tabContentMarks">
+                <div class="subjects-table">
+                    <div class="table-header">
+                        <span class="col-subject">Subject</span>
+                        <span class="col-credits">Credits</span>
+                        <span class="col-marks">Marks</span>
+                        <span class="col-grade">Grade</span>
+                        <span class="col-action"></span>
+                    </div>
+                    <div id="subjectRows">
+                        <!-- Subject rows injected by JS -->
+                    </div>
+                    <button class="add-subject-btn" id="addSubjectBtn">+ Add Subject</button>
+                </div>
+
+                <button class="calculate-btn" id="calcTgpaBtn">Calculate Result</button>
+
+                <div class="tgpa-result" id="tgpaResult" style="display:none">
+                    <div class="result-card">
+                        <h3>Your TGPA</h3>
+                        <span class="tgpa-value" id="tgpaValue">0.00</span>
+                    </div>
+                </div>
+
+                <div class="info-banner green-banner">
+                    <span>DOWNLOAD GUIDE FOR FREE 📄</span>
+                </div>
+
+                <p class="credits-info">To find your credits: UMS &gt; Academics &gt; View Program Scheme</p>
+
+                <div class="info-banner peach-banner">
+                    <span>Check Credits on UMS 🏛️</span>
+                </div>
+            </div>
+
+            <!-- Analysis Tab -->
+            <div class="tab-content" id="tabContentAnalysis">
+                <div class="analysis-placeholder" id="analysisContent">
+                    <p>Calculate your TGPA first to see the analysis.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CGPA Calculator Page -->
+        <section class="page" id="page-cgpa-calculator">
+            <div class="page-header">
+                <h2 class="page-title">CGPA Calculator 🎓</h2>
+                <p class="page-subtitle">Calculate your cumulative grade point average</p>
+            </div>
+
+            <div class="cgpa-layout">
+                <div class="cgpa-form glass-card">
+                    <div class="semester-grid">
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 1</label>
+                            <input type="number" class="form-input sem-input" id="sem1" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 2</label>
+                            <input type="number" class="form-input sem-input" id="sem2" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 3</label>
+                            <input type="number" class="form-input sem-input" id="sem3" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 4</label>
+                            <input type="number" class="form-input sem-input" id="sem4" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 5</label>
+                            <input type="number" class="form-input sem-input" id="sem5" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 6</label>
+                            <input type="number" class="form-input sem-input" id="sem6" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 7</label>
+                            <input type="number" class="form-input sem-input" id="sem7" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                        <div class="sem-input-group">
+                            <label class="form-label">SEM 8</label>
+                            <input type="number" class="form-input sem-input" id="sem8" placeholder="0.00" min="0" max="10" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="cgpa-buttons">
+                        <button class="action-btn reset-btn" id="cgpaReset">Reset</button>
+                        <button class="calculate-btn" id="calcCgpaBtn">Calculate CGPA</button>
+                    </div>
+                </div>
+
+                <div class="cgpa-result-section" id="cgpaResultSection">
+                    <div class="cgpa-emoji" id="cgpaEmoji">✨</div>
+                    <p class="cgpa-message" id="cgpaMessage">Enter your semester TGPAs to see the future.</p>
+                    <div class="cgpa-value-display" id="cgpaValueDisplay" style="display:none">
+                        <span class="cgpa-label">Your CGPA</span>
+                        <span class="cgpa-big-value" id="cgpaValue">0.00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Percentage Tools Page -->
+        <section class="page" id="page-percentage">
+            <div class="page-header">
+                <h2 class="page-title gradient-text-teal">Percentage Tools 📐</h2>
+                <p class="page-subtitle">Quick conversions and goal setting</p>
+            </div>
+
+            <div class="percentage-tabs">
+                <button class="pct-tab active" data-pctTab="marksToPercent" id="pctTabMarks">Marks → %</button>
+                <button class="pct-tab" data-pctTab="percentToMarks" id="pctTabPercent">% → Marks</button>
+                <button class="pct-tab" data-pctTab="goal" id="pctTabGoal">Goal 🎯</button>
+            </div>
+
+            <!-- Marks to Percentage -->
+            <div class="pct-content active glass-card" id="pctMarksToPercent">
+                <div class="form-group">
+                    <label class="form-label" for="pctTotalMarks">Total Marks</label>
+                    <input type="number" id="pctTotalMarks" class="form-input" placeholder="e.g. 100">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="pctObtainedMarks">Marks Obtained</label>
+                    <input type="number" id="pctObtainedMarks" class="form-input" placeholder="e.g. 85">
+                </div>
+                <button class="calculate-btn" id="calcPercentBtn">Calculate Percentage</button>
+                <div class="pct-result" id="pctResult" style="display:none">
+                    <span class="pct-result-value" id="pctResultValue">0%</span>
+                </div>
+            </div>
+
+            <!-- Percentage to Marks -->
+            <div class="pct-content glass-card" id="pctPercentToMarks">
+                <div class="form-group">
+                    <label class="form-label" for="pctTotalMarks2">Total Marks</label>
+                    <input type="number" id="pctTotalMarks2" class="form-input" placeholder="e.g. 500">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="pctTargetPercent">Target Percentage</label>
+                    <input type="number" id="pctTargetPercent" class="form-input" placeholder="e.g. 75">
+                </div>
+                <button class="calculate-btn" id="calcMarksBtn">Calculate Marks</button>
+                <div class="pct-result" id="marksResult" style="display:none">
+                    <span class="pct-result-label">Marks Needed:</span>
+                    <span class="pct-result-value" id="marksResultValue">0</span>
+                </div>
+            </div>
+
+            <!-- Goal -->
+            <div class="pct-content glass-card" id="pctGoal">
+                <div class="form-group">
+                    <label class="form-label" for="goalTotalMarks">Total Marks</label>
+                    <input type="number" id="goalTotalMarks" class="form-input" placeholder="e.g. 100">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="goalCurrentMarks">Current Marks</label>
+                    <input type="number" id="goalCurrentMarks" class="form-input" placeholder="e.g. 40">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="goalRemainingMax">Remaining Max Marks</label>
+                    <input type="number" id="goalRemainingMax" class="form-input" placeholder="e.g. 50">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="goalTargetPct">Target Percentage (%)</label>
+                    <input type="number" id="goalTargetPct" class="form-input" placeholder="e.g. 80">
+                </div>
+                <button class="calculate-btn" id="calcGoalBtn">Calculate Goal</button>
+                <div class="pct-result" id="goalResult" style="display:none">
+                    <span class="pct-result-label">You need to score:</span>
+                    <span class="pct-result-value" id="goalResultValue">0</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bonus Attendance Page -->
+        <section class="page" id="page-attendance">
+            <div class="page-header">
+                <h2 class="page-title gradient-text-purple">Bonus Attendance</h2>
+                <p class="page-subtitle">Calculate your bonus attendance criteria</p>
+            </div>
+
+            <div class="attendance-layout">
+                <div class="attendance-form glass-card">
+                    <div class="background-pattern"></div>
+                    <div class="form-group">
+                        <label class="form-label" for="currentAggregate">Current Aggregate % <span class="info-icon" data-tooltip="Your total overall attendance so far. Must be > 50% to be eligible for any bonus.">i</span></label>
+                        <input type="number" id="currentAggregate" class="form-input" placeholder="e.g. 70" min="0" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="currentSubject">Current Subject % <span class="info-icon" data-tooltip="Your attendance in a specific subject. You need at least 65% to avoid a backlog.">i</span></label>
+                        <input type="number" id="currentSubject" class="form-input" placeholder="e.g. 60" min="0" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="prevAvg">1st Semester Attendance % <span class="info-icon" data-tooltip="Your previous semester's attendance score. Affects the size of the 1st week bonus (+2% to +10%).">i</span></label>
+                        <input type="number" id="prevAvg" class="form-input" placeholder="e.g. 82" min="0" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Attended 1st Week Classes? <span class="info-icon" data-tooltip="Did you attend classes during the 1st week of this semester? 'Yes' grants you a performance bonus.">i</span></label>
+                        <div class="toggle-group" id="attendedFirstWeekToggle">
+                            <button class="toggle-btn active" data-value="yes">Yes</button>
+                            <button class="toggle-btn" data-value="no">No</button>
+                        </div>
+                    </div>
+                    <div class="form-group" id="missedClassesGroup">
+                        <label class="form-label" for="missedClasses">Missed Classes in 1st Week <span class="info-icon" data-tooltip="Missing 1-2 classes is fine. Missing >2 classes will penalize your bonus by 2% for every extra miss.">i</span></label>
+                        <input type="number" id="missedClasses" class="form-input" placeholder="e.g. 0, 1, 2" min="0">
+                    </div>
+                    <button class="calculate-btn" id="calcAttendanceBtn">Calculate Bonus</button>
+                </div>
+
+                <div class="attendance-result" id="attendanceResult">
+                    <div class="attendance-card" id="attendanceCard">
+                        <div class="attendance-status" id="attendanceStatus">Bonus Allocation</div>
+                        <div class="attendance-percent" id="attendancePercent" style="font-size: 3rem; margin: 12px 0;">+0%</div>
+                        
+                        <div style="display: flex; gap: 20px; justify-content: center; margin: 20px 0;">
+                            <div style="background: var(--bg-input); padding: 12px 20px; border-radius: var(--border-radius-md); border: 1px solid var(--border-color); flex: 1;">
+                                <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 4px;">Final Aggregate</div>
+                                <div id="finalAggregate" style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">-</div>
+                            </div>
+                            <div style="background: var(--bg-input); padding: 12px 20px; border-radius: var(--border-radius-md); border: 1px solid var(--border-color); flex: 1;">
+                                <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 4px;">Final Subject</div>
+                                <div id="finalSubject" style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">-</div>
+                            </div>
+                        </div>
+
+                        <p class="attendance-advice" id="attendanceAdvice">Enter your details to calculate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subject Resources Page -->
+        <section class="page" id="page-resources">
+            <div class="page-header">
+                <h2 class="page-title gradient-text-purple">Subject Resources-CREATED BY RON x OG</h2>
+                <p class="page-subtitle">Tap a unit to read the notes inline —  no GitHub login needed</p>
+            </div>
+
+            <!-- Subject Tabs -->
+            <div class="res-subject-tabs" id="resSubjectTabs">
+                <button class="res-subject-tab active" data-subject="c-lang" id="tabCLang">
+                    <span>💻</span> C Language
+                </button>
+                <!-- Future subjects can be added here -->
+            </div>
+
+            <!-- C Language Section -->
+            <div class="res-subject-section active" id="resSecCLang">
+                <!-- Units Grid -->
+                <div class="res-units-grid" id="resUnitsGrid">
+                    <div class="res-loading" id="resLoadingMsg">
+                        <div class="res-spinner"></div>
+                        <p>Loading units…</p>
+                    </div>
+                </div>
+
+                <!-- Notes Viewer Panel -->
+                <div class="res-viewer" id="resViewer" style="display:none;">
+                    <div class="res-viewer-header">
+                        <button class="res-back-btn" id="resBackBtn">← Back to Units</button>
+                        <div class="res-viewer-title" id="resViewerTitle"></div>
+                    </div>
+                    </div>
+                    <div class="res-viewer-loading" id="resViewerLoading" style="display:none;">
+                        <div class="res-spinner"></div>
+                        <p>Fetching notes…</p>
+                    </div>
+                    <div class="res-markdown-body" id="resMarkdownBody"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Page -->
+        <section class="page" id="page-feedback">
+            <div class="page-header">
+                <h2 class="page-title gradient-text-purple">Send Us Feedback</h2>
+                <p class="page-subtitle">We value your suggestions and issues</p>
+            </div>
+
+            <div class="pass-checker-layout glass-card" style="max-width: 600px; margin: 0 auto; padding: 32px;">
+                <div class="form-section" style="width: 100%;">
+                    <form id="dashboardFeedbackForm">
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label class="form-label" for="feedbackName" style="display: block; margin-bottom: 8px;">Name</label>
+                            <input type="text" id="feedbackName" class="form-input" placeholder="Your Name" required style="width: 100%;">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label class="form-label" for="feedbackEmail" style="display: block; margin-bottom: 8px;">Email</label>
+                            <input type="email" id="feedbackEmail" class="form-input" placeholder="Your Email" required style="width: 100%;">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label class="form-label" for="feedbackMsg" style="display: block; margin-bottom: 8px;">Message</label>
+                            <textarea id="feedbackMsg" class="form-input" placeholder="Type your suggestion or issue..." rows="5" required style="width: 100%; border: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.3); border-radius: 8px; color: #fff; padding: 12px; font-family: inherit; resize: vertical; outline: none;"></textarea>
+                        </div>
+                        <button type="submit" class="toggle-btn active" style="width: 100%; padding: 14px; border-radius: 8px; font-weight: 700; margin-top: 10px; cursor: pointer; border: none; background: linear-gradient(135deg, #a78bfa, #f472b6); color: #fff;">
+                            Submit Feedback
+                        </button>
+                    </form>
+                    <div id="feedbackSuccessMsg" style="display: none; margin-top: 15px; padding: 12px; border-radius: 8px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); color: #4ade80; font-size: 0.9rem; font-weight: 600; text-align: center;">
+                        🎉 Thank you! Your feedback has been saved successfully.
+                    </div>
+                    <div id="feedbackErrorMsg" style="display: none; margin-top: 15px; padding: 12px; border-radius: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171; font-size: 0.9rem; font-weight: 600; text-align: center;">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle" id="chatbotToggle">
+            💬
+        </button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span class="chat-title">🤖 OG Academic AI Advisor</span>
+                <button class="chat-close" id="chatClose">✖</button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-message bot">
+                    Hi! I'm your OG Academic AI Advisor. I can help you check pass status, predict results, or explain bonus attendance rules. What would you like to know?
+                    <div class="chat-suggestions" id="chatSuggestions">
+                        <span class="chat-suggestion-chip">Bonus Criteria</span>
+                        <span class="chat-suggestion-chip">Grace Rules</span>
+                        <span class="chat-suggestion-chip">Backlog Rule</span>
+                        <span class="chat-suggestion-chip" id="aiPassPredictorChip" style="background: rgba(139, 92, 246, 0.15); border: 1px solid rgba(139, 92, 246, 0.4); color: #c084fc; font-weight: 600;">🔮 AI Pass Predictor</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Ask a question..." autocomplete="off">
+                <button class="chat-send-btn" id="chatSendBtn">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reappear & Improvement Welcome Modal (Small) -->
+    <div id="reappearModal" class="modal-overlay" style="display: none;">
+        <div class="modal-container glass-card" style="max-width: 450px; text-align: center; gap: 15px; padding: 24px;">
+            <button class="modal-close" id="modalCloseBtn">&times;</button>
+            <span class="modal-badge">📊 NEW FEATURE</span>
+            <h3 class="modal-title" style="font-size: 20px;">Reappear Strategy Unlocked! 🔄</h3>
+            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.5; margin: 5px 0;">
+                We have added a dedicated <strong>Reappear & Improvement</strong> section to your dashboard. Get the ultimate 8-step strategy, LPU grading rules, and check upcoming study resources!
+            </p>
+            <button class="modal-btn" id="modalOkBtn" style="width: 100%; margin-top: 10px;">Go to Section 🚀</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

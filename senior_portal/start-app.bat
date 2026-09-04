@@ -1,0 +1,6 @@
+@echo off
+echo Starting LPU Result Checker...
+start "LPU Server" cmd /k "cd server && node server.js"
+start "LPU Client" cmd /k "cd client && npm install axios framer-motion && npm run dev"
+echo Application launching...
+pause

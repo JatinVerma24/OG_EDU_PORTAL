@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2034578803232828" crossorigin="anonymous"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZT0FTDEWMH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ZT0FTDEWMH');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OGEDU AI — The Modern Academic OS for University Students</title>
+    <meta name="description" content="Free academic platform for university students. Calculate GPA/TGPA, verify passing criteria, compare student laptops, practice unit MCQs, and access 1st year notes.">
+    
+    <!-- Premium Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#faf5ff',
+                            100: '#f3e8ff',
+                            200: '#e9d5ff',
+                            300: '#d8b4fe',
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                            700: '#7e22ce',
+                            800: '#6b21a8',
+                            900: '#581c87',
+                            950: '#3b0764',
+                        },
+                        surface: {
+                            base: '#09090b',
+                            card: '#121215',
+                            elevated: '#18181b',
+                            border: '#27272a',
+                            'border-subtle': '#1e1e24',
+                            'border-hover': '#3f3f46',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    letterSpacing: {
+                        tighter: '-0.04em',
+                        tight: '-0.025em',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --brand-purple: #a855f7;
+            --brand-purple-glow: rgba(168, 85, 247, 0.16);
+        }
+        
+        body {
+            background-color: #09090b;
+            color: #f4f4f5;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle Linear-style Grid Pattern */
+        .bg-grid-pattern {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, #000 70%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, #000 70%, transparent 100%);
+        }
+
+        /* Subtle Top Spotlight Beam */
+        .spotlight-beam {
+            background: radial-gradient(circle at 50% -10%, rgba(168, 85, 247, 0.22) 0%, rgba(168, 85, 247, 0.05) 40%, transparent 70%);
+        }
+
+        /* Card Top Border Highlight */
+        .card-highlight {
+            position: relative;
+        }
+        .card-highlight::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .card-highlight-brand::before {
+            background: linear-gradient(180deg, rgba(168, 85, 247, 0.40) 0%, rgba(168, 85, 247, 0.10) 50%, transparent 100%);
+        }
+
+        /* Chat Widget Animations */
+        #chatWindow {
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scale(0.95) translateY(12px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #chatWindow.active {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* FAQ Accordion Transitions */
+        .faq-content {
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), opacity 0.25s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .faq-item.active .faq-content {
+            max-height: 300px;
+            opacity: 1;
+            transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #a855f7;
+        }
+    </style>
+</head>
+<body class="bg-surface-base text-zinc-100 min-h-screen relative selection:bg-brand-500/20 selection:text-brand-300">
+
+    <!-- Background Grid & Spotlight -->
+    <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+    <div class="fixed inset-0 spotlight-beam pointer-events-none z-0"></div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-surface-base/80 border-b border-surface-border/60 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="/" class="flex items-center gap-2.5 group">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center text-zinc-950 font-black shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    <svg class="w-4 h-4 text-zinc-950" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </div>
+                <div class="flex items-baseline gap-1.5">
+                    <span class="font-display font-extrabold text-lg tracking-tight text-white">OGEDU<span class="text-brand-500 font-bold ml-0.5">AI</span></span>
+                    <span class="text-[10px] font-semibold uppercase tracking-wider text-zinc-500 border border-zinc-800 px-1.5 py-0.5 rounded">v2.0</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-zinc-400">
+                <a href="#features" class="hover:text-zinc-100 transition-colors">Portals & Tools</a>
+                <a href="#why-us" class="hover:text-zinc-100 transition-colors">Why Choose Us</a>
+                <a href="#stats" class="hover:text-zinc-100 transition-colors">Impact</a>
+                <a href="#testimonials" class="hover:text-zinc-100 transition-colors">Reviews</a>
+                <a href="/sih" class="hover:text-brand-300 text-brand-400 font-semibold transition-colors flex items-center gap-1.5">
+                    <span>🏆 SIH Playbook</span>
+                </a>
+                <a href="/resources" class="hover:text-brand-400 transition-colors flex items-center gap-1.5">
+                    <span>Notes Vault</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+                </a>
+            </nav>
+
+            <!-- Nav Actions -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="/senior/dashboard.html" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-zinc-200 bg-surface-elevated hover:bg-zinc-800 border border-surface-border hover:border-zinc-700 rounded-lg transition-all shadow-sm">
+                    <span>OGTOOLS</span>
+                    <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+                <a href="#features" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-zinc-950 bg-brand-500 hover:bg-brand-400 rounded-lg transition-all shadow-md shadow-brand-500/20 hover:shadow-brand-500/30">
+                    <span>Get Started Free</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="nav-toggle-btn" class="md:hidden p-2 text-zinc-400 hover:text-white focus:outline-none" aria-label="Toggle navigation menu">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="header-nav" class="hidden md:hidden border-b border-surface-border bg-surface-base/95 backdrop-blur-2xl px-5 py-4 space-y-3">
+            <a href="#features" class="block text-sm font-medium text-zinc-300 py-1.5">Portals & Tools</a>
+            <a href="#why-us" class="block text-sm font-medium text-zinc-300 py-1.5">Why Choose Us</a>
+            <a href="#stats" class="block text-sm font-medium text-zinc-300 py-1.5">Impact</a>
+            <a href="#testimonials" class="block text-sm font-medium text-zinc-300 py-1.5">Reviews</a>
+            <a href="#faq" class="block text-sm font-medium text-zinc-300 py-1.5">FAQ</a>
+            <a href="/resources" class="block text-sm font-semibold text-brand-400 py-1.5">Notes Vault & Study Resources</a>
+            <div class="pt-3 border-t border-surface-border flex flex-col gap-2.5">
+                <a href="/senior/dashboard.html" class="text-center px-4 py-2.5 text-xs font-semibold text-zinc-200 bg-surface-elevated border border-surface-border rounded-lg">Launch OGTOOLS Suite</a>
+                <a href="#features" class="text-center px-4 py-2.5 text-xs font-bold text-zinc-950 bg-brand-500 rounded-lg">Explore Portals</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- ========================================================================= -->
+        <!-- HERO SECTION                                                              -->
+        <!-- ========================================================================= -->
+        <section class="pt-20 pb-24 md:pt-28 md:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center relative" id="hero">
+            
+            <!-- Eyebrow Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/25 text-brand-400 text-xs font-semibold tracking-wide uppercase mb-8 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                <span>The Modern Academic OS for Students</span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-8xl tracking-tighter text-white leading-[1.05] max-w-5xl mx-auto mb-6">
+                Your entire academic journey, <span class="bg-gradient-to-r from-white via-zinc-200 to-brand-500 bg-clip-text text-transparent">engineered for success.</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-base sm:text-lg lg:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed font-normal mb-10">
+                Free GPA & TGPA calculators, attendance targets, verified course notes vault, syllabus breakdowns, and AI-powered laptop finder. No paywalls, zero friction.
+            </p>
+
+            <!-- Hero Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-2xl mx-auto">
+                <a href="/sih" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-bold text-white bg-gradient-to-r from-brand-600 via-purple-600 to-brand-500 hover:from-brand-500 hover:to-purple-500 border border-brand-400/40 rounded-xl transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/40 hover:-translate-y-0.5">
+                    <span>🏆 SIH 2026 Playbook</span>
+                    <span class="text-[10px] font-mono bg-white/20 text-white font-bold px-1.5 py-0.5 rounded-full">NEW</span>
+                </a>
+                <a href="#features" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-bold text-zinc-950 bg-brand-500 hover:bg-brand-400 rounded-xl transition-all shadow-lg shadow-brand-500/25 hover:shadow-brand-500/35 hover:-translate-y-0.5">
+                    <span>Explore Academic Portals</span>
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+                <a href="/resources" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-semibold text-zinc-300 hover:text-white bg-surface-card hover:bg-surface-elevated border border-surface-border hover:border-surface-border-hover rounded-xl transition-all shadow-sm">
+                    <svg class="w-4 h-4 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    <span>Notes Vault</span>
+                </a>
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- STATS SECTION (Clean Bordered Metric Bar)                                 -->
+        <!-- ========================================================================= -->
+        <section class="border-y border-surface-border/80 bg-surface-card/40 backdrop-blur-sm py-12" id="stats">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x md:divide-surface-border">
+                    
+                    <!-- Stat 1 -->
+                    <div class="px-4 sm:px-8 text-center md:text-left">
+                        <div class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tighter mb-1">
+                            10K<span class="text-brand-500">+</span>
+                        </div>
+                        <div class="text-xs sm:text-sm font-semibold text-zinc-300 mb-0.5">Freshers Guided</div>
+                        <div class="text-xs text-zinc-500">Orientation, maps & hostel prep</div>
+                    </div>
+
+                    <!-- Stat 2 -->
+                    <div class="px-4 sm:px-8 text-center md:text-left">
+                        <div class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tighter mb-1">
+                            5K<span class="text-brand-500">+</span>
+                        </div>
+                        <div class="text-xs sm:text-sm font-semibold text-zinc-300 mb-0.5">Active Seniors</div>
+                        <div class="text-xs text-zinc-500">GPA, Reappear & SGPA tools</div>
+                    </div>
+
+                    <!-- Stat 3 -->
+                    <div class="px-4 sm:px-8 text-center md:text-left">
+                        <div class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tighter mb-1">
+                            25K<span class="text-brand-500">+</span>
+                        </div>
+                        <div class="text-xs sm:text-sm font-semibold text-zinc-300 mb-0.5">Calculations Run</div>
+                        <div class="text-xs text-zinc-500">Zero errors & instant outputs</div>
+                    </div>
+
+                    <!-- Stat 4 -->
+                    <div class="px-4 sm:px-8 text-center md:text-left">
+                        <div class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tighter mb-1 flex items-center justify-center md:justify-start gap-1">
+                            <span>4.9</span>
+                            <span class="text-brand-500 text-3xl sm:text-4xl">★</span>
+                        </div>
+                        <div class="text-xs sm:text-sm font-semibold text-zinc-300 mb-0.5">Student Rating</div>
+                        <div class="text-xs text-zinc-500">From 1,200+ peer reviews</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- CORE TOOLS SECTION (Differentiated Bento Grid)                            -->
+        <!-- ========================================================================= -->
+        <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="features">
+            
+            <!-- Section Header -->
+            <div class="mb-14 text-center md:text-left">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-500 mb-2 inline-block font-mono">Academic Suites</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight mb-3">
+                    Engineered for every stage of campus life.
+                </h2>
+                <p class="text-zinc-400 text-sm sm:text-base max-w-2xl">
+                    Whether you are an incoming fresher decoding syllabus units or a senior balancing TGPA marks, our tools give you instant clarity.
+                </p>
+            </div>
+
+            <!-- Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+
+                <!-- Primary Bento Card (Span 7) - OGTOOLS -->
+                <div class="md:col-span-7 bg-surface-card border border-surface-border rounded-3xl p-7 sm:p-9 card-highlight card-highlight-brand flex flex-col justify-between group hover:border-surface-border-hover transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-brand-500/10 text-brand-400 border border-brand-500/20">
+                                ⚡ Flagship Academic Suite
+                            </span>
+                            <span class="text-xs font-mono text-zinc-500">Unauthenticated &bull; Instant</span>
+                        </div>
+
+                        <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-tight mb-3">
+                            OGTOOLS — Result & GPA Suite
+                        </h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                            Calculate TGPA & CGPA projections using real academic credit weights, verify your exact Pass/Fail exam eligibility rules, and project attendance targets.
+                        </p>
+
+                        <!-- Visual Feature Tags / Mini Preview -->
+                        <div class="grid grid-cols-2 gap-3 mb-8">
+                            <div class="p-3.5 rounded-xl bg-surface-elevated/70 border border-surface-border flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-brand-400">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-zinc-200">Pass Criteria Rule</div>
+                                    <div class="text-[11px] text-zinc-500">ETE &ge; 30% or (MTE+ETE) &ge; 30%</div>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 rounded-xl bg-surface-elevated/70 border border-surface-border flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-brand-400">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-zinc-200">TGPA & CGPA Calculator</div>
+                                    <div class="text-[11px] text-zinc-500">Official Credit Point Scaling</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/senior/dashboard.html" class="inline-flex items-center justify-between w-full p-4 rounded-xl bg-surface-elevated hover:bg-zinc-800 border border-surface-border hover:border-brand-500/40 text-sm font-semibold text-white transition-all group-hover:shadow-md">
+                        <span class="flex items-center gap-2">
+                            <span>Open OGTOOLS Dashboard</span>
+                            <span class="text-xs text-brand-400 font-mono">/senior</span>
+                        </span>
+                        <svg class="w-4 h-4 text-brand-500 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+
+                <!-- Secondary Bento Card (Span 5) - FindOGlaptop -->
+                <div class="md:col-span-5 bg-surface-card border border-surface-border rounded-3xl p-7 sm:p-9 card-highlight flex flex-col justify-between hover:border-surface-border-hover transition-all group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-zinc-800 text-zinc-300 border border-zinc-700">
+                                💻 Hardware AI Guide
+                            </span>
+                        </div>
+
+                        <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-tight mb-3">
+                            FindOGlaptop
+                        </h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                            AI-powered student laptop finder. Compare CPU/GPU benchmarks, filter by branch requirements (CSE, AI, Mechanical), and stay within your budget.
+                        </p>
+
+                        <!-- Spec Highlight Tag Grid -->
+                        <div class="space-y-2 mb-8">
+                            <div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-elevated text-xs font-mono border border-surface-border">
+                                <span class="text-zinc-400">Coding & Web Dev</span>
+                                <span class="text-brand-400 font-semibold">16GB RAM &bull; i5/Ryzen 5</span>
+                            </div>
+                            <div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-elevated text-xs font-mono border border-surface-border">
+                                <span class="text-zinc-400">AI / ML / Data Science</span>
+                                <span class="text-brand-400 font-semibold">RTX 3050+ &bull; 6GB VRAM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/findoglaptop/" class="inline-flex items-center justify-between w-full p-4 rounded-xl bg-surface-elevated hover:bg-zinc-800 border border-surface-border hover:border-zinc-700 text-sm font-semibold text-white transition-all">
+                        <span>Launch FindOGlaptop</span>
+                        <svg class="w-4 h-4 text-zinc-400 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+
+                <!-- Bento Card 3 (Span 6) - 1st Year Resources & Notes Vault -->
+                <div class="md:col-span-6 bg-surface-card border border-surface-border rounded-3xl p-7 sm:p-8 card-highlight flex flex-col justify-between hover:border-surface-border-hover transition-all group">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-zinc-800 text-zinc-300 border border-zinc-700">
+                                📚 Complete Study Vault
+                            </span>
+                            <span class="text-xs font-mono text-brand-400">Sem 1 to Sem 8</span>
+                        </div>
+
+                        <h3 class="font-display font-extrabold text-xl sm:text-2xl text-white tracking-tight mb-2">
+                            First Year Resources & LPU Notes
+                        </h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                            100+ subject units, CHE110/CSE111/INT108 lecture notes, practice MCQs, B.Tech CSE roadmap PDF, and Google Drive study materials.
+                        </p>
+                    </div>
+
+                    <a href="/resources" class="inline-flex items-center justify-between w-full p-3.5 rounded-xl bg-surface-elevated hover:bg-zinc-800 border border-surface-border hover:border-zinc-700 text-sm font-semibold text-white transition-all">
+                        <span>Explore Academic Notes Vault</span>
+                        <svg class="w-4 h-4 text-zinc-400 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+
+                <!-- Bento Card 4 (Span 6) - Python Course & Practice Sandbox -->
+                <div class="md:col-span-6 bg-surface-card border border-surface-border rounded-3xl p-7 sm:p-8 card-highlight flex flex-col justify-between hover:border-surface-border-hover transition-all group">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-zinc-800 text-zinc-300 border border-zinc-700">
+                                🐍 9-Unit Interactive Course
+                            </span>
+                            <span class="text-xs font-mono text-zinc-500">Zero Cost</span>
+                        </div>
+
+                        <h3 class="font-display font-extrabold text-xl sm:text-2xl text-white tracking-tight mb-2">
+                            Python Notes & Coding Lab
+                        </h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                            Complete beginner-to-advanced curriculum covering variables, data structures, functions, and OOP with runnable code examples.
+                        </p>
+                    </div>
+
+                    <a href="/python-notes/" class="inline-flex items-center justify-between w-full p-3.5 rounded-xl bg-surface-elevated hover:bg-zinc-800 border border-surface-border hover:border-zinc-700 text-sm font-semibold text-white transition-all">
+                        <span>Open Python Course</span>
+                        <svg class="w-4 h-4 text-zinc-400 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+
+                <!-- Bento Card 5 (Span 12) - Smart India Hackathon (SIH 2026) Master Hub -->
+                <div class="md:col-span-12 bg-gradient-to-r from-surface-card via-zinc-900 to-surface-card border border-brand-500/30 rounded-3xl p-7 sm:p-9 card-highlight flex flex-col md:flex-row items-center justify-between gap-6 hover:border-brand-500/60 transition-all shadow-xl shadow-brand-500/5 group">
+                    <div class="max-w-2xl">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-mono font-bold bg-brand-500/15 text-brand-300 border border-brand-500/30">
+                                🏆 SIH 2026 Winning Playbook
+                            </span>
+                            <span class="text-xs font-mono text-zinc-400">By Ex-Google & SIH Winners</span>
+                        </div>
+                        <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-white tracking-tight mb-2">
+                            All-In-One Resource for Smart India Hackathon
+                        </h3>
+                        <p class="text-zinc-300 text-sm leading-relaxed mb-4">
+                            Problem Statement selection strategy, official PPT templates, word-for-word timed pitch script, AI acceleration toolkits, and 20+ Judge Q&A defense formulas.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-zinc-400">
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800/80 border border-zinc-700/60">🎯 PS Scoring Calculator</span>
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800/80 border border-zinc-700/60">🎤 Universal Pitch Script</span>
+                            <span class="px-2.5 py-1 rounded-md bg-zinc-800/80 border border-zinc-700/60">📊 50+ Winner Projects</span>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-auto shrink-0">
+                        <a href="/sih" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-zinc-950 font-bold text-sm transition-all shadow-lg shadow-brand-500/25 group-hover:scale-105">
+                            <span>Open SIH 2026 Master Hub</span>
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- WHY CHOOSE US SECTION (Differentiated Minimalist Feature Cards)           -->
+        <!-- ========================================================================= -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-surface-border" id="why-us">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-500 mb-2 inline-block font-mono">Platform Values</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight mb-3">
+                    Why University Students Trust OGEDU AI
+                </h2>
+                <p class="text-zinc-400 text-sm sm:text-base">
+                    Built by students who experienced administrative confusion firsthand and engineered clean tools to solve it.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Feature 1 -->
+                <div class="p-6 rounded-2xl bg-surface-card/60 border border-surface-border hover:border-zinc-700 transition-all card-highlight">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-500 flex items-center justify-center mb-5">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">100% Free & Open</h3>
+                    <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                        Every single GPA estimator, unit note, and checklist is provided without subscription fees or paywalls.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="p-6 rounded-2xl bg-surface-card/60 border border-surface-border hover:border-zinc-700 transition-all card-highlight">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-500 flex items-center justify-center mb-5">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Zero-Log Privacy</h3>
+                    <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                        Your marks and registration numbers are processed locally on your device and never stored on remote servers.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="p-6 rounded-2xl bg-surface-card/60 border border-surface-border hover:border-zinc-700 transition-all card-highlight">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-500 flex items-center justify-center mb-5">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Instant Execution</h3>
+                    <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                        Static-compiled lightweight architecture delivers sub-millisecond calculation speeds and offline reliability.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="p-6 rounded-2xl bg-surface-card/60 border border-surface-border hover:border-zinc-700 transition-all card-highlight">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-500 flex items-center justify-center mb-5">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Peer Verified</h3>
+                    <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                        Curated and tested directly with current seniors and campus batches for maximum accuracy.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- TESTIMONIALS (Horizontal Cards with Verified Peer Badges)                 -->
+        <!-- ========================================================================= -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-surface-border" id="testimonials">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-500 mb-2 inline-block font-mono">Peer Validation</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight mb-3">
+                    What Students Say About OGEDU AI
+                </h2>
+                <p class="text-zinc-400 text-sm sm:text-base">
+                    Real feedback from engineering, commerce, and science students using our portal daily.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Review 1 -->
+                <div class="p-7 rounded-2xl bg-surface-card border border-surface-border card-highlight flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-brand-400 text-sm mb-4">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="text-zinc-300 text-sm leading-relaxed italic mb-6">
+                            "The pre-induction checklist and reporting roadmap saved me hours. I knew exactly which photocopies to bring and finished my hostel allotment in 10 minutes."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-surface-border/60">
+                        <div class="w-9 h-9 rounded-full bg-zinc-800 text-brand-400 font-bold flex items-center justify-center text-sm border border-zinc-700">
+                            AS
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-white">Aman Sharma</div>
+                            <div class="text-[11px] text-zinc-500 font-mono">B.Tech CSE Fresher (Batch 2026)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="p-7 rounded-2xl bg-surface-card border border-surface-border card-highlight flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-brand-400 text-sm mb-4">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="text-zinc-300 text-sm leading-relaxed italic mb-6">
+                            "The TGPA estimator is 100% spot-on with university grading. I use it before midterms to plan exactly how many marks I need in CA and end-terms."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-surface-border/60">
+                        <div class="w-9 h-9 rounded-full bg-zinc-800 text-brand-400 font-bold flex items-center justify-center text-sm border border-zinc-700">
+                            PP
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-white">Priya Patel</div>
+                            <div class="text-[11px] text-zinc-500 font-mono">B.Sc Hons Senior (Batch 2024)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="p-7 rounded-2xl bg-surface-card border border-surface-border card-highlight flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-brand-400 text-sm mb-4">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="text-zinc-300 text-sm leading-relaxed italic mb-6">
+                            "Finding a laptop spec that fits our Python and AI lab syllabus within my budget was super simple thanks to the FindOGlaptop hardware filter."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-surface-border/60">
+                        <div class="w-9 h-9 rounded-full bg-zinc-800 text-brand-400 font-bold flex items-center justify-center text-sm border border-zinc-700">
+                            KM
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-white">Karan Malhotra</div>
+                            <div class="text-[11px] text-zinc-500 font-mono">B.Tech AI & DS (Batch 2026)</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- GUIDES & EDITORIAL SECTION                                                -->
+        <!-- ========================================================================= -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-surface-border" id="blogs">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-14">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-500 mb-2 inline-block font-mono">Academic Library</span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+                        Latest Campus Guides & Roadmaps
+                    </h2>
+                </div>
+                <a href="/blog" class="inline-flex items-center gap-2 text-xs font-semibold text-brand-400 hover:text-brand-300 mt-4 md:mt-0 font-mono">
+                    <span>View All Articles</span>
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Blog 1 -->
+                <article class="p-6 rounded-2xl bg-surface-card border border-surface-border hover:border-zinc-700 transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between text-xs font-mono text-zinc-500 mb-4">
+                            <span class="text-brand-400 font-semibold bg-brand-500/10 px-2.5 py-0.5 rounded border border-brand-500/20">LPU Guide</span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-white mb-2 group-hover:text-brand-400 transition-colors">
+                            <a href="/blog/lpu-scholarships-admissions-guide-2026">LPU Scholarships & Induction Reporting 2026</a>
+                        </h3>
+                        <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-6">
+                            Complete walkthrough of document verification, LPUNEST benefits, and what to expect during orientation week.
+                        </p>
+                    </div>
+                    <a href="/blog/lpu-scholarships-admissions-guide-2026" class="text-xs font-semibold text-zinc-300 group-hover:text-brand-400 flex items-center gap-1.5 transition-colors">
+                        <span>Read Guide</span>
+                        <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </article>
+
+                <!-- Blog 2 -->
+                <article class="p-6 rounded-2xl bg-surface-card border border-surface-border hover:border-zinc-700 transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between text-xs font-mono text-zinc-500 mb-4">
+                            <span class="text-zinc-300 font-semibold bg-zinc-800 px-2.5 py-0.5 rounded border border-zinc-700">CUET Counseling</span>
+                            <span>6 min read</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-white mb-2 group-hover:text-brand-400 transition-colors">
+                            <a href="/blog/cuet-2026-counselling-prep-tips">Central University DU / BHU Counseling Strategy</a>
+                        </h3>
+                        <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-6">
+                            How to navigate CSAS allocation, format preference lists, understand seat upgrade vs lock, and cutoff metrics.
+                        </p>
+                    </div>
+                    <a href="/blog/cuet-2026-counselling-prep-tips" class="text-xs font-semibold text-zinc-300 group-hover:text-brand-400 flex items-center gap-1.5 transition-colors">
+                        <span>Read Guide</span>
+                        <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </article>
+
+                <!-- Blog 3 -->
+                <article class="p-6 rounded-2xl bg-surface-card border border-surface-border hover:border-zinc-700 transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between text-xs font-mono text-zinc-500 mb-4">
+                            <span class="text-zinc-300 font-semibold bg-zinc-800 px-2.5 py-0.5 rounded border border-zinc-700">Career Tech</span>
+                            <span>4 min read</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-white mb-2 group-hover:text-brand-400 transition-colors">
+                            <a href="/blog/careers-courses-choices-2026">Aligning Core Engineering with 2026 Job Markets</a>
+                        </h3>
+                        <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-6">
+                            Understanding shifts in modern software development, AI tooling, and how to build high-impact portfolios.
+                        </p>
+                    </div>
+                    <a href="/blog/careers-courses-choices-2026" class="text-xs font-semibold text-zinc-300 group-hover:text-brand-400 flex items-center gap-1.5 transition-colors">
+                        <span>Read Guide</span>
+                        <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- FAQ ACCORDION SECTION                                                     -->
+        <!-- ========================================================================= -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-t border-surface-border" id="faq">
+            
+            <div class="text-center mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-500 mb-2 inline-block font-mono">Knowledge Base</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight mb-3">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-zinc-400 text-sm">
+                    Everything you need to know about our calculators, student data privacy, and tools.
+                </p>
+            </div>
+
+            <div class="space-y-3.5">
+                
+                <!-- FAQ 1 -->
+                <div class="faq-item bg-surface-card border border-surface-border rounded-xl p-5 cursor-pointer card-highlight" onclick="toggleFaq(this)">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm sm:text-base font-semibold text-zinc-200">How does the Student ID classification work?</span>
+                        <svg class="faq-icon w-4 h-4 text-zinc-400 transition-transform duration-200 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-content text-xs sm:text-sm text-zinc-400 pt-3 leading-relaxed">
+                        Our client-side algorithm inspects the prefix of the Student Registration ID you type (e.g. 126, 261 for Freshers, 123/124/125 for Seniors) directly in your browser. No registration or student data is transmitted or stored on any server.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item bg-surface-card border border-surface-border rounded-xl p-5 cursor-pointer card-highlight" onclick="toggleFaq(this)">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm sm:text-base font-semibold text-zinc-200">Are the GPA & Pass criteria calculators official?</span>
+                        <svg class="faq-icon w-4 h-4 text-zinc-400 transition-transform duration-200 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-content text-xs sm:text-sm text-zinc-400 pt-3 leading-relaxed">
+                        Yes, the calculator formulas are mapped strictly according to university academic regulations: ETE &ge; 30% (or combined MTE+ETE &ge; 30%) with an overall score &ge; 40%. The calculations mirror the official evaluation system accurately.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item bg-surface-card border border-surface-border rounded-xl p-5 cursor-pointer card-highlight" onclick="toggleFaq(this)">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm sm:text-base font-semibold text-zinc-200">Do I need to sign up or create an account?</span>
+                        <svg class="faq-icon w-4 h-4 text-zinc-400 transition-transform duration-200 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-content text-xs sm:text-sm text-zinc-400 pt-3 leading-relaxed">
+                        No! We completely removed Firebase authentication and sign-in walls from the entire platform. Every portal (OGTOOLS, Notes Vault, Laptop Finder) is 100% open and immediately accessible.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item bg-surface-card border border-surface-border rounded-xl p-5 cursor-pointer card-highlight" onclick="toggleFaq(this)">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm sm:text-base font-semibold text-zinc-200">How can I contact the creator or report a bug?</span>
+                        <svg class="faq-icon w-4 h-4 text-zinc-400 transition-transform duration-200 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                    <div class="faq-content text-xs sm:text-sm text-zinc-400 pt-3 leading-relaxed">
+                        You can contact Jatin Verma directly at 8264105304 or via email at jv242buisness@gmail.com. You can also chat with our AI assistant in the bottom right corner!
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================================================= -->
+        <!-- ABOUT / CREATOR & CALL TO ACTION SECTION                                  -->
+        <!-- ========================================================================= -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-surface-border" id="about">
+            
+            <div class="bg-gradient-to-b from-surface-card to-surface-elevated border border-surface-border rounded-3xl p-8 sm:p-12 card-highlight card-highlight-brand text-center relative overflow-hidden">
+                <div class="max-w-3xl mx-auto">
+                    
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-brand-500/10 text-brand-400 border border-brand-500/20 mb-6">
+                        👑 Designed by Jatin Verma &bull; Full Stack Developer
+                    </div>
+
+                    <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight mb-4">
+                        Ready to elevate your academic scores?
+                    </h2>
+                    
+                    <p class="text-zinc-400 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+                        Join thousands of students using OGEDU AI to track attendance, calculate semester grades, and study smarter.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="/senior/dashboard.html" class="w-full sm:w-auto px-7 py-3.5 bg-brand-500 hover:bg-brand-400 text-zinc-950 text-sm font-bold rounded-xl transition-all shadow-lg shadow-brand-500/20">
+                            Launch OGTOOLS Suite
+                        </a>
+                        <a href="/resources" class="w-full sm:w-auto px-7 py-3.5 bg-surface-base hover:bg-zinc-900 border border-surface-border text-zinc-300 hover:text-white text-sm font-semibold rounded-xl transition-all">
+                            Access Notes Vault
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ========================================================================= -->
+    <!-- FOOTER                                                                    -->
+    <!-- ========================================================================= -->
+    <footer class="border-t border-surface-border bg-surface-base/90 pt-16 pb-12 text-zinc-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="col-span-2 space-y-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-md bg-brand-500 flex items-center justify-center text-zinc-950 font-black text-xs">
+                            ⚡
+                        </div>
+                        <span class="font-display font-bold text-base text-white">OGEDU<span class="text-brand-500">AI</span></span>
+                    </div>
+                    <p class="text-zinc-500 max-w-sm leading-relaxed text-xs">
+                        Open-access student resource suite engineered to eliminate administrative bottlenecks, predict passing criteria, and optimize semester preparation.
+                    </p>
+                    <div class="flex items-center gap-3 pt-1">
+                        <a href="https://www.instagram.com/ogjatinverma/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-surface-elevated hover:bg-zinc-800 border border-surface-border flex items-center justify-center text-zinc-400 hover:text-white transition-colors" aria-label="Instagram">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@OGJATINVERMA" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-lg bg-surface-elevated hover:bg-zinc-800 border border-surface-border flex items-center justify-center text-zinc-400 hover:text-white transition-colors" aria-label="YouTube">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Portals -->
+                <div>
+                    <div class="text-xs font-semibold text-zinc-200 uppercase tracking-wider mb-3 font-mono">Academic Suites</div>
+                    <ul class="space-y-2">
+                        <li><a href="/senior/dashboard.html" class="hover:text-zinc-200 transition-colors">OGTOOLS Suite</a></li>
+                        <li><a href="/findoglaptop/" class="hover:text-zinc-200 transition-colors">FindOGlaptop</a></li>
+                        <li><a href="/resources" class="hover:text-zinc-200 transition-colors">First Year Resources</a></li>
+                        <li><a href="/lpu-notes" class="hover:text-zinc-200 transition-colors">LPU Notes Vault</a></li>
+                        <li><a href="/python-notes/" class="hover:text-zinc-200 transition-colors">Python Course</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Compliance & Trust -->
+                <div>
+                    <div class="text-xs font-semibold text-zinc-200 uppercase tracking-wider mb-3 font-mono">Trust & Legal</div>
+                    <ul class="space-y-2">
+                        <li><a href="/about" class="hover:text-zinc-200 transition-colors">About Us</a></li>
+                        <li><a href="/contact" class="hover:text-zinc-200 transition-colors">Contact Us</a></li>
+                        <li><a href="/privacy" class="hover:text-zinc-200 transition-colors">Privacy Policy</a></li>
+                        <li><a href="/terms" class="hover:text-zinc-200 transition-colors">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Disclaimers -->
+                <div>
+                    <div class="text-xs font-semibold text-zinc-200 uppercase tracking-wider mb-3 font-mono">Disclaimers</div>
+                    <ul class="space-y-2">
+                        <li><a href="/disclaimer" class="hover:text-zinc-200 transition-colors">Disclaimer</a></li>
+                        <li><a href="/cookie-policy" class="hover:text-zinc-200 transition-colors">Cookie Policy</a></li>
+                        <li><a href="/refund-policy" class="hover:text-zinc-200 transition-colors">Refund Policy</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-500">
+                <div>&copy; 2026 OGEDU AI. All rights reserved. Free Educational Open-Access Suite.</div>
+                <div class="text-zinc-400 font-medium">Crafted with precision by <span class="text-brand-400 font-bold">Jatin Verma</span></div>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- ========================================================================= -->
+    <!-- FLOATING AI ASSISTANT WIDGET (Linear / Raycast Styled)                     -->
+    <!-- ========================================================================= -->
+    <div class="fixed bottom-6 right-6 z-50">
+        
+        <!-- Chatbot Trigger Button -->
+        <button id="chatTriggerBtn" class="w-13 h-13 px-4 py-3 bg-brand-500 hover:bg-brand-400 text-zinc-950 rounded-2xl shadow-xl shadow-brand-500/25 flex items-center gap-2.5 font-bold text-xs transition-all hover:scale-105 active:scale-95" aria-label="Open AI Assistant">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+            <span class="hidden sm:inline font-mono">Ask AI</span>
+        </button>
+
+        <!-- Popover Window -->
+        <div id="chatWindow" class="fixed bottom-22 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[380px] h-[520px] bg-surface-card border border-surface-border rounded-2xl shadow-2xl flex flex-col overflow-hidden backdrop-blur-2xl card-highlight">
+            
+            <!-- Chat Header -->
+            <div class="px-4 py-3.5 border-b border-surface-border bg-surface-elevated/70 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-brand-500/15 border border-brand-500/30 text-brand-400 flex items-center justify-center text-xs">
+                        🤖
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold text-white leading-tight">OG Academic AI Advisor</div>
+                        <div class="text-[10px] text-zinc-500 flex items-center gap-1 font-mono">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Online &bull; Instant Mode
+                        </div>
+                    </div>
+                </div>
+                <button id="chatCloseBtn" class="text-zinc-500 hover:text-zinc-300 p-1 rounded-md text-lg leading-none" aria-label="Close Chat">&times;</button>
+            </div>
+
+            <!-- Chat Messages Box -->
+            <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs leading-relaxed">
+                <div class="p-3.5 rounded-xl bg-surface-elevated border border-surface-border text-zinc-300">
+                    Welcome to <strong class="text-white">OGEDU AI</strong>! I am your student advisor. Ask me about passing criteria, study tips, laptop requirements, or syllabus guides!
+                </div>
+                <!-- Quick Reply Chips -->
+                <div class="flex flex-wrap gap-1.5 pt-1" id="chatQuickReplies">
+                    <button class="px-2.5 py-1.5 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-zinc-300 text-[11px] border border-zinc-700 transition-colors" onclick="sendQuickReply('Give me some study tips')">🎓 Study Tips</button>
+                    <button class="px-2.5 py-1.5 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-zinc-300 text-[11px] border border-zinc-700 transition-colors" onclick="sendQuickReply('What laptop should I buy?')">💻 Laptop Help</button>
+                    <button class="px-2.5 py-1.5 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-zinc-300 text-[11px] border border-zinc-700 transition-colors" onclick="sendQuickReply('How to prepare for exams?')">📊 Exam Guidance</button>
+                    <button class="px-2.5 py-1.5 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-zinc-300 text-[11px] border border-zinc-700 transition-colors" onclick="sendQuickReply('How can I contact support?')">📧 Contact Support</button>
+                </div>
+            </div>
+
+            <!-- Chat Input Form -->
+            <form id="chatInputForm" class="p-3 border-t border-surface-border bg-surface-elevated/40 flex items-center gap-2">
+                <input type="text" id="chatInput" placeholder="Ask a question..." autocomplete="off" class="flex-1 bg-surface-card text-zinc-100 placeholder-zinc-500 text-xs px-3.5 py-2.5 rounded-xl border border-surface-border focus:border-brand-500 focus:outline-none">
+                <button type="submit" class="w-9 h-9 rounded-xl bg-brand-500 hover:bg-brand-400 text-zinc-950 flex items-center justify-center shrink-0 transition-colors" aria-label="Send message">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- ========================================================================= -->
+    <!-- INTERACTIVE JAVASCRIPT LOGIC                                              -->
+    <!-- ========================================================================= -->
+    <script>
+        // Mobile Navigation Toggle
+        const navToggleBtn = document.getElementById('nav-toggle-btn');
+        const headerNav = document.getElementById('header-nav');
+        if (navToggleBtn && headerNav) {
+            navToggleBtn.addEventListener('click', () => {
+                headerNav.classList.toggle('hidden');
+            });
+        }
+
+        // FAQ Toggling with Smooth Height
+        function toggleFaq(itemElement) {
+            const isActive = itemElement.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+            if (!isActive) {
+                itemElement.classList.add('active');
+            }
+        }
+
+        // Student ID Classifications & Routing
+        const freshersPrefixes = ['126', '261', '260', '262', '263'];
+        const seniorsPrefixes = ['123', '124', '125', '240', '241', '242', '243', '250', '251', '252', '253'];
+
+        function runRealTimeIDCheck() {
+            const idInput = document.getElementById('reg-id');
+            if (!idInput) return;
+            const val = idInput.value.trim().toUpperCase();
+            const badge = document.getElementById('ai-status-badge');
+            if (!badge) return;
+
+            if (!val || val.length < 3) {
+                badge.className = 'hidden';
+                return;
+            }
+
+            const isFresher = freshersPrefixes.some(code => val.includes(code));
+            const isSenior = seniorsPrefixes.some(code => val.includes(code)) || (val.startsWith('12') && !val.startsWith('126'));
+
+            badge.className = 'flex mt-3 p-2.5 rounded-lg text-xs font-mono items-center justify-between border';
+
+            if (isFresher) {
+                badge.classList.add('bg-brand-500/10', 'border-brand-500/30', 'text-brand-300');
+                badge.innerHTML = '<span>⚡ AI Classifier: <strong>Freshers Batch 2026</strong></span><span class="underline">Direct to Freshers Portal</span>';
+            } else if (isSenior) {
+                badge.classList.add('bg-zinc-800', 'border-zinc-700', 'text-zinc-200');
+                badge.innerHTML = '<span>⚡ AI Classifier: <strong>Senior Batch</strong></span><span class="underline">Direct to OGTOOLS Suite</span>';
+            } else {
+                badge.classList.add('bg-zinc-900', 'border-zinc-800', 'text-zinc-400');
+                badge.innerHTML = '<span>ℹ️ Format detected. Click Launch to enter portal.</span>';
+            }
+        }
+
+        const regInputElem = document.getElementById('reg-id');
+        if (regInputElem) {
+            const savedId = localStorage.getItem('student_id');
+            if (savedId) {
+                regInputElem.value = savedId;
+                runRealTimeIDCheck();
+            }
+
+            regInputElem.addEventListener('input', () => {
+                const errorMsg = document.getElementById('error-msg');
+                if (errorMsg) errorMsg.className = 'hidden';
+                runRealTimeIDCheck();
+            });
+
+            regInputElem.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    autoRouteStudent();
+                }
+            });
+        }
+
+        function autoRouteStudent() {
+            const regElem = document.getElementById('reg-id');
+            if (!regElem) return;
+            const idInput = regElem.value.trim();
+            const errorMsg = document.getElementById('error-msg');
+
+            if (!idInput) {
+                if (errorMsg) {
+                    errorMsg.innerHTML = '⚠️ Please enter your Registration ID first.';
+                    errorMsg.className = 'mt-2 text-xs text-brand-400 font-mono text-left block';
+                }
+                regElem.focus();
+                return;
+            }
+
+            const isFresher = freshersPrefixes.some(code => idInput.includes(code));
+            localStorage.setItem('student_id', idInput.toUpperCase());
+
+            if (isFresher) {
+                window.location.href = '/fresher/';
+            } else {
+                window.location.href = '/senior/dashboard.html';
+            }
+        }
+
+        function selectPortal(type) {
+            if (type === 'laptop') {
+                window.location.href = '/findoglaptop/';
+                return;
+            }
+            if (type === 'cuet') {
+                window.location.href = '/cuet/';
+                return;
+            }
+            if (type === 'resources' || type === 'lpu-notes') {
+                window.location.href = '/resources';
+                return;
+            }
+            if (type === 'fresher') {
+                window.location.href = '/fresher/';
+                return;
+            }
+            if (type === 'senior') {
+                window.location.href = '/senior/dashboard.html';
+                return;
+            }
+        }
+
+        // Chatbot Widget Logic
+        const chatTriggerBtn = document.getElementById('chatTriggerBtn');
+        const chatCloseBtn = document.getElementById('chatCloseBtn');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatInputForm = document.getElementById('chatInputForm');
+        const chatInput = document.getElementById('chatInput');
+        const chatMessages = document.getElementById('chatMessages');
+
+        if (chatTriggerBtn && chatWindow) {
+            chatTriggerBtn.addEventListener('click', () => {
+                chatWindow.classList.toggle('active');
+            });
+        }
+
+        if (chatCloseBtn && chatWindow) {
+            chatCloseBtn.addEventListener('click', () => {
+                chatWindow.classList.remove('active');
+            });
+        }
+
+        const OFFLINE_BOT_RESPONSES = [
+            {
+                keywords: ['study', 'tips', 'learn', 'score', 'grades', 'prepare'],
+                response: '🎓 <strong>Study Tips</strong>: Review your lecture slides within 24 hours. Focus on practical lab components and finish Continuous Assessments (CA) early to lock in high internal scores!'
+            },
+            {
+                keywords: ['laptop', 'computer', 'specs', 'buy', 'requirement'],
+                response: '💻 <strong>Laptop Guidance</strong>: For CSE & Coding, 16GB RAM with an i5/Ryzen 5 processor is optimal. For AI/ML, choose an RTX 3050+ GPU with 6GB VRAM. Use our <strong>FindOGlaptop</strong> tool to filter models by course syllabus!'
+            },
+            {
+                keywords: ['exam', 'guidance', 'pass', 'marks', 'predict'],
+                response: '📊 <strong>Exam Advice</strong>: Official university passing rules require ETE &ge; 30% (or combined MTE+ETE &ge; 30%) with total aggregate &ge; 40%. Use our <strong>OGTOOLS</strong> pass checker to calculate your exact numbers.'
+            },
+            {
+                keywords: ['contact', 'support', 'help', 'email', 'number', 'phone'],
+                response: '📧 <strong>Contact Support</strong>: Have questions or need assistance? Reach out to Jatin Verma directly at <strong>8264105304</strong> or email us at <strong>jv242buisness@gmail.com</strong>.'
+            },
+            {
+                keywords: ['creator', 'created', 'jatin', 'who made'],
+                response: '👑 This portal was engineered and designed by <strong>Jatin Verma</strong> (Full Stack Developer & Student Creator).'
+            },
+            {
+                keywords: ['hello', 'hi', 'hey'],
+                response: '👋 Hello! I am your OGEDU AI Advisor. How can I help you today? You can ask about study resources, GPA calculators, laptop specs, or exams.'
+            }
+        ];
+
+        function formatAiText(raw) {
+            if (!raw) return '';
+            if (raw.includes('<strong') || raw.includes('<br>') || raw.includes('<div>') || raw.includes('<p>')) {
+                return raw;
+            }
+            return raw
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/`([^`]+)`/g, '<code class="bg-zinc-800 px-1.5 py-0.5 rounded text-brand-300 font-mono text-xs">$1</code>')
+                .replace(/^[\*\-]\s+(.*)$/gm, '<div class="flex items-start gap-1.5 ml-2"><span class="text-brand-400">•</span><span>$1</span></div>')
+                .replace(/\n\n/g, '<br><br>')
+                .replace(/\n/g, '<br>');
+        }
+
+        async function processChatMessage(text) {
+            appendMessage(text, 'user');
+            
+            const offlineReply = getBotResponse(text);
+
+            try {
+                const res = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text })
+                });
+                if (res.ok) {
+                    const json = await res.json();
+                    const rawText = json.data?.text || json.text || offlineReply;
+                    appendMessage(formatAiText(rawText), 'bot');
+                    return;
+                }
+            } catch (e) {
+                // Offline fallback
+            }
+
+            setTimeout(() => {
+                appendMessage(formatAiText(offlineReply), 'bot');
+            }, 300);
+        }
+
+        if (chatInputForm) {
+            chatInputForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const text = chatInput.value.trim();
+                if (!text) return;
+                chatInput.value = '';
+                processChatMessage(text);
+            });
+        }
+
+        function sendQuickReply(question) {
+            processChatMessage(question);
+        }
+
+        function appendMessage(text, type) {
+            const bubble = document.createElement('div');
+            if (type === 'user') {
+                bubble.className = 'p-3 rounded-xl bg-brand-500 text-zinc-950 font-medium ml-auto max-w-[85%] text-xs shadow-sm';
+            } else {
+                bubble.className = 'p-3 rounded-xl bg-surface-elevated border border-surface-border text-zinc-300 max-w-[90%] text-xs leading-relaxed space-y-1';
+            }
+            bubble.innerHTML = text;
+            chatMessages.appendChild(bubble);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function getBotResponse(input) {
+            const cleanInput = input.toLowerCase();
+            for (const item of OFFLINE_BOT_RESPONSES) {
+                if (item.keywords.some(kw => cleanInput.includes(kw))) {
+                    return item.response;
+                }
+            }
+            return '🤖 I am OG AI! Ask me about SIH 2026 problem statements, 6-slide PPT structure, study notes, or campus guidelines.';
+        }
+    </script>
+</body>
+</html>

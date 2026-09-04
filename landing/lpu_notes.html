@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZT0FTDEWMH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZT0FTDEWMH');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LPU Notes Portal | OGEDU AI</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- Highlight.js for Code Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <style>
+        :root {
+            --bg-dark: #09090b;
+            --bg-card: rgba(18, 18, 21, 0.85);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary-orange: #a855f7;
+            --primary-orange-glow: rgba(168, 85, 247, 0.18);
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-outfit: 'Outfit', sans-serif;
+            --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-jakarta);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Ambient Glow Backgrounds */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--primary-orange-glow) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(234, 179, 8, 0.08) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Header Styles */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+            filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.5));
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        .logo-title {
+            font-family: var(--font-outfit);
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+
+        .logo-title span {
+            color: var(--primary-orange);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: var(--primary-orange-glow);
+            border-color: var(--primary-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+        }
+
+        /* Layout Container */
+        .portal-layout {
+            flex: 1;
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 32px 24px;
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 32px;
+            z-index: 10;
+        }
+
+        /* Sidebar Selector */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sidebar-title {
+            font-family: var(--font-outfit);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            padding-left: 8px;
+        }
+
+        .sem-link {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .sem-link i {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+
+        .sem-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .sem-link.active {
+            background: linear-gradient(135deg, var(--primary-orange), #ea580c);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 16px rgba(249, 115, 22, 0.3);
+        }
+
+        .sem-link.active i {
+            opacity: 1;
+            transform: translateX(2px);
+        }
+
+        /* Main Workspace */
+        .workspace {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Page Headers */
+        .workspace-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .workspace-title {
+            font-family: var(--font-outfit);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .workspace-title span {
+            color: var(--primary-orange);
+            font-size: 1rem;
+            font-weight: 600;
+            background: var(--primary-orange-glow);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-left: 12px;
+            vertical-align: middle;
+            font-family: var(--font-jakarta);
+        }
+
+        /* Search Bar */
+        .search-box {
+            position: relative;
+            max-width: 320px;
+            width: 100%;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .search-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            padding: 10px 16px 10px 40px;
+            border-radius: 10px;
+            font-family: var(--font-jakarta);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 3px var(--primary-orange-glow);
+        }
+
+        /* Subjects Grid */
+        .subjects-grid {
+            display: grid;
+            grid-template-cols: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .subject-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subject-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-orange), #ea580c);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(249, 115, 22, 0.3);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(249, 115, 22, 0.05);
+        }
+
+        .subject-card:hover::before {
+            opacity: 1;
+        }
+
+        .sub-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .sub-code {
+            font-family: var(--font-outfit);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--primary-orange);
+            background: var(--primary-orange-glow);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(249, 115, 22, 0.15);
+        }
+
+        .sub-credits {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.04);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .sub-title {
+            font-family: var(--font-outfit);
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 46px;
+        }
+
+        .sub-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .sub-badge {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .sub-units {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+
+        .sub-units i {
+            color: var(--primary-orange);
+        }
+
+        /* Overlay views (Notes/MCQs/Units) */
+        .overlay-view {
+            display: none;
+            flex-direction: column;
+            gap: 24px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb span {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .breadcrumb span:hover {
+            color: #ffffff;
+        }
+
+        .breadcrumb i {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb .current {
+            color: var(--primary-orange);
+            font-weight: 600;
+            cursor: default;
+        }
+
+        .subject-overview-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(8px);
+        }
+
+        .overview-title {
+            font-family: var(--font-outfit);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .overview-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 12px;
+        }
+
+        .units-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 12px;
+        }
+
+        .unit-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 16px;
+            transition: var(--transition);
+        }
+
+        .unit-card:hover {
+            border-color: rgba(249, 115, 22, 0.2);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .unit-badge {
+            font-family: var(--font-outfit);
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--primary-orange);
+            background: var(--primary-orange-glow);
+            padding: 4px 10px;
+            border-radius: 6px;
+            align-self: flex-start;
+        }
+
+        .unit-title {
+            font-family: var(--font-outfit);
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #ffffff;
+            line-height: 1.4;
+            margin-bottom: auto;
+        }
+
+        .unit-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .action-btn {
+            padding: 10px;
+            border-radius: 8px;
+            font-family: var(--font-jakarta);
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .action-btn.notes {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .action-btn.notes:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-secondary);
+        }
+
+        .action-btn.mcq {
+            background: var(--primary-orange-glow);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            color: var(--primary-orange);
+        }
+
+        .action-btn.mcq:hover {
+            background: var(--primary-orange);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+        }
+
+        /* Notes Display View */
+        .notes-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            backdrop-filter: blur(8px);
+        }
+
+        .markdown-body {
+            font-family: var(--font-jakarta);
+            line-height: 1.7;
+            color: #e5e7eb;
+            font-size: 1rem;
+        }
+
+        .markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+            font-family: var(--font-outfit);
+            color: #ffffff;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .markdown-body h1 { font-size: 1.8rem; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        .markdown-body h2 { font-size: 1.4rem; }
+        .markdown-body h3 { font-size: 1.2rem; }
+
+        .markdown-body p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .markdown-body ul, .markdown-body ol {
+            margin-bottom: 16px;
+            padding-left: 24px;
+            color: var(--text-secondary);
+        }
+
+        .markdown-body li {
+            margin-bottom: 6px;
+        }
+
+        .markdown-body blockquote {
+            border-left: 4px solid var(--primary-orange);
+            background: rgba(249, 115, 22, 0.05);
+            padding: 12px 18px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .markdown-body pre {
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .markdown-body pre code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+
+        .markdown-body code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--primary-orange);
+        }
+
+        .markdown-body hr {
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            margin: 24px 0;
+        }
+
+        .markdown-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+        }
+
+        .markdown-body th, .markdown-body td {
+            border: 1px solid var(--border-color);
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .markdown-body th {
+            background: rgba(255, 255, 255, 0.04);
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .markdown-body td {
+            color: var(--text-secondary);
+        }
+
+        /* MCQ Quiz View */
+        .quiz-summary-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            backdrop-filter: blur(8px);
+        }
+
+        .quiz-stats {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .quiz-stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .quiz-stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .quiz-stat-value {
+            font-family: var(--font-outfit);
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .quiz-stat-value.correct { color: #22c55e; }
+        .quiz-stat-value.wrong { color: #ef4444; }
+        .quiz-stat-value.left { color: var(--text-secondary); }
+
+        .progress-container {
+            flex: 1;
+            max-width: 300px;
+            min-width: 180px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .progress-bar-bg {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-orange), #ea580c);
+            width: 0%;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .mcq-question-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mcq-q-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .mcq-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--primary-orange-glow);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 10px;
+            color: var(--primary-orange);
+            font-family: var(--font-outfit);
+            font-weight: 800;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .mcq-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.5;
+            padding-top: 4px;
+        }
+
+        .mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-left: 52px;
+        }
+
+        .mcq-option {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-family: var(--font-jakarta);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            transition: var(--transition);
+            width: 100%;
+            text-align: left;
+        }
+
+        .mcq-option:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--text-secondary);
+            color: #ffffff;
+        }
+
+        .mcq-option.selected-wrong {
+            background: rgba(239, 68, 68, 0.05);
+            border-color: #ef4444;
+            color: #ef4444;
+        }
+
+        .mcq-option.selected-correct, .mcq-option.correct-reveal {
+            background: rgba(34, 197, 94, 0.05);
+            border-color: #22c55e;
+            color: #22c55e;
+        }
+
+        .mcq-option-letter {
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .mcq-option.selected-wrong .mcq-option-letter { color: #ef4444; }
+        .mcq-option.selected-correct .mcq-option-letter, .mcq-option.correct-reveal .mcq-option-letter { color: #22c55e; }
+
+        .mcq-option-text {
+            flex: 1;
+        }
+
+        .quiz-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            padding-left: 52px;
+        }
+
+        .reveal-exp-btn {
+            background: transparent;
+            border: none;
+            color: var(--primary-orange);
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .reveal-exp-btn:hover {
+            color: #fdba74;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .quiz-nav-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quiz-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--text-secondary);
+        }
+
+        .quiz-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .explanation-card {
+            background: rgba(34, 197, 94, 0.04);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 12px;
+            padding: 18px 24px;
+            margin-top: 12px;
+            margin-left: 52px;
+            animation: slideDown 0.3s ease;
+        }
+
+        .explanation-title {
+            font-family: var(--font-outfit);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #22c55e;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .explanation-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Loading States */
+        .loading-view {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 64px 32px;
+            gap: 16px;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--primary-orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Animations */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse-glow {
+            from { filter: drop-shadow(0 0 2px rgba(249, 115, 22, 0.3)); }
+            to { filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.6)); }
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.4);
+            padding: 24px;
+            text-align: center;
+            margin-top: auto;
+            z-index: 10;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer p span {
+            color: var(--primary-orange);
+            font-weight: 600;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .portal-layout {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 8px;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .sidebar-title {
+                display: none;
+            }
+            .sem-link {
+                white-space: nowrap;
+                padding: 10px 16px;
+            }
+            .sem-link i {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-container {
+                padding: 12px 16px;
+            }
+            .portal-layout {
+                padding: 16px;
+            }
+            .mcq-options {
+                padding-left: 0;
+            }
+            .quiz-actions {
+                padding-left: 0;
+            }
+            .explanation-card {
+                margin-left: 0;
+            }
+        }
+
+        /* Lock Screen Styles */
+        .lock-screen {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-dark);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        .lock-screen::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--primary-orange-glow) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .lock-card {
+            background: rgba(17, 24, 39, 0.6);
+            border: 1px solid var(--border-color);
+            padding: 48px 32px;
+            border-radius: 24px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .lock-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-orange-glow);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-orange);
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        .lock-card h2 {
+            font-family: var(--font-outfit);
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .lock-subtitle {
+            font-family: var(--font-outfit);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: var(--primary-orange-glow);
+            padding: 6px 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(249, 115, 22, 0.15);
+        }
+
+        .lock-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .back-btn-lock {
+            background: var(--primary-orange);
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            border: none;
+            margin-top: 12px;
+            box-shadow: 0 4px 14px rgba(249, 115, 22, 0.3);
+            cursor: pointer;
+        }
+
+        .back-btn-lock:hover {
+            background: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" onclick="window.location.href='/'; return false;" class="logo-area">
+                <i class="fa-solid fa-bolt logo-icon"></i>
+                <span class="logo-title">OGEDU <span>AI</span></span>
+            </a>
+            <a href="/" onclick="window.location.href='/'; return false;" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </header>
+
+    <div class="portal-layout">
+        <!-- Semester Navigation -->
+        <div class="sidebar">
+            <h3 class="sidebar-title">B.Tech Semesters</h3>
+            <div class="sem-link active" onclick="loadSemester('Sem1')" id="link-Sem1">Semester 1 <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="sem-link" onclick="loadSemester('Sem2')" id="link-Sem2">Semester 2 <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="sem-link" onclick="loadSemester('Sem3')" id="link-Sem3">Semester 3 <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="sem-link" onclick="loadSemester('Sem4')" id="link-Sem4">Semester 4 <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="sem-link" onclick="loadSemester('Sem5')" id="link-Sem5">Semester 5 <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="sem-link" onclick="loadSemester('Sem6')" id="link-Sem6">Semester 6 <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="sem-link" onclick="loadSemester('Sem7')" id="link-Sem7">Semester 7 <i class="fa-solid fa-chevron-right"></i></div>
+            <div class="sem-link" onclick="loadSemester('Sem8')" id="link-Sem8">Semester 8 <i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+
+        <!-- Main Workspace -->
+        <div class="workspace">
+            <!-- Loading Indicator -->
+            <div class="loading-view" id="loading-spinner">
+                <div class="spinner"></div>
+                <div class="loading-text" id="loading-message">Retrieving data from server...</div>
+            </div>
+
+            <!-- View 1: Subjects List -->
+            <div class="overlay-view" id="view-subjects" style="display: flex;">
+                <div class="workspace-header">
+                    <h2 class="workspace-title" id="sem-header-title">Semester 1 Subjects</h2>
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="search-subject" class="search-input" placeholder="Search subjects..." oninput="filterSubjects()">
+                    </div>
+                </div>
+                <div class="subjects-grid" id="subjects-container">
+                    <!-- Dynamic subject cards will be inserted here -->
+                </div>
+            </div>
+
+            <!-- View 2: Units List Overview -->
+            <div class="overlay-view" id="view-units">
+                <div class="breadcrumb">
+                    <span onclick="goBackToSubjects()">Semesters</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span id="breadcrumb-sem-name" onclick="goBackToSubjects()">Semester 1</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span class="current" id="breadcrumb-sub-name">Subject</span>
+                </div>
+                
+                <div class="subject-overview-card" id="subject-overview-block">
+                    <!-- Dynamic subject header details -->
+                </div>
+                
+                <h3 class="sidebar-title" style="margin-top: 12px; margin-bottom: 0;">Study & Practice Units</h3>
+                <div class="units-list" id="units-container">
+                    <!-- Dynamic unit cards will be inserted here -->
+                </div>
+            </div>
+
+            <!-- View 3: Notes Content Page -->
+            <div class="overlay-view" id="view-notes">
+                <div class="breadcrumb">
+                    <span onclick="goBackToSubjects()">Semesters</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span id="breadcrumb-notes-sem" onclick="goBackToSubjects()">Semester 1</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span id="breadcrumb-notes-sub" onclick="goBackToUnits()">Subject</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span class="current" id="breadcrumb-notes-unit">Unit 1 Notes</span>
+                </div>
+                
+                <div class="workspace-header">
+                    <h2 class="workspace-title" id="notes-title">Unit 1 Study Materials</h2>
+                    <button class="back-btn" onclick="goBackToUnits()"><i class="fa-solid fa-arrow-left"></i> Back to Units</button>
+                </div>
+                
+                <div class="notes-container">
+                    <article class="markdown-body" id="notes-content">
+                        <!-- Dynamic HTML notes content -->
+                    </article>
+                </div>
+            </div>
+
+            <!-- View 4: MCQ Quiz Page -->
+            <div class="overlay-view" id="view-mcq">
+                <div class="breadcrumb">
+                    <span onclick="goBackToSubjects()">Semesters</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span id="breadcrumb-mcq-sem" onclick="goBackToSubjects()">Semester 1</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span id="breadcrumb-mcq-sub" onclick="goBackToUnits()">Subject</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span class="current" id="breadcrumb-mcq-unit">Unit 1 MCQ</span>
+                </div>
+                
+                <div class="workspace-header">
+                    <h2 class="workspace-title" id="mcq-title">Unit 1 Practice Quiz</h2>
+                    <button class="back-btn" onclick="goBackToUnits()"><i class="fa-solid fa-arrow-left"></i> Back to Units</button>
+                </div>
+
+                <!-- Interactive Quiz Stats Summary -->
+                <div class="quiz-summary-card">
+                    <div class="quiz-stats">
+                        <div class="quiz-stat-item">
+                            <span class="quiz-stat-label">Correct</span>
+                            <span class="quiz-stat-value correct" id="quiz-correct-count">0</span>
+                        </div>
+                        <div class="quiz-stat-item">
+                            <span class="quiz-stat-label">Wrong</span>
+                            <span class="quiz-stat-value wrong" id="quiz-wrong-count">0</span>
+                        </div>
+                        <div class="quiz-stat-item">
+                            <span class="quiz-stat-label">Left</span>
+                            <span class="quiz-stat-value left" id="quiz-left-count">0</span>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Quiz Progress</span>
+                            <span id="quiz-progress-text">0/0</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="quiz-progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question Card -->
+                <div class="mcq-question-card" id="quiz-question-container">
+                    <!-- Dynamic MCQ question rendered here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 OGEDU AI. Section designed for LPU Vertos by <span>Jatin Verma</span>.</p>
+    </footer>
+
+    <script>
+        let currentSem = 'Sem1';
+        let currentSubject = null;
+        let currentSubjectDetails = null;
+        
+        let allCatalog = {};
+        let currentSemesterSubjects = [];
+        
+        // MCQ Session State
+        let mcqQuestions = [];
+        let currentMcqIndex = 0;
+        let mcqUserAnswers = {}; // { questionIndex: { selectedOption: 'A', isCorrect: true } }
+        let mcqCorrectCount = 0;
+        let mcqWrongCount = 0;
+
+        // On Load
+        window.addEventListener('DOMContentLoaded', async () => {
+            await fetchCatalog();
+            loadSemester('Sem1');
+        });
+
+        // Toggle Loading Spinner
+        function showLoading(show, message = 'Retrieving data...') {
+            const spinner = document.getElementById('loading-spinner');
+            const msg = document.getElementById('loading-message');
+            msg.textContent = message;
+            spinner.style.display = show ? 'flex' : 'none';
+        }
+
+        // Show/Hide Workspace Views
+        function showView(viewId) {
+            const views = ['view-subjects', 'view-units', 'view-notes', 'view-mcq'];
+            views.forEach(v => {
+                document.getElementById(v).style.display = (v === viewId) ? 'flex' : 'none';
+            });
+        }
+
+        // Fetch Catalog
+        async function fetchCatalog() {
+            showLoading(true, 'Downloading LPU subject catalog...');
+            try {
+                const res = await fetch('/api/lpu-notes/catalog');
+                if (!res.ok) throw new Error('Failed to load catalog');
+                const responseData = await res.json();
+                allCatalog = responseData.data || responseData;
+                
+                const urlParams = new URLSearchParams(window.location.search);
+                const targetSem = urlParams.get('sem') || 'Sem1';
+                const targetCode = urlParams.get('code');
+                const targetUnit = urlParams.get('unit');
+
+                loadSemester(targetSem);
+                if (targetCode) {
+                    await loadSubject(targetCode);
+                    if (targetUnit && currentSubjectDetails && currentSubjectDetails.units) {
+                        const cleanUnitParam = targetUnit.replace(/\s+/g, '').toLowerCase();
+                        let uIdx = currentSubjectDetails.units.findIndex(u => (u.name || u.unit || '').replace(/\s+/g, '').toLowerCase() === cleanUnitParam);
+                        if (uIdx === -1) {
+                            const num = targetUnit.match(/\d+/);
+                            if (num) uIdx = parseInt(num[0], 10) - 1;
+                        }
+                        if (uIdx >= 0 && uIdx < currentSubjectDetails.units.length) {
+                            loadNotes(uIdx);
+                        }
+                    }
+                }
+            } catch (err) {
+                console.error(err);
+                document.getElementById('subjects-container').innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 48px; color: var(--text-secondary);">
+                        <i class="fa-solid fa-circle-exclamation" style="font-size: 2rem; color: var(--primary-orange); margin-bottom: 16px;"></i>
+                        <h3>Catalog Connection Failed</h3>
+                        <p style="margin-top: 8px;">Ensure the local node server is running and the database catalog has been scraped.</p>
+                    </div>
+                `;
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Load Semester subjects
+        function loadSemester(sem) {
+            currentSem = sem;
+            
+            // Update active link in sidebar
+            document.querySelectorAll('.sem-link').forEach(link => {
+                link.classList.toggle('active', link.id === `link-${sem}`);
+            });
+            
+            document.getElementById('sem-header-title').textContent = `${sem.replace('Sem', 'Semester ')} Subjects`;
+            document.getElementById('search-subject').value = '';
+            
+            currentSemesterSubjects = (allCatalog && allCatalog[sem]) ? allCatalog[sem] : [];
+            renderSubjects(currentSemesterSubjects);
+            showView('view-subjects');
+        }
+
+        // Render Subjects Grid
+        function renderSubjects(subjects) {
+            const container = document.getElementById('subjects-container');
+            if (!subjects || subjects.length === 0) {
+                container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 48px; color: var(--text-secondary);">No subjects found in this semester.</div>`;
+                return;
+            }
+            
+            container.innerHTML = subjects.map(sub => `
+                <div class="subject-card" onclick="loadSubject('${sub.code}')">
+                    <div class="sub-header">
+                        <span class="sub-code">${sub.code}</span>
+                        <span class="sub-credits">${sub.credits || 4} Credits</span>
+                    </div>
+                    <h3 class="sub-title">${sub.name}</h3>
+                    <div class="sub-footer">
+                        <span class="sub-badge">${sub.category || 'Core'}</span>
+                        <span class="sub-units"><i class="fa-solid fa-book-open"></i> ${sub.unitsCount || (sub.units ? sub.units.length : 6)} Units</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter subjects on input
+        function filterSubjects() {
+            const query = document.getElementById('search-subject').value.toLowerCase().trim();
+            if (!query) {
+                renderSubjects(currentSemesterSubjects);
+                return;
+            }
+            
+            const filtered = currentSemesterSubjects.filter(sub => 
+                sub.code.toLowerCase().includes(query) || 
+                sub.name.toLowerCase().includes(query)
+            );
+            renderSubjects(filtered);
+        }
+
+        // Fetch subject details and units
+        async function loadSubject(code) {
+            currentSubject = code;
+            showLoading(true, `Loading details for ${code}...`);
+            try {
+                const res = await fetch(`/api/lpu-notes/subject?sem=${currentSem}&code=${code}`);
+                if (!res.ok) throw new Error('Failed to load subject details');
+                const responseData = await res.json();
+                const details = responseData.data || responseData;
+                currentSubjectDetails = details;
+                
+                // Update Breadcrumb
+                document.getElementById('breadcrumb-sem-name').textContent = currentSem.replace('Sem', 'Semester ');
+                document.getElementById('breadcrumb-sub-name').textContent = code;
+                
+                // Render overview
+                document.getElementById('subject-overview-block').innerHTML = `
+                    <h2 class="overview-title">${details.code} - ${details.description ? details.description.split('.')[0] : 'Course material'}</h2>
+                    <div style="display: flex; gap: 16px; font-size: 0.85rem; color: var(--text-secondary); margin-top: 8px;">
+                        <span><strong style="color: #fff;">Credits:</strong> ${details.credits || 4}</span>
+                        <span>&bull;</span>
+                        <span><strong style="color: #fff;">Sem:</strong> ${currentSem.replace('Sem', 'Semester ')}</span>
+                    </div>
+                    <p class="overview-desc">${details.description || 'Access comprehensive, unit-wise notes and mock tests to prepare for your LPU examinations.'}</p>
+                `;
+                
+                // Render units
+                const unitsContainer = document.getElementById('units-container');
+                const units = details.units || [];
+                if (units.length === 0) {
+                    unitsContainer.innerHTML = `<div style="grid-column: 1/-1; padding: 24px; color: var(--text-secondary);">No units scraped or available yet.</div>`;
+                } else {
+                    unitsContainer.innerHTML = units.map((unit, idx) => `
+                        <div class="unit-card">
+                            <span class="unit-badge">${unit.name || unit.unit || 'Unit ' + (idx + 1)}</span>
+                            <h4 class="unit-title">${unit.title || unit.name || 'Unit Notes & Materials'}</h4>
+                            <div class="unit-actions">
+                                <button onclick="loadNotes('${idx}')" class="action-btn notes" ${(unit.notesLink || unit.url) ? '' : 'disabled'}>
+                                    <i class="fa-solid fa-file-lines"></i> Notes
+                                </button>
+                                <button onclick="loadMCQ('${idx}')" class="action-btn mcq" ${(unit.mcqLink || unit.url) ? '' : 'disabled'}>
+                                    <i class="fa-solid fa-circle-question"></i> Quiz
+                                </button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+                
+                showView('view-units');
+            } catch (err) {
+                alert(err.message);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Back buttons
+        function goBackToSubjects() {
+            showView('view-subjects');
+        }
+        
+        function goBackToUnits() {
+            showView('view-units');
+        }
+
+        // Fetch & Load Notes Content
+        async function loadNotes(unitIdx) {
+            const unit = currentSubjectDetails.units[unitIdx];
+            const unitNameStr = (unit.name || unit.unit || 'Unit1').replace(' ', '');
+            showLoading(true, `Fetching notes for ${unitNameStr}...`);
+            try {
+                // Notes API requests sem, code, unit
+                const res = await fetch(`/api/lpu-notes/notes?sem=${currentSem}&code=${currentSubject}&unit=${unitNameStr}`);
+                if (!res.ok) throw new Error('Failed to load notes content');
+                const responseData = await res.json();
+                const data = responseData.data || responseData;
+                
+                // Update Breadcrumb & header
+                document.getElementById('breadcrumb-notes-sem').textContent = currentSem.replace('Sem', 'Semester ');
+                document.getElementById('breadcrumb-notes-sub').textContent = currentSubject;
+                document.getElementById('breadcrumb-notes-unit').textContent = `${unitNameStr} Notes`;
+                document.getElementById('notes-title').textContent = `${unitNameStr} - ${unit.title || 'Course Material'}`;
+                
+                // Render HTML content
+                const contentBlock = document.getElementById('notes-content');
+                
+                // Clean up note content
+                let cleanedHTML = data.content || '<p>Content for this unit is being rendered.</p>';
+                cleanedHTML = cleanedHTML.replace(/href="\/Sem\d\/[^"]*notes"/g, 'href="#" onclick="alert(\'Navigate using the unit selector.\'); return false;"');
+                
+                contentBlock.innerHTML = cleanedHTML;
+                
+                // Trigger Highlight.js for code blocks
+                contentBlock.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightElement(block);
+                });
+                
+                showView('view-notes');
+            } catch (err) {
+                alert(err.message);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Fetch & Load MCQ Practice Quiz
+        async function loadMCQ(unitIdx) {
+            const unit = currentSubjectDetails.units[unitIdx];
+            const unitNameStr = (unit.name || unit.unit || 'Unit1').replace(' ', '');
+            showLoading(true, `Loading practice quiz for ${unitNameStr}...`);
+            try {
+                const res = await fetch(`/api/lpu-notes/mcq?sem=${currentSem}&code=${currentSubject}&unit=${unitNameStr}`);
+                if (!res.ok) throw new Error('Failed to load quiz content');
+                const responseData = await res.json();
+                const data = responseData.data || responseData;
+                
+                // Reset Quiz State
+                mcqQuestions = data.questions || [];
+                currentMcqIndex = 0;
+                mcqUserAnswers = {};
+                mcqCorrectCount = 0;
+                mcqWrongCount = 0;
+                
+                // Update Breadcrumbs
+                document.getElementById('breadcrumb-mcq-sem').textContent = currentSem.replace('Sem', 'Semester ');
+                document.getElementById('breadcrumb-mcq-sub').textContent = currentSubject;
+                document.getElementById('breadcrumb-mcq-unit').textContent = `${unitNameStr} MCQ`;
+                document.getElementById('mcq-title').textContent = `${unitNameStr} - MCQ Practice`;
+                
+                updateQuizStats();
+                renderQuizQuestion();
+                showView('view-mcq');
+            } catch (err) {
+                alert(err.message);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Render current MCQ Question
+        function renderQuizQuestion() {
+            const container = document.getElementById('quiz-question-container');
+            if (mcqQuestions.length === 0) {
+                container.innerHTML = `<p>No questions found in this quiz.</p>`;
+                return;
+            }
+            
+            const q = mcqQuestions[currentMcqIndex];
+            const answerState = mcqUserAnswers[currentMcqIndex];
+            
+            // Build options HTML
+            const optionsHtml = q.options.map(opt => {
+                let statusClass = '';
+                if (answerState) {
+                    const isCorrectOption = opt.text === q.correctAnswer;
+                    const isSelected = opt.letter === answerState.selectedOption;
+                    if (isCorrectOption) {
+                        statusClass = 'correct-reveal';
+                    } else if (isSelected && !answerState.isCorrect) {
+                        statusClass = 'selected-wrong';
+                    }
+                }
+                
+                const clickHandler = answerState ? '' : `onclick="selectMCQOption('${opt.letter}', '${opt.text.replace(/'/g, "\\'")}')"`;
+                
+                return `
+                    <button class="mcq-option ${statusClass}" ${clickHandler}>
+                        <span class="mcq-option-letter">${opt.letter}.</span>
+                        <span class="mcq-option-text">${opt.text}</span>
+                    </button>
+                `;
+            }).join('');
+            
+            // Explanation block (rendered if answered and explanation exists)
+            let expHtml = '';
+            if (answerState && q.explanation) {
+                const expVisibleClass = answerState.showExp ? '' : 'style="display:none;"';
+                const toggleIcon = answerState.showExp ? 'fa-chevron-up' : 'fa-chevron-down';
+                const toggleText = answerState.showExp ? 'Hide Explanation' : 'Show Explanation';
+                
+                expHtml = `
+                    <div style="margin-top: 16px;">
+                        <button class="reveal-exp-btn" onclick="toggleQuizExplanation()">
+                            <i class="fa-solid ${toggleIcon}"></i> ${toggleText}
+                        </button>
+                        <div class="explanation-card" id="quiz-explanation-card" ${expVisibleClass}>
+                            <h5 class="explanation-title"><i class="fa-solid fa-circle-info"></i> Explanation</h5>
+                            <div class="explanation-text">${q.explanation}</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `
+                <div class="mcq-q-header">
+                    <div class="mcq-number">${currentMcqIndex + 1}</div>
+                    <h4 class="mcq-text">${q.text}</h4>
+                </div>
+                <div class="mcq-options">
+                    ${optionsHtml}
+                </div>
+                ${expHtml}
+                
+                <div class="quiz-actions">
+                    <div></div>
+                    <div class="nav-actions">
+                        <button class="quiz-nav-btn" onclick="navigateQuiz(-1)" ${currentMcqIndex === 0 ? 'disabled' : ''}>
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button class="quiz-nav-btn" onclick="navigateQuiz(1)" ${currentMcqIndex === mcqQuestions.length - 1 ? 'disabled' : ''}>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // MCQ Option Selection
+        function selectMCQOption(letter, text) {
+            const q = mcqQuestions[currentMcqIndex];
+            const isCorrect = text === q.correctAnswer;
+            
+            if (isCorrect) {
+                mcqCorrectCount++;
+            } else {
+                mcqWrongCount++;
+            }
+            
+            mcqUserAnswers[currentMcqIndex] = {
+                selectedOption: letter,
+                isCorrect: isCorrect,
+                showExp: isCorrect // Auto-show explanation if correct, else let them review
+            };
+            
+            updateQuizStats();
+            renderQuizQuestion();
+        }
+
+        // Toggle Explanation card
+        function toggleQuizExplanation() {
+            const answerState = mcqUserAnswers[currentMcqIndex];
+            if (!answerState) return;
+            
+            answerState.showExp = !answerState.showExp;
+            const expCard = document.getElementById('quiz-explanation-card');
+            if (expCard) {
+                expCard.style.display = answerState.showExp ? 'block' : 'none';
+                renderQuizQuestion(); // re-render to update toggle buttons and icons
+            }
+        }
+
+        // Navigate questions
+        function navigateQuiz(direction) {
+            const nextIdx = currentMcqIndex + direction;
+            if (nextIdx >= 0 && nextIdx < mcqQuestions.length) {
+                currentMcqIndex = nextIdx;
+                renderQuizQuestion();
+            }
+        }
+
+        // Update MCQ progress bar and counters
+        function updateQuizStats() {
+            const answered = Object.keys(mcqUserAnswers).length;
+            const total = mcqQuestions.length;
+            const left = total - answered;
+            
+            document.getElementById('quiz-correct-count').textContent = mcqCorrectCount;
+            document.getElementById('quiz-wrong-count').textContent = mcqWrongCount;
+            document.getElementById('quiz-left-count').textContent = left;
+            
+            document.getElementById('quiz-progress-text').textContent = `${answered}/${total}`;
+            
+            const percentage = total > 0 ? (answered / total) * 100 : 0;
+            document.getElementById('quiz-progress-bar').style.width = `${percentage}%`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,2082 @@
+[
+  {
+    "code": "CSE111",
+    "title": "CSE111 — Orientation to Computing & Algorithmic Thinking",
+    "semester": "Sem1",
+    "category": "CSE/IT Core",
+    "credits": 3,
+    "description": "Fundamental computing architecture, problem-solving methodologies, number systems, and algorithmic logic for first-year engineers.",
+    "link": "/lpu-notes?sem=Sem1&code=CSE111",
+    "units": [
+      {
+        "unit": "Unit 1",
+        "name": "Computer Architecture & Number Systems",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CSE111&unit=Unit1"
+      },
+      {
+        "unit": "Unit 2",
+        "name": "Data Representation & Boolean Logic",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CSE111&unit=Unit2"
+      },
+      {
+        "unit": "Unit 3",
+        "name": "Flowcharts & Pseudocode Design",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CSE111&unit=Unit3"
+      },
+      {
+        "unit": "Unit 4",
+        "name": "Modular Programming Concepts",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CSE111&unit=Unit4"
+      },
+      {
+        "unit": "Unit 5",
+        "name": "Algorithm Analysis & Sorting Basics",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CSE111&unit=Unit5"
+      },
+      {
+        "unit": "Unit 6",
+        "name": "Modern Computing Paradigms & Cloud",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CSE111&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE326",
+    "title": "CSE326 — Web Technologies & Internet Programming Lab",
+    "semester": "Sem1",
+    "category": "CSE/IT Core",
+    "credits": 2,
+    "description": "Modern web architecture, HTML5 semantic markup, modern CSS styling, flexbox/grid layout design, and client-side DOM scripting.",
+    "link": "/lpu-notes?sem=Sem1&code=CSE326",
+    "units": [
+      {
+        "unit": "Unit 1",
+        "name": "Internet Protocols & Web Architecture",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CSE326&unit=Unit1"
+      },
+      {
+        "unit": "Unit 2",
+        "name": "HTML5 Semantic Elements & Forms",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CSE326&unit=Unit2"
+      },
+      {
+        "unit": "Unit 3",
+        "name": "CSS3 Styling, Box Model & Typography",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CSE326&unit=Unit3"
+      },
+      {
+        "unit": "Unit 4",
+        "name": "Responsive Layouts (Flexbox & CSS Grid)",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CSE326&unit=Unit4"
+      },
+      {
+        "unit": "Unit 5",
+        "name": "Core JavaScript Syntax & Data Types",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CSE326&unit=Unit5"
+      },
+      {
+        "unit": "Unit 6",
+        "name": "DOM Manipulation & Event Listeners",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CSE326&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "INT108",
+    "title": "INT108 — Python Programming & Problem Solving",
+    "semester": "Sem1",
+    "category": "CSE/IT Core",
+    "credits": 4,
+    "description": "Comprehensive introductory Python course covering syntax, control structures, functions, data collections, file I/O, and OOP principles.",
+    "link": "/lpu-notes?sem=Sem1&code=INT108",
+    "units": [
+      {
+        "unit": "Unit 1",
+        "name": "Python Environment, Variables & Operators",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=INT108&unit=Unit1"
+      },
+      {
+        "unit": "Unit 2",
+        "name": "Control Structures & Iteration (Loops)",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=INT108&unit=Unit2"
+      },
+      {
+        "unit": "Unit 3",
+        "name": "Functions, Scope & Recursion",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=INT108&unit=Unit3"
+      },
+      {
+        "unit": "Unit 4",
+        "name": "Sequences: Strings, Lists & Tuples",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=INT108&unit=Unit4"
+      },
+      {
+        "unit": "Unit 5",
+        "name": "Dictionaries, Sets & List Comprehensions",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=INT108&unit=Unit5"
+      },
+      {
+        "unit": "Unit 6",
+        "name": "File Handling, Exception Handling & Classes",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=INT108&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "MTH165",
+    "title": "MTH165 — Mathematics for Engineers & Calculus",
+    "semester": "Sem1",
+    "category": "Mathematics & Physics",
+    "credits": 4,
+    "description": "Core engineering mathematics focusing on matrix operations, eigenvalues, differential calculus, partial derivatives, and multiple integrals.",
+    "link": "/lpu-notes?sem=Sem1&code=MTH165",
+    "units": [
+      {
+        "unit": "Unit 1",
+        "name": "Matrix Theory & System of Linear Equations",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MTH165&unit=Unit1"
+      },
+      {
+        "unit": "Unit 2",
+        "name": "Eigenvalues, Eigenvectors & Cayley-Hamilton",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MTH165&unit=Unit2"
+      },
+      {
+        "unit": "Unit 3",
+        "name": "Differential Calculus & Mean Value Theorems",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MTH165&unit=Unit3"
+      },
+      {
+        "unit": "Unit 4",
+        "name": "Partial Derivatives & Euler's Theorem",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MTH165&unit=Unit4"
+      },
+      {
+        "unit": "Unit 5",
+        "name": "Maxima & Minima of Two-Variable Functions",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MTH165&unit=Unit5"
+      },
+      {
+        "unit": "Unit 6",
+        "name": "Multiple Integrals, Double/Triple Integrals",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MTH165&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "MTH174",
+    "title": "MTH174 — Applied Engineering Mathematics",
+    "semester": "Sem1",
+    "category": "Mathematics & Physics",
+    "credits": 4,
+    "description": "Higher-level engineering mathematical modeling, vector spaces, infinite series, Fourier expansions, and differential equations.",
+    "link": "/lpu-notes?sem=Sem1&code=MTH174",
+    "units": [
+      {
+        "unit": "Unit 1",
+        "name": "Vector Spaces & Linear Transformations",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MTH174&unit=Unit1"
+      },
+      {
+        "unit": "Unit 2",
+        "name": "Infinite Series & Convergence Tests",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MTH174&unit=Unit2"
+      },
+      {
+        "unit": "Unit 3",
+        "name": "Fourier Series & Periodic Functions",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MTH174&unit=Unit3"
+      },
+      {
+        "unit": "Unit 4",
+        "name": "First Order Differential Equations",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MTH174&unit=Unit4"
+      },
+      {
+        "unit": "Unit 5",
+        "name": "Higher Order Linear Differential Equations",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MTH174&unit=Unit5"
+      },
+      {
+        "unit": "Unit 6",
+        "name": "Laplace Transforms & Applications",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MTH174&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CHE110",
+    "title": "CHE110 — Environmental Studies & Sustainability Science",
+    "semester": "Sem1",
+    "category": "Applied Science",
+    "credits": 2,
+    "description": "Ecosystem dynamics, renewable energy transitions, air and water pollution control protocols, biodiversity conservation, and green technology.",
+    "link": "/lpu-notes?sem=Sem1&code=CHE110",
+    "units": [
+      {
+        "unit": "Unit 1",
+        "name": "Ecosystems, Energy Flow & Food Chains",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CHE110&unit=Unit1"
+      },
+      {
+        "unit": "Unit 2",
+        "name": "Natural Resources & Renewable Energy",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CHE110&unit=Unit2"
+      },
+      {
+        "unit": "Unit 3",
+        "name": "Biodiversity Conservation & Hotspots",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CHE110&unit=Unit3"
+      },
+      {
+        "unit": "Unit 4",
+        "name": "Air, Water, Soil & Noise Pollution Control",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CHE110&unit=Unit4"
+      },
+      {
+        "unit": "Unit 5",
+        "name": "Solid Waste Management & Circular Economy",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CHE110&unit=Unit5"
+      },
+      {
+        "unit": "Unit 6",
+        "name": "Environmental Laws, Ethics & Climate Change",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=CHE110&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "ECE120",
+    "title": "ECE120 — Basic Electrical & Electronics Engineering Workshop",
+    "semester": "Sem1",
+    "category": "Electronics",
+    "credits": 1,
+    "description": "Circuit analysis, Ohm's and Kirchhoff's laws, AC fundamentals, semiconductor diodes, transistors, and laboratory instrumentation.",
+    "link": "/lpu-notes?sem=Sem1&code=ECE120",
+    "units": [
+      {
+        "unit": "Unit 1",
+        "name": "DC Circuits & Kirchhoff's Laws (KCL/KVL)",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=ECE120&unit=Unit1"
+      },
+      {
+        "unit": "Unit 2",
+        "name": "Network Theorems (Thevenin, Norton, Superposition)",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=ECE120&unit=Unit2"
+      },
+      {
+        "unit": "Unit 3",
+        "name": "Single-Phase AC Fundamentals & Resonance",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=ECE120&unit=Unit3"
+      },
+      {
+        "unit": "Unit 4",
+        "name": "Magnetic Circuits & Single-Phase Transformers",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=ECE120&unit=Unit4"
+      },
+      {
+        "unit": "Unit 5",
+        "name": "PN Junction Diodes, Zener Diodes & Rectifiers",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=ECE120&unit=Unit5"
+      },
+      {
+        "unit": "Unit 6",
+        "name": "Transistors (BJT) & Basic Digital Logic",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=ECE120&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "INT335",
+    "title": "INT335 — Design Thinking & Innovation Frameworks",
+    "semester": "Sem1",
+    "category": "Design & Soft Skills",
+    "credits": 2,
+    "description": "Human-centric design methodologies, user empathy mapping, problem definition, rapid prototyping, and creative solution testing.",
+    "link": "/lpu-notes?sem=Sem1&code=INT335",
+    "units": [
+      {
+        "unit": "Unit 1",
+        "name": "Design Thinking Fundamentals & Mindsets",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=INT335&unit=Unit1"
+      },
+      {
+        "unit": "Unit 2",
+        "name": "Empathy Mapping & User Need Discovery",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=INT335&unit=Unit2"
+      },
+      {
+        "unit": "Unit 3",
+        "name": "Problem Definition & Point of View (POV)",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=INT335&unit=Unit3"
+      },
+      {
+        "unit": "Unit 4",
+        "name": "Brainstorming & Creative Ideation Methods",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=INT335&unit=Unit4"
+      },
+      {
+        "unit": "Unit 5",
+        "name": "Rapid Prototyping & Low-Fidelity Mockups",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=INT335&unit=Unit5"
+      },
+      {
+        "unit": "Unit 6",
+        "name": "User Testing, Feedback & Iterative Design",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=INT335&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "MEC136",
+    "title": "MEC136 — Engineering Graphics & CAD (AutoCAD)",
+    "semester": "Sem1",
+    "category": "Mechanical & CAD",
+    "credits": 4,
+    "description": "Orthographic projections, isometric views, drafting standards, dimensioning rules, and 2D/3D CAD modeling with AutoCAD.",
+    "link": "/lpu-notes?sem=Sem1&code=MEC136",
+    "units": [
+      {
+        "unit": "Unit 1",
+        "name": "Drafting Conventions, Scales & Conic Sections",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MEC136&unit=Unit1"
+      },
+      {
+        "unit": "Unit 2",
+        "name": "Projections of Points & Straight Lines",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MEC136&unit=Unit2"
+      },
+      {
+        "unit": "Unit 3",
+        "name": "Projections of Regular Planes & Solids",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MEC136&unit=Unit3"
+      },
+      {
+        "unit": "Unit 4",
+        "name": "Sections of Solids & Development of Surfaces",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MEC136&unit=Unit4"
+      },
+      {
+        "unit": "Unit 5",
+        "name": "Isometric Projections & Perspective Views",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MEC136&unit=Unit5"
+      },
+      {
+        "unit": "Unit 6",
+        "name": "AutoCAD 2D Drafting Tools & Layer Management",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=MEC136&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "PHY175",
+    "title": "PHY175 — Modern Engineering Physics & Semiconductors",
+    "semester": "Sem1",
+    "category": "Mathematics & Physics",
+    "credits": 3,
+    "description": "Wave optics, interference, diffraction, lasers, fiber optics, quantum mechanics, and band theory of semiconductor solids.",
+    "link": "/lpu-notes?sem=Sem1&code=PHY175",
+    "units": [
+      {
+        "unit": "Unit 1",
+        "name": "Interference of Light & Thin Films",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=PHY175&unit=Unit1"
+      },
+      {
+        "unit": "Unit 2",
+        "name": "Diffraction Gratings & Polarization",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=PHY175&unit=Unit2"
+      },
+      {
+        "unit": "Unit 3",
+        "name": "Lasers Principles (Ruby/He-Ne) & Optical Fibers",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=PHY175&unit=Unit3"
+      },
+      {
+        "unit": "Unit 4",
+        "name": "Wave-Particle Duality & Schrodinger's Equation",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=PHY175&unit=Unit4"
+      },
+      {
+        "unit": "Unit 5",
+        "name": "Free Electron Theory & Band Theory of Solids",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=PHY175&unit=Unit5"
+      },
+      {
+        "unit": "Unit 6",
+        "name": "Intrinsic & Extrinsic Semiconductors, Hall Effect",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem1&code=PHY175&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE101",
+    "title": "CSE101 - Computer Programming in C",
+    "semester": "Sem2",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU CSE101 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem2&code=CSE101",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=CSE101&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=CSE101&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=CSE101&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=CSE101&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=CSE101&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=CSE101&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "MTH166",
+    "title": "MTH166 - Engineering Mathematics II (Linear Algebra & Differential Eq)",
+    "semester": "Sem2",
+    "category": "Mathematics & Physics",
+    "description": "Complete LPU MTH166 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem2&code=MTH166",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=MTH166&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=MTH166&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=MTH166&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=MTH166&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=MTH166&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=MTH166&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "ECE201",
+    "title": "ECE201 - Basic Electrical & Electronics Engineering",
+    "semester": "Sem2",
+    "category": "Electronics & Electrical",
+    "description": "Complete LPU ECE201 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem2&code=ECE201",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=ECE201&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=ECE201&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=ECE201&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=ECE201&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=ECE201&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=ECE201&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "INT102",
+    "title": "INT102 - Web Technologies & Frontend Architecture",
+    "semester": "Sem2",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU INT102 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem2&code=INT102",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=INT102&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=INT102&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=INT102&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=INT102&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=INT102&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=INT102&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "EVS102",
+    "title": "EVS102 - Environmental Studies & Sustainability",
+    "semester": "Sem2",
+    "category": "Engineering Fundamentals",
+    "description": "Complete LPU EVS102 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem2&code=EVS102",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=EVS102&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=EVS102&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=EVS102&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=EVS102&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=EVS102&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=EVS102&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "ENG115",
+    "title": "ENG115 - Professional & Academic English",
+    "semester": "Sem2",
+    "category": "Soft Skills & Management",
+    "description": "Complete LPU ENG115 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem2&code=ENG115",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=ENG115&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=ENG115&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=ENG115&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=ENG115&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=ENG115&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem2&code=ENG115&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE202",
+    "title": "CSE202 - Object Oriented Programming in C++",
+    "semester": "Sem3",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU CSE202 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem3&code=CSE202",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE202&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE202&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE202&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE202&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE202&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE202&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE205",
+    "title": "CSE205 - Data Structures & Algorithms",
+    "semester": "Sem3",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU CSE205 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem3&code=CSE205",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE205&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE205&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE205&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE205&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE205&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE205&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE306",
+    "title": "CSE306 - Computer Networks & Protocols",
+    "semester": "Sem3",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU CSE306 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem3&code=CSE306",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE306&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE306&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE306&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE306&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE306&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=CSE306&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "ECE213",
+    "title": "ECE213 - Digital Electronics & Logic Design",
+    "semester": "Sem3",
+    "category": "Electronics & Electrical",
+    "description": "Complete LPU ECE213 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem3&code=ECE213",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=ECE213&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=ECE213&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=ECE213&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=ECE213&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=ECE213&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=ECE213&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "MTH401",
+    "title": "MTH401 - Discrete Mathematics & Probability",
+    "semester": "Sem3",
+    "category": "Mathematics & Physics",
+    "description": "Complete LPU MTH401 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem3&code=MTH401",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=MTH401&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=MTH401&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=MTH401&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=MTH401&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=MTH401&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=MTH401&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "PEL132",
+    "title": "PEL132 - Communication & Personality Development",
+    "semester": "Sem3",
+    "category": "Soft Skills & Management",
+    "description": "Complete LPU PEL132 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem3&code=PEL132",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL132&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL132&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL132&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL132&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL132&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL132&unit=Unit6"
+      },
+      {
+        "unit": "Unit7",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL132&unit=Unit7"
+      }
+    ]
+  },
+  {
+    "code": "PEL134",
+    "title": "PEL134 - Verbal Ability & Logical Reasoning",
+    "semester": "Sem3",
+    "category": "Soft Skills & Management",
+    "description": "Complete LPU PEL134 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem3&code=PEL134",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL134&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL134&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL134&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL134&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL134&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL134&unit=Unit6"
+      },
+      {
+        "unit": "Unit7",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem3&code=PEL134&unit=Unit7"
+      }
+    ]
+  },
+  {
+    "code": "CSE316",
+    "title": "CSE316 - Operating Systems & Process Scheduling",
+    "semester": "Sem4",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU CSE316 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem4&code=CSE316",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE316&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE316&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE316&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE316&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE316&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE316&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE307",
+    "title": "CSE307 - Database Management Systems (DBMS)",
+    "semester": "Sem4",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU CSE307 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem4&code=CSE307",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE307&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE307&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE307&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE307&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE307&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE307&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "INT219",
+    "title": "INT219 - Front-End Web Development (React.js)",
+    "semester": "Sem4",
+    "category": "Coding & AI",
+    "description": "Complete LPU INT219 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem4&code=INT219",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=INT219&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=INT219&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=INT219&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=INT219&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=INT219&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=INT219&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE211",
+    "title": "CSE211 - Computer Organization & Architecture",
+    "semester": "Sem4",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU CSE211 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem4&code=CSE211",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE211&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE211&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE211&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE211&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE211&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=CSE211&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "MTH402",
+    "title": "MTH402 - Numerical Methods & Applied Statistics",
+    "semester": "Sem4",
+    "category": "Mathematics & Physics",
+    "description": "Complete LPU MTH402 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem4&code=MTH402",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=MTH402&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=MTH402&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=MTH402&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=MTH402&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=MTH402&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=MTH402&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "PEL135",
+    "title": "PEL135 - Advanced Soft Skills & Placement Grooming",
+    "semester": "Sem4",
+    "category": "Soft Skills & Management",
+    "description": "Complete LPU PEL135 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem4&code=PEL135",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=PEL135&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=PEL135&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=PEL135&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=PEL135&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=PEL135&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem4&code=PEL135&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE330",
+    "title": "CSE330 - Design & Analysis of Algorithms (DAA)",
+    "semester": "Sem5",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU CSE330 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem5&code=CSE330",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=CSE330&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=CSE330&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=CSE330&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=CSE330&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=CSE330&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=CSE330&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE333",
+    "title": "CSE333 - Full Stack Web Development",
+    "semester": "Sem5",
+    "category": "Coding & AI",
+    "description": "Complete LPU CSE333 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem5&code=CSE333",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=CSE333&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=CSE333&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=CSE333&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=CSE333&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=CSE333&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=CSE333&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "INT234",
+    "title": "INT234 - Artificial Intelligence & Machine Learning",
+    "semester": "Sem5",
+    "category": "Coding & AI",
+    "description": "Complete LPU INT234 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem5&code=INT234",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT234&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT234&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT234&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT234&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT234&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT234&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "INT250",
+    "title": "INT250 - Cloud Computing & DevOps Infrastructure",
+    "semester": "Sem5",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU INT250 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem5&code=INT250",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT250&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT250&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT250&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT250&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT250&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT250&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "INT312",
+    "title": "INT312 - Cyber Security & Ethical Hacking",
+    "semester": "Sem5",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU INT312 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem5&code=INT312",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT312&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT312&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT312&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT312&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT312&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=INT312&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "PEA306",
+    "title": "PEA306 - Analytical Skills & Quantitative Aptitude",
+    "semester": "Sem5",
+    "category": "Soft Skills & Management",
+    "description": "Complete LPU PEA306 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem5&code=PEA306",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=PEA306&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=PEA306&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=PEA306&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=PEA306&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=PEA306&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem5&code=PEA306&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE401",
+    "title": "CSE401 - Software Engineering & Agile Methodology",
+    "semester": "Sem6",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU CSE401 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem6&code=CSE401",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=CSE401&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=CSE401&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=CSE401&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=CSE401&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=CSE401&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=CSE401&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE405",
+    "title": "CSE405 - Compiler Design & Formal Automata",
+    "semester": "Sem6",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU CSE405 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem6&code=CSE405",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=CSE405&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=CSE405&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=CSE405&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=CSE405&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=CSE405&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=CSE405&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "INT222",
+    "title": "INT222 - Advanced Mobile App Development (Flutter/Android)",
+    "semester": "Sem6",
+    "category": "Coding & AI",
+    "description": "Complete LPU INT222 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem6&code=INT222",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=INT222&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=INT222&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=INT222&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=INT222&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=INT222&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=INT222&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "INT306",
+    "title": "INT306 - Deep Learning & Neural Networks",
+    "semester": "Sem6",
+    "category": "Coding & AI",
+    "description": "Complete LPU INT306 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem6&code=INT306",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=INT306&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=INT306&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=INT306&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=INT306&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=INT306&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=INT306&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "PEA307",
+    "title": "PEA307 - Advanced Quantitative Aptitude & Reasoning",
+    "semester": "Sem6",
+    "category": "Soft Skills & Management",
+    "description": "Complete LPU PEA307 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem6&code=PEA307",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=PEA307&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=PEA307&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=PEA307&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=PEA307&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=PEA307&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem6&code=PEA307&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE379",
+    "title": "CSE379 - Distributed Systems & Parallel Computing",
+    "semester": "Sem7",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU CSE379 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem7&code=CSE379",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE379&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE379&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE379&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE379&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE379&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE379&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE403",
+    "title": "CSE403 - Information & Network Security",
+    "semester": "Sem7",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU CSE403 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem7&code=CSE403",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE403&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE403&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE403&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE403&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE403&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE403&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE476",
+    "title": "CSE476 - Natural Language Processing (NLP)",
+    "semester": "Sem7",
+    "category": "Coding & AI",
+    "description": "Complete LPU CSE476 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem7&code=CSE476",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE476&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE476&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE476&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE476&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE476&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=CSE476&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "INT251",
+    "title": "INT251 - Big Data Analytics & Hadoop Ecosystem",
+    "semester": "Sem7",
+    "category": "Coding & AI",
+    "description": "Complete LPU INT251 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem7&code=INT251",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=INT251&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=INT251&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=INT251&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=INT251&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=INT251&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=INT251&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "INT315",
+    "title": "INT315 - Blockchain Technology & Smart Contracts",
+    "semester": "Sem7",
+    "category": "Coding & AI",
+    "description": "Complete LPU INT315 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem7&code=INT315",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=INT315&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=INT315&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=INT315&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=INT315&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=INT315&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=INT315&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "PEA312",
+    "title": "PEA312 - Corporate Placement Training",
+    "semester": "Sem7",
+    "category": "Soft Skills & Management",
+    "description": "Complete LPU PEA312 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem7&code=PEA312",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=PEA312&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=PEA312&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=PEA312&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=PEA312&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=PEA312&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem7&code=PEA312&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "CSE499",
+    "title": "CSE499 - Capstone Major Project & Research Dissertation",
+    "semester": "Sem8",
+    "category": "CSE/IT Core",
+    "description": "Complete LPU CSE499 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem8&code=CSE499",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=CSE499&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=CSE499&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=CSE499&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=CSE499&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=CSE499&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=CSE499&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "INT418",
+    "title": "INT418 - Advanced Generative AI & Large Language Models",
+    "semester": "Sem8",
+    "category": "Coding & AI",
+    "description": "Complete LPU INT418 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem8&code=INT418",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=INT418&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=INT418&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=INT418&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=INT418&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=INT418&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=INT418&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "PEA315",
+    "title": "PEA315 - Final Placement Drives & Interview Simulations",
+    "semester": "Sem8",
+    "category": "Soft Skills & Management",
+    "description": "Complete LPU PEA315 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem8&code=PEA315",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=PEA315&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=PEA315&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=PEA315&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=PEA315&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=PEA315&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=PEA315&unit=Unit6"
+      }
+    ]
+  },
+  {
+    "code": "MGMT401",
+    "title": "MGMT401 - Engineering Economics & Tech Entrepreneurship",
+    "semester": "Sem8",
+    "category": "Soft Skills & Management",
+    "description": "Complete LPU MGMT401 semester notes, unit-wise breakdown, practice questions, and exam preparation material.",
+    "link": "/lpu-notes?sem=Sem8&code=MGMT401",
+    "units": [
+      {
+        "unit": "Unit1",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=MGMT401&unit=Unit1"
+      },
+      {
+        "unit": "Unit2",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=MGMT401&unit=Unit2"
+      },
+      {
+        "unit": "Unit3",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=MGMT401&unit=Unit3"
+      },
+      {
+        "unit": "Unit4",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=MGMT401&unit=Unit4"
+      },
+      {
+        "unit": "Unit5",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=MGMT401&unit=Unit5"
+      },
+      {
+        "unit": "Unit6",
+        "type": "notes",
+        "url": "/lpu-notes?sem=Sem8&code=MGMT401&unit=Unit6"
+      }
+    ]
+  }
+]

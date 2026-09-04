@@ -1,0 +1,103 @@
+{
+  "unit_number": 7,
+  "icon": "🏗️",
+  "title": "Dictionaries",
+  "short_title": "Dicts",
+  "short_description": "Use key-value dictionaries to organize data.",
+  "bro_quote": "Dictionaries turn chaos into order—key-value pairs make your data structured and accessible.",
+  "subtopics": [
+    {
+      "name": "Dictionary Basics",
+      "explanation": "<ul>\n<li>📚 <b>A dictionary stores pairs of keys and values.</b> Like a real dictionary: word (key) → definition (value).</li>\n<li>🔑 <b>Use curly braces <code>{}</code> and colons <code>:</code> to create dictionaries.</b></li>\n<li>⚡ <b>Keys must be unique and usually strings or numbers.</b> Values can be anything.</li>\n<li>🚀 <b>Lookup is super fast — dictionaries are optimized for this.</b></li>\n<li>🔄 <b>Dictionaries are mutable — you can add, change, or remove pairs.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Creating dictionaries",
+          "filename": "dict_basic.py",
+          "code": "person = {\"name\": \"Alice\", \"age\": 25, \"city\": \"NYC\"}\nstudent = {\"id\": 101, \"grade\": \"A\", \"active\": True}\nprint(person)"
+        },
+        {
+          "comment": "Empty dictionary and adding",
+          "filename": "dict_empty.py",
+          "code": "info = {}\ninfo[\"name\"] = \"Bob\"\ninfo[\"age\"] = 30\nprint(info)"
+        }
+      ]
+    },
+    {
+      "name": "Accessing Dictionary Values",
+      "explanation": "<ul>\n<li>🔑 <b>Access values using keys in square brackets: <code>dict[key]</code></b></li>\n<li>⚠️ <b>Using a non-existent key causes a KeyError.</b></li>\n<li>🛡️ <b><code>.get(key)</code> safely retrieves values without crashing if key doesn't exist.</b></li>\n<li>💡 <b><code>.get(key, default)</code> returns a default value if key is missing.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Direct access and .get()",
+          "filename": "access.py",
+          "code": "user = {\"name\": \"Alice\", \"age\": 25}\nprint(user[\"name\"])           # Alice\nprint(user.get(\"email\"))      # None\nprint(user.get(\"email\", \"N/A\")) # N/A"
+        }
+      ]
+    },
+    {
+      "name": "Modifying Dictionary Pairs",
+      "explanation": "<ul>\n<li>✏️ <b>Change a value: <code>dict[key] = new_value</code></b></li>\n<li>➕ <b>Add a new pair: <code>dict[new_key] = value</code></b></li>\n<li>❌ <b><code>del dict[key]</code> removes a pair.</b></li>\n<li>🗑️ <b><code>.pop(key)</code> removes and returns a value.</b></li>\n<li>🧹 <b><code>.clear()</code> removes all pairs.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Update and add pairs",
+          "filename": "modify_dict.py",
+          "code": "person = {\"name\": \"Alice\", \"age\": 25}\nperson[\"age\"] = 26          # Update\nperson[\"city\"] = \"NYC\"      # Add new\nprint(person)"
+        },
+        {
+          "comment": "Remove pairs",
+          "filename": "remove_dict.py",
+          "code": "data = {\"a\": 1, \"b\": 2, \"c\": 3}\ndel data[\"b\"]\nvalue = data.pop(\"c\")\nprint(data)  # {\"a\": 1}"
+        }
+      ]
+    },
+    {
+      "name": "Dictionary Methods",
+      "explanation": "<ul>\n<li>🔑 <b><code>.keys()</code> returns all keys as a list.</b></li>\n<li>📊 <b><code>.values()</code> returns all values as a list.</b></li>\n<li>👥 <b><code>.items()</code> returns key-value pairs as tuples.</b></li>\n<li>🔍 <b><code>'key' in dict</code> checks if a key exists.</b></li>\n<li>🔄 <b><code>.update(other_dict)</code> merges two dictionaries.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Keys, values, and items",
+          "filename": "dict_methods.py",
+          "code": "person = {\"name\": \"Alice\", \"age\": 25}\nprint(list(person.keys()))    # ['name', 'age']\nprint(list(person.values()))  # ['Alice', 25]\nprint(list(person.items()))   # [('name', 'Alice'), ('age', 25)]"
+        },
+        {
+          "comment": "Checking keys",
+          "filename": "check_keys.py",
+          "code": "user = {\"name\": \"Bob\", \"email\": \"bob@example.com\"}\nif \"email\" in user:\n    print(\"Email exists\")\nelse:\n    print(\"No email\")"
+        }
+      ]
+    },
+    {
+      "name": "Iterating Through Dictionaries",
+      "explanation": "<ul>\n<li>🔑 <b>Loop through keys: <code>for key in dict</code></b></li>\n<li>👥 <b>Loop through key-value pairs: <code>for key, value in dict.items()</code></b></li>\n<li>📊 <b>Loop through values only: <code>for value in dict.values()</code></b></li>\n<li>💡 <b>Use tuple unpacking to separate keys and values in loops.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Loop through keys and items",
+          "filename": "iterate_dict.py",
+          "code": "person = {\"name\": \"Alice\", \"age\": 25, \"city\": \"NYC\"}\nfor key in person:\n    print(key)\nfor key, value in person.items():\n    print(f\"{key}: {value}\")"
+        }
+      ]
+    },
+    {
+      "name": "Nested Dictionaries",
+      "explanation": "<ul>\n<li>🎯 <b>Dictionaries can contain other dictionaries as values.</b></li>\n<li>🏢 <b>Great for organizing complex data structures.</b></li>\n<li>🔑 <b>Access nested values: <code>dict[key][nested_key]</code></b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Nested dictionaries",
+          "filename": "nested_dict.py",
+          "code": "company = {\n    \"Alice\": {\"age\": 25, \"role\": \"Developer\"},\n    \"Bob\": {\"age\": 30, \"role\": \"Manager\"}\n}\nprint(company[\"Alice\"][\"age\"])  # 25"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    "1. Create a dictionary storing your name, age, and favorite color. (Creating dictionary)",
+    "2. Retrieve and print just the value associated with the 'name' key. (Accessing value)",
+    "3. Add a brand new key-value pair for 'hobby' to the dictionary. (Adding pair)",
+    "4. Update your existing 'age' value to make yourself one year older. (Updating value)",
+    "5. Use del or .pop() to completely remove the favorite color key. (Deleting pair)",
+    "6. Check if the key 'email' exists in the dictionary using the 'in' keyword. (Checking keys)",
+    "7. Print a list of all the keys currently in your dictionary. (Getting keys)",
+    "8. Print a list of all the values currently in your dictionary. (Getting values)",
+    "9. Use a for loop with .items() to print both keys and values together. (Iterating items)",
+    "10. Use the .get() method to try to fetch a key that might not exist without crashing. (Using get)"
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "unit_number": 9,
+  "icon": "⚡",
+  "title": "Files & Errors",
+  "short_title": "Files",
+  "short_description": "Read and write files, handle errors.",
+  "bro_quote": "Robust programs handle errors gracefully and persist data to disk—master both to build real applications.",
+  "subtopics": [
+    {
+      "name": "File Basics and Modes",
+      "explanation": "<ul>\n<li>📂 <b><code>open(filename, mode)</code> opens a file.</b> Returns a file object.</li>\n<li>📝 <b>Common modes:</b> <code>'r'</code> (read), <code>'w'</code> (write), <code>'a'</code> (append), <code>'x'</code> (create).</li>\n<li>⚠️ <b><code>'w'</code> mode overwrites the file if it exists!</b> Be careful.</li>\n<li>🔒 <b>Always close files with <code>.close()</code></b> or use <code>with</code>.</li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Opening a file in different modes",
+          "filename": "file_modes.py",
+          "code": "# Read mode\nf = open(\"data.txt\", \"r\")\n# Write mode (creates or overwrites)\nf = open(\"data.txt\", \"w\")\n# Append mode (adds to end)\nf = open(\"data.txt\", \"a\")\nf.close()"
+        }
+      ]
+    },
+    {
+      "name": "Writing Files",
+      "explanation": "<ul>\n<li>📝 <b><code>.write()</code> writes text to a file.</b></li>\n<li>🆕 <b><code>'w'</code> mode creates a new file or overwrites existing one.</b></li>\n<li>📄 <b><code>.writelines()</code> writes multiple lines at once.</b></li>\n<li>💾 <b>Data stays in memory until file is closed.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Write single lines",
+          "filename": "write_file.py",
+          "code": "f = open(\"greeting.txt\", \"w\")\nf.write(\"Hello, World!\\n\")\nf.write(\"Python is awesome!\")\nf.close()"
+        },
+        {
+          "comment": "Write multiple lines",
+          "filename": "writelines.py",
+          "code": "lines = [\"Line 1\\n\", \"Line 2\\n\", \"Line 3\\n\"]\nf = open(\"output.txt\", \"w\")\nf.writelines(lines)\nf.close()"
+        }
+      ]
+    },
+    {
+      "name": "Reading Files",
+      "explanation": "<ul>\n<li>📖 <b><code>.read()</code> reads the entire file as one string.</b></li>\n<li>📋 <b><code>.readline()</code> reads one line at a time.</b></li>\n<li>📄 <b><code>.readlines()</code> reads all lines into a list.</b></li>\n<li>🔁 <b>Loop through files directly: <code>for line in file_object</code></b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Read entire file",
+          "filename": "read_file.py",
+          "code": "f = open(\"greeting.txt\", \"r\")\ncontent = f.read()\nprint(content)\nf.close()"
+        },
+        {
+          "comment": "Read line by line",
+          "filename": "readlines.py",
+          "code": "f = open(\"data.txt\", \"r\")\nlines = f.readlines()      # List of all lines\nfor line in lines:\n    print(line.strip())\nf.close()"
+        }
+      ]
+    },
+    {
+      "name": "Appending to Files",
+      "explanation": "<ul>\n<li>➕ <b><code>'a'</code> mode appends text without deleting existing content.</b></li>\n<li>🎯 <b>Perfect for adding logs or new data to existing files.</b></li>\n<li>📍 <b>Write position is at the end of the file.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Append to a file",
+          "filename": "append_file.py",
+          "code": "f = open(\"log.txt\", \"a\")\nf.write(\"New log entry\\n\")\nf.write(\"Another entry\\n\")\nf.close()"
+        }
+      ]
+    },
+    {
+      "name": "The 'with' Statement",
+      "explanation": "<ul>\n<li>🤝 <b><code>with</code> automatically closes files when done.</b> No need to call <code>.close()</code></li>\n<li>🛡️ <b>Safer than manual close — works even if errors occur.</b></li>\n<li>✨ <b>Best practice for file handling in Python.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Using with for reading",
+          "filename": "with_read.py",
+          "code": "with open(\"data.txt\", \"r\") as f:\n    content = f.read()\n    print(content)\n# File automatically closed here"
+        },
+        {
+          "comment": "Using with for writing",
+          "filename": "with_write.py",
+          "code": "with open(\"output.txt\", \"w\") as f:\n    f.write(\"Line 1\\n\")\n    f.write(\"Line 2\\n\")\n# File automatically closed"
+        }
+      ]
+    },
+    {
+      "name": "Understanding Errors",
+      "explanation": "<ul>\n<li>💥 <b>Errors (exceptions) stop your program if not handled.</b></li>\n<li>🏷️ <b>Common errors: <code>ZeroDivisionError</code>, <code>FileNotFoundError</code>, <code>ValueError</code>, <code>IndexError</code>.</b></li>\n<li>⚠️ <b>Error message tells you what went wrong and where.</b></li>\n<li>🔍 <b>Use the error type to handle specific problems.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Different types of errors",
+          "filename": "error_types.py",
+          "code": "# ZeroDivisionError\nresult = 10 / 0  # Error!\n# FileNotFoundError\nf = open(\"nonexistent.txt\", \"r\")  # Error!\n# ValueError\nnum = int(\"abc\")  # Error!"
+        }
+      ]
+    },
+    {
+      "name": "try/except Blocks",
+      "explanation": "<ul>\n<li>🛡️ <b><code>try:</code> contains code that might cause an error.</b></li>\n<li>✅ <b><code>except:</code> runs if an error occurs in the try block.</b></li>\n<li>🎯 <b>Catch specific errors: <code>except SpecificError:</code></b></li>\n<li>❌ <b>Multiple except blocks for different error types.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Basic try/except",
+          "filename": "try_except.py",
+          "code": "try:\n    num = int(input(\"Enter a number: \"))\n    result = 10 / num\n    print(result)\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")\nexcept ValueError:\n    print(\"Please enter a valid number!\")"
+        },
+        {
+          "comment": "Catching file errors",
+          "filename": "try_file.py",
+          "code": "try:\n    with open(\"data.txt\", \"r\") as f:\n        content = f.read()\nexcept FileNotFoundError:\n    print(\"File not found!\")"
+        }
+      ]
+    },
+    {
+      "name": "finally and else Blocks",
+      "explanation": "<ul>\n<li>🔄 <b><code>finally:</code> runs no matter what — error or no error.</b> Great for cleanup.</li>\n<li>✅ <b><code>else:</code> runs only if NO error occurred.</b></li>\n<li>💡 <b>Use <code>finally</code> for closing resources or cleanup tasks.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Using finally",
+          "filename": "finally.py",
+          "code": "try:\n    result = 10 / 2\n    print(result)\nexcept ZeroDivisionError:\n    print(\"Error!\")\nfinally:\n    print(\"Cleanup done!\")"
+        },
+        {
+          "comment": "Using else block",
+          "filename": "try_else.py",
+          "code": "try:\n    num = int(input(\"Number: \"))\nexcept ValueError:\n    print(\"Invalid input!\")\nelse:\n    print(f\"You entered {num}\")"
+        }
+      ]
+    },
+    {
+      "name": "Raising Custom Errors",
+      "explanation": "<ul>\n<li>🚨 <b><code>raise</code> keyword throws an error manually.</b></li>\n<li>🎯 <b>Use <code>raise ValueError(message)</code> for custom errors.</b></li>\n<li>🔍 <b>Great for validating user input or data.</b></li>\n<li>💡 <b>Helps catch problems early in your program.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Raise custom errors",
+          "filename": "raise_error.py",
+          "code": "age = int(input(\"Enter age: \"))\nif age < 0:\n    raise ValueError(\"Age cannot be negative!\")\nelse:\n    print(f\"Age: {age}\")"
+        },
+        {
+          "comment": "Raise and catch",
+          "filename": "raise_catch.py",
+          "code": "try:\n    password = input(\"Enter password: \")\n    if len(password) < 5:\n        raise ValueError(\"Password too short!\")\n    print(\"Password accepted\")\nexcept ValueError as e:\n    print(f\"Error: {e}\")"
+        }
+      ]
+    },
+    {
+      "name": "Practical File and Error Handling",
+      "explanation": "<ul>\n<li>🏗️ <b>Combine files and error handling for robust programs.</b></li>\n<li>📝 <b>Always handle missing files and invalid input.</b></li>\n<li>💾 <b>Use logging to save errors to a file for debugging.</b></li>\n</ul>",
+      "snippets": [
+        {
+          "comment": "Robust file reading",
+          "filename": "robust_file.py",
+          "code": "try:\n    with open(\"data.txt\", \"r\") as f:\n        lines = f.readlines()\n        for line in lines:\n            print(line.strip())\nexcept FileNotFoundError:\n    print(\"File not found!\")\nexcept Exception as e:\n    print(f\"Error: {e}\")"
+        },
+        {
+          "comment": "User input with validation",
+          "filename": "validated_input.py",
+          "code": "try:\n    name = input(\"Name: \")\n    age = int(input(\"Age: \"))\n    if age < 0 or age > 120:\n        raise ValueError(\"Invalid age!\")\n    print(f\"{name} is {age} years old\")\nexcept ValueError:\n    print(\"Invalid input!\")"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    "1. Use the open() function to create a brand new text file in 'w' mode. (Opening file)",
+    "2. Write a single sentence into the text file you just opened. (Writing file)",
+    "3. Open an existing text file in 'r' mode and print its contents to the screen. (Reading file)",
+    "4. Open a text file in 'a' mode (append) to add a new line without deleting the old ones. (Appending)",
+    "5. Rewrite your file reading code to use the 'with' statement so it closes automatically. (With statement)",
+    "6. Deliberately try to divide a number by 0 and wrap it in a try/except block. (ZeroDivisionError)",
+    "7. Try to open a file that doesn't exist and catch the specific FileNotFoundError. (FileNotFoundError)",
+    "8. Write a try block that has two different except blocks for different types of errors. (Multiple excepts)",
+    "9. Add a finally block that prints 'Execution finished' regardless of whether an error happened. (Finally block)",
+    "10. Use the raise keyword to force a custom error if a user inputs a negative age. (Raising errors)"
+  ]
+}

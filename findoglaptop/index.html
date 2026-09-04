@@ -1,0 +1,3220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2034578803232828"
+         crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZT0FTDEWMH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZT0FTDEWMH');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindOGlaptop | Student Laptop Finder & AI Advisor</title>
+    <!-- Outfit & Plus Jakarta Sans fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        :root {
+            --primary-teal: #14b8a6;
+            --primary-purple: #8b5cf6;
+            --bg-color: #030712;
+            --panel-bg: rgba(10, 20, 30, 0.7);
+            --border-color: rgba(255, 255, 255, 0.06);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Ambient glows */
+        .ambient-blur {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(150px);
+            z-index: -1;
+            opacity: 0.12;
+            pointer-events: none;
+        }
+        .blur-1 { width: 400px; height: 400px; top: 10%; left: -100px; background: var(--primary-teal); }
+        .blur-2 { width: 500px; height: 500px; top: 40%; right: -150px; background: var(--primary-purple); }
+        .blur-3 { width: 400px; height: 400px; bottom: 10%; left: 20%; background: var(--primary-teal); }
+
+        /* Global Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 24px;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .logo-area i {
+            color: var(--primary-teal);
+            font-size: 1.4rem;
+            text-shadow: 0 0 15px rgba(20, 184, 166, 0.4);
+        }
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .logo-text span {
+            color: var(--primary-teal);
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .btn-icon {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .btn-icon:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--primary-teal);
+        }
+        .btn-icon.active {
+            background: rgba(20, 184, 166, 0.15);
+            border-color: var(--primary-teal);
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 24px 40px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .hero-badge {
+            background: rgba(20, 184, 166, 0.08);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            color: var(--primary-teal);
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 99px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 50%, var(--primary-teal) 90%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 36px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: var(--primary-teal);
+            color: #000;
+            border: none;
+            box-shadow: 0 4px 20px rgba(20, 184, 166, 0.25);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(20, 184, 166, 0.4);
+            background: #0ea5e9; /* dynamic shift */
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--text-secondary);
+        }
+
+        /* Steps Section */
+        .steps-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-cols: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .step-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        .step-num {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(20, 184, 166, 0.1);
+            color: var(--primary-teal);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin: 0 auto 16px;
+        }
+        .step-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+        .step-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Smart Laptop Finder Form */
+        .finder-section {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 24px;
+        }
+        .finder-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+        }
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .section-title i {
+            color: var(--primary-teal);
+        }
+
+        /* Form Layout */
+        .form-grid {
+            display: grid;
+            grid-template-cols: 1fr 1fr;
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .form-grid { grid-template-cols: 1fr; }
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .form-group-full {
+            grid-column: 1 / -1;
+        }
+        .form-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+        }
+        .select-input, .text-input {
+            width: 100%;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+        }
+        .select-input:focus, .text-input:focus {
+            border-color: var(--primary-teal);
+            box-shadow: 0 0 10px rgba(20, 184, 166, 0.15);
+        }
+
+        /* Slider Styles */
+        .slider-container {
+            margin: 12px 0 20px;
+            position: relative;
+        }
+        .slider-marks {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .slider-marks span {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .slider-marks span.active {
+            color: var(--primary-teal);
+            font-size: 0.78rem;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 3px;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-teal);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
+            transition: var(--transition);
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* Options grid selection (Brands / Usages) */
+        .options-grid {
+            display: grid;
+            grid-template-cols: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+        }
+        .option-card {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .option-card:hover {
+            border-color: rgba(20, 184, 166, 0.4);
+            background: rgba(255,255,255,0.02);
+        }
+        .option-card.selected {
+            border-color: var(--primary-teal);
+            background: rgba(20, 184, 166, 0.1);
+            color: #fff;
+        }
+
+        .checkbox-pill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .checkbox-pill {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .checkbox-pill:hover {
+            border-color: rgba(20, 184, 166, 0.4);
+        }
+        .checkbox-pill.selected {
+            background: rgba(20, 184, 166, 0.1);
+            border-color: var(--primary-teal);
+            color: #fff;
+        }
+
+        .radio-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* Results & Catalog Layout */
+        .catalog-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 24px;
+        }
+        .catalog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .results-count {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        .results-count span {
+            color: var(--primary-teal);
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-cols: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Laptop Card */
+        .laptop-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+        .laptop-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary-teal);
+            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.15);
+        }
+        .laptop-image-box {
+            height: 180px;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .laptop-image-box img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.5));
+            transition: var(--transition);
+        }
+        .laptop-card:hover .laptop-image-box img {
+            transform: scale(1.05);
+        }
+        .wishlist-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(3, 7, 18, 0.6);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            z-index: 2;
+        }
+        .wishlist-btn:hover {
+            color: #ef4444;
+            transform: scale(1.1);
+        }
+        .wishlist-btn.active {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        .tag-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+        .tag-badge-teal { background: rgba(20, 184, 166, 0.15); color: var(--primary-teal); border: 1px solid rgba(20, 184, 166, 0.3); }
+
+        .laptop-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .laptop-brand {
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--primary-teal);
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+        .laptop-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .laptop-price {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+        .laptop-specs {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(255,255,255,0.04);
+            padding-top: 14px;
+        }
+        .laptop-specs li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .laptop-specs li i {
+            color: var(--text-muted);
+            width: 14px;
+        }
+
+        .rating-metrics {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+            background: rgba(0,0,0,0.2);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.03);
+            justify-content: space-between;
+        }
+        .metric-item {
+            text-align: center;
+        }
+        .metric-label {
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .metric-val {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .laptop-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .btn-sm {
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-sm-primary {
+            background: var(--primary-teal);
+            color: #000;
+            border: none;
+        }
+        .btn-sm-primary:hover {
+            background: #0ea5e9;
+        }
+        .btn-sm-secondary {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+        .btn-sm-secondary:hover {
+            background: rgba(255,255,255,0.08);
+        }
+        .btn-sm-compare.active {
+            background: rgba(20, 184, 166, 0.15);
+            border-color: var(--primary-teal);
+            color: var(--primary-teal);
+        }
+
+        /* Filter Guides Tab View */
+        .guides-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 24px;
+        }
+        .tab-bar {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        .tab-bar::-webkit-scrollbar {
+            height: 4px;
+        }
+        .tab-bar::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        .tab-item {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            padding: 10px 18px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: var(--transition);
+            white-space: nowrap;
+            font-family: inherit;
+        }
+        .tab-item:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.03);
+        }
+        .tab-item.active {
+            background: rgba(20, 184, 166, 0.08);
+            color: var(--primary-teal);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+
+        /* Compare Sticky Bar & Modal */
+        .compare-bar {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background: rgba(10, 20, 30, 0.95);
+            border: 1px solid var(--primary-teal);
+            border-radius: 16px 16px 0 0;
+            padding: 16px 24px;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+            transition: var(--transition);
+            backdrop-filter: blur(15px);
+        }
+        .compare-bar.active {
+            bottom: 0;
+        }
+        .compare-items-thumbs {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .compare-thumb {
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .compare-thumb img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+        .remove-compare-item {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #ef4444;
+            color: #fff;
+            font-size: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* Modal styling */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-box {
+            background: #090d16;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 32px;
+            position: relative;
+            transform: scale(0.95);
+            transition: var(--transition);
+            box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+        }
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .modal-close-btn:hover {
+            color: #fff;
+        }
+        .modal-title-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        /* Comparison Table styles */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .compare-table th, .compare-table td {
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 0.88rem;
+        }
+        .compare-table th {
+            background: rgba(255,255,255,0.02);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--primary-teal);
+        }
+        .compare-table td:first-child {
+            text-align: left;
+            font-weight: 700;
+            background: rgba(255,255,255,0.01);
+            color: var(--text-secondary);
+        }
+        .compare-table .best-spec {
+            color: var(--primary-teal);
+            font-weight: 700;
+            background: rgba(20, 184, 166, 0.05);
+        }
+
+        /* Detailed modal card layout */
+        .details-grid {
+            display: grid;
+            grid-template-cols: 1fr 1.2fr;
+            gap: 32px;
+        }
+        @media (max-width: 768px) {
+            .details-grid { grid-template-cols: 1fr; }
+        }
+        .details-image-box {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 280px;
+        }
+        .details-image-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .details-specs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 18px;
+            margin-top: 18px;
+        }
+        .details-spec-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.88rem;
+            border-bottom: 1px dashed rgba(255,255,255,0.03);
+            padding-bottom: 8px;
+        }
+        .details-spec-row span:first-child {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        .details-spec-row span:last-child {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* Modal Detail Tabs styling */
+        .details-tabs {
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 18px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+        }
+        .details-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .details-tab-btn:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.03);
+        }
+        .details-tab-btn.active {
+            color: var(--primary-teal);
+            background: rgba(20, 184, 166, 0.1);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+        .details-tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .details-tab-content.active {
+            display: block;
+        }
+
+        /* Performance Simulator styles */
+        .perf-simulator-container {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-top: 10px;
+        }
+        .perf-select-group {
+            margin-bottom: 16px;
+        }
+        .perf-select-group label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .perf-select {
+            width: 100%;
+            background: #090e1a;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            cursor: pointer;
+            outline: none;
+            transition: var(--transition);
+        }
+        .perf-select:focus {
+            border-color: var(--primary-teal);
+        }
+        .perf-meter-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .perf-meter-row {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.03);
+            padding: 12px;
+            border-radius: 8px;
+        }
+        .perf-meter-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+        }
+        .perf-meter-name {
+            font-weight: 700;
+        }
+        .perf-meter-value {
+            color: var(--primary-teal);
+            font-weight: 800;
+        }
+        .perf-progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .perf-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-purple));
+            border-radius: 4px;
+            transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Upgrades & Ports styling */
+        .upgrades-grid {
+            display: grid;
+            grid-template-cols: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 576px) {
+            .upgrades-grid { grid-template-cols: 1fr; }
+        }
+        .upgrade-card {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid var(--border-color);
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+        }
+        .upgrade-card h4 {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .upgrade-card p {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Pros & Cons styling */
+        .pros-cons-container {
+            display: grid;
+            grid-template-cols: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 576px) {
+            .pros-cons-container { grid-template-cols: 1fr; }
+        }
+        .pro-con-box {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid var(--border-color);
+            padding: 14px;
+            border-radius: var(--radius-md);
+        }
+        .pro-con-box.pros-box {
+            border-left: 3px solid #10b981;
+        }
+        .pro-con-box.cons-box {
+            border-left: 3px solid #ef4444;
+        }
+        .pro-con-box h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .pro-con-box.pros-box h4 { color: #10b981; }
+        .pro-con-box.cons-box h4 { color: #ef4444; }
+        .pro-con-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .pro-con-list li {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 18px;
+        }
+        .pro-con-list li::before {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+        .pros-box .pro-con-list li::before {
+            content: "\f00c";
+            color: #10b981;
+        }
+        .cons-box .pro-con-list li::before {
+            content: "\f00d";
+            color: #ef4444;
+        }
+
+        /* Reviews Carousel styling */
+        .student-review-card {
+            margin-top: 14px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            border-top: 2px solid var(--primary-purple);
+        }
+        .review-author {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .review-author span:last-child {
+            color: #fbbf24;
+        }
+
+        /* AI Chat Advisor Widget */
+        .ai-chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        .ai-chat-trigger {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-teal), var(--primary-purple));
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(20, 184, 166, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            position: relative;
+        }
+        .ai-chat-trigger:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .ai-chat-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #e11d48;
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 3px 6px;
+            border-radius: 99px;
+            border: 2px solid var(--bg-color);
+        }
+        .ai-chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 360px;
+            height: 480px;
+            background: rgba(10, 15, 25, 0.9);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            pointer-events: none;
+            transition: var(--transition);
+        }
+        .ai-chat-window.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+        }
+        .ai-chat-header {
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .ai-chat-header-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .ai-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(20, 184, 166, 0.15);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-teal);
+            font-size: 0.95rem;
+        }
+        .ai-chat-header h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+        }
+        .ai-chat-status {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .ai-chat-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+        .ai-chat-messages {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .chat-bubble {
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 0.8rem;
+            line-height: 1.45;
+        }
+        .chat-bubble.bot {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            align-self: flex-start;
+            border-top-left-radius: 4px;
+        }
+        .chat-bubble.user {
+            background: linear-gradient(135deg, var(--primary-teal), #0ea5e9);
+            color: #000;
+            font-weight: 600;
+            align-self: flex-end;
+            border-top-right-radius: 4px;
+            box-shadow: 0 4px 12px rgba(20, 184, 166, 0.15);
+        }
+        .chat-quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+        }
+        .chat-reply-chip {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 99px;
+            padding: 6px 10px;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .chat-reply-chip:hover {
+            border-color: var(--primary-teal);
+            color: #fff;
+        }
+        .ai-chat-input-area {
+            padding: 12px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            gap: 8px;
+            background: rgba(0,0,0,0.2);
+        }
+        .ai-chat-input-area input {
+            flex: 1;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 0.8rem;
+            outline: none;
+        }
+        .ai-chat-input-area input:focus {
+            border-color: var(--primary-teal);
+        }
+        .ai-chat-send-btn {
+            width: 36px;
+            height: 36px;
+            background: var(--primary-teal);
+            border: none;
+            color: #000;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .ai-chat-send-btn:hover {
+            background: #0ea5e9;
+        }
+
+        /* Price alert modal forms */
+        .alert-form-group {
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .alert-form-group input {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px 14px;
+            color: #fff;
+            outline: none;
+        }
+        .alert-form-group input:focus {
+            border-color: var(--primary-teal);
+        }
+
+        /* Responsive adaptations */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 0.95rem; }
+            .finder-card { padding: 24px 16px; }
+            .compare-bar { width: 95%; padding: 12px 16px; }
+            .modal-box { padding: 20px; }
+            .details-image-box { height: 180px; }
+            .ai-chat-window { width: calc(100vw - 32px); right: -10px; bottom: 70px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-blur blur-1"></div>
+    <div class="ambient-blur blur-2"></div>
+    <div class="ambient-blur blur-3"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-area" onclick="window.location.href='/'">
+                <i class="fa-solid fa-laptop"></i>
+                <span class="logo-text">Find<span>OG</span>laptop</span>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-icon" id="langToggleBtn" onclick="toggleLanguage()">
+                    <i class="fa-solid fa-language"></i>
+                    <span id="langText">हिन्दी</span>
+                </button>
+                <button class="btn-icon" id="wishlistToggleBtn" onclick="toggleWishlistFilter()">
+                    <i class="fa-solid fa-heart"></i>
+                    <span id="wishCount">0</span>
+                </button>
+                <button class="btn-icon" onclick="window.location.href='/'">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span class="d-none-mobile">Back to Hub</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <span class="hero-badge" id="heroBadge">🎓 Laptop Finder for Students</span>
+            <h1 id="heroTitle">Find the Perfect Laptop for Your Course & Budget</h1>
+            <p id="heroSubtitle">From Class 12th to College — Get personalized laptop recommendations based on your course, budget, and needs.</p>
+            <div class="hero-btns">
+                <a href="#finder-card" class="btn btn-primary" id="btnFindLaptop">Find My Laptop <i class="fa-solid fa-wand-magic-sparkles"></i></a>
+                <a href="#results-section" class="btn btn-secondary" id="btnBrowseAll" onclick="clearFilters()">Browse All Laptops</a>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="steps-container">
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h3 id="step1Title">Choose Your Course</h3>
+                    <p id="step1Desc">BTech CSE, BBA, UI/UX, Graphic Design, or others. We map your software requirements.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h3 id="step2Title">Select Budget</h3>
+                    <p id="step2Desc">Select range starting from ₹10K up to ₹3L+. We fit premium specs inside your budget.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h3 id="step3Title">Get Best Matches</h3>
+                    <p id="step3Desc">Get overall student ratings, battery life hours, weight metrics, and compare side-by-side.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smart Finder Section -->
+        <section class="finder-section">
+            <div class="finder-card" id="finder-card">
+                <h2 class="section-title"><i class="fa-solid fa-microchip"></i> Smart Laptop Finder</h2>
+                
+                <div class="form-grid">
+                    <!-- Course drop -->
+                    <div class="form-group">
+                        <label class="form-label" for="formCourse">Which course are you pursuing?</label>
+                        <select id="formCourse" class="select-input" onchange="suggestPreferences()">
+                            <option value="any">Select your course...</option>
+                            <option value="btech_cse">B.Tech CSE / IT / Software Eng</option>
+                            <option value="btech_aiml">B.Tech AI & Machine Learning</option>
+                            <option value="bca">BCA / MCA</option>
+                            <option value="bba">BBA / MBA / Commerce</option>
+                            <option value="mbbs">MBBS / Medicine</option>
+                            <option value="uiux">UI/UX Design</option>
+                            <option value="graphic">Graphic Designing</option>
+                            <option value="fashion">Fashion Designing</option>
+                            <option value="video">Video Editing / Production</option>
+                            <option value="gaming">Gaming & VFX</option>
+                            <option value="law">Law / Humanities</option>
+                        </select>
+                    </div>
+
+                    <!-- Budget Slider -->
+                    <div class="form-group">
+                        <label class="form-label">What is your maximum budget?</label>
+                        <div class="slider-container">
+                            <input type="range" id="formBudgetSlider" min="0" max="7" value="7" oninput="updateBudgetSliderLabel()" />
+                            <div class="slider-marks" id="budgetSliderMarks">
+                                <span class="active" onclick="setSliderVal(0)">₹10K</span>
+                                <span class="active" onclick="setSliderVal(1)">₹20K</span>
+                                <span class="active" onclick="setSliderVal(2)">₹30K</span>
+                                <span class="active" onclick="setSliderVal(3)">₹50K</span>
+                                <span class="active" onclick="setSliderVal(4)">₹70K</span>
+                                <span class="active" onclick="setSliderVal(5)">₹1L</span>
+                                <span class="active" onclick="setSliderVal(6)">₹2L</span>
+                                <span class="active" onclick="setSliderVal(7)">₹3L+</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brand Preferred -->
+                    <div class="form-group form-group-full">
+                        <label class="form-label">Preferred Brand?</label>
+                        <div class="checkbox-pill-container" id="brandOptions">
+                            <div class="checkbox-pill selected" data-value="any" onclick="togglePillSelect(this, 'brand')">Any Brand</div>
+                            <div class="checkbox-pill" data-value="Apple" onclick="togglePillSelect(this, 'brand')">Apple</div>
+                            <div class="checkbox-pill" data-value="HP" onclick="togglePillSelect(this, 'brand')">HP</div>
+                            <div class="checkbox-pill" data-value="Dell" onclick="togglePillSelect(this, 'brand')">Dell</div>
+                            <div class="checkbox-pill" data-value="Lenovo" onclick="togglePillSelect(this, 'brand')">Lenovo</div>
+                            <div class="checkbox-pill" data-value="Asus" onclick="togglePillSelect(this, 'brand')">ASUS</div>
+                            <div class="checkbox-pill" data-value="Acer" onclick="togglePillSelect(this, 'brand')">Acer</div>
+                            <div class="checkbox-pill" data-value="MSI" onclick="togglePillSelect(this, 'brand')">MSI</div>
+                        </div>
+                    </div>
+
+                    <!-- Primary Usage -->
+                    <div class="form-group form-group-full">
+                        <label class="form-label">Primary Usage / Requirements</label>
+                        <div class="checkbox-pill-container" id="usageOptions">
+                            <div class="checkbox-pill" data-value="coding" onclick="togglePillMulti(this)">Coding</div>
+                            <div class="checkbox-pill" data-value="graphic" onclick="togglePillMulti(this)">Graphic Design</div>
+                            <div class="checkbox-pill" data-value="video" onclick="togglePillMulti(this)">Video Editing</div>
+                            <div class="checkbox-pill" data-value="gaming" onclick="togglePillMulti(this)">Gaming</div>
+                            <div class="checkbox-pill" data-value="office" onclick="togglePillMulti(this)">Office & Study</div>
+                            <div class="checkbox-pill" data-value="ai" onclick="togglePillMulti(this)">AI / ML</div>
+                            <div class="checkbox-pill" data-value="cad" onclick="togglePillMulti(this)">CAD & 3D Modeling</div>
+                        </div>
+                    </div>
+
+                    <!-- Display preference -->
+                    <div class="form-group">
+                        <label class="form-label">Display Preference</label>
+                        <div class="radio-row" id="displayOptions">
+                            <div class="checkbox-pill selected" data-value="any" onclick="togglePillSelect(this, 'display')">No Preference</div>
+                            <div class="checkbox-pill" data-value="14" onclick="togglePillSelect(this, 'display')">Compact (14")</div>
+                            <div class="checkbox-pill" data-value="15.6" onclick="togglePillSelect(this, 'display')">Standard (15.6")</div>
+                            <div class="checkbox-pill" data-value="16" onclick="togglePillSelect(this, 'display')">Large (16"+)</div>
+                        </div>
+                    </div>
+
+                    <!-- Battery priority -->
+                    <div class="form-group">
+                        <label class="form-label">Battery Priority</label>
+                        <div class="radio-row" id="batteryOptions">
+                            <div class="checkbox-pill selected" data-value="any" onclick="togglePillSelect(this, 'battery')">Doesn't Matter</div>
+                            <div class="checkbox-pill" data-value="good" onclick="togglePillSelect(this, 'battery')">Good (6-8 Hrs)</div>
+                            <div class="checkbox-pill" data-value="excellent" onclick="togglePillSelect(this, 'battery')">Excellent (8+ Hrs)</div>
+                        </div>
+                    </div>
+
+                    <!-- Portability -->
+                    <div class="form-group">
+                        <label class="form-label">Portability</label>
+                        <div class="radio-row" id="weightOptions">
+                            <div class="checkbox-pill selected" data-value="any" onclick="togglePillSelect(this, 'weight')">Doesn't Matter</div>
+                            <div class="checkbox-pill" data-value="light" onclick="togglePillSelect(this, 'weight')">Lightweight (< 1.6kg)</div>
+                        </div>
+                    </div>
+
+                    <!-- OS preference -->
+                    <div class="form-group">
+                        <label class="form-label">Operating System</label>
+                        <div class="radio-row" id="osOptions">
+                            <div class="checkbox-pill selected" data-value="any" onclick="togglePillSelect(this, 'os')">No Preference</div>
+                            <div class="checkbox-pill" data-value="Windows" onclick="togglePillSelect(this, 'os')">Windows</div>
+                            <div class="checkbox-pill" data-value="macOS" onclick="togglePillSelect(this, 'os')">macOS</div>
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div class="form-group form-group-full" style="margin-top: 10px;">
+                        <button class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 1.1rem;" onclick="filterLaptops()">Find My Perfect Laptop <i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Guides and Budgets navigation tabs -->
+        <section class="guides-section">
+            <h2 class="section-title"><i class="fa-solid fa-compass"></i> Student Guides & Curated Lists</h2>
+            <div class="tab-bar" id="guidesTabBar">
+                <button class="tab-item active" onclick="loadGuide('all', this)">All Laptops</button>
+                <button class="tab-item" onclick="loadGuide('btech', this)">💻 BTech / Coding</button>
+                <button class="tab-item" onclick="loadGuide('graphic', this)">🎨 Graphic Designing</button>
+                <button class="tab-item" onclick="loadGuide('uiux', this)">✨ UI/UX Design</button>
+                <button class="tab-item" onclick="loadGuide('fashion', this)">🧵 Fashion Designing</button>
+                <button class="tab-item" onclick="loadGuide('video', this)">🎬 Video Editing</button>
+                <button class="tab-item" onclick="loadGuide('budget_under_30', this)">Under ₹30,000</button>
+                <button class="tab-item" onclick="loadGuide('budget_under_50', this)">Under ₹50,000</button>
+                <button class="tab-item" onclick="loadGuide('budget_under_70', this)">Under ₹70,000</button>
+                <button class="tab-item" onclick="loadGuide('budget_under_1L', this)">Under ₹1 Lakh</button>
+            </div>
+        </section>
+
+        <!-- Catalog Results section -->
+        <section class="catalog-section" id="results-section">
+            <div class="catalog-header">
+                <h3 class="results-count" id="resultsCountText">Showing all <span>0</span> laptops</h3>
+                <div class="btn-icon" style="cursor: default;" id="activeFilterBadge">Filter Active: None</div>
+            </div>
+
+            <!-- Laptop Results Grid -->
+            <div class="catalog-grid" id="laptopCatalogGrid">
+                <!-- Dynamically populated cards go here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Compare Drawer -->
+    <div class="compare-bar" id="compareDrawer">
+        <div class="compare-items-thumbs" id="compareThumbsContainer">
+            <!-- Thumbs dynamically injected -->
+        </div>
+        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;" onclick="openComparisonModal()">Compare Now <i class="fa-solid fa-arrows-left-right"></i></button>
+    </div>
+
+    <!-- Comparison Modal -->
+    <div class="modal-overlay" id="compareModalOverlay">
+        <div class="modal-box" style="max-width: 950px;">
+            <button class="modal-close-btn" onclick="closeComparisonModal()">&times;</button>
+            <h2 class="modal-title-text" id="compareModalTitle">Specs Comparison Table</h2>
+            <div style="overflow-x: auto;">
+                <table class="compare-table" id="compareSpecsTable">
+                    <!-- Dynamic comparison rows go here -->
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Modal -->
+    <div class="modal-overlay" id="detailsModalOverlay">
+        <div class="modal-box" style="max-width: 900px;">
+            <button class="modal-close-btn" onclick="closeDetailsModal()">&times;</button>
+            <h2 class="modal-title-text" id="detailsModalTitle">Lenovo IdeaPad Slim 5</h2>
+            <div class="details-grid">
+                <div class="details-image-box">
+                    <img id="detailsModalImg" src="" alt="Laptop Image" />
+                </div>
+                <div>
+                    <h3 id="detailsModalPrice" style="font-size: 1.8rem; font-weight: 800; color: var(--primary-teal); margin-bottom: 2px;">₹58,999</h3>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px; display: flex; flex-direction: column; gap: 4px;">
+                        <div><i class="fa-solid fa-percent text-teal"></i> Student Card Offer: <span id="detStudentPrice" style="color: #fff; font-weight: 700;">-</span></div>
+                        <div><i class="fa-solid fa-credit-card text-teal"></i> No-Cost EMI from <span id="detEmiPrice" style="color: #fff; font-weight: 700;">-</span></div>
+                    </div>
+                    <p id="detailsModalDesc" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 15px;">Ideal for students looking for Ryzen 7 processing power, smooth multitasking capabilities, and standard metal chassis design.</p>
+                    
+                    <!-- Tabs Navigation -->
+                    <div class="details-tabs">
+                        <button class="details-tab-btn active" onclick="switchDetailsTab('specs')"><i class="fa-solid fa-list-check"></i> System Specs</button>
+                        <button class="details-tab-btn" onclick="switchDetailsTab('perf')"><i class="fa-solid fa-gamepad"></i> Performance Simulator</button>
+                        <button class="details-tab-btn" onclick="switchDetailsTab('upgrade')"><i class="fa-solid fa-microchip"></i> Ports & Upgrades</button>
+                        <button class="details-tab-btn" onclick="switchDetailsTab('reviews')"><i class="fa-solid fa-comments"></i> Pros/Cons & Reviews</button>
+                    </div>
+
+                    <!-- Tab 1: Specs -->
+                    <div class="details-tab-content active" id="tabContent-specs">
+                        <div class="details-specs-list" style="border-top: none; padding-top: 0; margin-top: 0;">
+                            <div class="details-spec-row"><span>Processor</span><span id="detCpu">-</span></div>
+                            <div class="details-spec-row"><span>RAM Memory</span><span id="detRam">-</span></div>
+                            <div class="details-spec-row"><span>Storage</span><span id="detStorage">-</span></div>
+                            <div class="details-spec-row"><span>Graphics (GPU)</span><span id="detGpu">-</span></div>
+                            <div class="details-spec-row"><span>Battery Life</span><span id="detBattery">-</span></div>
+                            <div class="details-spec-row"><span>Weight</span><span id="detWeight">-</span></div>
+                            <div class="details-spec-row"><span>Operating System</span><span id="detOs">-</span></div>
+                            <div class="details-spec-row"><span>Ideal For Courses</span><span id="detCourseTag">-</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Performance Simulator -->
+                    <div class="details-tab-content" id="tabContent-perf">
+                        <div class="perf-simulator-container">
+                            <div class="perf-select-group">
+                                <label for="perfAppSelect">Choose Software / Game Benchmark:</label>
+                                <select id="perfAppSelect" class="perf-select" onchange="runPerformanceSimulation()">
+                                    <!-- Options will be populated in JS -->
+                                </select>
+                            </div>
+                            <div class="perf-meter-grid">
+                                <div class="perf-meter-row">
+                                    <div class="perf-meter-meta">
+                                        <span class="perf-meter-name">Estimated Frame Rate / Render Rate</span>
+                                        <span class="perf-meter-value" id="perfFpsVal">60 FPS</span>
+                                    </div>
+                                    <div class="perf-progress-bar">
+                                        <div class="perf-progress-fill" id="perfFpsProgress"></div>
+                                    </div>
+                                </div>
+                                <div class="perf-meter-row">
+                                    <div class="perf-meter-meta">
+                                        <span class="perf-meter-name">System Thermal & Fan Load</span>
+                                        <span class="perf-meter-value" id="perfThermalVal">Cool (45°C)</span>
+                                    </div>
+                                    <div class="perf-progress-bar">
+                                        <div class="perf-progress-fill" id="perfThermalProgress"></div>
+                                    </div>
+                                </div>
+                                <div class="perf-meter-row">
+                                    <div class="perf-meter-meta">
+                                        <span class="perf-meter-name">Smoothness Rating</span>
+                                        <span class="perf-meter-value" id="perfSmoothVal">Excellent (92%)</span>
+                                    </div>
+                                    <div class="perf-progress-bar">
+                                        <div class="perf-progress-fill" id="perfSmoothProgress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3: Upgrades & Ports -->
+                    <div class="details-tab-content" id="tabContent-upgrade">
+                        <div class="upgrades-grid">
+                            <div class="upgrade-card">
+                                <h4><i class="fa-solid fa-memory text-teal"></i> RAM Upgradeability</h4>
+                                <p id="detUpgradeRam">Soldered (Non-upgradeable)</p>
+                            </div>
+                            <div class="upgrade-card">
+                                <h4><i class="fa-solid fa-hdd text-teal"></i> SSD Slots</h4>
+                                <p id="detUpgradeSsd">1x M.2 Slot Available for expansion</p>
+                            </div>
+                            <div class="upgrade-card">
+                                <h4><i class="fa-solid fa-ethernet text-teal"></i> Primary Ports</h4>
+                                <p id="detUpgradePorts">2x USB-C, 1x USB-A, HDMI, Jack</p>
+                            </div>
+                            <div class="upgrade-card">
+                                <h4><i class="fa-solid fa-hourglass-half text-teal"></i> Future-Proof Score</h4>
+                                <p id="detUpgradeScore">8.2 / 10</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 4: Pros/Cons & Reviews -->
+                    <div class="details-tab-content" id="tabContent-reviews">
+                        <div class="pros-cons-container">
+                            <div class="pro-con-box pros-box">
+                                <h4>Pros</h4>
+                                <ul class="pro-con-list" id="detProsList">
+                                    <li>Lightweight metal body</li>
+                                    <li>Fantastic battery life</li>
+                                </ul>
+                            </div>
+                            <div class="pro-con-box cons-box">
+                                <h4>Cons</h4>
+                                <ul class="pro-con-list" id="detConsList">
+                                    <li>No dedicated GPU</li>
+                                    <li>RAM cannot be expanded</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="student-review-card">
+                            <div class="review-author">
+                                <span id="detReviewAuthor">Jatin V. (B.Tech CSE)</span>
+                                <span id="detReviewRating">★★★★★</span>
+                            </div>
+                            <p id="detReviewText">"This machine runs VS Code and Docker beautifully. The battery easily lasts a whole day of lectures. Highly recommended for CSE students!"</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 18px; display: flex; gap: 12px;">
+                        <button class="btn btn-primary" onclick="triggerPriceAlertModal()">Get Price Drop Alert <i class="fa-solid fa-bell"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Price Alert Modal -->
+    <div class="modal-overlay" id="priceAlertModalOverlay">
+        <div class="modal-box" style="max-width: 400px;">
+            <button class="modal-close-btn" onclick="closePriceAlertModal()">&times;</button>
+            <h2 class="modal-title-text" style="font-size: 1.4rem;"><i class="fa-solid fa-bell text-teal"></i> Price Alert Setup</h2>
+            <p style="color: var(--text-secondary); font-size: 0.85rem;">Enter your email to receive price drop alerts and discount codes for <strong id="alertLaptopName">Laptop</strong>.</p>
+            <div class="alert-form-group">
+                <input type="email" id="alertEmailInput" placeholder="Enter your email address" autocomplete="off" />
+                <button class="btn btn-primary" style="margin-top: 10px; justify-content: center;" onclick="savePriceAlert()">Activate Alert ⚡</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Laptop Advisor Chatbot Widget -->
+    <div class="ai-chat-widget">
+        <button class="ai-chat-trigger" id="aiChatTrigger" aria-label="Open Advisor">
+            <i class="fa-solid fa-robot"></i>
+            <span class="ai-chat-badge">AI</span>
+        </button>
+        <div class="ai-chat-window" id="aiChatWindow">
+            <div class="ai-chat-header">
+                <div class="ai-chat-header-info">
+                    <div class="ai-avatar"><i class="fa-solid fa-brain"></i></div>
+                    <div>
+                        <h4 id="botHeaderTitle">OG Academic Laptop AI</h4>
+                        <span class="ai-chat-status"><span class="status-dot"></span> Online &bull; Advisor Mode</span>
+                    </div>
+                </div>
+                <button class="ai-chat-close" id="aiChatClose">&times;</button>
+            </div>
+            <div class="ai-chat-messages" id="aiChatMessages">
+                <div class="chat-bubble bot" id="botWelcomeMsg">
+                    Welcome! I am your AI Laptop Advisor. Tell me your course and budget (e.g. "I am a BTech student with 60K budget") and I'll find your perfect laptop instantly!
+                </div>
+                <div class="chat-quick-replies" id="aiChatQuickReplies">
+                    <span class="chat-reply-chip" onclick="submitQuickQuery('Best laptop for BTech CSE under 50k?')">BTech CSE under 50k</span>
+                    <span class="chat-reply-chip" onclick="submitQuickQuery('Need MacBook alternative under 1 lakh')">Mac alternative</span>
+                    <span class="chat-reply-chip" onclick="submitQuickQuery('Lightweight laptop with 8hr battery')">Lightweight + Battery</span>
+                    <span class="chat-reply-chip" onclick="submitQuickQuery('Laptops for Video Editing & Gaming')">Editing & Gaming</span>
+                </div>
+            </div>
+            <form class="ai-chat-input-area" id="aiChatForm">
+                <input type="text" id="aiChatInput" placeholder="Ask anything about laptops..." autocomplete="off" />
+                <button type="submit" class="ai-chat-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Complete client data and logic script -->
+    <script>
+        // LAPTOPS DATABASE
+        const LAPTOPS_DB = [
+            {
+                id: "chromebook-14",
+                brand: "HP",
+                name: "HP Chromebook 14",
+                price: 19999,
+                cpu: "Intel Celeron N4020",
+                ram: "4GB LPDDR4",
+                storage: "64GB eMMC",
+                gpu: "Intel UHD Graphics",
+                battery: "10 Hours",
+                weight: "1.46kg",
+                os: "ChromeOS",
+                screen: "14",
+                performance: "Basic",
+                portability: "High",
+                studentScore: 84,
+                gamingScore: 10,
+                batteryScore: 92,
+                valueScore: 88,
+                imageUrl: "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08197775.png",
+                idealFor: ["mbbs", "law", "bba", "office"],
+                usages: ["office"],
+                bestFor: "Basic Web Browsing & Online Classes"
+            },
+            {
+                id: "aspire-3",
+                brand: "Acer",
+                name: "Acer Aspire Lite",
+                price: 24999,
+                cpu: "Intel Pentium Gold",
+                ram: "8GB DDR4",
+                storage: "512GB SSD",
+                gpu: "Intel UHD Graphics",
+                battery: "5 Hours",
+                weight: "1.59kg",
+                os: "Windows",
+                screen: "15.6",
+                performance: "Medium-Low",
+                portability: "Medium",
+                studentScore: 80,
+                gamingScore: 15,
+                batteryScore: 50,
+                valueScore: 90,
+                imageUrl: "https://static-ec21.acer.com/media/catalog/product/a/s/aspire3_a315-56_chassis-main_1.png",
+                idealFor: ["bba", "law", "commerce", "office"],
+                usages: ["office"],
+                bestFor: "Budget office tasks & accounting software"
+            },
+            {
+                id: "ideapad-slim-3",
+                brand: "Lenovo",
+                name: "Lenovo IdeaPad Slim 3",
+                price: 29999,
+                cpu: "AMD Ryzen 3 7320U",
+                ram: "8GB LPDDR5",
+                storage: "512GB SSD",
+                gpu: "AMD Radeon 610M",
+                battery: "6 Hours",
+                weight: "1.55kg",
+                os: "Windows",
+                screen: "15.6",
+                performance: "Medium-Low",
+                portability: "Medium",
+                studentScore: 86,
+                gamingScore: 25,
+                batteryScore: 60,
+                valueScore: 94,
+                imageUrl: "https://www.lenovo.com/medias/lenovo-laptop-ideapad-slim-3-gen-8-15-amd-subseries-hero.png?context=bWFzdGVyfHJvb3R8MjkyMDA3fGltYWdlL3BuZ3xoMjUvaDQ4LzE3MDEzNjIzOTUwMzY2LnBuZ3wzZDQxN2VlZjBiYmFjZWY0MDhiYTVkMDZiOTY0YTRmMzYyZDlmMmNiNWFmZDZmYzhjNzcxYTRkMTNiZTFlNjNl",
+                idealFor: ["mbbs", "law", "bba", "commerce", "office"],
+                usages: ["office"],
+                bestFor: "Affordable overall student laptop"
+            },
+            {
+                id: "vivobook-15",
+                brand: "Asus",
+                name: "ASUS VivoBook 15",
+                price: 36999,
+                cpu: "Intel Core i3-1215U (12th Gen)",
+                ram: "8GB DDR4",
+                storage: "512GB NVMe SSD",
+                gpu: "Intel UHD Graphics",
+                battery: "6 Hours",
+                weight: "1.70kg",
+                os: "Windows",
+                screen: "15.6",
+                performance: "Medium",
+                portability: "Medium",
+                studentScore: 85,
+                gamingScore: 20,
+                batteryScore: 58,
+                valueScore: 91,
+                imageUrl: "https://dlcdnwebstorage.asus.com/gain/3D7A4D53-906A-4A59-86BE-86F0763C4CD5",
+                idealFor: ["bba", "law", "commerce", "bca", "office"],
+                usages: ["office", "coding"],
+                bestFor: "Students needing a dependable i3 core"
+            },
+            {
+                id: "modern-14",
+                brand: "MSI",
+                name: "MSI Modern 14",
+                price: 42999,
+                cpu: "AMD Ryzen 5 7530U",
+                ram: "16GB DDR4",
+                storage: "512GB SSD",
+                gpu: "AMD Radeon Graphics",
+                battery: "7 Hours",
+                weight: "1.40kg",
+                os: "Windows",
+                screen: "14",
+                performance: "Medium-High",
+                portability: "High",
+                studentScore: 89,
+                gamingScore: 35,
+                batteryScore: 70,
+                valueScore: 95,
+                imageUrl: "https://gdetail.image-host.com/msi/modern14_b11/modern14-main.png",
+                idealFor: ["bca", "btech_cse", "bba", "office"],
+                usages: ["coding", "office"],
+                bestFor: "Best budget programming laptop with 16GB RAM"
+            },
+            {
+                id: "ideapad-slim-5",
+                brand: "Lenovo",
+                name: "Lenovo IdeaPad Slim 5",
+                price: 58999,
+                cpu: "AMD Ryzen 7 7730U",
+                ram: "16GB DDR4",
+                storage: "512GB NVMe SSD",
+                gpu: "AMD Radeon Graphics",
+                battery: "8 Hours",
+                weight: "1.60kg",
+                os: "Windows",
+                screen: "15.6",
+                performance: "High",
+                portability: "Medium",
+                studentScore: 92,
+                gamingScore: 40,
+                batteryScore: 80,
+                valueScore: 96,
+                imageUrl: "https://www.lenovo.com/medias/lenovo-laptops-ideapad-slim-5-gen-8-14-inch-amd-hero.png?context=bWFzdGVyfHJvb3R8MzExMzk5fGltYWdlL3BuZ3xoZGMvaGMxLzE3MTM3MjE2NzE2ODMwLnBuZ3w4MTRjZmIwNDVkMTJhYzk3MWRmZWNiMzlmZmE3Nzg5NWI0NDlmNWJhZGRhODg1YTMyN2YwNDJiNTVmNzNjNmRk",
+                idealFor: ["btech_cse", "bca", "btech_aiml", "graphic"],
+                usages: ["coding", "graphic", "office"],
+                bestFor: "Excellent Ryzen 7 multitasking for coding & design"
+            },
+            {
+                id: "vivobook-pro-15",
+                brand: "Asus",
+                name: "ASUS VivoBook Pro 15",
+                price: 62999,
+                cpu: "AMD Ryzen 5 5600H",
+                ram: "16GB DDR4",
+                storage: "512GB SSD",
+                gpu: "NVIDIA RTX 3050 (4GB)",
+                battery: "5.5 Hours",
+                weight: "1.80kg",
+                os: "Windows",
+                screen: "15.6",
+                performance: "High",
+                portability: "Medium-Low",
+                studentScore: 90,
+                gamingScore: 70,
+                batteryScore: 55,
+                valueScore: 93,
+                imageUrl: "https://dlcdnwebstorage.asus.com/gain/4E587428-112B-450C-926B-9CC9B0F59C77",
+                idealFor: ["graphic", "video", "btech_cse", "gaming"],
+                usages: ["coding", "graphic", "video", "gaming"],
+                bestFor: "Affordable dedicated GPU for gaming & editing"
+            },
+            {
+                id: "dell-g15",
+                brand: "Dell",
+                name: "Dell G15 5530 Gaming",
+                price: 69999,
+                cpu: "Intel Core i5-13450HX",
+                ram: "16GB DDR5",
+                storage: "512GB SSD",
+                gpu: "NVIDIA RTX 3050 (6GB)",
+                battery: "4.5 Hours",
+                weight: "2.60kg",
+                os: "Windows",
+                screen: "15.6",
+                performance: "Very High",
+                portability: "Low",
+                studentScore: 88,
+                gamingScore: 78,
+                batteryScore: 40,
+                valueScore: 89,
+                imageUrl: "https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/g-series/g15-5530/media-gallery/black/g15-5530-gaming-laptop-gallery-black-1.png?fmt=png-alpha",
+                idealFor: ["btech_aiml", "btech_cse", "gaming", "video"],
+                usages: ["coding", "gaming", "video", "ai"],
+                bestFor: "High performance coding, AI models & gaming"
+            },
+            {
+                id: "victus-16",
+                brand: "HP",
+                name: "HP Victus 16",
+                price: 74999,
+                cpu: "AMD Ryzen 7 7840HS",
+                ram: "16GB DDR5",
+                storage: "512GB SSD",
+                gpu: "NVIDIA RTX 4050 (6GB)",
+                battery: "6 Hours",
+                weight: "2.30kg",
+                os: "Windows",
+                screen: "16",
+                performance: "Very High",
+                portability: "Low",
+                studentScore: 91,
+                gamingScore: 82,
+                batteryScore: 60,
+                valueScore: 92,
+                imageUrl: "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08502396.png",
+                idealFor: ["btech_aiml", "video", "gaming", "fashion"],
+                usages: ["coding", "gaming", "video", "ai", "cad"],
+                bestFor: "Outstanding gaming and AI capability for under 75K"
+            },
+            {
+                id: "macbook-air-m2",
+                brand: "Apple",
+                name: "Apple MacBook Air M2",
+                price: 89999,
+                cpu: "Apple M2 Chip (8-Core)",
+                ram: "8GB Unified",
+                storage: "256GB SSD",
+                gpu: "Apple 8-Core GPU",
+                battery: "18 Hours",
+                weight: "1.24kg",
+                os: "macOS",
+                screen: "14",
+                performance: "High",
+                portability: "Extreme",
+                studentScore: 94,
+                gamingScore: 30,
+                batteryScore: 100,
+                valueScore: 90,
+                imageUrl: "https://www.apple.com/v/macbook-air-m2/c/images/overview/design/design_hero_midnight__dbf5l9mwtmg2_large.png",
+                idealFor: ["uiux", "btech_cse", "bba", "fashion"],
+                usages: ["coding", "graphic", "office"],
+                bestFor: "Extreme battery life, premium design & coding"
+            },
+            {
+                id: "yoga-7i",
+                brand: "Lenovo",
+                name: "Lenovo Yoga 7i OLED (Touch)",
+                price: 84999,
+                cpu: "Intel Core i7-1360P",
+                ram: "16GB LPDDR5",
+                storage: "512GB SSD",
+                gpu: "Intel Iris Xe Graphics",
+                battery: "9 Hours",
+                weight: "1.49kg",
+                os: "Windows",
+                screen: "14",
+                performance: "High",
+                portability: "High",
+                studentScore: 90,
+                gamingScore: 30,
+                batteryScore: 90,
+                valueScore: 88,
+                imageUrl: "https://www.lenovo.com/medias/lenovo-laptop-yoga-7-gen-8-14-intel-subseries-hero.png?context=bWFzdGVyfHJvb3R8MTU4NzcxfGltYWdlL3BuZ3xoZjEvaDQ3LzE3MTM3MDkyOTcyODk0LnBuZ3w5Nzk2NjFiYjBkNGNlMmJkMGY2MTZjNmIzMTE1YWMxMWEyNWFkNWNjZmEzNWZmMmZlZjYyNzJmNWI4MTk3MjQ2",
+                idealFor: ["uiux", "fashion", "graphic"],
+                usages: ["graphic", "office"],
+                bestFor: "Color-accurate OLED touchscreen for fashion/UI design"
+            },
+            {
+                id: "zenbook-14",
+                brand: "Asus",
+                name: "ASUS ZenBook 14 OLED",
+                price: 99999,
+                cpu: "Intel Core Ultra 7 155H",
+                ram: "16GB LPDDR5X",
+                storage: "1TB NVMe SSD",
+                gpu: "Intel Arc Graphics",
+                battery: "12 Hours",
+                weight: "1.20kg",
+                os: "Windows",
+                screen: "14",
+                performance: "Very High",
+                portability: "Extreme",
+                studentScore: 93,
+                gamingScore: 50,
+                batteryScore: 95,
+                valueScore: 91,
+                imageUrl: "https://dlcdnwebstorage.asus.com/gain/4EFE1F5C-7F1C-4B94-BF5B-883F11E5466A",
+                idealFor: ["uiux", "btech_cse", "bca", "office"],
+                usages: ["coding", "graphic", "office"],
+                bestFor: "Best Windows alternative to MacBook Air with OLED display"
+            },
+            {
+                id: "legion-slim-5",
+                brand: "Lenovo",
+                name: "Lenovo Legion Slim 5",
+                price: 94999,
+                cpu: "AMD Ryzen 7 7840HS",
+                ram: "16GB DDR5",
+                storage: "512GB SSD",
+                gpu: "NVIDIA RTX 4060 (8GB)",
+                battery: "6 Hours",
+                weight: "2.30kg",
+                os: "Windows",
+                screen: "16",
+                performance: "Extreme",
+                portability: "Low",
+                studentScore: 92,
+                gamingScore: 90,
+                batteryScore: 60,
+                valueScore: 94,
+                imageUrl: "https://www.lenovo.com/medias/lenovo-legion-slim-5-gen-8-16-subseries-hero.png?context=bWFzdGVyfHJvb3R8MzExMzg4fGltYWdlL3BuZ3xoOTkvaDc1LzE3MTM3MTI4MjcxNjQ2LnBuZ3xhZTZmMDJiOTNhZGM4OGYwNDNlNjdiNmMzYTAwOTk3OTQyZDU3MDU0NmIzZmI1ZTFmNjE3ZGZjNjFjMWUwZWUw",
+                idealFor: ["gaming", "video", "btech_aiml"],
+                usages: ["coding", "gaming", "video", "ai", "cad"],
+                bestFor: "Best specs with RTX 4060 for editing & heavy coding"
+            },
+            {
+                id: "helios-neo-16",
+                brand: "Acer",
+                name: "Acer Predator Helios Neo 16",
+                price: 114999,
+                cpu: "Intel Core i7-13700HX",
+                ram: "16GB DDR5",
+                storage: "1TB NVMe SSD",
+                gpu: "NVIDIA RTX 4060 (8GB)",
+                battery: "5 Hours",
+                weight: "2.60kg",
+                os: "Windows",
+                screen: "16",
+                performance: "Extreme",
+                portability: "Low",
+                studentScore: 90,
+                gamingScore: 92,
+                batteryScore: 50,
+                valueScore: 89,
+                imageUrl: "https://static-ec21.acer.com/media/catalog/product/p/r/predator_helios_neo_16_phn16-71_rgb-backlit-keyboard_black_01a_1.png",
+                idealFor: ["gaming", "video", "btech_aiml"],
+                usages: ["coding", "gaming", "video", "ai", "cad"],
+                bestFor: "Monster performance for rendering and model training"
+            },
+            {
+                id: "macbook-air-m3",
+                brand: "Apple",
+                name: "Apple MacBook Air M3",
+                price: 119999,
+                cpu: "Apple M3 Chip (8-Core)",
+                ram: "16GB Unified",
+                storage: "512GB SSD",
+                gpu: "Apple 10-Core GPU",
+                battery: "18 Hours",
+                weight: "1.24kg",
+                os: "macOS",
+                screen: "14",
+                performance: "Very High",
+                portability: "Extreme",
+                studentScore: 96,
+                gamingScore: 35,
+                batteryScore: 100,
+                valueScore: 92,
+                imageUrl: "https://www.apple.com/v/macbook-air-m3/a/images/overview/design/design_hero_starlight__fdf5a9wzst28_large.png",
+                idealFor: ["btech_cse", "uiux", "bba", "graphic"],
+                usages: ["coding", "graphic", "office"],
+                bestFor: "Best overall premium laptop for developers and UI designers"
+            },
+            {
+                id: "zephyrus-g14",
+                brand: "Asus",
+                name: "ASUS ROG Zephyrus G14",
+                price: 139999,
+                cpu: "AMD Ryzen 9 7940HS",
+                ram: "16GB DDR5",
+                storage: "1TB SSD",
+                gpu: "NVIDIA RTX 4060 (8GB)",
+                battery: "8 Hours",
+                weight: "1.65kg",
+                os: "Windows",
+                screen: "14",
+                performance: "Extreme",
+                portability: "High",
+                studentScore: 88,
+                gamingScore: 88,
+                batteryScore: 80,
+                valueScore: 87,
+                imageUrl: "https://dlcdnwebstorage.asus.com/gain/CFE4E5A8-9B9D-4C98-AC92-E25D11D54A3B",
+                idealFor: ["video", "gaming", "uiux", "fashion"],
+                usages: ["coding", "gaming", "video", "cad"],
+                bestFor: "Ultrapowerful coding & gaming engine in compact 14 inch form"
+            },
+            {
+                id: "macbook-pro-m3",
+                brand: "Apple",
+                name: "Apple MacBook Pro M3 Pro",
+                price: 189999,
+                cpu: "Apple M3 Pro (11-Core CPU)",
+                ram: "18GB Unified",
+                storage: "512GB SSD",
+                gpu: "Apple 14-Core GPU",
+                battery: "22 Hours",
+                weight: "1.61kg",
+                os: "macOS",
+                screen: "16",
+                performance: "Extreme",
+                portability: "High",
+                studentScore: 97,
+                gamingScore: 40,
+                batteryScore: 100,
+                valueScore: 85,
+                imageUrl: "https://www.apple.com/v/macbook-pro-14-and-16/b/images/overview/hero/hero_intro_endframe__e631pj04z5a6_large.jpg",
+                idealFor: ["video", "btech_aiml", "uiux", "graphic"],
+                usages: ["coding", "graphic", "video", "ai"],
+                bestFor: "The ultimate laptop for professional video, code compiling and ML"
+            },
+            {
+                id: "rog-strix-g16",
+                brand: "Asus",
+                name: "ASUS ROG Strix G16",
+                price: 169999,
+                cpu: "Intel Core i9-13980HX",
+                ram: "16GB DDR5",
+                storage: "1TB NVMe SSD",
+                gpu: "NVIDIA RTX 4070 (8GB)",
+                battery: "5 Hours",
+                weight: "2.50kg",
+                os: "Windows",
+                screen: "16",
+                performance: "Extreme",
+                portability: "Low",
+                studentScore: 92,
+                gamingScore: 95,
+                batteryScore: 50,
+                valueScore: 86,
+                imageUrl: "https://dlcdnwebstorage.asus.com/gain/BD58A18B-E96B-4690-B8E5-7A419BB27CD7",
+                idealFor: ["gaming", "video", "btech_aiml"],
+                usages: ["coding", "gaming", "video", "ai", "cad"],
+                bestFor: "Desktop-grade Core i9 gaming power and VR rendering"
+            }
+        ];
+
+        // Language State
+        let currentLanguage = 'en'; // 'en' or 'hi'
+        const TRANSLATIONS = {
+            en: {
+                heroBadge: "🎓 Laptop Finder for Students",
+                heroTitle: "Find the Perfect Laptop for Your Course & Budget",
+                heroSubtitle: "From Class 12th to College — Get personalized laptop recommendations based on your course, budget, and needs.",
+                btnFindLaptop: "Find My Laptop",
+                btnBrowseAll: "Browse All Laptops",
+                step1Title: "Choose Your Course",
+                step1Desc: "BTech CSE, BBA, UI/UX, Graphic Design, or others. We map your software requirements.",
+                step2Title: "Select Budget",
+                step2Desc: "Select range starting from ₹10K up to ₹3L+. We fit premium specs inside your budget.",
+                step3Title: "Get Best Matches",
+                step3Desc: "Get overall student ratings, battery life hours, weight metrics, and compare side-by-side.",
+                botHeaderTitle: "OG Academic Laptop AI",
+                botWelcomeMsg: "Welcome! I am your AI Laptop Advisor. Tell me your course and budget (e.g. \"I am a BTech student with 60K budget\") and I'll find your perfect laptop instantly!",
+                activeFilterBadge: "Filter Active: None",
+                resultsCountText: "Showing {count} laptops",
+                detailsModalTitle: "Laptop Details",
+                detCpu: "Processor",
+                detRam: "RAM Memory",
+                detStorage: "Storage",
+                detGpu: "Graphics (GPU)",
+                detBattery: "Battery Life",
+                detWeight: "Weight",
+                detOs: "Operating System",
+                detCourseTag: "Ideal For"
+            },
+            hi: {
+                heroBadge: "🎓 छात्रों के लिए लैपटॉप खोजक",
+                heroTitle: "अपने कोर्स और बजट के लिए सही लैपटॉप खोजें",
+                heroSubtitle: "कक्षा 12वीं से कॉलेज तक — अपने कोर्स, बजट और आवश्यकताओं के आधार पर पर्सनल लैपटॉप रेकमेंडेशन प्राप्त करें।",
+                btnFindLaptop: "लैपटॉप खोजें",
+                btnBrowseAll: "सभी लैपटॉप देखें",
+                step1Title: "अपना कोर्स चुनें",
+                step1Desc: "BTech CSE, BBA, UI/UX, ग्राफिक डिज़ाइन, या अन्य। हम सॉफ़्टवेयर आवश्यकताओं को मैप करते हैं।",
+                step2Title: "बजट चुनें",
+                step2Desc: "₹10K से लेकर ₹3L+ तक की रहने वाली सीमा चुनें। हम आपके बजट के अंदर शानदार स्पेक्स फिट करते हैं।",
+                step3Title: "बेस्ट विकल्प पाएं",
+                step3Desc: "ओवरऑल छात्र रेटिंग, बैटरी बैकअप घंटे, वजन मेट्रिक्स प्राप्त करें और तुलना करें।",
+                botHeaderTitle: "OG शैक्षणिक लैपटॉप AI",
+                botWelcomeMsg: "नमस्ते! मैं आपका AI लैपटॉप सलाहकार हूँ। मुझे अपना कोर्स और बजट बताएं (जैसे \"मैं 60K बजट वाला BTech छात्र हूँ\") और मैं तुरंत आपका बेस्ट लैपटॉप ढूंढ दूँगा!",
+                activeFilterBadge: "सक्रिय फ़िल्टर: कोई नहीं",
+                resultsCountText: "कुल {count} लैपटॉप दिखाए जा रहे हैं",
+                detailsModalTitle: "लैपटॉप विवरण",
+                detCpu: "प्रोसेसर",
+                detRam: "रैम मेमोरी",
+                detStorage: "स्टोरेज",
+                detGpu: "ग्राफिक्स (GPU)",
+                detBattery: "बैटरी लाइफ",
+                detWeight: "वजन",
+                detOs: "ऑपरेटिंग सिस्टम",
+                detCourseTag: "कोर्स के लिए"
+            }
+        };
+
+        // App States
+        let compareList = []; // Array of laptop IDs (max 3)
+        let activeGuideMode = 'all'; // 'all', 'btech', etc.
+        let wishlistList = JSON.parse(localStorage.getItem('laptop_wishlist')) || [];
+
+        // ONLOAD INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCatalog(LAPTOPS_DB);
+            updateWishlistBadge();
+            initAIChatbot();
+        });
+
+        // LANGUAGE TOGGLE
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'hi' : 'en';
+            document.getElementById('langText').textContent = currentLanguage === 'en' ? 'हिन्दी' : 'English';
+            
+            // Translate static elements
+            const trans = TRANSLATIONS[currentLanguage];
+            document.getElementById('heroBadge').textContent = trans.heroBadge;
+            document.getElementById('heroTitle').textContent = trans.heroTitle;
+            document.getElementById('heroSubtitle').textContent = trans.heroSubtitle;
+            document.getElementById('btnFindLaptop').innerHTML = trans.btnFindLaptop + ' <i class="fa-solid fa-wand-magic-sparkles"></i>';
+            document.getElementById('btnBrowseAll').textContent = trans.btnBrowseAll;
+            document.getElementById('step1Title').textContent = trans.step1Title;
+            document.getElementById('step1Desc').textContent = trans.step1Desc;
+            document.getElementById('step2Title').textContent = trans.step2Title;
+            document.getElementById('step2Desc').textContent = trans.step2Desc;
+            document.getElementById('step3Title').textContent = trans.step3Title;
+            document.getElementById('step3Desc').textContent = trans.step3Desc;
+            document.getElementById('botHeaderTitle').textContent = trans.botHeaderTitle;
+            document.getElementById('botWelcomeMsg').innerHTML = trans.botWelcomeMsg;
+            
+            // Re-render
+            filterLaptops(false);
+        }
+
+        // BUDGET SLIDER MARK HELPERS
+        const budgetRanges = [10000, 20000, 30000, 50000, 70000, 100000, 200000, 300000];
+        function setSliderVal(val) {
+            document.getElementById('formBudgetSlider').value = val;
+            updateBudgetSliderLabel();
+        }
+        function updateBudgetSliderLabel() {
+            const val = parseInt(document.getElementById('formBudgetSlider').value);
+            const spans = document.getElementById('budgetSliderMarks').querySelectorAll('span');
+            spans.forEach((span, idx) => {
+                if (idx <= val) {
+                    span.classList.add('active');
+                } else {
+                    span.classList.remove('active');
+                }
+            });
+        }
+
+        // SELECTION PILLS INTERACTION
+        function togglePillSelect(pill, group) {
+            const parent = pill.parentNode;
+            parent.querySelectorAll('.checkbox-pill').forEach(child => child.classList.remove('selected'));
+            pill.classList.add('selected');
+        }
+        function togglePillMulti(pill) {
+            pill.classList.toggle('selected');
+        }
+
+        // AUTO FILL ON COURSE SELECT
+        function suggestPreferences() {
+            const course = document.getElementById('formCourse').value;
+            const usagesContainer = document.getElementById('usageOptions');
+            
+            // Clear current selected usages
+            usagesContainer.querySelectorAll('.checkbox-pill').forEach(pill => pill.classList.remove('selected'));
+
+            if (course === 'btech_cse' || course === 'bca') {
+                selectUsagePill('coding');
+                selectUsagePill('office');
+            } else if (course === 'btech_aiml') {
+                selectUsagePill('coding');
+                selectUsagePill('ai');
+            } else if (course === 'uiux') {
+                selectUsagePill('graphic');
+                selectUsagePill('cad');
+            } else if (course === 'graphic' || course === 'fashion') {
+                selectUsagePill('graphic');
+            } else if (course === 'video' || course === 'gaming') {
+                selectUsagePill('video');
+                selectUsagePill('gaming');
+            } else if (course === 'bba' || course === 'law') {
+                selectUsagePill('office');
+            }
+        }
+        function selectUsagePill(value) {
+            const pill = document.querySelector(`#usageOptions .checkbox-pill[data-value="${value}"]`);
+            if (pill) pill.classList.add('selected');
+        }
+
+        // RENDER CATALOG CARDS
+        function renderCatalog(laptops) {
+            const grid = document.getElementById('laptopCatalogGrid');
+            grid.innerHTML = '';
+
+            const trans = TRANSLATIONS[currentLanguage];
+
+            if (laptops.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-secondary); background: var(--panel-bg); border-radius: 12px; border: 1px solid var(--border-color);">
+                        <i class="fa-solid fa-face-frown" style="font-size: 2.5rem; color: var(--primary-teal); margin-bottom: 12px;"></i>
+                        <p>No laptops match your criteria. Try widening your budget or selecting fewer specifications.</p>
+                        <button class="btn btn-primary" style="margin-top: 16px; padding: 8px 16px; font-size: 0.85rem;" onclick="clearFilters()">Reset All Filters</button>
+                    </div>
+                `;
+                document.getElementById('resultsCountText').innerHTML = trans.resultsCountText.replace('{count}', '<span>0</span>');
+                return;
+            }
+
+            laptops.forEach(laptop => {
+                const isWishlisted = wishlistList.includes(laptop.id);
+                const isComparing = compareList.includes(laptop.id);
+
+                const card = document.createElement('div');
+                card.className = 'laptop-card';
+                card.innerHTML = `
+                    <div class="laptop-image-box">
+                        <span class="tag-badge tag-badge-teal">${laptop.performance} Config</span>
+                        <button class="wishlist-btn ${isWishlisted ? 'active' : ''}" onclick="toggleWishlist('${laptop.id}', this)" aria-label="Wishlist">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                        <img src="${laptop.imageUrl}" alt="${laptop.name}" onerror="this.src='https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&auto=format&fit=crop&q=60'"/>
+                    </div>
+                    <div class="laptop-info">
+                        <span class="laptop-brand">${laptop.brand}</span>
+                        <h4 class="laptop-name">${laptop.name}</h4>
+                        <div class="laptop-price">₹${laptop.price.toLocaleString('en-IN')}</div>
+                        
+                        <ul class="laptop-specs">
+                            <li><i class="fa-solid fa-microchip"></i> <span>${laptop.cpu}</span></li>
+                            <li><i class="fa-solid fa-memory"></i> <span>${laptop.ram}</span></li>
+                            <li><i class="fa-solid fa-database"></i> <span>${laptop.storage}</span></li>
+                            <li><i class="fa-solid fa-battery-three-quarters"></i> <span>Battery: ${laptop.battery}</span></li>
+                        </ul>
+
+                        <div class="rating-metrics">
+                            <div class="metric-item">
+                                <div class="metric-label">Value</div>
+                                <div class="metric-val">${laptop.valueScore}%</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">Gaming</div>
+                                <div class="metric-val">${laptop.gamingScore}%</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">Student</div>
+                                <div class="metric-val">${laptop.studentScore}%</div>
+                            </div>
+                        </div>
+
+                        <div class="laptop-actions">
+                            <button class="btn-sm btn-sm-primary" onclick="openDetailsModal('${laptop.id}')">Specs <i class="fa-solid fa-eye"></i></button>
+                            <button class="btn-sm btn-sm-secondary btn-sm-compare ${isComparing ? 'active' : ''}" onclick="toggleCompare('${laptop.id}', this)">
+                                ${isComparing ? 'Comparing' : 'Compare'} <i class="fa-solid fa-arrows-left-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Update count
+            document.getElementById('resultsCountText').innerHTML = trans.resultsCountText.replace('{count}', `<span>${laptops.length}</span>`);
+        }
+
+        // DYNAMIC FILTER SYSTEM
+        function filterLaptops(scroll = true) {
+            const course = document.getElementById('formCourse').value;
+            const sliderIdx = parseInt(document.getElementById('formBudgetSlider').value);
+            const maxBudget = budgetRanges[sliderIdx];
+
+            // Get selected brands
+            const selectedBrands = [];
+            document.querySelectorAll('#brandOptions .checkbox-pill.selected').forEach(pill => {
+                selectedBrands.push(pill.dataset.value);
+            });
+            const anyBrand = selectedBrands.includes('any');
+
+            // Get selected usages
+            const selectedUsages = [];
+            document.querySelectorAll('#usageOptions .checkbox-pill.selected').forEach(pill => {
+                selectedUsages.push(pill.dataset.value);
+            });
+
+            // Radios
+            const displayPref = document.querySelector('#displayOptions .checkbox-pill.selected').dataset.value;
+            const batteryPref = document.querySelector('#batteryOptions .checkbox-pill.selected').dataset.value;
+            const weightPref = document.querySelector('#weightOptions .checkbox-pill.selected').dataset.value;
+            const osPref = document.querySelector('#osOptions .checkbox-pill.selected').dataset.value;
+
+            const filtered = LAPTOPS_DB.filter(laptop => {
+                // Budget
+                if (laptop.price > maxBudget) return false;
+
+                // Course
+                if (course !== 'any') {
+                    if (!laptop.idealFor.includes(course)) return false;
+                }
+
+                // Brand
+                if (!anyBrand && !selectedBrands.includes(laptop.brand)) return false;
+
+                // Usages (must match at least one requirement if checked)
+                if (selectedUsages.length > 0) {
+                    const matchesAnyUsage = selectedUsages.some(u => laptop.usages.includes(u));
+                    if (!matchesAnyUsage) return false;
+                }
+
+                // Display screen size
+                if (displayPref !== 'any') {
+                    if (laptop.screen !== displayPref) return false;
+                }
+
+                // Battery life hours priority
+                if (batteryPref !== 'any') {
+                    const hr = parseInt(laptop.battery);
+                    if (batteryPref === 'good' && hr < 6) return false;
+                    if (batteryPref === 'excellent' && hr < 8) return false;
+                }
+
+                // Weight portability
+                if (weightPref !== 'any') {
+                    const wt = parseFloat(laptop.weight);
+                    if (weightPref === 'light' && wt > 1.6) return false;
+                }
+
+                // OS
+                if (osPref !== 'any') {
+                    if (laptop.os !== osPref) return false;
+                }
+
+                return true;
+            });
+
+            // Set filter indicator badge
+            const badge = document.getElementById('activeFilterBadge');
+            badge.textContent = `Filters Active: Course: ${course !== 'any' ? course.toUpperCase() : 'All'} | Budget: <₹${maxBudget.toLocaleString('en-IN')}`;
+
+            // Reset guides tabs state since custom filter was triggered
+            document.querySelectorAll('#guidesTabBar .tab-item').forEach(btn => btn.classList.remove('active'));
+
+            renderCatalog(filtered);
+
+            if (scroll) {
+                const resultsSection = document.getElementById('results-section');
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // RESET FILTERS
+        function clearFilters() {
+            document.getElementById('formCourse').value = 'any';
+            document.getElementById('formBudgetSlider').value = 7;
+            updateBudgetSliderLabel();
+            
+            // Brand reset
+            document.querySelectorAll('#brandOptions .checkbox-pill').forEach(p => p.classList.remove('selected'));
+            document.querySelector('#brandOptions .checkbox-pill[data-value="any"]').classList.add('selected');
+
+            // Usages reset
+            document.querySelectorAll('#usageOptions .checkbox-pill').forEach(p => p.classList.remove('selected'));
+
+            // Radio selections resets
+            document.querySelectorAll('#displayOptions .checkbox-pill').forEach(p => p.classList.remove('selected'));
+            document.querySelector('#displayOptions .checkbox-pill[data-value="any"]').classList.add('selected');
+
+            document.querySelectorAll('#batteryOptions .checkbox-pill').forEach(p => p.classList.remove('selected'));
+            document.querySelector('#batteryOptions .checkbox-pill[data-value="any"]').classList.add('selected');
+
+            document.querySelectorAll('#weightOptions .checkbox-pill').forEach(p => p.classList.remove('selected'));
+            document.querySelector('#weightOptions .checkbox-pill[data-value="any"]').classList.add('selected');
+
+            document.querySelectorAll('#osOptions .checkbox-pill').forEach(p => p.classList.remove('selected'));
+            document.querySelector('#osOptions .checkbox-pill[data-value="any"]').classList.add('selected');
+
+            // Restore all
+            renderCatalog(LAPTOPS_DB);
+            document.getElementById('activeFilterBadge').textContent = "Filter Active: None";
+        }
+
+        // CURATED COURSE / BUDGET GUIDES SELECTOR
+        function loadGuide(guideKey, tabButton) {
+            // Highlights current tab
+            document.querySelectorAll('#guidesTabBar .tab-item').forEach(btn => btn.classList.remove('active'));
+            tabButton.classList.add('active');
+
+            let filtered = [];
+            let filterDesc = "None";
+
+            if (guideKey === 'all') {
+                filtered = LAPTOPS_DB;
+                filterDesc = "All Laptops";
+            } else if (guideKey === 'btech') {
+                filtered = LAPTOPS_DB.filter(l => l.idealFor.includes('btech_cse') || l.idealFor.includes('btech_aiml') || l.idealFor.includes('bca'));
+                filterDesc = "Curated: BTech & BCA Coding Guides";
+            } else if (guideKey === 'graphic') {
+                filtered = LAPTOPS_DB.filter(l => l.idealFor.includes('graphic'));
+                filterDesc = "Curated: Color-Accurate Graphic Design Packs";
+            } else if (guideKey === 'uiux') {
+                filtered = LAPTOPS_DB.filter(l => l.idealFor.includes('uiux'));
+                filterDesc = "Curated: UI/UX & Prototyping Systems";
+            } else if (guideKey === 'fashion') {
+                filtered = LAPTOPS_DB.filter(l => l.idealFor.includes('fashion'));
+                filterDesc = "Curated: Fashion CAD & 3D Garments";
+            } else if (guideKey === 'video') {
+                filtered = LAPTOPS_DB.filter(l => l.idealFor.includes('video') || l.idealFor.includes('gaming'));
+                filterDesc = "Curated: GPU Render rigs for Video Editors";
+            } else if (guideKey === 'budget_under_30') {
+                filtered = LAPTOPS_DB.filter(l => l.price <= 30000);
+                filterDesc = "Budget: under ₹30,000";
+            } else if (guideKey === 'budget_under_50') {
+                filtered = LAPTOPS_DB.filter(l => l.price <= 50000);
+                filterDesc = "Budget: under ₹50,000";
+            } else if (guideKey === 'budget_under_70') {
+                filtered = LAPTOPS_DB.filter(l => l.price <= 70000);
+                filterDesc = "Budget: under ₹70,000";
+            } else if (guideKey === 'budget_under_1L') {
+                filtered = LAPTOPS_DB.filter(l => l.price <= 100000);
+                filterDesc = "Budget: under ₹1 Lakh";
+            }
+
+            document.getElementById('activeFilterBadge').textContent = `Filter Active: ${filterDesc}`;
+            renderCatalog(filtered);
+        }
+
+        // WISHLIST LOGIC
+        function toggleWishlist(laptopId, heartBtn) {
+            const idx = wishlistList.indexOf(laptopId);
+            if (idx === -1) {
+                wishlistList.push(laptopId);
+                heartBtn.classList.add('active');
+            } else {
+                wishlistList.splice(idx, 1);
+                heartBtn.classList.remove('active');
+            }
+            localStorage.setItem('laptop_wishlist', JSON.stringify(wishlistList));
+            updateWishlistBadge();
+        }
+        function updateWishlistBadge() {
+            document.getElementById('wishCount').textContent = wishlistList.length;
+        }
+        function toggleWishlistFilter() {
+            const btn = document.getElementById('wishlistToggleBtn');
+            const isActive = btn.classList.toggle('active');
+
+            if (isActive) {
+                const wishlists = LAPTOPS_DB.filter(l => wishlistList.includes(l.id));
+                document.getElementById('activeFilterBadge').textContent = "Filter Active: Wishlist Items Only";
+                renderCatalog(wishlists);
+            } else {
+                clearFilters();
+            }
+        }
+
+        // DYNAMIC COMPARE BAR / DRAWER SYSTEM
+        function toggleCompare(laptopId, btn) {
+            const idx = compareList.indexOf(laptopId);
+            if (idx === -1) {
+                if (compareList.length >= 3) {
+                    alert("You can compare up to 3 laptops at a time.");
+                    return;
+                }
+                compareList.push(laptopId);
+                btn.classList.add('active');
+                btn.innerHTML = 'Comparing <i class="fa-solid fa-check"></i>';
+            } else {
+                compareList.splice(idx, 1);
+                btn.classList.remove('active');
+                btn.innerHTML = 'Compare <i class="fa-solid fa-arrows-left-right"></i>';
+            }
+
+            renderCompareBar();
+        }
+
+        function removeCompareItem(laptopId) {
+            const idx = compareList.indexOf(laptopId);
+            if (idx !== -1) {
+                compareList.splice(idx, 1);
+                renderCompareBar();
+                
+                // Re-render catalog to update buttons states
+                filterLaptops(false);
+            }
+        }
+
+        function renderCompareBar() {
+            const bar = document.getElementById('compareDrawer');
+            const container = document.getElementById('compareThumbsContainer');
+            container.innerHTML = '';
+
+            if (compareList.length === 0) {
+                bar.classList.remove('active');
+                return;
+            }
+
+            compareList.forEach(id => {
+                const lap = LAPTOPS_DB.find(l => l.id === id);
+                if (lap) {
+                    const thumb = document.createElement('div');
+                    thumb.className = 'compare-thumb';
+                    thumb.innerHTML = `
+                        <img src="${lap.imageUrl}" alt="${lap.name}"/>
+                        <button class="remove-compare-item" onclick="removeCompareItem('${lap.id}')">&times;</button>
+                    `;
+                    container.appendChild(thumb);
+                }
+            });
+
+            bar.classList.add('active');
+        }
+
+        // COMPARE SPECIFICATIONS MODAL TABLE
+        function openComparisonModal() {
+            if (compareList.length === 0) return;
+
+            const modal = document.getElementById('compareModalOverlay');
+            const table = document.getElementById('compareSpecsTable');
+            table.innerHTML = '';
+
+            const compareLaptops = compareList.map(id => LAPTOPS_DB.find(l => l.id === id)).filter(Boolean);
+
+            // Construct Specs matrix row items
+            const rowLabels = [
+                { key: 'price', label: 'Price', format: v => `₹${v.toLocaleString('en-IN')}` },
+                { key: 'cpu', label: 'Processor' },
+                { key: 'ram', label: 'RAM Memory' },
+                { key: 'storage', label: 'Storage Disk' },
+                { key: 'gpu', label: 'GPU Graphics' },
+                { key: 'battery', label: 'Battery Backup' },
+                { key: 'weight', label: 'Weight' },
+                { key: 'studentScore', label: 'Student Rating', format: v => `${v}%` }
+            ];
+
+            let tableHtml = `
+                <thead>
+                    <tr>
+                        <th>Spec Details</th>
+                        ${compareLaptops.map(lap => `<th>${lap.name}</th>`).join('')}
+                    </tr>
+                </thead>
+                <tbody>
+            `;
+
+            rowLabels.forEach(row => {
+                tableHtml += `<tr><td>${row.label}</td>`;
+                
+                // Check best values in row for highlights
+                let bestVal = null;
+                if (row.key === 'price') {
+                    bestVal = Math.min(...compareLaptops.map(l => l.price));
+                } else if (row.key === 'studentScore') {
+                    bestVal = Math.max(...compareLaptops.map(l => l.studentScore));
+                }
+
+                compareLaptops.forEach(lap => {
+                    const rawVal = lap[row.key];
+                    const displayVal = row.format ? row.format(rawVal) : rawVal;
+                    const isBest = (row.key === 'price' && rawVal === bestVal) || (row.key === 'studentScore' && rawVal === bestVal);
+                    tableHtml += `<td class="${isBest ? 'best-spec' : ''}">${displayVal}</td>`;
+                });
+                tableHtml += `</tr>`;
+            });
+
+            tableHtml += `</tbody>`;
+            table.innerHTML = tableHtml;
+            modal.classList.add('active');
+        }
+        function closeComparisonModal() {
+            document.getElementById('compareModalOverlay').classList.remove('active');
+        }
+
+        // DETAILED SPECS MODAL VIEW
+        let activeDetailsLaptopId = null;
+
+        const APPS_BENCHMARK = [
+            { id: "chrome", name: "Google Chrome & Multitasking", type: "productivity" },
+            { id: "vscode", name: "VS Code & Software Compile", type: "coding" },
+            { id: "premiere", name: "Adobe Premiere Pro (Video Editing)", type: "editing" },
+            { id: "blender", name: "Blender 3D Render", type: "render" },
+            { id: "autocad", name: "AutoCAD & Drafting", type: "cad" },
+            { id: "valorant", name: "Valorant (1080p)", type: "game_light" },
+            { id: "gtav", name: "GTA V (1080p)", type: "game_medium" },
+            { id: "cyberpunk", name: "Cyberpunk 2077 (1080p)", type: "game_heavy" }
+        ];
+
+        function getLaptopExtraInfo(laptop) {
+            let ports = "1x USB-C, 2x USB 3.2, 1x HDMI, 1.5mm Audio Jack";
+            let ramUpgrade = "Upgradeable up to 32GB";
+            let ssdUpgrade = "1x M.2 Slot Available for expansion";
+            let futureProof = 7.5;
+            let pros = ["Affordable pricing", "Good daily performance"];
+            let cons = ["Average battery life", "Plastic chassis build"];
+            let reviewText = "Satisfied with the purchase. Good laptop for daily study, college classes, and normal coding tasks.";
+            let reviewAuthor = "Rajesh K. (BBA Student)";
+            let reviewRating = "★★★★☆";
+
+            if (laptop.brand === "Apple") {
+                ports = "2x Thunderbolt 4 / USB-C, MagSafe 3, Headphone Jack";
+                ramUpgrade = "Soldered Unified Memory (Non-upgradeable)";
+                ssdUpgrade = "Soldered Storage (Non-upgradeable)";
+                futureProof = 9.5;
+                pros = ["Industry-leading battery life", "Stunning Liquid Retina display", "Completely silent operation (fanless)"];
+                cons = ["High purchase price", "Zero RAM/SSD upgradeability", "Limited native game compatibility"];
+                reviewText = "Absolutely incredible battery life. I code for hours and don't even carry my charger. The display is gorgeous.";
+                reviewAuthor = "Ananya S. (B.Tech CSE - 2nd Year)";
+                reviewRating = "★★★★★";
+            } else {
+                if (laptop.price < 35000) {
+                    ramUpgrade = "8GB Soldered (Non-upgradeable)";
+                    ssdUpgrade = "No free SSD slots (can replace existing 512GB)";
+                    futureProof = 6.0;
+                    pros = ["Extremely budget-friendly", "Decent battery life for lectures", "Lightweight and portable"];
+                    cons = ["No dedicated GPU (not for heavy games)", "Dull screen colors/brightness", "Plastic keyboard deck flex"];
+                    reviewText = "Good for basic MS Excel and web browsing. Battery lasts around 4-5 hours. Great value for BBA course!";
+                    reviewAuthor = "Aman J. (BBA Fresher)";
+                    reviewRating = "★★★☆☆";
+                } else if (laptop.price >= 35000 && laptop.price < 65000) {
+                    if (laptop.ram.includes("16GB")) {
+                        ramUpgrade = "16GB Dual-Channel (Max upgrade 32GB)";
+                    } else {
+                        ramUpgrade = "Upgradeable to 16GB/32GB";
+                    }
+                    ssdUpgrade = "1x M.2 PCIe Slot Available";
+                    futureProof = 8.0;
+                    ports = "1x USB-C (DisplayPort), 2x USB-A 3.2, 1x HDMI 2.1, MicroSD Card Reader";
+                    pros = ["Fast multi-core processor", "16GB RAM enables smooth programming", "IPS display with good viewing angles"];
+                    cons = ["Plastic body construction", "Average speaker audio quality", "Gets warm under full load"];
+                    reviewText = "Perfect for running VS Code and local servers. 16GB RAM is a lifesaver for web dev. Best value under 50k.";
+                    reviewAuthor = "Jatin V. (BCA Student)";
+                    reviewRating = "★★★★☆";
+                } else {
+                    futureProof = 9.0;
+                    if (laptop.gpu.includes("RTX")) {
+                        ports = "1x Thunderbolt 4/USB-C, 3x USB-A 3.2, 1x HDMI 2.1, RJ45 Ethernet, Audio Jack";
+                        ramUpgrade = "Dual SODIMM slots (Upgradeable up to 64GB)";
+                        ssdUpgrade = "2x M.2 Gen 4 Slots (1 slot open)";
+                        pros = ["Powerful dedicated NVIDIA RTX graphics", "144Hz high refresh-rate display", "Excellent dual-fan cooling system"];
+                        cons = ["Bulky chassis & heavy power brick", "Short battery life (2-4 hours)", "Loud fan noise under game load"];
+                        reviewText = "Amazing performance! GTA V and Valorant run at buttery smooth frame rates. CUDA cores are great for machine learning models.";
+                        reviewAuthor = "Rohan D. (B.Tech AIML)";
+                        reviewRating = "★★★★★";
+                    } else {
+                        ports = "2x Thunderbolt 4 / USB-C, 1x USB-A, 1x HDMI, MicroSD Slot";
+                        ramUpgrade = "Soldered LPDDR5 RAM (Non-upgradeable)";
+                        ssdUpgrade = "1x M.2 Slot (Upgrade by replacement)";
+                        pros = ["Premium aluminum build quality", "High-resolution OLED display", "Thin & lightweight (under 1.3kg)"];
+                        cons = ["RAM is non-upgradeable", "Limited USB-A ports", "High premium pricing"];
+                        reviewText = "The OLED screen is out of this world! Perfect for graphic design and UI/UX projects. Highly portable to carry around campus.";
+                        reviewAuthor = "Kriti M. (Graphic Design Student)";
+                        reviewRating = "★★★★★";
+                    }
+                }
+            }
+
+            return { ports, ramUpgrade, ssdUpgrade, futureProof, pros, cons, reviewText, reviewAuthor, reviewRating };
+        }
+
+        function getAppPerformance(laptop, appId) {
+            let fpsScore = 50;
+            let fpsText = "Medium (60%)";
+            let thermalScore = 50;
+            let thermalText = "Warm (65°C)";
+            let smoothScore = 70;
+
+            const isMac = laptop.os === "ChromeOS" ? false : laptop.brand === "Apple";
+            const hasGpu = laptop.gpu && (laptop.gpu.includes("RTX") || laptop.gpu.includes("GTX") || laptop.gpu.includes("Radeon 6") || laptop.gpu.includes("GeForce"));
+            const isHeavyGpu = laptop.gpu && (laptop.gpu.includes("RTX 40") || laptop.gpu.includes("RTX 3060") || laptop.gpu.includes("RTX 3070"));
+            const ramSize = laptop.ram.includes("16GB") ? 16 : (laptop.ram.includes("8GB") ? 8 : 4);
+            const isCeleron = laptop.cpu.includes("Celeron") || laptop.cpu.includes("Pentium");
+
+            if (appId === "chrome") {
+                if (ramSize === 4) {
+                    fpsScore = 50; fpsText = "Moderate (Laggy)"; thermalScore = 65; thermalText = "Warm (68°C)"; smoothScore = 55;
+                } else if (ramSize === 8) {
+                    fpsScore = 85; fpsText = "Fast & Smooth"; thermalScore = 40; thermalText = "Cool (48°C)"; smoothScore = 80;
+                } else {
+                    fpsScore = 98; fpsText = "Ultra Fast (No Lag)"; thermalScore = 30; thermalText = "Cool (42°C)"; smoothScore = 96;
+                }
+            } else if (appId === "vscode") {
+                if (isCeleron) {
+                    fpsScore = 25; fpsText = "Slow (Laggy Compiles)"; thermalScore = 80; thermalText = "Hot (79°C)"; smoothScore = 35;
+                } else if (ramSize === 8) {
+                    fpsScore = 75; fpsText = "Good Speed"; thermalScore = 55; thermalText = "Warm (62°C)"; smoothScore = 75;
+                } else {
+                    fpsScore = 95; fpsText = "Instant Compilation"; thermalScore = 45; thermalText = "Cool (52°C)"; smoothScore = 94;
+                }
+            } else if (appId === "premiere") {
+                if (isCeleron) {
+                    fpsScore = 5; fpsText = "Unusable / Crashes"; thermalScore = 98; thermalText = "Thermal Throttling (95°C)"; smoothScore = 5;
+                } else if (isMac) {
+                    fpsScore = 88; fpsText = "Hardware Accelerated (Smooth)"; thermalScore = 35; thermalText = "Cool (45°C)"; smoothScore = 90;
+                } else if (hasGpu) {
+                    fpsScore = 82; fpsText = "Fast Rendering"; thermalScore = 78; thermalText = "Hot (76°C)"; smoothScore = 85;
+                } else if (ramSize === 8) {
+                    fpsScore = 35; fpsText = "Slow (Frequent Lags)"; thermalScore = 85; thermalText = "Hot (82°C)"; smoothScore = 40;
+                } else {
+                    fpsScore = 60; fpsText = "Decent (1080p only)"; thermalScore = 75; thermalText = "Warm (74°C)"; smoothScore = 65;
+                }
+            } else if (appId === "blender") {
+                if (isCeleron) {
+                    fpsScore = 5; fpsText = "Unplayable / Crashes"; thermalScore = 98; thermalText = "Throttling (97°C)"; smoothScore = 5;
+                } else if (hasGpu) {
+                    fpsScore = 85; fpsText = "CUDA Accelerated (Fast)"; thermalScore = 80; thermalText = "Hot (78°C)"; smoothScore = 88;
+                } else if (isMac) {
+                    fpsScore = 70; fpsText = "Decent GPU Render"; thermalScore = 45; thermalText = "Warm (55°C)"; smoothScore = 75;
+                } else if (ramSize === 16) {
+                    fpsScore = 45; fpsText = "Slow CPU Rendering"; thermalScore = 85; thermalText = "Hot (84°C)"; smoothScore = 50;
+                } else {
+                    fpsScore = 20; fpsText = "Extremely Slow Render"; thermalScore = 90; thermalText = "Throttling (92°C)"; smoothScore = 25;
+                }
+            } else if (appId === "autocad") {
+                if (isCeleron) {
+                    fpsScore = 10; fpsText = "Unsupported"; thermalScore = 95; thermalText = "Throttling (94°C)"; smoothScore = 10;
+                } else if (hasGpu) {
+                    fpsScore = 90; fpsText = "Highly Smooth 3D"; thermalScore = 70; thermalText = "Warm (68°C)"; smoothScore = 92;
+                } else if (ramSize === 16) {
+                    fpsScore = 78; fpsText = "Smooth 2D, Decent 3D"; thermalScore = 75; thermalText = "Warm (72°C)"; smoothScore = 80;
+                } else {
+                    fpsScore = 45; fpsText = "Laggy 3D Viewport"; thermalScore = 82; thermalText = "Hot (80°C)"; smoothScore = 50;
+                }
+            } else if (appId === "valorant") {
+                if (isCeleron) {
+                    fpsScore = 15; fpsText = "15 FPS (Unplayable)"; thermalScore = 95; thermalText = "Throttling (92°C)"; smoothScore = 15;
+                } else if (hasGpu) {
+                    fpsScore = 95; fpsText = "144+ FPS (Competitive)"; thermalScore = 72; thermalText = "Warm (70°C)"; smoothScore = 97;
+                } else if (isMac) {
+                    fpsScore = 65; fpsText = "60 FPS (Medium Settings)"; thermalScore = 45; thermalText = "Cool (50°C)"; smoothScore = 70;
+                } else if (ramSize === 16) {
+                    fpsScore = 75; fpsText = "85 FPS (Low Settings)"; thermalScore = 75; thermalText = "Warm (74°C)"; smoothScore = 80;
+                } else {
+                    fpsScore = 50; fpsText = "45 FPS (Low Settings)"; thermalScore = 80; thermalText = "Hot (79°C)"; smoothScore = 55;
+                }
+            } else if (appId === "gtav") {
+                if (isCeleron) {
+                    fpsScore = 5; fpsText = "5 FPS (Unplayable)"; thermalScore = 98; thermalText = "Throttling (95°C)"; smoothScore = 5;
+                } else if (isHeavyGpu) {
+                    fpsScore = 95; fpsText = "110+ FPS (Ultra Settings)"; thermalScore = 82; thermalText = "Hot (80°C)"; smoothScore = 96;
+                } else if (hasGpu) {
+                    fpsScore = 85; fpsText = "75 FPS (High Settings)"; thermalScore = 80; thermalText = "Hot (78°C)"; smoothScore = 88;
+                } else if (ramSize === 16) {
+                    fpsScore = 45; fpsText = "45 FPS (Low Settings)"; thermalScore = 85; thermalText = "Hot (84°C)"; smoothScore = 60;
+                } else {
+                    fpsScore = 25; fpsText = "25 FPS (Unplayable)"; thermalScore = 90; thermalText = "Throttling (90°C)"; smoothScore = 30;
+                }
+            } else if (appId === "cyberpunk") {
+                if (isCeleron) {
+                    fpsScore = 2; fpsText = "Crashes on Launch"; thermalScore = 99; thermalText = "Overheated (99°C)"; smoothScore = 1;
+                } else if (isHeavyGpu) {
+                    fpsScore = 80; fpsText = "75 FPS (Ultra + DLSS)"; thermalScore = 85; thermalText = "Hot (82°C)"; smoothScore = 92;
+                } else if (hasGpu) {
+                    fpsScore = 45; fpsText = "40 FPS (Medium Settings)"; thermalScore = 84; thermalText = "Hot (81°C)"; smoothScore = 60;
+                } else {
+                    fpsScore = 10; fpsText = "10 FPS (Slide Show)"; thermalScore = 98; thermalText = "Throttling (96°C)"; smoothScore = 10;
+                }
+            }
+
+            return { fpsScore, fpsText, thermalScore, thermalText, smoothScore };
+        }
+
+        function runPerformanceSimulation() {
+            if (!activeDetailsLaptopId) return;
+            const laptop = LAPTOPS_DB.find(l => l.id === activeDetailsLaptopId);
+            if (!laptop) return;
+
+            const appId = document.getElementById('perfAppSelect').value;
+            const res = getAppPerformance(laptop, appId);
+
+            const fpsValEl = document.getElementById('perfFpsVal');
+            const thermalValEl = document.getElementById('perfThermalVal');
+            const smoothValEl = document.getElementById('perfSmoothVal');
+
+            const fpsProgEl = document.getElementById('perfFpsProgress');
+            const thermalProgEl = document.getElementById('perfThermalProgress');
+            const smoothProgEl = document.getElementById('perfSmoothProgress');
+
+            fpsValEl.textContent = res.fpsText;
+            fpsProgEl.style.width = `${res.fpsScore}%`;
+
+            thermalValEl.textContent = res.thermalText;
+            thermalProgEl.style.width = `${res.thermalScore}%`;
+            if (res.thermalScore > 80) {
+                thermalProgEl.style.background = '#ef4444';
+            } else if (res.thermalScore > 55) {
+                thermalProgEl.style.background = '#fbbf24';
+            } else {
+                thermalProgEl.style.background = '#10b981';
+            }
+
+            smoothValEl.textContent = `${res.smoothScore}%`;
+            smoothProgEl.style.width = `${res.smoothScore}%`;
+        }
+
+        function switchDetailsTab(tabId) {
+            const tabBtns = document.querySelectorAll('.details-tab-btn');
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+
+            const tabContents = document.querySelectorAll('.details-tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Toggle active state for current elements
+            const activeBtn = Array.from(tabBtns).find(btn => btn.getAttribute('onclick').includes(`'${tabId}'`));
+            if (activeBtn) activeBtn.classList.add('active');
+
+            const activeContent = document.getElementById(`tabContent-${tabId}`);
+            if (activeContent) activeContent.classList.add('active');
+
+            if (tabId === 'perf') {
+                runPerformanceSimulation();
+            }
+        }
+
+        function openDetailsModal(laptopId) {
+            const laptop = LAPTOPS_DB.find(l => l.id === laptopId);
+            if (!laptop) return;
+
+            activeDetailsLaptopId = laptopId;
+            document.getElementById('detailsModalTitle').textContent = laptop.name;
+            document.getElementById('detailsModalImg').src = laptop.imageUrl;
+            document.getElementById('detailsModalPrice').textContent = `₹${laptop.price.toLocaleString('en-IN')}`;
+            document.getElementById('detailsModalDesc').textContent = `${laptop.bestFor}. Powered by a ${laptop.cpu} with ${laptop.ram} and a swift ${laptop.storage} system. Designed for high student value.`;
+            
+            // Student and EMI pricing calculations
+            const studentDiscount = Math.round(laptop.price * 0.07);
+            const finalStudentPrice = laptop.price - studentDiscount;
+            const emiPrice = Math.round(finalStudentPrice / 12);
+            document.getElementById('detStudentPrice').textContent = `₹${finalStudentPrice.toLocaleString('en-IN')} (Save ₹${studentDiscount.toLocaleString('en-IN')})`;
+            document.getElementById('detEmiPrice').textContent = `₹${emiPrice.toLocaleString('en-IN')}/mo (12 Months No-Cost)`;
+
+            document.getElementById('detCpu').textContent = laptop.cpu;
+            document.getElementById('detRam').textContent = laptop.ram;
+            document.getElementById('detStorage').textContent = laptop.storage;
+            document.getElementById('detGpu').textContent = laptop.gpu;
+            document.getElementById('detBattery').textContent = laptop.battery;
+            document.getElementById('detWeight').textContent = laptop.weight;
+            document.getElementById('detOs').textContent = laptop.os;
+            document.getElementById('detCourseTag').textContent = laptop.idealFor.map(c => c.toUpperCase().replace('_', ' ')).join(', ');
+
+            // Populate Upgrades
+            const extra = getLaptopExtraInfo(laptop);
+            document.getElementById('detUpgradeRam').textContent = extra.ramUpgrade;
+            document.getElementById('detUpgradeSsd').textContent = extra.ssdUpgrade;
+            document.getElementById('detUpgradePorts').textContent = extra.ports;
+            document.getElementById('detUpgradeScore').textContent = `${extra.futureProof} / 10`;
+
+            // Populate Pros
+            const prosList = document.getElementById('detProsList');
+            prosList.innerHTML = '';
+            extra.pros.forEach(pro => {
+                const li = document.createElement('li');
+                li.textContent = pro;
+                prosList.appendChild(li);
+            });
+
+            // Populate Cons
+            const consList = document.getElementById('detConsList');
+            consList.innerHTML = '';
+            extra.cons.forEach(con => {
+                const li = document.createElement('li');
+                li.textContent = con;
+                consList.appendChild(li);
+            });
+
+            // Populate Review
+            document.getElementById('detReviewAuthor').textContent = extra.reviewAuthor;
+            document.getElementById('detReviewRating').textContent = extra.reviewRating;
+            document.getElementById('detReviewText').textContent = `"${extra.reviewText}"`;
+
+            // Populate App Select dropdown
+            const appSelect = document.getElementById('perfAppSelect');
+            appSelect.innerHTML = '';
+            APPS_BENCHMARK.forEach(app => {
+                const opt = document.createElement('option');
+                opt.value = app.id;
+                opt.textContent = app.name;
+                appSelect.appendChild(opt);
+            });
+
+            // Reset Tab back to System Specs on open
+            switchDetailsTab('specs');
+
+            document.getElementById('detailsModalOverlay').classList.add('active');
+        }
+        function closeDetailsModal() {
+            document.getElementById('detailsModalOverlay').classList.remove('active');
+        }
+
+        // PRICE ALERT MODAL SYSTEM
+        function triggerPriceAlertModal() {
+            if (!activeDetailsLaptopId) return;
+            const lap = LAPTOPS_DB.find(l => l.id === activeDetailsLaptopId);
+            if (!lap) return;
+
+            document.getElementById('alertLaptopName').textContent = lap.name;
+            document.getElementById('priceAlertModalOverlay').classList.add('active');
+        }
+        function closePriceAlertModal() {
+            document.getElementById('priceAlertModalOverlay').classList.remove('active');
+        }
+        function savePriceAlert() {
+            const email = document.getElementById('alertEmailInput').value.trim();
+            if (!email || !email.includes('@')) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+            alert(`⚡ Price alert configured successfully for ${email}. We will notify you of any drops!`);
+            closePriceAlertModal();
+        }
+
+        // OFFLINE AI LAPTOP ADVISOR CHATBOT
+        function initAIChatbot() {
+            const trigger = document.getElementById('aiChatTrigger');
+            const close = document.getElementById('aiChatClose');
+            const windowEl = document.getElementById('aiChatWindow');
+            const form = document.getElementById('aiChatForm');
+            const input = document.getElementById('aiChatInput');
+            const messages = document.getElementById('aiChatMessages');
+
+            trigger.addEventListener('click', () => windowEl.classList.toggle('active'));
+            close.addEventListener('click', () => windowEl.classList.remove('active'));
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const q = input.value.trim();
+                if (!q) return;
+
+                appendBotMsg(q, 'user');
+                input.value = '';
+                generateAIAdvisorResponse(q);
+            });
+        }
+
+        function submitQuickQuery(queryText) {
+            appendBotMsg(queryText, 'user');
+            generateAIAdvisorResponse(queryText);
+        }
+
+        function appendBotMsg(text, className) {
+            const bubble = document.createElement('div');
+            bubble.className = `chat-bubble ${className}`;
+            bubble.innerHTML = text;
+            const messages = document.getElementById('aiChatMessages');
+            messages.appendChild(bubble);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        // Smart Offline NLP keyword parser
+        function generateAIAdvisorResponse(prompt) {
+            const lower = prompt.toLowerCase();
+            const messages = document.getElementById('aiChatMessages');
+
+            // typing indicator
+            const loader = document.createElement('div');
+            loader.className = 'chat-bubble bot typing-indicator-bubble';
+            loader.id = 'ai-chat-typing-loader';
+            loader.innerHTML = `
+                <div style="display:flex;gap:4px;align-items:center;justify-content:center;">
+                    <span class="typing-dot" style="width:4px;height:4px;border-radius:50%;background:#9ca3af;animation:bounce-dot-ai 1.4s infinite ease-in-out both;"></span>
+                    <span class="typing-dot" style="width:4px;height:4px;border-radius:50%;background:#9ca3af;animation:bounce-dot-ai 1.4s infinite ease-in-out both;animation-delay:-0.32s;"></span>
+                    <span class="typing-dot" style="width:4px;height:4px;border-radius:50%;background:#9ca3af;animation:bounce-dot-ai 1.4s infinite ease-in-out both;animation-delay:-0.16s;"></span>
+                </div>
+            `;
+            messages.appendChild(loader);
+            messages.scrollTop = messages.scrollHeight;
+
+            setTimeout(() => {
+                loader.remove();
+
+                // Extraction rules
+                let parsedBudget = 300000;
+                if (lower.includes('30000') || lower.includes('30k')) parsedBudget = 30000;
+                else if (lower.includes('50000') || lower.includes('50k')) parsedBudget = 50000;
+                else if (lower.includes('70000') || lower.includes('70k')) parsedBudget = 70000;
+                else if (lower.includes('60000') || lower.includes('60k')) parsedBudget = 60000;
+                else if (lower.includes('80000') || lower.includes('80k')) parsedBudget = 80000;
+                else if (lower.includes('100000') || lower.includes('1 lakh') || lower.includes('1l')) parsedBudget = 100000;
+                else if (lower.includes('1.5 lakh') || lower.includes('1.5l') || lower.includes('150000')) parsedBudget = 150000;
+
+                let parsedCourse = 'any';
+                if (lower.includes('cse') || lower.includes('coding') || lower.includes('programming') || lower.includes('btech') || lower.includes('bca') || lower.includes('developer')) {
+                    parsedCourse = 'coding';
+                }
+                if (lower.includes('ui/ux') || lower.includes('figma') || lower.includes('ux') || lower.includes('ui')) {
+                    parsedCourse = 'uiux';
+                }
+                if (lower.includes('graphic') || lower.includes('designer') || lower.includes('photoshop')) {
+                    parsedCourse = 'graphic';
+                }
+                if (lower.includes('video') || lower.includes('editing') || lower.includes('premiere')) {
+                    parsedCourse = 'video';
+                }
+                if (lower.includes('game') || lower.includes('gaming') || lower.includes('rtx')) {
+                    parsedCourse = 'gaming';
+                }
+
+                // Filter database
+                let matches = LAPTOPS_DB.filter(l => l.price <= parsedBudget);
+                if (parsedCourse !== 'any') {
+                    if (parsedCourse === 'coding') {
+                        matches = matches.filter(l => l.usages.includes('coding') || l.idealFor.includes('btech_cse') || l.idealFor.includes('bca'));
+                    } else if (parsedCourse === 'uiux') {
+                        matches = matches.filter(l => l.idealFor.includes('uiux') || l.usages.includes('graphic'));
+                    } else if (parsedCourse === 'graphic') {
+                        matches = matches.filter(l => l.idealFor.includes('graphic') || l.usages.includes('graphic'));
+                    } else if (parsedCourse === 'video') {
+                        matches = matches.filter(l => l.idealFor.includes('video') || l.usages.includes('video'));
+                    } else if (parsedCourse === 'gaming') {
+                        matches = matches.filter(l => l.usages.includes('gaming') || l.gpu.includes('RTX'));
+                    }
+                }
+
+                // Sort by student score
+                matches.sort((a,b) => b.studentScore - a.studentScore);
+
+                let reply = '';
+                if (matches.length > 0) {
+                    const topPick = matches[0];
+                    reply = `🤖 **AI Recommendation:** Based on your query, here is my top recommendation:
+                        <div style="margin-top:8px; padding:10px; background:rgba(255,255,255,0.03); border-radius:8px; border:1px solid rgba(255,255,255,0.06); font-size:0.75rem;">
+                            <strong>${topPick.name}</strong><br>
+                            Price: ₹${topPick.price.toLocaleString('en-IN')}<br>
+                            Specs: ${topPick.cpu} | ${topPick.ram}<br>
+                            🔋 Battery: ${topPick.battery}<br>
+                            <a href="#results-section" style="color:var(--primary-teal); font-weight:700; text-decoration:underline; display:inline-block; margin-top:6px;" onclick="viewLaptopDetails('${topPick.id}')">View Details &rarr;</a>
+                        </div>
+                        This laptop offers a **${topPick.studentScore}% Student Score** which is perfect for your needs.`;
+                    
+                    if (matches.length > 1) {
+                        reply += `<br>Alternative pick: **${matches[1].name}** (₹${matches[1].price.toLocaleString('en-IN')})`;
+                    }
+                } else {
+                    reply = `🤖 **AI Advisor:** I couldn't find a laptop matching those requirements under ₹${parsedBudget.toLocaleString('en-IN')}. Try describing with a higher budget or other specs.`;
+                }
+
+                const bubble = document.createElement('div');
+                bubble.className = 'chat-bubble bot';
+                bubble.innerHTML = reply;
+                messages.appendChild(bubble);
+                messages.scrollTop = messages.scrollHeight;
+            }, 850);
+        }
+
+        // Helper to click view details inside chatbot
+        function viewLaptopDetails(laptopId) {
+            document.getElementById('aiChatWindow').classList.remove('active');
+            openDetailsModal(laptopId);
+        }
+    </script>
+</body>
+</html>

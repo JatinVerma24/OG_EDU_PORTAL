@@ -1,0 +1,73 @@
+name: ogeduAI CI/CD Workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install Root & Sub-project Dependencies
+        run: |
+          npm install
+          cd frontend && npm install
+          cd ../senior_portal/client && npm install
+
+      - name: Run Linting Checks
+        run: |
+          npm run lint --if-present
+
+      - name: Run Vulnerability Audits
+        run: |
+          npm audit --audit-level=high --if-present
+
+      - name: Compile Static Clients
+        run: |
+          npm run build
+
+      - name: Run Backend Diagnostic Tests
+        run: |
+          npm test --if-present
+
+  docker-image-build:
+    needs: validate-and-test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-qemu-action@v2
+        
+      - name: Set up Docker Builder
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+        continue-on-error: true # Safe fallback if credentials are not configured yet
+
+      - name: Build and Cache Production Docker Image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: docker/prod.Dockerfile
+          push: false # Set true once DockerHub secrets are registered
+          tags: ogeduai/api:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
