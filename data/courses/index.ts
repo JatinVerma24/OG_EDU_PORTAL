@@ -23,13 +23,13 @@ export const COURSES: Course[] = [
     id: 'bba',
     name: 'BBA',
     fullName: 'Bachelor of Business Administration',
-    description: 'Undergraduate business administration program. Full semester curriculum mapping is currently underway.',
-    status: 'coming_soon',
+    description: 'Undergraduate business administration program covering management principles, accounting, finance, marketing, law, and analytics.',
+    status: 'active',
     semesters: [
-      { number: 1, name: 'Semester 1', description: 'Curriculum mapping in progress' },
-      { number: 2, name: 'Semester 2', description: 'Curriculum mapping in progress' },
-      { number: 3, name: 'Semester 3', description: 'Curriculum mapping in progress' },
-      { number: 4, name: 'Semester 4', description: 'Curriculum mapping in progress' }
+      { number: 1, name: 'Semester 1', description: 'Management Principles, Accounting, Microeconomics, Communication & Math' },
+      { number: 2, name: 'Semester 2', description: 'Macroeconomics, Cost Accounting, Marketing Management & Business Law' },
+      { number: 3, name: 'Semester 3', description: 'Financial Management, Human Resource Management, Operations Research & OB' },
+      { number: 4, name: 'Semester 4', description: 'Research Methodology, Company Law, Consumer Behaviour, Taxation & MIS' }
     ]
   }
 ];

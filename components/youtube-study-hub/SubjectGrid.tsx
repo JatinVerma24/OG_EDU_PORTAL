@@ -16,14 +16,9 @@ interface SubjectGridProps {
 export const SubjectGrid: React.FC<SubjectGridProps> = ({
   subjects,
   searchQuery = '',
-  isBba = false,
   onSelectSubject,
   onResetSearch
 }) => {
-  if (isBba && subjects.length === 0 && !searchQuery) {
-    return <EmptyState type="bba-coming-soon" />;
-  }
-
   if (subjects.length === 0) {
     return (
       <EmptyState

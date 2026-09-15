@@ -250,7 +250,6 @@ function StudyHubContent() {
         <SubjectGrid
           subjects={filteredSubjects}
           searchQuery={query}
-          isBba={course === 'bba'}
           onSelectSubject={handleOpenSubjectModal}
           onResetSearch={handleResetFilters}
         />

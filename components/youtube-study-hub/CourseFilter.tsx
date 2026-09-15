@@ -40,7 +40,7 @@ export const CourseFilter: React.FC<CourseFilterProps> = ({
       >
         <Briefcase className="w-4 h-4" />
         <span>BBA</span>
-        <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-mono">Soon</span>
+        <span className="text-[10px] px-1.5 py-0.2 rounded bg-black/20 font-mono">MGMT</span>
       </button>
     </div>
   );
