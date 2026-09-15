@@ -15,7 +15,8 @@
           "data/**",
           "data.json",
           "server.js",
-          "src/**"
+          "src/**",
+          ".next/**"
         ]
       }
     }

@@ -8,3 +8,7 @@ database.json
 
 .vercel
 logs/
+
+.vercel
+.env*
+.next/

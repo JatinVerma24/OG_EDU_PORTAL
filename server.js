@@ -6,6 +6,7 @@ const compression = require('compression');
 const mongoSanitize = require('mongo-sanitize');
 const dns = require('dns');
 const path = require('path');
+const fs = require('fs');
 
 const logger = require('./src/config/logger');
 const { connectDB } = require('./src/config/db.config');
@@ -84,6 +85,7 @@ app.use('/api', require('./src/routes/fresher.routes'));
 app.use('/api', require('./src/routes/senior.routes'));
 app.use('/api', require('./src/routes/scraper.routes'));
 app.use('/api', require('./src/routes/chat.routes'));
+app.use('/api', require('./src/routes/youtube.routes'));
 
 // ── UTILITY WEB ROUTES ──────────────────────────────────────────────────────
 
@@ -230,6 +232,48 @@ app.get('/sih-guide', (req, res) => {
 });
 app.get('/sih/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'landing', 'sih.html'));
+});
+
+// Serve Next.js static assets (_next)
+app.use('/_next', express.static(path.join(__dirname, '.next')));
+
+// OGEDU YouTube Study Hub Routes
+app.get(['/youtube-study-hub', '/youtube-study-hub/'], (req, res) => {
+    const hubFile = path.join(__dirname, '.next', 'server', 'app', 'youtube-study-hub.html');
+    if (fs.existsSync(hubFile)) {
+        return res.sendFile(hubFile);
+    }
+    res.status(404).send('YouTube Study Hub build not found. Please run next build.');
+});
+
+app.get('/youtube-study-hub/:course/:semester/:subjectCode', (req, res) => {
+    const { course, semester, subjectCode } = req.params;
+    const subjectFile = path.join(
+        __dirname,
+        '.next',
+        'server',
+        'app',
+        'youtube-study-hub',
+        course.toLowerCase(),
+        semester.toLowerCase(),
+        `${subjectCode.toLowerCase()}.html`
+    );
+    if (fs.existsSync(subjectFile)) {
+        return res.sendFile(subjectFile);
+    }
+    const hubFile = path.join(__dirname, '.next', 'server', 'app', 'youtube-study-hub.html');
+    if (fs.existsSync(hubFile)) {
+        return res.sendFile(hubFile);
+    }
+    res.status(404).send('Subject page not found');
+});
+
+app.get('/youtube-study-hub/*', (req, res) => {
+    const hubFile = path.join(__dirname, '.next', 'server', 'app', 'youtube-study-hub.html');
+    if (fs.existsSync(hubFile)) {
+        return res.sendFile(hubFile);
+    }
+    res.status(404).send('Page not found');
 });
 
 // Root fallback to landing page index.html
