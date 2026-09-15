@@ -209,48 +209,42 @@ function StudyHubContent() {
           </div>
 
           {/* 4 Large Quick Semester Navigation Tabs */}
-          {course === 'btech' && (
-            <SemesterTabs
-              selectedSemester={semester}
-              onSelectSemester={setSemester}
-              semesterCounts={semesterCounts}
-            />
-          )}
+          <SemesterTabs
+            selectedSemester={semester}
+            onSelectSemester={setSemester}
+            semesterCounts={semesterCounts}
+          />
 
           {/* Subject Type Filter Pills */}
-          {course === 'btech' && (
-            <SemesterFilter
-              selectedSemester={semester}
-              onSelectSemester={setSemester}
-              selectedType={subjectType}
-              onSelectType={setSubjectType}
-            />
-          )}
+          <SemesterFilter
+            selectedSemester={semester}
+            onSelectSemester={setSemester}
+            selectedType={subjectType}
+            onSelectType={setSubjectType}
+          />
         </section>
 
         {/* Results Header */}
-        {course === 'btech' && (
-          <div className="flex items-center justify-between border-b border-surface-border/60 pb-3 mb-6">
-            <div className="flex items-center gap-2">
-              <h2 className="font-display font-bold text-base sm:text-lg text-zinc-100">
-                {semester === 'all' ? 'All Semester Subjects' : `Semester ${semester} Subjects`}
-              </h2>
-              <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-surface-card text-brand-400 border border-surface-border">
-                {filteredSubjects.length}
-              </span>
-            </div>
-
-            {(query || semester !== 'all' || subjectType !== 'all') && (
-              <button
-                type="button"
-                onClick={handleResetFilters}
-                className="text-xs text-zinc-400 hover:text-brand-300 transition-colors underline"
-              >
-                Reset all filters
-              </button>
-            )}
+        <div className="flex items-center justify-between border-b border-surface-border/60 pb-3 mb-6">
+          <div className="flex items-center gap-2">
+            <h2 className="font-display font-bold text-base sm:text-lg text-zinc-100">
+              {course.toUpperCase()} — {semester === 'all' ? 'All Semester Subjects' : `Semester ${semester} Subjects`}
+            </h2>
+            <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-surface-card text-brand-400 border border-surface-border">
+              {filteredSubjects.length}
+            </span>
           </div>
-        )}
+
+          {(query || semester !== 'all' || subjectType !== 'all') && (
+            <button
+              type="button"
+              onClick={handleResetFilters}
+              className="text-xs text-zinc-400 hover:text-brand-300 transition-colors underline"
+            >
+              Reset all filters
+            </button>
+          )}
+        </div>
 
         {/* Subjects Grid */}
         <SubjectGrid

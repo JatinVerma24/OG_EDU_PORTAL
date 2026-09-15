@@ -327,27 +327,99 @@ export const CHANNELS_DIRECTORY: Channel[] = [
 
   // ── Commerce & Management (BBA Foundation) ──────────────────────────────
   {
-    id: 'ca-rachana-ranade',
-    name: 'CA Rachana Phadke Ranade',
-    youtubeHandle: '@CArachanaRanade',
-    channelUrl: 'https://www.youtube.com/@CArachanaRanade/videos',
-    description: 'Engaging fundamental breakdowns of financial accounting, stock markets, and business finance.',
-    language: 'English',
+    id: 'commerce-wallah-pw',
+    name: 'Commerce Wallah by PW',
+    youtubeHandle: '@CommerceWallahPW',
+    channelUrl: 'https://www.youtube.com/@CommerceWallahPW/videos',
+    description: 'Premier commerce platform by PhysicsWallah with structured lectures on Financial Accounting, Business Studies, Economics, and Management.',
+    language: 'Hinglish',
     level: 'Beginner Friendly',
     verified: true,
-    category: 'Engineering', // Reusable
-    popularSubjects: ['Financial Accounting', 'Business Economics']
+    category: 'Management & Commerce',
+    popularSubjects: ['Principles of Management', 'Financial Accounting', 'Business Economics', 'Organizational Behaviour']
   },
   {
-    id: 'unacademy-commerce',
-    name: 'Unacademy Commerce',
-    youtubeHandle: '@CommerceUnacademy',
-    channelUrl: 'https://www.youtube.com/@CommerceUnacademy/videos',
-    description: 'Comprehensive university-level business administration, economics, and business law lectures.',
+    id: 'ca-parag-gupta',
+    name: 'CA Parag Gupta',
+    youtubeHandle: '@caparaggupta',
+    channelUrl: 'https://www.youtube.com/@caparaggupta/videos',
+    description: 'Renowned accounting and financial management educator. Master journal entries, balance sheets, cost accounting, and corporate tax.',
+    language: 'Hindi',
+    level: 'Comprehensive',
+    verified: true,
+    category: 'Management & Commerce',
+    popularSubjects: ['Financial Accounting', 'Cost Accounting', 'Financial Management', 'Direct Tax']
+  },
+  {
+    id: 'management-adda',
+    name: 'Management Adda',
+    youtubeHandle: '@ManagementAdda',
+    channelUrl: 'https://www.youtube.com/@ManagementAdda/videos',
+    description: 'Whiteboard animation video series dedicated exclusively to MBA, BBA, Marketing, HRM, and Organizational Behaviour concepts.',
+    language: 'Hinglish',
+    level: 'Beginner Friendly',
+    verified: true,
+    category: 'Management & Commerce',
+    popularSubjects: ['Principles of Management', 'Marketing Management', 'Human Resource Management', 'Organizational Behaviour']
+  },
+  {
+    id: 'sunil-panda',
+    name: 'Sunil Panda - The Educator',
+    youtubeHandle: '@sunilpandaofficial',
+    channelUrl: 'https://www.youtube.com/@sunilpandaofficial/videos',
+    description: 'High-clarity accounting and business studies tutorials focusing on exam preparation, concepts, and numerical problem solving.',
+    language: 'Hindi',
+    level: 'Exam-Focused',
+    verified: true,
+    category: 'Management & Commerce',
+    popularSubjects: ['Financial Accounting', 'Business Studies', 'Macroeconomics']
+  },
+  {
+    id: 'economics-on-your-tips',
+    name: 'Economics on Your Tips',
+    youtubeHandle: '@EconomicsOnYourTips',
+    channelUrl: 'https://www.youtube.com/@EconomicsOnYourTips/videos',
+    description: 'Gaurav Jain provides crystal clear breakdowns of Microeconomics, Macroeconomics, National Income, and Indian Economy.',
+    language: 'Hindi',
+    level: 'Beginner Friendly',
+    verified: true,
+    category: 'Management & Commerce',
+    popularSubjects: ['Microeconomics', 'Macroeconomics', 'Business Economics']
+  },
+  {
+    id: 'grooming-education',
+    name: 'Grooming Education Academy',
+    youtubeHandle: '@GroomingEducationAcademy',
+    channelUrl: 'https://www.youtube.com/@GroomingEducationAcademy/videos',
+    description: 'Chandan Poddar and team deliver in-depth lectures on Mercantile Law, Business Law, Costing, and Company Law.',
+    language: 'Hindi',
+    level: 'Comprehensive',
+    verified: true,
+    category: 'Management & Commerce',
+    popularSubjects: ['Business Law', 'Company Law', 'Cost Accounting', 'Financial Management']
+  },
+  {
+    id: 'dr-neha-aneja',
+    name: 'Dr. Neha Aneja',
+    youtubeHandle: '@DrNehaAneja',
+    channelUrl: 'https://www.youtube.com/@DrNehaAneja/videos',
+    description: 'Academic scholar lectures covering Research Methodology, Consumer Behaviour, and Human Resource Management for university students.',
     language: 'Hinglish',
     level: 'Comprehensive',
     verified: true,
-    category: 'Engineering',
-    popularSubjects: ['Business Organization', 'Business Law']
+    category: 'Management & Commerce',
+    popularSubjects: ['Research Methodology', 'Human Resource Management', 'Consumer Behaviour']
+  },
+  {
+    id: 'sudhir-sachdeva',
+    name: 'Sudhir Sachdeva',
+    youtubeHandle: '@SudhirSachdevaClasses',
+    channelUrl: 'https://www.youtube.com/@SudhirSachdevaClasses/videos',
+    description: 'Legendary law teacher breaking down the Indian Contract Act, Companies Act 2013, Sale of Goods Act, and Partnership Act section by section.',
+    language: 'Hindi',
+    level: 'Comprehensive',
+    verified: true,
+    category: 'Management & Commerce',
+    popularSubjects: ['Business Law', 'Company Law', 'Corporate Law']
   }
 ];

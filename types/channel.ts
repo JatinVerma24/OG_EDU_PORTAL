@@ -7,7 +7,8 @@ export type ChannelCategory =
   | 'Data Science'
   | 'Web Development'
   | 'Communication Skills'
-  | 'Aptitude';
+  | 'Aptitude'
+  | 'Management & Commerce';
 
 export type TeachingLanguage = 'Hindi' | 'English' | 'Hinglish';
 

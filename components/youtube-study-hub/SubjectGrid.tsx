@@ -20,7 +20,7 @@ export const SubjectGrid: React.FC<SubjectGridProps> = ({
   onSelectSubject,
   onResetSearch
 }) => {
-  if (isBba) {
+  if (isBba && subjects.length === 0 && !searchQuery) {
     return <EmptyState type="bba-coming-soon" />;
   }
 

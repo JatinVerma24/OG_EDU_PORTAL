@@ -22,5 +22,6 @@ export const CHANNEL_CATEGORIES: ChannelCategory[] = [
   'Data Science',
   'Web Development',
   'Communication Skills',
-  'Aptitude'
+  'Aptitude',
+  'Management & Commerce'
 ];
