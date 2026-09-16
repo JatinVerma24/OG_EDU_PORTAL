@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState, useMemo, useEffect, Suspense } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
-import { useSearchParams, useRouter } from 'next/navigation';
 import { CourseId, SemesterNumber, SubjectType, Subject } from '../../types';
 import {
   SearchBar,
@@ -18,38 +17,49 @@ import { searchSubjects } from '../../lib/search/subjects';
 import { getSemesterCounts, getSubjectByCodeOnly } from '../../data/courses';
 import { Sparkles, BookOpen, Layers, ArrowLeft, ExternalLink } from 'lucide-react';
 
-function StudyHubContent() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  // URL state synchronization
-  const initialQuery = searchParams.get('q') || '';
-  const initialCourse = (searchParams.get('course') as CourseId) || 'btech';
-  const initialSemParam = searchParams.get('sem');
-  const initialSem: SemesterNumber | 'all' =
-    initialSemParam && [1, 2, 3, 4].includes(Number(initialSemParam))
-      ? (Number(initialSemParam) as SemesterNumber)
-      : 'all';
-  const initialType = (searchParams.get('type') as SubjectType | 'all') || 'all';
-
-  const [query, setQuery] = useState<string>(initialQuery);
-  const [course, setCourse] = useState<CourseId>(initialCourse);
-  const [semester, setSemester] = useState<SemesterNumber | 'all'>(initialSem);
-  const [subjectType, setSubjectType] = useState<SubjectType | 'all'>(initialType);
+export default function YouTubeStudyHubPage() {
+  const [query, setQuery] = useState<string>('');
+  const [course, setCourse] = useState<CourseId>('btech');
+  const [semester, setSemester] = useState<SemesterNumber | 'all'>('all');
+  const [subjectType, setSubjectType] = useState<SubjectType | 'all'>('all');
   const [activeModalSubject, setActiveModalSubject] = useState<Subject | null>(null);
+
+  // Sync initial state from URL on client mount without triggering SSR bailout
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const q = urlParams.get('q');
+      const c = urlParams.get('course') as CourseId;
+      const s = urlParams.get('sem');
+      const t = urlParams.get('type') as SubjectType;
+
+      if (q) setQuery(q);
+      if (c === 'btech' || c === 'bba') setCourse(c);
+      if (s && [1, 2, 3, 4].includes(Number(s))) setSemester(Number(s) as SemesterNumber);
+      if (t && ['theory', 'practical', 'all'].includes(t)) setSubjectType(t);
+    } catch {
+      // Ignore URL parsing errors
+    }
+  }, []);
 
   // Sync state to URL without refreshing
   useEffect(() => {
-    const params = new URLSearchParams();
-    if (query.trim()) params.set('q', query.trim());
-    if (course !== 'btech') params.set('course', course);
-    if (semester !== 'all') params.set('sem', semester.toString());
-    if (subjectType !== 'all') params.set('type', subjectType);
+    if (typeof window === 'undefined') return;
+    try {
+      const params = new URLSearchParams();
+      if (query.trim()) params.set('q', query.trim());
+      if (course !== 'btech') params.set('course', course);
+      if (semester !== 'all') params.set('sem', semester.toString());
+      if (subjectType !== 'all') params.set('type', subjectType);
 
-    const queryString = params.toString();
-    const newUrl = queryString ? `/youtube-study-hub?${queryString}` : '/youtube-study-hub';
-    router.replace(newUrl, { scroll: false });
-  }, [query, course, semester, subjectType, router]);
+      const queryString = params.toString();
+      const newUrl = queryString ? `/youtube-study-hub?${queryString}` : '/youtube-study-hub';
+      window.history.replaceState(null, '', newUrl);
+    } catch {
+      // Ignore history errors
+    }
+  }, [query, course, semester, subjectType]);
 
   // Check URL hash for modal opening (e.g. #subject=cse101)
   useEffect(() => {
@@ -296,10 +306,3 @@ function StudyHubContent() {
   );
 }
 
-export default function YouTubeStudyHubPage() {
-  return (
-    <Suspense fallback={<div className="min-h-screen bg-surface-base flex items-center justify-center text-zinc-400">Loading Study Hub...</div>}>
-      <StudyHubContent />
-    </Suspense>
-  );
-}
