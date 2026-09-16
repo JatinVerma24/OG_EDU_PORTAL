@@ -124,26 +124,26 @@ function StudyHubContent() {
           </Link>
 
           {/* Center Links */}
-          <nav className="hidden md:flex items-center gap-6 text-xs sm:text-sm font-medium text-zinc-400">
-            <Link href="/" className="hover:text-zinc-100 transition-colors">
+          <nav className="hidden md:flex items-center gap-6 text-xs sm:text-sm font-medium text-zinc-400 shrink-0">
+            <Link href="/" className="hover:text-zinc-100 transition-colors whitespace-nowrap">
               Home
             </Link>
-            <Link href="/sih" className="hover:text-brand-300 text-zinc-400 transition-colors">
+            <Link href="/sih" className="hover:text-brand-300 text-zinc-400 transition-colors whitespace-nowrap">
               🏆 SIH Playbook
             </Link>
-            <Link href="/resources" className="hover:text-zinc-100 transition-colors">
+            <Link href="/resources" className="hover:text-zinc-100 transition-colors whitespace-nowrap">
               Notes Vault
             </Link>
-            <Link href="/senior/dashboard.html" className="hover:text-zinc-100 transition-colors">
+            <Link href="/senior/dashboard.html" className="hover:text-zinc-100 transition-colors whitespace-nowrap">
               GPA Calculators
             </Link>
           </nav>
 
           {/* Right Action */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-zinc-300 hover:text-white bg-surface-card hover:bg-surface-elevated border border-surface-border rounded-xl transition-all"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-zinc-300 hover:text-white bg-surface-card hover:bg-surface-elevated border border-surface-border rounded-xl transition-all whitespace-nowrap"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Back to</span> Portal

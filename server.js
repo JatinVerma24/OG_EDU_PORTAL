@@ -17,15 +17,7 @@ const { apiLimiter } = require('./src/middleware/rateLimiter.middleware');
 const { authenticateToken } = require('./src/middleware/auth.middleware');
 const { errorHandler, notFoundHandler } = require('./src/middleware/error.middleware');
 
-// Use Google DNS to bypass local SRV lookup resolution issues (ECONNREFUSED) only when running locally
-if (!process.env.VERCEL) {
-    try {
-        dns.setServers(['8.8.8.8', '8.8.4.4']);
-        logger.info('Local DNS servers set to Google DNS (8.8.8.8, 8.8.4.4)');
-    } catch (dnsErr) {
-        logger.warn(`Failed to set custom DNS servers: ${dnsErr.message}`);
-    }
-}
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -292,7 +284,8 @@ app.use(errorHandler);
 
 // Start Server
 if (!process.env.VERCEL) {
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
+        console.log(`🚀 Master Server active at http://localhost:${PORT}`);
         logger.info(`Express server running on http://localhost:${PORT} under ${process.env.NODE_ENV || 'development'} mode`);
     });
 }
