@@ -226,13 +226,22 @@ app.get('/sih/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'landing', 'sih.html'));
 });
 
-// Serve Next.js static assets (_next)
-app.use('/_next', express.static(path.join(__dirname, '.next')));
+// Serve Next.js static assets (_next) from landing or .next
+app.use('/_next', express.static(path.join(__dirname, 'landing', '_next')), express.static(path.join(__dirname, '.next')));
+
+// Helper to find the best available Study Hub pre-rendered HTML file
+function getStudyHubHtmlFile() {
+    const landingPath = path.join(__dirname, 'landing', 'youtube-study-hub.html');
+    if (fs.existsSync(landingPath)) return landingPath;
+    const nextPath = path.join(__dirname, '.next', 'server', 'app', 'youtube-study-hub.html');
+    if (fs.existsSync(nextPath)) return nextPath;
+    return null;
+}
 
 // OGEDU YouTube Study Hub Routes
 app.get(['/youtube-study-hub', '/youtube-study-hub/'], (req, res) => {
-    const hubFile = path.join(__dirname, '.next', 'server', 'app', 'youtube-study-hub.html');
-    if (fs.existsSync(hubFile)) {
+    const hubFile = getStudyHubHtmlFile();
+    if (hubFile) {
         return res.sendFile(hubFile);
     }
     res.status(404).send('YouTube Study Hub build not found. Please run next build.');
@@ -253,16 +262,16 @@ app.get('/youtube-study-hub/:course/:semester/:subjectCode', (req, res) => {
     if (fs.existsSync(subjectFile)) {
         return res.sendFile(subjectFile);
     }
-    const hubFile = path.join(__dirname, '.next', 'server', 'app', 'youtube-study-hub.html');
-    if (fs.existsSync(hubFile)) {
+    const hubFile = getStudyHubHtmlFile();
+    if (hubFile) {
         return res.sendFile(hubFile);
     }
     res.status(404).send('Subject page not found');
 });
 
 app.get('/youtube-study-hub/*', (req, res) => {
-    const hubFile = path.join(__dirname, '.next', 'server', 'app', 'youtube-study-hub.html');
-    if (fs.existsSync(hubFile)) {
+    const hubFile = getStudyHubHtmlFile();
+    if (hubFile) {
         return res.sendFile(hubFile);
     }
     res.status(404).send('Page not found');
