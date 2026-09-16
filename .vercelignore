@@ -17,3 +17,7 @@ frontend/src/
 frontend/public/
 senior_portal/client/src/
 senior_portal/client/public/
+.next/cache/
+.next/dev/
+.next/diagnostics/
+.next/types/

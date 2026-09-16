@@ -11,4 +11,7 @@ logs/
 
 .vercel
 .env*
-.next/
+.next/cache/
+.next/dev/
+.next/diagnostics/
+.next/types/
