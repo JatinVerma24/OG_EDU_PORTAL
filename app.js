@@ -1127,13 +1127,23 @@ function initChatbot() {
             `;
         }
 
-        row.innerHTML = `
-            ${avatarHtml}
-            <div class="chat-bubble">
-                <span>${text}</span>
-                ${bannerHtml}
-            </div>
-        `;
+        const bubbleDiv = document.createElement('div');
+        bubbleDiv.className = 'chat-bubble';
+        const textSpan = document.createElement('span');
+        if (sender === 'user') {
+            textSpan.textContent = text;
+        } else {
+            textSpan.innerHTML = text;
+        }
+        bubbleDiv.appendChild(textSpan);
+        if (bannerHtml) {
+            const bannerContainer = document.createElement('div');
+            bannerContainer.innerHTML = bannerHtml;
+            bubbleDiv.appendChild(bannerContainer);
+        }
+
+        row.innerHTML = avatarHtml;
+        row.appendChild(bubbleDiv);
         
         messagesBody.appendChild(row);
         messagesBody.scrollTop = messagesBody.scrollHeight;

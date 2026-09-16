@@ -1,6 +1,12 @@
+require('dotenv').config();
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const genAI = new GoogleGenerativeAI("AIzaSyAbinJaldAgCj0wIlBAuR5ca2DwrKA6N1o");
+const key = process.env.GEMINI_API_KEY;
+if (!key) {
+    console.error("GEMINI_API_KEY environment variable is not configured.");
+    process.exit(1);
+}
+const genAI = new GoogleGenerativeAI(key);
 
 async function listModels() {
     const models = [

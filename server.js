@@ -22,6 +22,9 @@ const { errorHandler, notFoundHandler } = require('./src/middleware/error.middle
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Trust reverse proxy (Vercel, Cloudflare) for accurate client IP identification in rate limiters
+app.set('trust proxy', 1);
+
 // Initialize Sentry Tracking middleware at the very top of request stream
 sentryService.initSentry(app);
 
@@ -36,9 +39,30 @@ app.use(helmet({
     crossOriginEmbedderPolicy: false
 }));
 
-// CORS Configuration
+// Whitelist allowed origins for CORS (blocks arbitrary third-party origins)
+const ALLOWED_ORIGINS = [
+    'https://ogedu-portal.vercel.app',
+    'https://ogedu-ai.vercel.app',
+    'http://localhost:5000',
+    'http://localhost:3000',
+    'http://127.0.0.1:5000',
+    'http://127.0.0.1:3000'
+];
+
 app.use(cors({
-    origin: true,
+    origin: (origin, callback) => {
+        // Allow requests with no origin (like mobile apps, curl, or same-origin requests)
+        if (!origin) return callback(null, true);
+
+        const isAllowed = ALLOWED_ORIGINS.includes(origin) ||
+            /^https:\/\/ogedu-[a-z0-9]+-jatinverma1\.vercel\.app$/.test(origin) ||
+            /^https:\/\/[a-z0-9-]+\.vercel\.app$/.test(origin);
+
+        if (isAllowed) {
+            return callback(null, true);
+        }
+        return callback(new Error('Blocked by OGEDU CORS Security Policy'));
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
@@ -81,71 +105,116 @@ app.use('/api', require('./src/routes/youtube.routes'));
 
 // ── UTILITY WEB ROUTES ──────────────────────────────────────────────────────
 
-// Route to clear all cookies, localStorage, and unregister Service Workers
+// Secure Route to clear cookies, localStorage, and unregister Service Workers upon explicit confirmation
 app.get('/clear-data', (req, res) => {
     res.send(`
         <!DOCTYPE html>
-        <html>
+        <html lang="en">
         <head>
-            <title>Clearing Cache...</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Reset Browser Cache | OGEDU AI</title>
             <style>
                 body {
                     background-color: #030712;
                     color: #f9fafb;
-                    font-family: sans-serif;
+                    font-family: system-ui, -apple-system, sans-serif;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    height: 100vh;
+                    min-height: 100vh;
                     margin: 0;
+                    padding: 16px;
+                }
+                .card {
+                    background: #111827;
+                    border: 1px solid #1f2937;
+                    border-radius: 16px;
+                    padding: 32px;
+                    max-width: 440px;
+                    width: 100%;
                     text-align: center;
+                    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
                 }
-                .loader {
-                    border: 4px solid rgba(255,255,255,0.1);
-                    width: 36px;
-                    height: 36px;
+                .icon-box {
+                    width: 54px;
+                    height: 54px;
+                    background: rgba(239, 68, 68, 0.15);
+                    border: 1px solid rgba(239, 68, 68, 0.3);
                     border-radius: 50%;
-                    border-left-color: #f97316;
-                    animation: spin 1s linear infinite;
-                    margin: 0 auto 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 16px;
+                    font-size: 24px;
                 }
-                @keyframes spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
+                h2 { font-size: 1.25rem; font-weight: 700; margin: 0 0 8px; color: #ffffff; }
+                p { color: #9ca3af; font-size: 0.875rem; line-height: 1.5; margin: 0 0 24px; }
+                .btn-group { display: flex; gap: 12px; }
+                .btn {
+                    flex: 1;
+                    padding: 10px 16px;
+                    border-radius: 10px;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    text-decoration: none;
+                    transition: all 0.2s;
+                    border: none;
                 }
-                h3 { margin-bottom: 8px; font-weight: 600; }
-                p { color: #9ca3af; font-size: 0.9rem; }
+                .btn-danger {
+                    background: #dc2626;
+                    color: #ffffff;
+                }
+                .btn-danger:hover { background: #b91c1c; }
+                .btn-secondary {
+                    background: #1f2937;
+                    color: #d1d5db;
+                }
+                .btn-secondary:hover { background: #374151; }
+                .status-box { display: none; margin-top: 16px; color: #10b981; font-size: 0.875rem; font-weight: 500; }
             </style>
         </head>
         <body>
-            <div>
-                <div class="loader"></div>
-                <h3>Clearing Cookies & Site Data...</h3>
-                <p>Please wait, you will be redirected shortly.</p>
+            <div class="card">
+                <div class="icon-box">⚠️</div>
+                <h2>Reset Application Cache?</h2>
+                <p>This action will clear locally stored checklists, offline session tokens, and cached Service Worker files. Click confirm to proceed.</p>
+                <div class="btn-group" id="btnGroup">
+                    <a href="/" class="btn btn-secondary">Cancel</a>
+                    <button id="confirmBtn" class="btn btn-danger" onclick="executeClear()">Confirm Reset</button>
+                </div>
+                <div class="status-box" id="statusBox">
+                    <span>Cache cleared successfully! Redirecting...</span>
+                </div>
             </div>
             <script>
-                // Clear localStorage
-                localStorage.clear();
-                // Clear sessionStorage
-                sessionStorage.clear();
-                // Delete all cookies
-                document.cookie.split(";").forEach(function(c) { 
-                    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
-                });
-                
-                // Unregister all Service Workers to force update of old cached PWA files
-                if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                        for(let registration of registrations) {
-                            registration.unregister();
-                        }
-                    });
+                function executeClear() {
+                    const btnGroup = document.getElementById('btnGroup');
+                    const statusBox = document.getElementById('statusBox');
+                    btnGroup.style.display = 'none';
+                    statusBox.style.display = 'block';
+
+                    try { localStorage.clear(); } catch(e) {}
+                    try { sessionStorage.clear(); } catch(e) {}
+                    try {
+                        document.cookie.split(";").forEach(function(c) { 
+                            document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+                        });
+                    } catch(e) {}
+
+                    if ('serviceWorker' in navigator) {
+                        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                            for(let registration of registrations) {
+                                registration.unregister();
+                            }
+                        });
+                    }
+
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1200);
                 }
-                
-                // Redirect back to landing selector page
-                setTimeout(() => {
-                    window.location.href = '/';
-                }, 1200);
             </script>
         </body>
         </html>

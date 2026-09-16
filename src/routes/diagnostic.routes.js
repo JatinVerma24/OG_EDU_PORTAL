@@ -9,8 +9,16 @@ router.get('/health', diagnosticController.getHealth);
 router.get('/live', diagnosticController.getLive);
 router.get('/ready', diagnosticController.getReady);
 
-// Expose Prometheus metrics endpoint
+// Expose Prometheus metrics endpoint with authorization
 router.get('/metrics', async (req, res) => {
+    const adminToken = req.headers['x-admin-token'] || req.query.token;
+    const requiredToken = process.env.ADMIN_METRICS_TOKEN;
+
+    // Block unauthenticated metrics access in production
+    if (process.env.NODE_ENV === 'production' && (!requiredToken || adminToken !== requiredToken)) {
+        return res.status(403).json({ error: 'Access forbidden: unauthorized metrics collection.' });
+    }
+
     try {
         res.set('Content-Type', register.contentType);
         res.end(await register.metrics());

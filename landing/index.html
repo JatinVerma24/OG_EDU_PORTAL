@@ -1234,12 +1234,27 @@
             }
         ];
 
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
         function formatAiText(raw) {
             if (!raw) return '';
-            if (raw.includes('<strong') || raw.includes('<br>') || raw.includes('<div>') || raw.includes('<p>')) {
-                return raw;
+            // If response is already rich HTML from vetted offline knowledge base, strip scripts and handlers
+            if (raw.includes('<strong') || raw.includes('<br>') || raw.includes('<div>') || raw.includes('<p>') || raw.includes('<a ')) {
+                return raw
+                    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+                    .replace(/on\w+="[^"]*"/gi, '')
+                    .replace(/on\w+='[^']*'/gi, '');
             }
-            return raw
+            // For external raw text, escape HTML first to eliminate XSS, then parse markdown safely
+            const safe = escapeHtml(raw);
+            return safe
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                 .replace(/\*(.*?)\*/g, '<em>$1</em>')
                 .replace(/`([^`]+)`/g, '<code class="bg-zinc-800 px-1.5 py-0.5 rounded text-brand-300 font-mono text-xs">$1</code>')
@@ -1292,10 +1307,11 @@
             const bubble = document.createElement('div');
             if (type === 'user') {
                 bubble.className = 'p-3 rounded-xl bg-brand-500 text-zinc-950 font-medium ml-auto max-w-[85%] text-xs shadow-sm';
+                bubble.textContent = text; // Immune to XSS injection
             } else {
                 bubble.className = 'p-3 rounded-xl bg-surface-elevated border border-surface-border text-zinc-300 max-w-[90%] text-xs leading-relaxed space-y-1';
+                bubble.innerHTML = text;
             }
-            bubble.innerHTML = text;
             chatMessages.appendChild(bubble);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }

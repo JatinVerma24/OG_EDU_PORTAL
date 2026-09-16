@@ -22,9 +22,57 @@ const studentIdCheck = [
 ];
 
 const feedbackCheck = [
-    body('name').trim().notEmpty().withMessage('Name field is required'),
-    body('email').trim().isEmail().withMessage('A valid email address is required'),
-    body('message').trim().notEmpty().withMessage('Message content is required'),
+    body('name')
+        .trim()
+        .notEmpty()
+        .withMessage('Name field is required')
+        .isLength({ max: 100 })
+        .withMessage('Name must not exceed 100 characters'),
+    body('email')
+        .trim()
+        .isEmail()
+        .withMessage('A valid email address is required')
+        .isLength({ max: 120 })
+        .withMessage('Email must not exceed 120 characters'),
+    body('score')
+        .optional()
+        .trim()
+        .isLength({ max: 10 })
+        .withMessage('Score length invalid'),
+    body('message')
+        .trim()
+        .notEmpty()
+        .withMessage('Message content is required')
+        .isLength({ max: 2000 })
+        .withMessage('Message must not exceed 2000 characters'),
+    validate
+];
+
+const saveChecklistCheck = [
+    param('studentId')
+        .trim()
+        .isAlphanumeric()
+        .withMessage('Student ID must contain alphanumeric characters only')
+        .isLength({ min: 5, max: 20 })
+        .withMessage('Student ID length must be between 5 and 20 characters'),
+    body('checklist')
+        .isObject()
+        .withMessage('Checklist payload must be a JSON object')
+        .custom((obj) => {
+            const keys = Object.keys(obj);
+            if (keys.length > 100) {
+                throw new Error('Checklist contains too many items (max 100 allowed)');
+            }
+            for (const key of keys) {
+                if (key.length > 50) {
+                    throw new Error('Checklist item key exceeds 50 characters');
+                }
+                if (typeof obj[key] !== 'boolean') {
+                    throw new Error('Checklist values must be boolean');
+                }
+            }
+            return true;
+        }),
     validate
 ];
 
@@ -42,6 +90,7 @@ const checkPassingCheck = [
 
 module.exports = {
     studentIdCheck,
+    saveChecklistCheck,
     feedbackCheck,
     checkPassingCheck
 };

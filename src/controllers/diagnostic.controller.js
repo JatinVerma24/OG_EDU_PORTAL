@@ -44,21 +44,17 @@ class DiagnosticController {
         }
     }
 
-    // GET /api/live (Liveness probe for K8s)
+    // GET /api/live (Liveness probe)
     async getLive(req, res) {
         const liveStats = {
             status: 'UP',
-            uptime: process.uptime(),
-            cpu: process.cpuUsage(),
-            memory: process.memoryUsage(),
-            pid: process.pid,
-            platform: process.platform,
-            nodeVersion: process.version
+            uptime: Math.floor(process.uptime()),
+            timestamp: new Date().toISOString()
         };
         return success(res, 'Server is running', liveStats, 200);
     }
 
-    // GET /api/ready (Readiness probe for K8s)
+    // GET /api/ready (Readiness probe)
     async getReady(req, res) {
         const dbState = mongoose.connection.readyState;
         const redisState = redisConfig.getRedisStatus();
@@ -67,17 +63,8 @@ class DiagnosticController {
 
         const statusDetails = {
             ready: isReady,
-            database: {
-                status: dbState === 1 ? 'connected' : 'disconnected',
-                readyState: dbState
-            },
-            redis: {
-                status: redisState.connected ? 'connected' : 'disconnected'
-            },
-            geminiApiKey: process.env.GEMINI_API_KEY ? 'configured' : 'missing',
-            firebase: {
-                status: 'ready' // Firebase client uses HTTP SDK triggers on demand
-            }
+            database: dbState === 1 ? 'ready' : 'unavailable',
+            cache: redisState.connected ? 'ready' : 'standalone'
         };
 
         if (isReady) {
