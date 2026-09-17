@@ -2,72 +2,248 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ogedu-portal.vercel.app/</loc>
+    <lastmod>2026-09-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://ogedu-portal.vercel.app/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <loc>https://ogedu-portal.vercel.app/tools/cgpa-calculator</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://ogedu-portal.vercel.app/contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <loc>https://ogedu-portal.vercel.app/tools/tgpa-calculator</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://ogedu-portal.vercel.app/privacy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
+    <loc>https://ogedu-portal.vercel.app/tools/pass-fail-checker</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://ogedu-portal.vercel.app/terms</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
+    <loc>https://ogedu-portal.vercel.app/tools/attendance-calculator</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://ogedu-portal.vercel.app/disclaimer</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://ogedu-portal.vercel.app/cookie-policy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://ogedu-portal.vercel.app/refund-policy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://ogedu-portal.vercel.app/blog</loc>
+    <loc>https://ogedu-portal.vercel.app/senior/dashboard.html</loc>
+    <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://ogedu-portal.vercel.app/blog/lpu-scholarships-admissions-guide-2026</loc>
+    <loc>https://ogedu-portal.vercel.app/youtube-study-hub</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/sih</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/resources</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/lpu-notes</loc>
+    <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://ogedu-portal.vercel.app/blog/cuet-2026-counselling-prep-tips</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://ogedu-portal.vercel.app/blog/careers-courses-choices-2026</loc>
+    <loc>https://ogedu-portal.vercel.app/findoglaptop/</loc>
+    <lastmod>2026-09-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://ogedu-portal.vercel.app/cuet/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/python-notes/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/cgpa-calculation-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/tgpa-sgpa-calculation-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/attendance-calculation-and-target-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/university-exam-pass-criteria-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/reappear-and-improvement-strategy-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/cse-roadmap-first-year-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/dsa-learning-roadmap-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/dbms-fundamentals-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/operating-systems-study-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/computer-networks-study-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/python-programming-beginners-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/placement-preparation-roadmap-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/laptop-buying-guide-for-engineering-students</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/effective-semester-exam-preparation-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/hackathon-preparation-and-pitching-guide</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/lpu-scholarships-admissions-guide-2026</loc>
+    <lastmod>2026-09-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://ogedu-portal.vercel.app/findoglaptop/</loc>
+    <loc>https://ogedu-portal.vercel.app/blog/cuet-2026-counselling-prep-tips</loc>
+    <lastmod>2026-09-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/blog/careers-courses-choices-2026</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/editorial-policy</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/about</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/contact</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/privacy-policy</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/privacy</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/terms</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/disclaimer</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/cookie-policy</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://ogedu-portal.vercel.app/refund-policy</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
   </url>
 </urlset>

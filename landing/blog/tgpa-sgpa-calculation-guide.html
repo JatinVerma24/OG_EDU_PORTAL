@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2034578803232828"
+         crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZT0FTDEWMH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZT0FTDEWMH');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How TGPA and SGPA Are Calculated: Grade Points, Letter Grades & Credit Multipliers | OGEDU AI</title>
+    <meta name="description" content="A comprehensive explanation of how Term Grade Point Average (TGPA) and Semester Grade Point Average (SGPA) are computed using the UGC 10-point letter grade system.">
+    <link rel="canonical" href="https://ogedu-portal.vercel.app/blog/tgpa-sgpa-calculation-guide">
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:title" content="How TGPA and SGPA Are Calculated: Grade Points, Letter Grades & Credit Multipliers | OGEDU AI">
+    <meta property="og:description" content="A comprehensive explanation of how Term Grade Point Average (TGPA) and Semester Grade Point Average (SGPA) are computed using the UGC 10-point letter grade system.">
+    <meta property="og:url" content="https://ogedu-portal.vercel.app/blog/tgpa-sgpa-calculation-guide">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="OGEDU AI">
+
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How TGPA and SGPA Are Calculated: Grade Points, Letter Grades & Credit Multipliers",
+      "author": {
+        "@type": "Person",
+        "name": "OG Jatin Verma",
+        "url": "https://www.instagram.com/ogjatinverma/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "OGEDU AI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ogedu-portal.vercel.app/logo.png"
+        }
+      },
+      "datePublished": "2026-07-01",
+      "dateModified": "2026-07-16",
+      "description": "A comprehensive explanation of how Term Grade Point Average (TGPA) and Semester Grade Point Average (SGPA) are computed using the UGC 10-point letter grade system.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://ogedu-portal.vercel.app/blog/tgpa-sgpa-calculation-guide"
+      }
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <style>
+        :root {
+            --primary-orange: #f97316;
+            --primary-purple: #8b5cf6;
+            --bg-color: #030712;
+            --panel-bg: rgba(10, 15, 30, 0.7);
+            --border-color: rgba(255, 255, 255, 0.06);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --radius-lg: 32px;
+            --radius-md: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        /* Tech Grid Overlay */
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+            mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            font-size: 1.3rem;
+            color: var(--primary-orange);
+            background: linear-gradient(135deg, var(--primary-orange), #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .logo-title span { color: var(--primary-orange); }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: rgba(249, 115, 22, 0.1);
+            border-color: var(--primary-orange);
+        }
+
+        .layout-container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 48px 24px 80px 24px;
+            display: grid;
+            grid-template-cols: 260px 1fr;
+            gap: 40px;
+            z-index: 10;
+        }
+
+        .toc-sidebar { position: sticky; top: 100px; height: fit-content; }
+        .toc-box {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .toc-box h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: var(--primary-orange);
+        }
+        .toc-box ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .toc-box a { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: var(--transition); }
+        .toc-box a:hover { color: var(--primary-orange); padding-left: 2px; }
+
+        .article-content {
+            background: var(--panel-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .breadcrumbs { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; }
+        .breadcrumbs a:hover { color: var(--primary-orange); }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .category-badge {
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--primary-orange);
+            border: 1px solid rgba(249, 115, 22, 0.25);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .lead-box {
+            background: rgba(249, 115, 22, 0.05);
+            border-left: 4px solid var(--primary-orange);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+            color: #fed7aa;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #fed7aa;
+        }
+
+        p { margin-bottom: 18px; color: var(--text-secondary); font-size: 0.95rem; }
+
+        ul, ol { margin-bottom: 24px; padding-left: 24px; color: var(--text-secondary); font-size: 0.95rem; }
+        li { margin-bottom: 8px; }
+
+        .formula-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(249, 115, 22, 0.25);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .formula-title { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--primary-orange); margin-bottom: 8px; letter-spacing: 0.5px; }
+        .formula-math { font-size: 1.25rem; font-family: monospace; color: #fff; margin: 12px 0; }
+        .formula-legend { font-size: 0.85rem; color: var(--text-muted); text-align: left; margin-top: 12px; border-top: 1px solid var(--border-color); padding-top: 12px; }
+
+        .calc-callout {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 20px 0;
+            font-family: monospace;
+            color: #fcd34d;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 24px 0;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .academic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            text-align: left;
+        }
+        .academic-table th {
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            padding: 14px 16px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .academic-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+        }
+        .academic-table tr:hover td { background: rgba(255, 255, 255, 0.015); }
+        .table-summary-row td {
+            background: rgba(249, 115, 22, 0.06);
+            color: #fff;
+            font-weight: 700;
+            border-top: 1px solid rgba(249, 115, 22, 0.2);
+        }
+
+        .faq-accordion { margin: 24px 0; display: flex; flex-direction: column; gap: 16px; }
+        .faq-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px 20px;
+        }
+        .faq-item h4 { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .faq-item p { margin: 0; font-size: 0.88rem; color: var(--text-secondary); }
+
+        .tool-banner {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(139, 92, 246, 0.12));
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 20px;
+            padding: 32px;
+            margin-top: 48px;
+            text-align: center;
+        }
+        .tool-banner h3 { color: #fff; font-size: 1.35rem; margin-bottom: 8px; font-weight: 800; }
+        .tool-banner p { color: var(--text-secondary); font-size: 0.9rem; max-width: 500px; margin: 0 auto 20px auto; }
+        .tool-link-btn {
+            display: inline-block;
+            background: var(--primary-orange);
+            color: #030712;
+            font-weight: 800;
+            font-size: 0.88rem;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .tool-link-btn:hover { background: #ea580c; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(249, 115, 22, 0.3); }
+
+        .author-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-color);
+        }
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: #fff;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .author-info h4 { color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
+        .author-info p { margin: 0; font-size: 0.8rem; color: var(--text-muted); }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.95);
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: auto;
+        }
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; transition: var(--transition); }
+        .footer-links a:hover { color: var(--primary-orange); }
+
+        @media (max-width: 860px) {
+            .layout-container { grid-template-columns: 1fr; padding: 24px 16px; }
+            .toc-sidebar { display: none; }
+            .article-content { padding: 24px 20px; border-radius: 20px; }
+            h1 { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-area">
+                <i class="fa-solid fa-bolt logo-icon"></i>
+                <div class="logo-title">OGEDU<span>AI</span></div>
+            </a>
+            <a href="/blog" class="back-btn"><i class="fa-solid fa-arrow-left"></i> All Guides</a>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <!-- Sidebar Table of Contents -->
+        <aside class="toc-sidebar">
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#tgpa-definition">What is TGPA / SGPA?</a></li>
+                <li><a href="#letter-grade-scale">The UGC 10-Point Letter Grade Scale</a></li>
+                <li><a href="#step-by-step">Step-by-Step Calculation Method</a></li>
+                <li><a href="#worked-example">Worked Example with Subject Breakdown</a></li>
+                <li><a href="#faqs">Frequently Asked Questions</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Article Content -->
+        <article class="article-content">
+            <nav class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/blog">Guides</a> <span>/</span>
+                <span>Grading Guide</span>
+            </nav>
+
+            <div class="article-meta">
+                <span class="category-badge">Grading Guide</span>
+                <span><i class="fa-regular fa-calendar"></i> July 03, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+                <span><i class="fa-regular fa-user"></i> OG Jatin Verma</span>
+            </div>
+
+            <h1>How TGPA and SGPA Are Calculated: Grade Points, Letter Grades & Credit Multipliers</h1>
+
+            
+            <div class="lead-box">
+                <p><strong>Term Grade Point Average (TGPA)</strong>—also referred to as <strong>Semester Grade Point Average (SGPA)</strong>—reflects a student's academic standing during an individual semester. Learn how letter grades map to numerical grade points and how course credits determine your final semester standing.</p>
+            </div>
+
+            <h2 id="tgpa-definition">1. What is TGPA / SGPA?</h2>
+            <p>While CGPA measures your cumulative record across your entire degree, TGPA/SGPA measures your performance strictly within a single semester. It forms the atomic building block from which your overall CGPA is derived.</p>
+
+            <h2 id="letter-grade-scale">2. The UGC 10-Point Letter Grade Scale</h2>
+            <p>The University Grants Commission recommends a standardized 10-point absolute or relative grading scale. Each letter grade corresponds to a specific numerical grade point:</p>
+
+            <div class="table-responsive">
+                <table class="academic-table">
+                    <thead>
+                        <tr>
+                            <th>Letter Grade</th>
+                            <th>Description</th>
+                            <th>Grade Point ($G$)</th>
+                            <th>Typical Marks Band (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>O</code></td><td>Outstanding</td><td>10</td><td>90% - 100%</td></tr>
+                        <tr><td><code>A+</code></td><td>Excellent</td><td>9</td><td>80% - 89%</td></tr>
+                        <tr><td><code>A</code></td><td>Very Good</td><td>8</td><td>70% - 79%</td></tr>
+                        <tr><td><code>B+</code></td><td>Good</td><td>7</td><td>60% - 69%</td></tr>
+                        <tr><td><code>B</code></td><td>Above Average</td><td>6</td><td>55% - 59%</td></tr>
+                        <tr><td><code>C</code></td><td>Average</td><td>5</td><td>50% - 54%</td></tr>
+                        <tr><td><code>P</code></td><td>Pass</td><td>4</td><td>40% - 49%</td></tr>
+                        <tr><td><code>F</code></td><td>Fail</td><td>0</td><td>Below 40%</td></tr>
+                        <tr><td><code>Ab</code></td><td>Absent</td><td>0</td><td>Absent in Exam</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 id="step-by-step">3. Step-by-Step Calculation Method</h2>
+            <p>To calculate your TGPA for any semester:</p>
+            <ol>
+                <li>List each registered subject along with its allotted <strong>course credits ($C_j$)</strong>.</li>
+                <li>Obtain the <strong>numerical grade point ($G_j$)</strong> corresponding to the letter grade earned.</li>
+                <li>Multiply the credits by the grade point to calculate <strong>Credit Points ($CP_j = C_j \times G_j$)</strong>.</li>
+                <li>Sum the credit points across all subjects: $\sum CP_j$.</li>
+                <li>Divide by the total registered credits for the semester: $\sum C_j$.</li>
+            </ol>
+
+            <div class="formula-box">
+                <div class="formula-title">TGPA / SGPA Equation</div>
+                <div class="formula-math">$$\text{TGPA} = \frac{\sum_{j=1}^{m} (C_j \times G_j)}{\sum_{j=1}^{m} C_j}$$</div>
+            </div>
+
+            <h2 id="worked-example">4. Worked Example with Subject Breakdown</h2>
+            <p>Consider a 3rd-semester Computer Science student taking 5 theory courses and 2 lab courses:</p>
+
+            <div class="table-responsive">
+                <table class="academic-table">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Credits ($C_j$)</th>
+                            <th>Letter Grade</th>
+                            <th>Grade Point ($G_j$)</th>
+                            <th>Credit Points ($C_j \times G_j$)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Data Structures & Algorithms</td><td>4</td><td>A+</td><td>9</td><td>$4 \times 9 = 36$</td></tr>
+                        <tr><td>Discrete Mathematics</td><td>4</td><td>A</td><td>8</td><td>$4 \times 8 = 32$</td></tr>
+                        <tr><td>Computer Organization</td><td>3</td><td>B+</td><td>7</td><td>$3 \times 7 = 21$</td></tr>
+                        <tr><td>Object Oriented Programming</td><td>3</td><td>O</td><td>10</td><td>$3 \times 10 = 30$</td></tr>
+                        <tr><td>Technical Communication</td><td>2</td><td>A</td><td>8</td><td>$2 \times 8 = 16$</td></tr>
+                        <tr><td>DSA Laboratory</td><td>1.5</td><td>O</td><td>10</td><td>$1.5 \times 10 = 15$</td></tr>
+                        <tr><td>OOP Laboratory</td><td>1.5</td><td>A+</td><td>9</td><td>$1.5 \times 9 = 13.5$</td></tr>
+                        <tr class="table-summary-row">
+                            <td><strong>Total</strong></td>
+                            <td><strong>19 Credits</strong></td>
+                            <td>&mdash;</td>
+                            <td>&mdash;</td>
+                            <td><strong>163.5 Points</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="calc-callout">
+                $$\text{TGPA} = \frac{163.5}{19} = \mathbf{8.605} \approx \mathbf{8.61}$$
+            </div>
+
+            <h2 id="faqs">5. Frequently Asked Questions</h2>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <h4>Is relative grading better than absolute grading?</h4>
+                    <p>In tough engineering courses, relative grading adjusts cutoffs according to batch performance, ensuring that an abnormally difficult paper does not artificially depress the entire cohort's grades.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What happens if I get an 'F' in a 1-credit lab vs a 4-credit theory course?</h4>
+                    <p>Failing a 4-credit course costs you up to 40 credit points, which severely damages your TGPA. Failing a 1-credit lab costs at most 10 credit points, though both will require a re-appear exam.</p>
+                </div>
+            </div>
+
+            <div class="tool-banner">
+                <h3>Calculate Your Semester Grades Now</h3>
+                <p>Use our interactive TGPA Calculator to test grade combinations and plan your study targets.</p>
+                <a href="/tools/tgpa-calculator" class="tool-link-btn">Open TGPA Calculator &rarr;</a>
+            </div>
+        
+
+            <!-- Author Box -->
+            <div class="author-card">
+                <div class="author-avatar">JV</div>
+                <div class="author-info">
+                    <h4>Written by Jatin Verma</h4>
+                    <p>Full-Stack Developer, Founder of OGEDU AI. Specializing in educational software tools, university grade calculations, and student productivity systems.</p>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/tools/cgpa-calculator">CGPA Calculator</a>
+            <a href="/tools/tgpa-calculator">TGPA Calculator</a>
+            <a href="/tools/pass-fail-checker">Pass/Fail Checker</a>
+            <a href="/editorial-policy">Editorial Policy</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms">Terms</a>
+        </div>
+        <p>&copy; 2026 OGEDU AI. Free Academic Knowledge Base. All rights reserved.</p>
+    </footer>
+</body>
+</html>

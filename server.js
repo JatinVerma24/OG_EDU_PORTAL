@@ -221,6 +221,67 @@ app.get('/clear-data', (req, res) => {
     `);
 });
 
+// ── DEDICATED COMPLIANCE & TOOL ROUTES ───────────────────────────────────────
+
+// Google AdSense crawler verification
+app.get('/ads.txt', (req, res) => {
+    res.type('text/plain; charset=utf-8');
+    res.sendFile(path.join(__dirname, 'landing', 'ads.txt'));
+});
+
+// Legal and policy routes
+app.get(['/privacy', '/privacy-policy', '/privacy.html'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'privacy.html'));
+});
+app.get(['/editorial-policy', '/editorial-policy.html'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'editorial-policy.html'));
+});
+app.get(['/about', '/about.html'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'about.html'));
+});
+app.get(['/contact', '/contact.html'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'contact.html'));
+});
+app.get(['/terms', '/terms.html'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'terms.html'));
+});
+app.get(['/disclaimer', '/disclaimer.html'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'disclaimer.html'));
+});
+app.get(['/cookie-policy', '/cookie-policy.html'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'cookie-policy.html'));
+});
+app.get(['/refund-policy', '/refund-policy.html'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'refund-policy.html'));
+});
+
+// Standalone Academic Tools
+app.get(['/tools/cgpa-calculator', '/tools/cgpa-calculator/'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'tools', 'cgpa-calculator.html'));
+});
+app.get(['/tools/tgpa-calculator', '/tools/tgpa-calculator/'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'tools', 'tgpa-calculator.html'));
+});
+app.get(['/tools/pass-fail-checker', '/tools/pass-fail-checker/'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'tools', 'pass-fail-checker.html'));
+});
+app.get(['/tools/attendance-calculator', '/tools/attendance-calculator/'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'tools', 'attendance-calculator.html'));
+});
+
+// Blog & Guides Routes
+app.get(['/blog', '/blog/'], (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'blog.html'));
+});
+app.get('/blog/:slug', (req, res, next) => {
+    const safeSlug = req.params.slug.replace(/[^a-zA-Z0-9_-]/g, '');
+    const slugFile = path.join(__dirname, 'landing', 'blog', `${safeSlug}.html`);
+    if (fs.existsSync(slugFile)) {
+        return res.sendFile(slugFile);
+    }
+    next();
+});
+
 // ── STATIC FILE SERVING & ROUTING ───────────────────────────────────────────
 
 // Serve landing page at / with clean html route fallbacks
@@ -346,10 +407,19 @@ app.get('/youtube-study-hub/*', (req, res) => {
     res.status(404).send('Page not found');
 });
 
-// Root fallback to landing page index.html
+// Root route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'landing', 'index.html'));
+});
+
+// 404 fallback for unhandled web routes
 app.get('*', (req, res, next) => {
     if (req.path.startsWith('/api/')) return next();
-    res.sendFile(path.join(__dirname, 'landing', 'index.html'));
+    const notFoundFile = path.join(__dirname, 'landing', '404.html');
+    if (fs.existsSync(notFoundFile)) {
+        return res.status(404).sendFile(notFoundFile);
+    }
+    res.status(404).send('Page not found');
 });
 
 // ── ERROR & 404 MIDDLEWARE ──────────────────────────────────────────────────

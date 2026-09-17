@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Page Not Found | OGEDU AI</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="The page you requested could not be found. Explore OGEDU AI academic tools, GPA calculators, YouTube study hub, or student guides.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <style>
+        :root {
+            --primary-orange: #f97316;
+            --primary-purple: #8b5cf6;
+            --bg-color: #030712;
+            --panel-bg: rgba(10, 15, 30, 0.7);
+            --border-color: rgba(255, 255, 255, 0.06);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --radius-lg: 32px;
+            --radius-md: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+            mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 99;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            font-size: 1.3rem;
+            color: var(--primary-orange);
+            background: linear-gradient(135deg, var(--primary-orange), #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-title span {
+            color: var(--primary-orange);
+        }
+
+        main {
+            flex: 1;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 80px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .error-code {
+            font-family: 'Outfit', sans-serif;
+            font-size: 6rem;
+            font-weight: 900;
+            letter-spacing: -3px;
+            line-height: 1;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        p.desc {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 36px;
+            max-width: 540px;
+        }
+
+        .quick-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .quick-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-card:hover {
+            border-color: var(--primary-orange);
+            transform: translateY(-2px);
+            background: rgba(249, 115, 22, 0.05);
+        }
+
+        .quick-card i {
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 4px;
+        }
+
+        .quick-card h2 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .quick-card span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .btn-home {
+            background: var(--primary-orange);
+            color: #030712;
+            padding: 12px 28px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-home:hover {
+            background: #ea580c;
+            transform: scale(1.03);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: #02040a;
+            padding: 30px 24px;
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-area">
+                <i class="fa-solid fa-graduation-cap logo-icon"></i>
+                <div class="logo-title">OGEDU <span>AI</span></div>
+            </a>
+            <a href="/" class="btn-home" style="padding: 6px 16px; font-size: 0.8rem;"><i class="fa-solid fa-house"></i> Home</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="error-code">404</div>
+        <h1>Resource or Page Not Found</h1>
+        <p class="desc">The link you followed may be outdated, moved, or misspelled. Use the shortcuts below to find what you're looking for:</p>
+
+        <div class="quick-nav-grid">
+            <a href="/senior" class="quick-card">
+                <i class="fa-solid fa-calculator"></i>
+                <h2>Academic Calculators</h2>
+                <span>TGPA, CGPA & Attendance</span>
+            </a>
+            <a href="/youtube-study-hub" class="quick-card">
+                <i class="fa-brands fa-youtube"></i>
+                <h2>Study Hub</h2>
+                <span>B.Tech & BBA Channels</span>
+            </a>
+            <a href="/resources" class="quick-card">
+                <i class="fa-solid fa-book"></i>
+                <h2>Notes Vault</h2>
+                <span>Syllabi, Slides & Question Banks</span>
+            </a>
+            <a href="/blog" class="quick-card">
+                <i class="fa-solid fa-newspaper"></i>
+                <h2>Student Guides</h2>
+                <span>Roadmaps & Exam Strategies</span>
+            </a>
+        </div>
+
+        <a href="/" class="btn-home"><i class="fa-solid fa-arrow-left"></i> Return to Homepage</a>
+    </main>
+
+    <footer>
+        &copy; 2026 OGEDU AI. An open-access educational platform built for university students.
+    </footer>
+</body>
+</html>

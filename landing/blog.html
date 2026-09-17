@@ -14,8 +14,32 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OGEDU AI - Student Guides & Blog Directory</title>
-    <meta name="description" content="Read expert counseling, scholarship guides, and academic hacks. Learn about DU CSAS registration, LPUNEST details, and reporting guidelines.">
+    <title>Academic Guides, Grading Roadmaps & Technical Playbooks | OGEDU AI</title>
+    <meta name="description" content="Explore verified university guides: CGPA/TGPA calculations, 75% attendance recovery rules, CS subject roadmaps, SIH hackathon playbooks, and placement strategies.">
+    <link rel="canonical" href="https://ogedu-portal.vercel.app/blog">
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:title" content="Academic Guides & Student Knowledge Base | OGEDU AI">
+    <meta property="og:description" content="Free open-access educational guides on university grading rules, continuous assessment, core computer science, and career roadmaps.">
+    <meta property="og:url" content="https://ogedu-portal.vercel.app/blog">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="OGEDU AI">
+
+    <!-- JSON-LD Collection Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "OGEDU AI Academic Guides Directory",
+      "description": "Comprehensive library of verified academic guides, grading equations, computer science fundamentals, and student career playbooks.",
+      "url": "https://ogedu-portal.vercel.app/blog",
+      "publisher": {
+        "@type": "Organization",
+        "name": "OGEDU AI",
+        "url": "https://ogedu-portal.vercel.app"
+      }
+    }
+    </script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -166,7 +190,7 @@
         .blog-hero p {
             color: var(--text-secondary);
             font-size: 1.05rem;
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
             line-height: 1.6;
         }
@@ -188,7 +212,7 @@
 
         .search-box {
             position: relative;
-            max-width: 360px;
+            max-width: 320px;
             width: 100%;
         }
 
@@ -247,7 +271,7 @@
         /* Blogs Grid */
         .blogs-grid {
             display: grid;
-            grid-template-cols: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-cols: repeat(auto-fill, minmax(340px, 1fr));
             gap: 32px;
         }
 
@@ -269,14 +293,14 @@
         }
 
         .blog-img {
-            height: 220px;
+            height: 180px;
             background: linear-gradient(135deg, #1e1b4b, #311042);
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3.5rem;
-            color: rgba(255,255,255,0.15);
+            font-size: 3rem;
+            color: rgba(255,255,255,0.18);
         }
 
         .blog-img::before {
@@ -288,8 +312,8 @@
 
         .blog-badge {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 16px;
+            left: 16px;
             background: rgba(3, 7, 18, 0.85);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255,255,255,0.08);
@@ -318,7 +342,7 @@
 
         .blog-card h2 {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 800;
             line-height: 1.4;
             margin-bottom: 12px;
@@ -353,8 +377,9 @@
             color: var(--primary-orange);
             text-decoration: none;
             border-top: 1px solid rgba(255,255,255,0.05);
-            padding: 18px 24px;
+            padding: 16px 24px;
             transition: var(--transition);
+            margin-top: auto;
         }
 
         .blog-card .read-btn:hover {
@@ -364,11 +389,29 @@
 
         footer {
             border-top: 1px solid var(--border-color);
-            background: rgba(3, 7, 18, 0.9);
-            padding: 32px 24px;
+            background: rgba(3, 7, 18, 0.95);
+            padding: 48px 24px 32px 24px;
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-orange);
         }
     </style>
 </head>
@@ -385,8 +428,8 @@
 
     <main>
         <div class="blog-hero">
-            <h1>Student Guide & Updates Directory</h1>
-            <p>Expert articles, counseling tips, and academic policies simplified by seniors. Avoid thin content guidelines and unlock clear reporting steps.</p>
+            <h1>Academic Guides & Student Knowledge Base</h1>
+            <p>Comprehensive university grading guides, core computer science exam notes, and student career playbooks written with transparency and precision.</p>
         </div>
 
         <!-- Filter controls -->
@@ -396,46 +439,214 @@
                 <input type="text" id="blog-search" placeholder="Search guides..." oninput="filterBlogs()" />
             </div>
             <div class="filter-buttons">
-                <button class="filter-btn active" onclick="setCategory('all', this)">All Guides</button>
-                <button class="filter-btn" onclick="setCategory('admissions', this)">LPU Admissions</button>
-                <button class="filter-btn" onclick="setCategory('counseling', this)">CUET Counseling</button>
-                <button class="filter-btn" onclick="setCategory('career', this)">Career Advice</button>
+                <button class="filter-btn active" onclick="setCategory('all', this)">All Guides (18)</button>
+                <button class="filter-btn" onclick="setCategory('academic-tools', this)">Grading & Rules</button>
+                <button class="filter-btn" onclick="setCategory('computer-science', this)">Computer Science</button>
+                <button class="filter-btn" onclick="setCategory('career', this)">Career & Placements</button>
+                <button class="filter-btn" onclick="setCategory('hackathons', this)">Hackathons</button>
+                <button class="filter-btn" onclick="setCategory('admissions', this)">Admissions & CUET</button>
             </div>
         </div>
 
         <!-- Articles list -->
         <div class="blogs-grid" id="articles-container">
-            <!-- Article 1 -->
-            <div class="blog-card" data-category="admissions">
+
+            <!-- Card: cgpa-calculation-guide -->
+            <div class="blog-card" data-category="academic-tools">
                 <div class="blog-img">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                    <span class="blog-badge">LPU Admissions</span>
+                    <i class="fa-solid fa-calculator"></i>
+                    <span class="blog-badge">Grading Guide</span>
                 </div>
                 <div class="blog-meta">
-                    <span><i class="fa-regular fa-calendar"></i> June 25, 2026</span>
-                    <span><i class="fa-regular fa-clock"></i> 5 Min Read</span>
+                    <span><i class="fa-regular fa-calendar"></i> July 02, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 7 Min Read</span>
                 </div>
-                <h2><a href="/blog/lpu-scholarships-admissions-guide-2026">LPU Scholarships & Induction reporting guide</a></h2>
-                <p>Learn what documents are mandatory for reporting, how hostel allocations are distributed, and how to verify your LPUNEST scholarship slabs.</p>
-                <a href="/blog/lpu-scholarships-admissions-guide-2026" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+                <h2><a href="/blog/cgpa-calculation-guide">Complete Guide to CGPA Calculation in Indian Universities (CBCS System)</a></h2>
+                <p>Learn how Cumulative Grade Point Average (CGPA) is calculated using UGC Choice-Based Credit System (CBCS) credit weights, formulas, and conversion scales.</p>
+                <a href="/blog/cgpa-calculation-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
             </div>
 
-            <!-- Article 2 -->
-            <div class="blog-card" data-category="counseling">
+            <!-- Card: tgpa-sgpa-calculation-guide -->
+            <div class="blog-card" data-category="academic-tools">
                 <div class="blog-img">
-                    <i class="fa-solid fa-square-poll-vertical"></i>
-                    <span class="blog-badge">CUET Counseling</span>
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span class="blog-badge">Grading Guide</span>
                 </div>
                 <div class="blog-meta">
-                    <span><i class="fa-regular fa-calendar"></i> June 24, 2026</span>
+                    <span><i class="fa-regular fa-calendar"></i> July 03, 2026</span>
                     <span><i class="fa-regular fa-clock"></i> 6 Min Read</span>
                 </div>
-                <h2><a href="/blog/cuet-2026-counselling-prep-tips">CUET 2026 Central University Counseling Strategy</a></h2>
-                <p>Complete roadmap for DU CSAS preference list configurations, upgrade/freeze choices, and documents needed for BHU or JNU allocations.</p>
-                <a href="/blog/cuet-2026-counselling-prep-tips" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+                <h2><a href="/blog/tgpa-sgpa-calculation-guide">How TGPA and SGPA Are Calculated: Grade Points, Letter Grades & Credit Multipliers</a></h2>
+                <p>A comprehensive explanation of how Term Grade Point Average (TGPA) and SGPA are computed using the UGC 10-point letter grade system.</p>
+                <a href="/blog/tgpa-sgpa-calculation-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
             </div>
 
-            <!-- Article 3 -->
+            <!-- Card: attendance-calculation-and-target-guide -->
+            <div class="blog-card" data-category="academic-tools">
+                <div class="blog-img">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span class="blog-badge">Attendance Rule</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 04, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 6 Min Read</span>
+                </div>
+                <h2><a href="/blog/attendance-calculation-and-target-guide">University 75% Attendance Rule Explained: Formulas, Margins & Recovery Strategies</a></h2>
+                <p>How to calculate your university attendance percentage, find how many classes you can skip, and calculate exact classes needed to reach 75%.</p>
+                <a href="/blog/attendance-calculation-and-target-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: university-exam-pass-criteria-guide -->
+            <div class="blog-card" data-category="academic-tools">
+                <div class="blog-img">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <span class="blog-badge">Exam Rules</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 05, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 5 Min Read</span>
+                </div>
+                <h2><a href="/blog/university-exam-pass-criteria-guide">Understanding University Exam Passing Criteria: End-Term Minimums vs Aggregates</a></h2>
+                <p>Demystifying the 30% End-Term rule, 40% aggregate threshold, and continuous assessment breakdown in university grading.</p>
+                <a href="/blog/university-exam-pass-criteria-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: reappear-and-improvement-strategy-guide -->
+            <div class="blog-card" data-category="academic-tools">
+                <div class="blog-img">
+                    <i class="fa-solid fa-arrow-rotate-right"></i>
+                    <span class="blog-badge">Academic Recovery</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 06, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 6 Min Read</span>
+                </div>
+                <h2><a href="/blog/reappear-and-improvement-strategy-guide">Backlogs, Reappear Exams & Grade Improvement: A Senior's Practical Guide</a></h2>
+                <p>A practical, calm guide to clearing university backlogs, navigating re-evaluation processes, and improving your CGPA for placement eligibility.</p>
+                <a href="/blog/reappear-and-improvement-strategy-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: effective-semester-exam-preparation-guide -->
+            <div class="blog-card" data-category="academic-tools">
+                <div class="blog-img">
+                    <i class="fa-solid fa-award"></i>
+                    <span class="blog-badge">Exam Strategy</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 15, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 6 Min Read</span>
+                </div>
+                <h2><a href="/blog/effective-semester-exam-preparation-guide">How to Score 9+ CGPA in University Semester Exams: 30-Day Blueprint</a></h2>
+                <p>A tactical guide to scoring 9+ CGPA in semester exams: analyzing previous year questions (PYQs), the 80/20 rule, and answer presentation techniques.</p>
+                <a href="/blog/effective-semester-exam-preparation-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: cse-roadmap-first-year-guide -->
+            <div class="blog-card" data-category="computer-science">
+                <div class="blog-img">
+                    <i class="fa-solid fa-code"></i>
+                    <span class="blog-badge">CS Roadmap</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 07, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 8 Min Read</span>
+                </div>
+                <h2><a href="/blog/cse-roadmap-first-year-guide">First-Year Computer Science Engineering Roadmap: From Scratch to Technical Readiness</a></h2>
+                <p>A complete step-by-step roadmap for first-year CSE students covering programming fundamentals, version control, core subjects, and project development.</p>
+                <a href="/blog/cse-roadmap-first-year-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: dsa-learning-roadmap-guide -->
+            <div class="blog-card" data-category="computer-science">
+                <div class="blog-img">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span class="blog-badge">DSA Guide</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 08, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 9 Min Read</span>
+                </div>
+                <h2><a href="/blog/dsa-learning-roadmap-guide">Data Structures & Algorithms (DSA) Roadmap: Topic Sequence & Practice Strategy</a></h2>
+                <p>A proven sequence to master DSA: from basic arrays and two-pointer techniques to dynamic programming, graphs, and technical interview readiness.</p>
+                <a href="/blog/dsa-learning-roadmap-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: dbms-fundamentals-guide -->
+            <div class="blog-card" data-category="computer-science">
+                <div class="blog-img">
+                    <i class="fa-solid fa-database"></i>
+                    <span class="blog-badge">Core CS</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 09, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 7 Min Read</span>
+                </div>
+                <h2><a href="/blog/dbms-fundamentals-guide">Database Management Systems (DBMS) Study Guide: ER Diagrams & Normalization</a></h2>
+                <p>A complete semester revision guide for DBMS: Entity-Relationship modeling, 1NF to BCNF normalization, ACID properties, and indexing.</p>
+                <a href="/blog/dbms-fundamentals-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: operating-systems-study-guide -->
+            <div class="blog-card" data-category="computer-science">
+                <div class="blog-img">
+                    <i class="fa-solid fa-microchip"></i>
+                    <span class="blog-badge">Core CS</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 10, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 8 Min Read</span>
+                </div>
+                <h2><a href="/blog/operating-systems-study-guide">Operating Systems Core Concepts: Processes, Threads & Concurrency</a></h2>
+                <p>A clear exam-focused study guide on Operating Systems: CPU scheduling algorithms, process synchronization, Banker's algorithm, and virtual memory paging.</p>
+                <a href="/blog/operating-systems-study-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: computer-networks-study-guide -->
+            <div class="blog-card" data-category="computer-science">
+                <div class="blog-img">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <span class="blog-badge">Core CS</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 11, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 7 Min Read</span>
+                </div>
+                <h2><a href="/blog/computer-networks-study-guide">Computer Networks Simplified: OSI Model, TCP/IP & Subnetting Guide</a></h2>
+                <p>A complete tutorial on Computer Networks: 7-layer OSI model, TCP 3-way handshake, IP subnetting calculations, and DNS routing.</p>
+                <a href="/blog/computer-networks-study-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: python-programming-beginners-guide -->
+            <div class="blog-card" data-category="computer-science">
+                <div class="blog-img">
+                    <i class="fa-solid fa-brands fa-python"></i>
+                    <span class="blog-badge">Programming</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 12, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 6 Min Read</span>
+                </div>
+                <h2><a href="/blog/python-programming-beginners-guide">Python Programming for Engineering Students: Core Syntax to Mini Projects</a></h2>
+                <p>A practical, structured guide to mastering Python: variables, collections, list comprehensions, exception handling, and hands-on lab projects.</p>
+                <a href="/blog/python-programming-beginners-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: placement-preparation-roadmap-guide -->
+            <div class="blog-card" data-category="career">
+                <div class="blog-img">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span class="blog-badge">Placements</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 13, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 8 Min Read</span>
+                </div>
+                <h2><a href="/blog/placement-preparation-roadmap-guide">Campus Placements Preparation Strategy: 6-Month Timeline for Engineers</a></h2>
+                <p>A realistic 6-month roadmap for campus placement readiness: aptitude, DSA interview patterns, core CS fundamentals, resume structure, and HR rounds.</p>
+                <a href="/blog/placement-preparation-roadmap-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: careers-courses-choices-2026 -->
             <div class="blog-card" data-category="career">
                 <div class="blog-img">
                     <i class="fa-solid fa-compass"></i>
@@ -449,11 +660,85 @@
                 <p>An inside look at engineering, management, and commerce career demands in 2026. Align your course choices with upcoming placement shifts.</p>
                 <a href="/blog/careers-courses-choices-2026" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
             </div>
+
+            <!-- Card: laptop-buying-guide-for-engineering-students -->
+            <div class="blog-card" data-category="hardware">
+                <div class="blog-img">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <span class="blog-badge">Hardware Guide</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 14, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 7 Min Read</span>
+                </div>
+                <h2><a href="/blog/laptop-buying-guide-for-engineering-students">Engineering Student Laptop Buying Guide (2026): Specs for Coding & CAD</a></h2>
+                <p>A hardware buying guide for engineering students: choosing the right CPU, RAM, dedicated GPU, display, and battery specs within your budget.</p>
+                <a href="/blog/laptop-buying-guide-for-engineering-students" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: hackathon-preparation-and-pitching-guide -->
+            <div class="blog-card" data-category="hackathons">
+                <div class="blog-img">
+                    <i class="fa-solid fa-trophy"></i>
+                    <span class="blog-badge">Hackathons</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> July 16, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 8 Min Read</span>
+                </div>
+                <h2><a href="/blog/hackathon-preparation-and-pitching-guide">Hackathon Preparation Playbook: From Problem Selection to Winning 6-Slide Pitch</a></h2>
+                <p>A complete playbook for winning college and national hackathons (like Smart India Hackathon SIH): team structure, MVP scoping, and pitch presentation structure.</p>
+                <a href="/blog/hackathon-preparation-and-pitching-guide" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: lpu-scholarships-admissions-guide-2026 -->
+            <div class="blog-card" data-category="admissions">
+                <div class="blog-img">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span class="blog-badge">LPU Admissions</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> June 25, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 5 Min Read</span>
+                </div>
+                <h2><a href="/blog/lpu-scholarships-admissions-guide-2026">LPU Scholarships & Induction Reporting Guide 2026</a></h2>
+                <p>Learn what documents are mandatory for reporting, how hostel allocations are distributed, and how to verify your LPUNEST scholarship slabs.</p>
+                <a href="/blog/lpu-scholarships-admissions-guide-2026" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
+
+            <!-- Card: cuet-2026-counselling-prep-tips -->
+            <div class="blog-card" data-category="counseling">
+                <div class="blog-img">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <span class="blog-badge">CUET Counseling</span>
+                </div>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> June 24, 2026</span>
+                    <span><i class="fa-regular fa-clock"></i> 6 Min Read</span>
+                </div>
+                <h2><a href="/blog/cuet-2026-counselling-prep-tips">CUET 2026 Central University Counseling Strategy</a></h2>
+                <p>Complete roadmap for DU CSAS preference list configurations, upgrade/freeze choices, and documents needed for BHU or JNU allocations.</p>
+                <a href="/blog/cuet-2026-counselling-prep-tips" class="read-btn">Read Full Article <i class="fa-solid fa-arrow-right-long"></i></a>
+            </div>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 OGEDU AI. DESIGNED BY JATIN VERMA FULL STACK DEVELOPER, CREATOR AND INFLUENCER. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/tools/cgpa-calculator">CGPA Calculator</a>
+            <a href="/tools/tgpa-calculator">TGPA Calculator</a>
+            <a href="/tools/pass-fail-checker">Pass/Fail Checker</a>
+            <a href="/tools/attendance-calculator">Attendance Calculator</a>
+            <a href="/editorial-policy">Editorial Policy</a>
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+            <a href="/disclaimer">Disclaimer</a>
+            <a href="/cookie-policy">Cookie Policy</a>
+        </div>
+        <p>&copy; 2026 OGEDU AI. Free Academic Knowledge Base. All rights reserved.</p>
     </footer>
 
     <script>
@@ -476,7 +761,9 @@
                 const category = card.getAttribute('data-category');
 
                 const matchesQuery = title.includes(query) || desc.includes(query);
-                const matchesCat = currentCategory === 'all' || category === currentCategory;
+                const matchesCat = currentCategory === 'all' || 
+                                   category === currentCategory || 
+                                   (currentCategory === 'admissions' && (category === 'admissions' || category === 'counseling'));
 
                 if (matchesQuery && matchesCat) {
                     card.style.display = 'flex';

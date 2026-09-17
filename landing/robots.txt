@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /senior/dashboard.html
-Disallow: /fresher/dashboard
+Disallow: /clear-data
 
 Sitemap: https://ogedu-portal.vercel.app/sitemap.xml

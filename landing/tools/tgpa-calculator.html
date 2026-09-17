@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2034578803232828" crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZT0FTDEWMH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZT0FTDEWMH');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGPA Calculator — Calculate Term & Semester GPA | OGEDU AI</title>
+    <meta name="description" content="Calculate your Term Grade Point Average (TGPA/SGPA) using official 10-point university credit grade scales. Free, fast, client-side academic calculator.">
+    <link rel="canonical" href="https://ogedu-portal.vercel.app/tools/tgpa-calculator">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="TGPA Calculator — Calculate Term & Semester GPA | OGEDU AI">
+    <meta property="og:description" content="Calculate your TGPA / SGPA using official 10-point university credit grade scales.">
+    <meta property="og:url" content="https://ogedu-portal.vercel.app/tools/tgpa-calculator">
+    <meta property="og:site_name" content="OGEDU AI">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "OGEDU TGPA Calculator",
+      "url": "https://ogedu-portal.vercel.app/tools/tgpa-calculator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "description": "Calculates Term Grade Point Average (TGPA/SGPA) from course credits and 10-point letter grades.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --primary-orange: #f97316;
+            --primary-purple: #8b5cf6;
+            --bg-color: #030712;
+            --panel-bg: rgba(15, 23, 42, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 99;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            font-size: 1.3rem;
+            color: var(--primary-orange);
+            background: linear-gradient(135deg, var(--primary-orange), #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-title span { color: var(--primary-orange); }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: rgba(249, 115, 22, 0.1);
+            border-color: var(--primary-orange);
+            color: var(--primary-orange);
+        }
+
+        main {
+            flex: 1;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px 24px 80px 24px;
+            z-index: 10;
+        }
+
+        .breadcrumbs {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .breadcrumbs a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumbs a:hover { color: var(--primary-orange); }
+
+        .tool-header {
+            margin-bottom: 36px;
+        }
+
+        .tool-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(249, 115, 22, 0.12);
+            color: var(--primary-orange);
+            border: 1px solid rgba(249, 115, 22, 0.25);
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .intro {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+
+        /* Calculator Interface Box */
+        .calculator-card {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(10, 15, 30, 0.9) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 48px;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+        }
+
+        .calc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .calc-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .calc-title i { color: var(--primary-orange); }
+
+        .subject-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 24px;
+        }
+
+        .subject-table th {
+            text-align: left;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .subject-table td {
+            padding: 10px 12px;
+            vertical-align: middle;
+        }
+
+        .input-box {
+            width: 100%;
+            background: rgba(3, 7, 18, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .input-box:focus {
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+        }
+
+        select.input-box {
+            cursor: pointer;
+        }
+
+        .btn-action {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-action:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .btn-calc {
+            background: linear-gradient(135deg, var(--primary-orange), #ea580c);
+            color: #030712;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 20px -5px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-calc:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px -5px rgba(249, 115, 22, 0.4);
+        }
+
+        .result-display {
+            background: rgba(3, 7, 18, 0.6);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .result-metric {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .result-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.75rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .result-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        /* Documentation & Content Sections */
+        .content-section {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        .content-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+        }
+
+        .content-section h2 i {
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+        }
+
+        .content-section p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+
+        .formula-box {
+            background: rgba(3, 7, 18, 0.9);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-left: 4px solid var(--primary-orange);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.05rem;
+            color: #fdba74;
+            overflow-x: auto;
+        }
+
+        .grade-scale-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin: 16px 0;
+            background: rgba(3, 7, 18, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .grade-scale-table th, .grade-scale-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .grade-scale-table th {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+        }
+
+        .faq-item:last-child { border-bottom: none; }
+
+        .faq-q {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .faq-a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .related-card {
+            background: rgba(3, 7, 18, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px;
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .related-card:hover {
+            border-color: var(--primary-orange);
+            transform: translateY(-2px);
+        }
+
+        .related-card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        .related-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: #02040a;
+            padding: 40px 24px;
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover { color: var(--primary-orange); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-area">
+                <i class="fa-solid fa-graduation-cap logo-icon"></i>
+                <div class="logo-title">OGEDU <span>AI</span></div>
+            </a>
+            <a href="/senior" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Full OGTOOLS Suite</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="/">Home</a> <span>/</span>
+            <a href="/senior">Academic Tools</a> <span>/</span>
+            <span>TGPA Calculator</span>
+        </div>
+
+        <div class="tool-header">
+            <div class="tool-badge"><i class="fa-solid fa-graduation-cap"></i> Term Grade Point Average</div>
+            <h1>TGPA & SGPA Calculator</h1>
+            <p class="intro">Calculate your Term / Semester Grade Point Average from individual subject credit hours and grade points. Built to match UGC Choice Based Credit System (CBCS) standards.</p>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- TOOL INTERFACE                                                            -->
+        <!-- ========================================================================= -->
+        <div class="calculator-card">
+            <div class="calc-header">
+                <div class="calc-title"><i class="fa-solid fa-book-bookmark"></i> Semester Course Matrix</div>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn-action" onclick="addCourseRow()"><i class="fa-solid fa-plus"></i> Add Course</button>
+                    <button class="btn-action" onclick="resetCourses()"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+                </div>
+            </div>
+
+            <table class="subject-table" id="courseTable">
+                <thead>
+                    <tr>
+                        <th style="width: 35%;">Course Name / Code</th>
+                        <th style="width: 25%;">Credits (C<sub>i</sub>)</th>
+                        <th style="width: 30%;">Grade Obtained</th>
+                        <th style="width: 10%;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="courseTableBody">
+                    <tr>
+                        <td><input type="text" class="input-box" value="Data Structures (CSE205)" placeholder="e.g. CSE205"></td>
+                        <td><input type="number" class="input-box cr-input" min="1" max="10" step="0.5" value="4" placeholder="Credits"></td>
+                        <td>
+                            <select class="input-box gr-select">
+                                <option value="10">O (Outstanding - 10)</option>
+                                <option value="9" selected>A+ (Excellent - 9)</option>
+                                <option value="8">A (Very Good - 8)</option>
+                                <option value="7">B+ (Good - 7)</option>
+                                <option value="6">B (Above Average - 6)</option>
+                                <option value="5">C (Average - 5)</option>
+                                <option value="4">D (Pass - 4)</option>
+                                <option value="0">F (Fail / Reappear - 0)</option>
+                            </select>
+                        </td>
+                        <td><button class="btn-action" onclick="removeCourseRow(this)" style="color: #ef4444;"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="input-box" value="Database Systems (INT306)" placeholder="e.g. INT306"></td>
+                        <td><input type="number" class="input-box cr-input" min="1" max="10" step="0.5" value="4" placeholder="Credits"></td>
+                        <td>
+                            <select class="input-box gr-select">
+                                <option value="10">O (Outstanding - 10)</option>
+                                <option value="9">A+ (Excellent - 9)</option>
+                                <option value="8" selected>A (Very Good - 8)</option>
+                                <option value="7">B+ (Good - 7)</option>
+                                <option value="6">B (Above Average - 6)</option>
+                                <option value="5">C (Average - 5)</option>
+                                <option value="4">D (Pass - 4)</option>
+                                <option value="0">F (Fail / Reappear - 0)</option>
+                            </select>
+                        </td>
+                        <td><button class="btn-action" onclick="removeCourseRow(this)" style="color: #ef4444;"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="input-box" value="Discrete Math (MTH401)" placeholder="e.g. MTH401"></td>
+                        <td><input type="number" class="input-box cr-input" min="1" max="10" step="0.5" value="4" placeholder="Credits"></td>
+                        <td>
+                            <select class="input-box gr-select">
+                                <option value="10">O (Outstanding - 10)</option>
+                                <option value="9">A+ (Excellent - 9)</option>
+                                <option value="8">A (Very Good - 8)</option>
+                                <option value="7" selected>B+ (Good - 7)</option>
+                                <option value="6">B (Above Average - 6)</option>
+                                <option value="5">C (Average - 5)</option>
+                                <option value="4">D (Pass - 4)</option>
+                                <option value="0">F (Fail / Reappear - 0)</option>
+                            </select>
+                        </td>
+                        <td><button class="btn-action" onclick="removeCourseRow(this)" style="color: #ef4444;"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="input-box" value="Python Lab (CSE211)" placeholder="e.g. CSE211"></td>
+                        <td><input type="number" class="input-box cr-input" min="1" max="10" step="0.5" value="2" placeholder="Credits"></td>
+                        <td>
+                            <select class="input-box gr-select">
+                                <option value="10" selected>O (Outstanding - 10)</option>
+                                <option value="9">A+ (Excellent - 9)</option>
+                                <option value="8">A (Very Good - 8)</option>
+                                <option value="7">B+ (Good - 7)</option>
+                                <option value="6">B (Above Average - 6)</option>
+                                <option value="5">C (Average - 5)</option>
+                                <option value="4">D (Pass - 4)</option>
+                                <option value="0">F (Fail / Reappear - 0)</option>
+                            </select>
+                        </td>
+                        <td><button class="btn-action" onclick="removeCourseRow(this)" style="color: #ef4444;"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                <button class="btn-calc" onclick="calculateTGPA()"><i class="fa-solid fa-play"></i> Compute Term TGPA</button>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Matches UGC 10-Point Letter Grading Scale.</div>
+            </div>
+
+            <div class="result-display" id="resultBox">
+                <div class="result-metric">
+                    <div class="result-label">Semester TGPA / SGPA</div>
+                    <div class="result-value" id="tgpaValue">8.43</div>
+                </div>
+                <div class="result-metric">
+                    <div class="result-label">Total Semester Credits</div>
+                    <div style="font-size: 1.4rem; font-weight: 700; color: #fff;" id="totalCourseCredits">14.0 Credits</div>
+                </div>
+                <div class="result-metric">
+                    <div class="result-label">Performance Remark</div>
+                    <div class="result-badge" id="tgpaRemark">Excellent Standing</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- WHAT IS THIS & FORMULA                                                    -->
+        <!-- ========================================================================= -->
+        <div class="content-section">
+            <h2><i class="fa-solid fa-circle-question"></i> Understanding TGPA & SGPA</h2>
+            <p><strong>Term Grade Point Average (TGPA)</strong>, synonymous with <strong>Semester Grade Point Average (SGPA)</strong>, is the weighted average of the grade points earned in all courses taken in a given term.</p>
+            <p>Under the Choice Based Credit System (CBCS), each registered subject is allotted a specific number of academic credit units reflecting its weekly contact hours (e.g., 3 lectures + 1 tutorial = 4 credits; 2 lab hours = 1 credit).</p>
+
+            <div class="formula-box">
+                TGPA = &Sigma; (Credits<sub>i</sub> &times; GradePoint<sub>i</sub>) / &Sigma; Credits<sub>i</sub>
+            </div>
+
+            <p>For each course, the grade points corresponding to your letter grade are multiplied by its credit value. The sum of these products across all semester courses is divided by total credits registered.</p>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- 10-POINT GRADE SCALE TABLE                                                -->
+        <!-- ========================================================================= -->
+        <div class="content-section">
+            <h2><i class="fa-solid fa-table"></i> UGC 10-Point CBCS Grading Scale</h2>
+            <p>Most universities adhere to the following 10-point letter grade point conversion:</p>
+            
+            <table class="grade-scale-table">
+                <thead>
+                    <tr>
+                        <th>Letter Grade</th>
+                        <th>Qualitative Assessment</th>
+                        <th>Grade Point (G<sub>i</sub>)</th>
+                        <th>Typical Marks Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>O</strong></td><td>Outstanding</td><td>10</td><td>90% &ndash; 100%</td></tr>
+                    <tr><td><strong>A+</strong></td><td>Excellent</td><td>9</td><td>80% &ndash; 89%</td></tr>
+                    <tr><td><strong>A</strong></td><td>Very Good</td><td>8</td><td>70% &ndash; 79%</td></tr>
+                    <tr><td><strong>B+</strong></td><td>Good</td><td>7</td><td>60% &ndash; 69%</td></tr>
+                    <tr><td><strong>B</strong></td><td>Above Average</td><td>6</td><td>55% &ndash; 59%</td></tr>
+                    <tr><td><strong>C</strong></td><td>Average</td><td>5</td><td>50% &ndash; 54%</td></tr>
+                    <tr><td><strong>D</strong></td><td>Pass</td><td>4</td><td>40% &ndash; 49%</td></tr>
+                    <tr><td><strong>F</strong></td><td>Fail / Reappear</td><td>0</td><td>Below 40%</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- HOW TO USE THIS TOOL                                                      -->
+        <!-- ========================================================================= -->
+        <div class="content-section">
+            <h2><i class="fa-solid fa-list-check"></i> How to Use This Tool</h2>
+            <ol style="margin-left: 20px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 8px;">
+                <li><strong>List Your Courses:</strong> Add the subjects taken this semester.</li>
+                <li><strong>Enter Credits:</strong> Input the official credit weight for each course (typically 3 or 4 for theory, 1 or 2 for labs).</li>
+                <li><strong>Select Grades:</strong> Choose your expected or official letter grade from the dropdown.</li>
+                <li><strong>Click Compute:</strong> Your semester TGPA and performance standing will update immediately.</li>
+            </ol>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- FAQS                                                                      -->
+        <!-- ========================================================================= -->
+        <div class="content-section">
+            <h2><i class="fa-solid fa-circle-question"></i> Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-q">What happens to my TGPA if I get an 'F' grade in one subject?</div>
+                <div class="faq-a">An 'F' grade carries 0 grade points, but the credits of that course are still counted in the denominator (&Sigma; Credits). This significantly lowers your TGPA. Once you clear the subject via a reappear exam, the new grade replaces the 0 and raises your TGPA.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">How does TGPA convert to final CGPA?</div>
+                <div class="faq-a">Your final CGPA is the credit-weighted average of all semester TGPAs. Use our <a href="/tools/cgpa-calculator" style="color: var(--primary-orange); text-decoration: none; font-weight: 600;">CGPA Calculator</a> to calculate multi-semester cumulative averages.</div>
+            </div>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- RELATED TOOLS                                                             -->
+        <!-- ========================================================================= -->
+        <div class="content-section">
+            <h2><i class="fa-solid fa-toolbox"></i> Related Academic Tools & Guides</h2>
+            <div class="related-grid">
+                <a href="/tools/cgpa-calculator" class="related-card">
+                    <h3>CGPA Calculator</h3>
+                    <p>Calculate cumulative GPA across all completed semesters.</p>
+                </a>
+                <a href="/tools/pass-fail-checker" class="related-card">
+                    <h3>Pass/Fail Eligibility Checker</h3>
+                    <p>Verify whether your MTE, ETE, and CA scores satisfy passing criteria.</p>
+                </a>
+                <a href="/tools/attendance-calculator" class="related-card">
+                    <h3>75% Attendance Planner</h3>
+                    <p>Track attendance margins and recovery targets before exam eligibility locks.</p>
+                </a>
+                <a href="/blog/tgpa-sgpa-calculation-guide" class="related-card">
+                    <h3>TGPA & SGPA Guide</h3>
+                    <p>Read our in-depth explanation of semester credit mechanics.</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/senior">All Tools</a>
+            <a href="/tools/cgpa-calculator">CGPA Calculator</a>
+            <a href="/tools/pass-fail-checker">Pass Checker</a>
+            <a href="/tools/attendance-calculator">Attendance</a>
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact</a>
+            <a href="/editorial-policy">Editorial Policy</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms</a>
+            <a href="/disclaimer">Disclaimer</a>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.8rem;">&copy; 2026 OGEDU AI. An open-access educational platform built for university students.</p>
+    </footer>
+
+    <script>
+        function addCourseRow() {
+            const tbody = document.getElementById('courseTableBody');
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><input type="text" class="input-box" placeholder="e.g. Subject Name"></td>
+                <td><input type="number" class="input-box cr-input" min="1" max="10" step="0.5" value="4" placeholder="Credits"></td>
+                <td>
+                    <select class="input-box gr-select">
+                        <option value="10">O (Outstanding - 10)</option>
+                        <option value="9">A+ (Excellent - 9)</option>
+                        <option value="8" selected>A (Very Good - 8)</option>
+                        <option value="7">B+ (Good - 7)</option>
+                        <option value="6">B (Above Average - 6)</option>
+                        <option value="5">C (Average - 5)</option>
+                        <option value="4">D (Pass - 4)</option>
+                        <option value="0">F (Fail / Reappear - 0)</option>
+                    </select>
+                </td>
+                <td><button class="btn-action" onclick="removeCourseRow(this)" style="color: #ef4444;"><i class="fa-solid fa-trash"></i></button></td>
+            `;
+            tbody.appendChild(tr);
+        }
+
+        function removeCourseRow(btn) {
+            const tbody = document.getElementById('courseTableBody');
+            if (tbody.children.length <= 1) {
+                alert('At least one course is required.');
+                return;
+            }
+            btn.closest('tr').remove();
+            calculateTGPA();
+        }
+
+        function calculateTGPA() {
+            const credits = document.querySelectorAll('.cr-input');
+            const grades = document.querySelectorAll('.gr-select');
+
+            let totalPoints = 0;
+            let totalCredits = 0;
+
+            for (let i = 0; i < credits.length; i++) {
+                const c = parseFloat(credits[i].value) || 0;
+                const g = parseFloat(grades[i].value) || 0;
+                if (c > 0) {
+                    totalPoints += (c * g);
+                    totalCredits += c;
+                }
+            }
+
+            const tgpa = totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : '0.00';
+            document.getElementById('tgpaValue').textContent = tgpa;
+            document.getElementById('totalCourseCredits').textContent = `${totalCredits.toFixed(1)} Credits`;
+
+            const num = parseFloat(tgpa);
+            const remarkElem = document.getElementById('tgpaRemark');
+            if (num >= 9.0) {
+                remarkElem.textContent = 'Outstanding Standing';
+                remarkElem.style.color = '#4ade80';
+            } else if (num >= 8.0) {
+                remarkElem.textContent = 'Excellent Standing';
+                remarkElem.style.color = '#60a5fa';
+            } else if (num >= 6.5) {
+                remarkElem.textContent = 'Good Standing';
+                remarkElem.style.color = '#facc15';
+            } else {
+                remarkElem.textContent = 'Pass / Reappear Risk';
+                remarkElem.style.color = '#f87171';
+            }
+        }
+
+        function resetCourses() {
+            document.querySelectorAll('.cr-input').forEach(el => el.value = 4);
+            document.querySelectorAll('.gr-select').forEach(el => el.value = 8);
+            calculateTGPA();
+        }
+
+        calculateTGPA();
+    </script>
+</body>
+</html>

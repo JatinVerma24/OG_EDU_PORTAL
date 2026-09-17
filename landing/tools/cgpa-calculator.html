@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2034578803232828" crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZT0FTDEWMH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZT0FTDEWMH');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator — Calculate Cumulative Grade Point Average | OGEDU AI</title>
+    <meta name="description" content="Free online CGPA Calculator for university engineering and degree students. Calculate your cumulative GPA using official credit weight formulas with instant results.">
+    <link rel="canonical" href="https://ogedu-portal.vercel.app/tools/cgpa-calculator">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="CGPA Calculator — Calculate Cumulative Grade Point Average | OGEDU AI">
+    <meta property="og:description" content="Free online CGPA Calculator for university students. Calculate cumulative GPA using credit-weight formulas.">
+    <meta property="og:url" content="https://ogedu-portal.vercel.app/tools/cgpa-calculator">
+    <meta property="og:site_name" content="OGEDU AI">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "OGEDU CGPA Calculator",
+      "url": "https://ogedu-portal.vercel.app/tools/cgpa-calculator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "description": "Calculates Cumulative Grade Point Average (CGPA) from semester-wise credit hours and SGPA/TGPA scores.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --primary-orange: #f97316;
+            --primary-purple: #8b5cf6;
+            --bg-color: #030712;
+            --panel-bg: rgba(15, 23, 42, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 99;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            font-size: 1.3rem;
+            color: var(--primary-orange);
+            background: linear-gradient(135deg, var(--primary-orange), #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-title span { color: var(--primary-orange); }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: rgba(249, 115, 22, 0.1);
+            border-color: var(--primary-orange);
+            color: var(--primary-orange);
+        }
+
+        main {
+            flex: 1;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px 24px 80px 24px;
+            z-index: 10;
+        }
+
+        .breadcrumbs {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .breadcrumbs a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumbs a:hover { color: var(--primary-orange); }
+
+        .tool-header {
+            margin-bottom: 36px;
+        }
+
+        .tool-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(139, 92, 246, 0.12);
+            color: var(--primary-purple);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .intro {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+
+        /* Calculator Interface Box */
+        .calculator-card {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(10, 15, 30, 0.9) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 48px;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+        }
+
+        .calc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .calc-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .calc-title i { color: var(--primary-orange); }
+
+        .semester-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 24px;
+        }
+
+        .semester-table th {
+            text-align: left;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .semester-table td {
+            padding: 10px 12px;
+            vertical-align: middle;
+        }
+
+        .input-box {
+            width: 100%;
+            background: rgba(3, 7, 18, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .input-box:focus {
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+        }
+
+        .btn-action {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-action:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .btn-calc {
+            background: linear-gradient(135deg, var(--primary-orange), #ea580c);
+            color: #030712;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 20px -5px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-calc:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 24px -5px rgba(249, 115, 22, 0.4);
+        }
+
+        .result-display {
+            background: rgba(3, 7, 18, 0.6);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .result-metric {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .result-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.75rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .result-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        /* Documentation & Content Sections */
+        .content-section {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        .content-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+        }
+
+        .content-section h2 i {
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+        }
+
+        .content-section p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+
+        .formula-box {
+            background: rgba(3, 7, 18, 0.9);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-left: 4px solid var(--primary-purple);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.05rem;
+            color: #d8b4fe;
+            overflow-x: auto;
+        }
+
+        .example-box {
+            background: rgba(249, 115, 22, 0.05);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-box table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 12px;
+        }
+
+        .example-box th, .example-box td {
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: left;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+        }
+
+        .faq-item:last-child { border-bottom: none; }
+
+        .faq-q {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .faq-a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .related-card {
+            background: rgba(3, 7, 18, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px;
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .related-card:hover {
+            border-color: var(--primary-orange);
+            transform: translateY(-2px);
+        }
+
+        .related-card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        .related-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: #02040a;
+            padding: 40px 24px;
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover { color: var(--primary-orange); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-area">
+                <i class="fa-solid fa-graduation-cap logo-icon"></i>
+                <div class="logo-title">OGEDU <span>AI</span></div>
+            </a>
+            <a href="/senior" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Full OGTOOLS Suite</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="/">Home</a> <span>/</span>
+            <a href="/senior">Academic Tools</a> <span>/</span>
+            <span>CGPA Calculator</span>
+        </div>
+
+        <div class="tool-header">
+            <div class="tool-badge"><i class="fa-solid fa-calculator"></i> Academic Credit Calculator</div>
+            <h1>CGPA Calculator</h1>
+            <p class="intro">Calculate your Cumulative Grade Point Average (CGPA) accurately using official university credit-weighted scaling. Plan target grades across semesters with instant client-side calculation.</p>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- TOOL INTERFACE                                                            -->
+        <!-- ========================================================================= -->
+        <div class="calculator-card">
+            <div class="calc-header">
+                <div class="calc-title"><i class="fa-solid fa-chart-line"></i> Semester Credit Matrix</div>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn-action" onclick="addSemesterRow()"><i class="fa-solid fa-plus"></i> Add Semester</button>
+                    <button class="btn-action" onclick="resetCalculator()"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+                </div>
+            </div>
+
+            <table class="semester-table" id="semTable">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Semester</th>
+                        <th style="width: 35%;">Credits Registered (C<sub>i</sub>)</th>
+                        <th style="width: 30%;">Semester GPA / TGPA</th>
+                        <th style="width: 10%;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="semTableBody">
+                    <tr>
+                        <td><strong>Semester 1</strong></td>
+                        <td><input type="number" class="input-box sem-credit" min="1" max="40" step="0.5" value="22" placeholder="e.g. 22"></td>
+                        <td><input type="number" class="input-box sem-gpa" min="0" max="10" step="0.01" value="8.2" placeholder="e.g. 8.2"></td>
+                        <td><button class="btn-action" onclick="removeRow(this)" style="color: #ef4444;" title="Remove row"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Semester 2</strong></td>
+                        <td><input type="number" class="input-box sem-credit" min="1" max="40" step="0.5" value="24" placeholder="e.g. 24"></td>
+                        <td><input type="number" class="input-box sem-gpa" min="0" max="10" step="0.01" value="8.6" placeholder="e.g. 8.6"></td>
+                        <td><button class="btn-action" onclick="removeRow(this)" style="color: #ef4444;" title="Remove row"><i class="fa-solid fa-trash"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                <button class="btn-calc" onclick="calculateCGPA()"><i class="fa-solid fa-play"></i> Calculate Cumulative CGPA</button>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Calculations run locally in your browser.</div>
+            </div>
+
+            <div class="result-display" id="resultBox">
+                <div class="result-metric">
+                    <div class="result-label">Your Cumulative CGPA</div>
+                    <div class="result-value" id="cgpaValue">8.41</div>
+                </div>
+                <div class="result-metric">
+                    <div class="result-label">Total Credits Counted</div>
+                    <div style="font-size: 1.4rem; font-weight: 700; color: #fff;" id="totalCredits">46.0 Credits</div>
+                </div>
+                <div class="result-metric">
+                    <div class="result-label">Performance Band</div>
+                    <div class="result-badge" id="perfBand">First Class with Distinction</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- WHAT IS THIS?                                                             -->
+        <!-- ========================================================================= -->
+        <div class="content-section">
+            <h2><i class="fa-solid fa-circle-question"></i> What is CGPA?</h2>
+            <p><strong>Cumulative Grade Point Average (CGPA)</strong> is the metric used by universities in India and globally to measure an undergraduate or postgraduate student's cumulative academic performance across all completed semesters.</p>
+            <p>Unlike a simple arithmetic average of semester marks, CGPA is a <em>credit-weighted mean</em>. A 24-credit semester with intensive laboratory and theoretical components carries more weight in your overall CGPA than an 18-credit internship or elective semester.</p>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- HOW DOES IT WORK & FORMULA                                                -->
+        <!-- ========================================================================= -->
+        <div class="content-section">
+            <h2><i class="fa-solid fa-square-root-variable"></i> Official Calculation Formula</h2>
+            <p>Per university examination regulations (including UGC CBCS guidelines), CGPA is computed by multiplying the credits of each semester by the Term Grade Point Average (TGPA or SGPA) scored in that semester, summing those products, and dividing by the total credits attempted:</p>
+            
+            <div class="formula-box">
+                CGPA = &Sigma; (Credits<sub>i</sub> &times; TGPA<sub>i</sub>) / &Sigma; Credits<sub>i</sub>
+            </div>
+
+            <p>Where:</p>
+            <ul style="margin-left: 20px; color: var(--text-secondary); margin-bottom: 14px;">
+                <li><strong>Credits<sub>i</sub>:</strong> Total registered academic credit units for semester <em>i</em>.</li>
+                <li><strong>TGPA<sub>i</sub> (or SGPA<sub>i</sub>):</strong> Term Grade Point Average scored in semester <em>i</em> on a standard 10-point scale.</li>
+                <li><strong>&Sigma; Credits<sub>i</sub>:</strong> Total cumulative credits attempted across all completed semesters.</li>
+            </ul>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- REALISTIC WORKED EXAMPLE                                                  -->
+        <!-- ========================================================================= -->
+        <div class="content-section">
+            <h2><i class="fa-solid fa-lightbulb"></i> Step-by-Step Realistic Example</h2>
+            <p>Consider a B.Tech Computer Science student who has completed 3 semesters:</p>
+            
+            <div class="example-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Semester</th>
+                            <th>Credits (C)</th>
+                            <th>TGPA (G)</th>
+                            <th>Credit Points (C &times; G)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Semester 1</td>
+                            <td>22</td>
+                            <td>7.80</td>
+                            <td>171.60</td>
+                        </tr>
+                        <tr>
+                            <td>Semester 2</td>
+                            <td>24</td>
+                            <td>8.50</td>
+                            <td>204.00</td>
+                        </tr>
+                        <tr>
+                            <td>Semester 3</td>
+                            <td>20</td>
+                            <td>8.20</td>
+                            <td>164.00</td>
+                        </tr>
+                        <tr style="font-weight: 700; color: #fff; border-top: 1px solid rgba(255,255,255,0.2);">
+                            <td>Total</td>
+                            <td>66 Credits</td>
+                            <td>—</td>
+                            <td>539.60 Points</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p><strong>Calculation:</strong></p>
+            <p>CGPA = 539.60 / 66 = <strong>8.175 (Rounded to 8.18)</strong>.</p>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- HOW TO USE THIS TOOL                                                      -->
+        <!-- ========================================================================= -->
+        <div class="content-section">
+            <h2><i class="fa-solid fa-list-check"></i> How to Use This Tool</h2>
+            <ol style="margin-left: 20px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 8px;">
+                <li><strong>Enter Semester Credits:</strong> Check your official grade card or university LMS (UMS) for the total credits registered in each semester.</li>
+                <li><strong>Enter Semester GPA:</strong> Input the TGPA / SGPA you scored in each semester.</li>
+                <li><strong>Add Additional Semesters:</strong> Click the "Add Semester" button for Semesters 3 through 8 as needed.</li>
+                <li><strong>Click Calculate:</strong> Your exact credit-weighted CGPA, total credits, and academic performance division will display instantly.</li>
+            </ol>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- IMPORTANT NOTES & LIMITATIONS                                             -->
+        <!-- ========================================================================= -->
+        <div class="content-section">
+            <h2><i class="fa-solid fa-triangle-exclamation"></i> Important Academic Notes & Limitations</h2>
+            <ul style="margin-left: 20px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 10px;">
+                <li><strong>Audit & Non-Credit Courses:</strong> Environmental Studies (EVS), induction training, or zero-credit audit courses do not carry grade points and must not be counted in the credit total.</li>
+                <li><strong>Backlogs & Re-appear Examinations:</strong> When you clear a reappear exam, your previous failing grade (F = 0) is replaced by the new grade, which recalculates both that semester's TGPA and your cumulative CGPA.</li>
+                <li><strong>Conversion to Percentage:</strong> While AICTE guidelines specify Percentage = (CGPA - 0.75) &times; 10, some universities (including LPU) use Percentage = CGPA &times; 10. Always confirm with your university examination branch.</li>
+            </ul>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- FAQS                                                                      -->
+        <!-- ========================================================================= -->
+        <div class="content-section">
+            <h2><i class="fa-solid fa-circle-question"></i> Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-q">What is the difference between SGPA, TGPA, and CGPA?</div>
+                <div class="faq-a">SGPA (Semester Grade Point Average) and TGPA (Term Grade Point Average) refer to the grade point average achieved within a single semester or academic term. CGPA (Cumulative Grade Point Average) reflects performance across all completed semesters combined.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">Does a 1-credit lab affect CGPA as much as a 4-credit theory subject?</div>
+                <div class="faq-a">No. A 4-credit course has four times the mathematical weight of a 1-credit laboratory course in determining your semester TGPA and final cumulative CGPA.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">What CGPA is required for first-class degree with distinction?</div>
+                <div class="faq-a">Most technical universities grant First Class with Distinction for a CGPA of 8.50 or higher (provided all courses were cleared in the first attempt without backlogs), and First Class for a CGPA of 6.50 to 8.49.</div>
+            </div>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- RELATED TOOLS                                                             -->
+        <!-- ========================================================================= -->
+        <div class="content-section">
+            <h2><i class="fa-solid fa-toolbox"></i> Related Academic Tools & Guides</h2>
+            <div class="related-grid">
+                <a href="/tools/tgpa-calculator" class="related-card">
+                    <h3>TGPA / SGPA Calculator</h3>
+                    <p>Calculate your single semester GPA from course grades and credit points.</p>
+                </a>
+                <a href="/tools/pass-fail-checker" class="related-card">
+                    <h3>Pass/Fail Eligibility Checker</h3>
+                    <p>Verify whether you satisfy the 30% ETE and 40% aggregate passing rules.</p>
+                </a>
+                <a href="/tools/attendance-calculator" class="related-card">
+                    <h3>75% Attendance Planner</h3>
+                    <p>Calculate how many classes you must attend to satisfy exam requirements.</p>
+                </a>
+                <a href="/blog/cgpa-calculation-guide" class="related-card">
+                    <h3>CGPA Deep-Dive Guide</h3>
+                    <p>Read our full comprehensive guide to university grading systems.</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/senior">All Tools</a>
+            <a href="/tools/tgpa-calculator">TGPA Calculator</a>
+            <a href="/tools/pass-fail-checker">Pass Checker</a>
+            <a href="/tools/attendance-calculator">Attendance</a>
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact</a>
+            <a href="/editorial-policy">Editorial Policy</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms</a>
+            <a href="/disclaimer">Disclaimer</a>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.8rem;">&copy; 2026 OGEDU AI. An open-access educational platform built for university students.</p>
+    </footer>
+
+    <script>
+        let semCount = 2;
+
+        function addSemesterRow() {
+            semCount++;
+            const tbody = document.getElementById('semTableBody');
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><strong>Semester ${semCount}</strong></td>
+                <td><input type="number" class="input-box sem-credit" min="1" max="40" step="0.5" value="22" placeholder="e.g. 22"></td>
+                <td><input type="number" class="input-box sem-gpa" min="0" max="10" step="0.01" value="8.0" placeholder="e.g. 8.0"></td>
+                <td><button class="btn-action" onclick="removeRow(this)" style="color: #ef4444;" title="Remove row"><i class="fa-solid fa-trash"></i></button></td>
+            `;
+            tbody.appendChild(tr);
+        }
+
+        function removeRow(btn) {
+            const row = btn.closest('tr');
+            const tbody = document.getElementById('semTableBody');
+            if (tbody.children.length <= 1) {
+                alert('At least one semester row is required.');
+                return;
+            }
+            row.remove();
+            calculateCGPA();
+        }
+
+        function calculateCGPA() {
+            const creditInputs = document.querySelectorAll('.sem-credit');
+            const gpaInputs = document.querySelectorAll('.sem-gpa');
+
+            let totalPoints = 0;
+            let totalCredits = 0;
+
+            for (let i = 0; i < creditInputs.length; i++) {
+                const c = parseFloat(creditInputs[i].value) || 0;
+                const g = parseFloat(gpaInputs[i].value) || 0;
+                if (c > 0 && g >= 0 && g <= 10) {
+                    totalPoints += (c * g);
+                    totalCredits += c;
+                }
+            }
+
+            const cgpaVal = totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : '0.00';
+            document.getElementById('cgpaValue').textContent = cgpaVal;
+            document.getElementById('totalCredits').textContent = `${totalCredits.toFixed(1)} Credits`;
+
+            const num = parseFloat(cgpaVal);
+            const bandElem = document.getElementById('perfBand');
+            if (num >= 8.5) {
+                bandElem.textContent = 'First Class with Distinction';
+                bandElem.style.color = '#4ade80';
+                bandElem.style.borderColor = 'rgba(34, 197, 94, 0.4)';
+            } else if (num >= 6.5) {
+                bandElem.textContent = 'First Class';
+                bandElem.style.color = '#60a5fa';
+                bandElem.style.borderColor = 'rgba(96, 165, 250, 0.4)';
+            } else if (num >= 5.0) {
+                bandElem.textContent = 'Second Class';
+                bandElem.style.color = '#facc15';
+                bandElem.style.borderColor = 'rgba(250, 204, 21, 0.4)';
+            } else {
+                bandElem.textContent = 'Pass / Needs Improvement';
+                bandElem.style.color = '#f87171';
+                bandElem.style.borderColor = 'rgba(248, 113, 113, 0.4)';
+            }
+        }
+
+        function resetCalculator() {
+            const tbody = document.getElementById('semTableBody');
+            tbody.innerHTML = `
+                <tr>
+                    <td><strong>Semester 1</strong></td>
+                    <td><input type="number" class="input-box sem-credit" min="1" max="40" step="0.5" value="22" placeholder="e.g. 22"></td>
+                    <td><input type="number" class="input-box sem-gpa" min="0" max="10" step="0.01" value="8.2" placeholder="e.g. 8.2"></td>
+                    <td><button class="btn-action" onclick="removeRow(this)" style="color: #ef4444;" title="Remove row"><i class="fa-solid fa-trash"></i></button></td>
+                </tr>
+                <tr>
+                    <td><strong>Semester 2</strong></td>
+                    <td><input type="number" class="input-box sem-credit" min="1" max="40" step="0.5" value="24" placeholder="e.g. 24"></td>
+                    <td><input type="number" class="input-box sem-gpa" min="0" max="10" step="0.01" value="8.6" placeholder="e.g. 8.6"></td>
+                    <td><button class="btn-action" onclick="removeRow(this)" style="color: #ef4444;" title="Remove row"><i class="fa-solid fa-trash"></i></button></td>
+                </tr>
+            `;
+            semCount = 2;
+            calculateCGPA();
+        }
+
+        // Initialize on load
+        calculateCGPA();
+    </script>
+</body>
+</html>

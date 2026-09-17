@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2034578803232828"
+         crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZT0FTDEWMH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZT0FTDEWMH');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operating Systems Core Concepts for Engineering Exams: Processes, Threads & Concurrency | OGEDU AI</title>
+    <meta name="description" content="A clear exam-focused study guide on Operating Systems: CPU scheduling algorithms, process synchronization, Banker's algorithm, and virtual memory paging.">
+    <link rel="canonical" href="https://ogedu-portal.vercel.app/blog/operating-systems-study-guide">
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:title" content="Operating Systems Core Concepts for Engineering Exams: Processes, Threads & Concurrency | OGEDU AI">
+    <meta property="og:description" content="A clear exam-focused study guide on Operating Systems: CPU scheduling algorithms, process synchronization, Banker's algorithm, and virtual memory paging.">
+    <meta property="og:url" content="https://ogedu-portal.vercel.app/blog/operating-systems-study-guide">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="OGEDU AI">
+
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Operating Systems Core Concepts for Engineering Exams: Processes, Threads & Concurrency",
+      "author": {
+        "@type": "Person",
+        "name": "OG Jatin Verma",
+        "url": "https://www.instagram.com/ogjatinverma/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "OGEDU AI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ogedu-portal.vercel.app/logo.png"
+        }
+      },
+      "datePublished": "2026-07-01",
+      "dateModified": "2026-07-16",
+      "description": "A clear exam-focused study guide on Operating Systems: CPU scheduling algorithms, process synchronization, Banker's algorithm, and virtual memory paging.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://ogedu-portal.vercel.app/blog/operating-systems-study-guide"
+      }
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <style>
+        :root {
+            --primary-orange: #f97316;
+            --primary-purple: #8b5cf6;
+            --bg-color: #030712;
+            --panel-bg: rgba(10, 15, 30, 0.7);
+            --border-color: rgba(255, 255, 255, 0.06);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --radius-lg: 32px;
+            --radius-md: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        /* Tech Grid Overlay */
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+            mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            font-size: 1.3rem;
+            color: var(--primary-orange);
+            background: linear-gradient(135deg, var(--primary-orange), #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .logo-title span { color: var(--primary-orange); }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: rgba(249, 115, 22, 0.1);
+            border-color: var(--primary-orange);
+        }
+
+        .layout-container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 48px 24px 80px 24px;
+            display: grid;
+            grid-template-cols: 260px 1fr;
+            gap: 40px;
+            z-index: 10;
+        }
+
+        .toc-sidebar { position: sticky; top: 100px; height: fit-content; }
+        .toc-box {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .toc-box h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: var(--primary-orange);
+        }
+        .toc-box ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .toc-box a { color: var(--text-secondary); text-decoration: none; font-size: 0.82rem; transition: var(--transition); }
+        .toc-box a:hover { color: var(--primary-orange); padding-left: 2px; }
+
+        .article-content {
+            background: var(--panel-bg);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .breadcrumbs { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
+        .breadcrumbs a { color: var(--text-secondary); text-decoration: none; }
+        .breadcrumbs a:hover { color: var(--primary-orange); }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .category-badge {
+            background: rgba(249, 115, 22, 0.1);
+            color: var(--primary-orange);
+            border: 1px solid rgba(249, 115, 22, 0.25);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .lead-box {
+            background: rgba(249, 115, 22, 0.05);
+            border-left: 4px solid var(--primary-orange);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+            color: #fed7aa;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #fed7aa;
+        }
+
+        p { margin-bottom: 18px; color: var(--text-secondary); font-size: 0.95rem; }
+
+        ul, ol { margin-bottom: 24px; padding-left: 24px; color: var(--text-secondary); font-size: 0.95rem; }
+        li { margin-bottom: 8px; }
+
+        .formula-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(249, 115, 22, 0.25);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .formula-title { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; color: var(--primary-orange); margin-bottom: 8px; letter-spacing: 0.5px; }
+        .formula-math { font-size: 1.25rem; font-family: monospace; color: #fff; margin: 12px 0; }
+        .formula-legend { font-size: 0.85rem; color: var(--text-muted); text-align: left; margin-top: 12px; border-top: 1px solid var(--border-color); padding-top: 12px; }
+
+        .calc-callout {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 20px 0;
+            font-family: monospace;
+            color: #fcd34d;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 24px 0;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .academic-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            text-align: left;
+        }
+        .academic-table th {
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            padding: 14px 16px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .academic-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+        }
+        .academic-table tr:hover td { background: rgba(255, 255, 255, 0.015); }
+        .table-summary-row td {
+            background: rgba(249, 115, 22, 0.06);
+            color: #fff;
+            font-weight: 700;
+            border-top: 1px solid rgba(249, 115, 22, 0.2);
+        }
+
+        .faq-accordion { margin: 24px 0; display: flex; flex-direction: column; gap: 16px; }
+        .faq-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px 20px;
+        }
+        .faq-item h4 { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .faq-item p { margin: 0; font-size: 0.88rem; color: var(--text-secondary); }
+
+        .tool-banner {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.12), rgba(139, 92, 246, 0.12));
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 20px;
+            padding: 32px;
+            margin-top: 48px;
+            text-align: center;
+        }
+        .tool-banner h3 { color: #fff; font-size: 1.35rem; margin-bottom: 8px; font-weight: 800; }
+        .tool-banner p { color: var(--text-secondary); font-size: 0.9rem; max-width: 500px; margin: 0 auto 20px auto; }
+        .tool-link-btn {
+            display: inline-block;
+            background: var(--primary-orange);
+            color: #030712;
+            font-weight: 800;
+            font-size: 0.88rem;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .tool-link-btn:hover { background: #ea580c; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(249, 115, 22, 0.3); }
+
+        .author-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border-color);
+        }
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: #fff;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .author-info h4 { color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
+        .author-info p { margin: 0; font-size: 0.8rem; color: var(--text-muted); }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.95);
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-top: auto;
+        }
+        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; transition: var(--transition); }
+        .footer-links a:hover { color: var(--primary-orange); }
+
+        @media (max-width: 860px) {
+            .layout-container { grid-template-columns: 1fr; padding: 24px 16px; }
+            .toc-sidebar { display: none; }
+            .article-content { padding: 24px 20px; border-radius: 20px; }
+            h1 { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-area">
+                <i class="fa-solid fa-bolt logo-icon"></i>
+                <div class="logo-title">OGEDU<span>AI</span></div>
+            </a>
+            <a href="/blog" class="back-btn"><i class="fa-solid fa-arrow-left"></i> All Guides</a>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <!-- Sidebar Table of Contents -->
+        <aside class="toc-sidebar">
+            <div class="toc-box">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#process-management">Processes, Threads & PCB</a></li>
+                <li><a href="#scheduling">CPU Scheduling Algorithms</a></li>
+                <li><a href="#synchronization">Critical Section & Synchronization</a></li>
+                <li><a href="#deadlocks">Deadlocks & Banker's Algorithm</a></li>
+                <li><a href="#memory-management">Virtual Memory & Paging</a></li>
+                <li><a href="#faqs">Frequently Asked Questions</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Article Content -->
+        <article class="article-content">
+            <nav class="breadcrumbs">
+                <a href="/">Home</a> <span>/</span>
+                <a href="/blog">Guides</a> <span>/</span>
+                <span>Core CS Guide</span>
+            </nav>
+
+            <div class="article-meta">
+                <span class="category-badge">Core CS Guide</span>
+                <span><i class="fa-regular fa-calendar"></i> July 10, 2026</span>
+                <span><i class="fa-regular fa-clock"></i> 8 min read</span>
+                <span><i class="fa-regular fa-user"></i> OG Jatin Verma</span>
+            </div>
+
+            <h1>Operating Systems Core Concepts for Engineering Exams: Processes, Threads & Concurrency</h1>
+
+            
+            <div class="lead-box">
+                <p>The Operating System (OS) serves as the software bridge between physical hardware and user applications. This guide condenses the core exam concepts tested across all Indian university technical curricula.</p>
+            </div>
+
+            <h2 id="process-management">1. Processes, Threads & PCB</h2>
+            <p>A <strong>process</strong> is a program in execution containing four memory segments: Text (compiled code), Data (global variables), Heap (dynamic memory), and Stack (local variables, function calls). The <strong>Process Control Block (PCB)</strong> stores the process state, program counter, CPU registers, and open file descriptors.</p>
+            <p>A <strong>thread</strong> is a lightweight unit of CPU utilization within a process. Multiple threads share the process's code, data, and OS resources, but retain independent program counters, registers, and stacks.</p>
+
+            <h2 id="scheduling">2. CPU Scheduling Algorithms</h2>
+            <p>Key scheduling policies evaluated on university exams include:</p>
+            <ul>
+                <li><strong>FCFS (First-Come, First-Served):</strong> Non-preemptive, suffers from the Convoy Effect (short jobs waiting behind long jobs).</li>
+                <li><strong>SJF / SRTF (Shortest Job / Remaining Time First):</strong> Provably optimal for minimizing average waiting time, but vulnerable to starvation of longer processes.</li>
+                <li><strong>Round Robin (RR):</strong> Preemptive scheduling using fixed time slices (quanta). Balances responsiveness for interactive multi-tasking systems.</li>
+            </ul>
+
+            <h2 id="synchronization">3. Critical Section & Synchronization</h2>
+            <p>When concurrent threads access shared variables, race conditions occur. Any valid solution to the Critical Section problem must satisfy three criteria:</p>
+            <ol>
+                <li><strong>Mutual Exclusion:</strong> If process $P_i$ is executing in its critical section, no other processes can be executing in their critical sections.</li>
+                <li><strong>Progress:</strong> Only processes not in their remainder section can participate in deciding who enters next.</li>
+                <li><strong>Bounded Waiting:</strong> A bound must exist on the number of times other processes are allowed to enter after a process has requested entry.</li>
+            </ol>
+
+            <h2 id="deadlocks">4. Deadlocks & Banker's Algorithm</h2>
+            <p>A deadlock requires four simultaneous Coffman conditions: Mutual Exclusion, Hold and Wait, No Preemption, and Circular Wait. The <strong>Banker's Algorithm</strong> performs resource allocation safety checks by calculating whether a safe execution sequence exists where: $\text{Need} = \text{Max} - \text{Allocation} \le \text{Available}$.</p>
+
+            <h2 id="memory-management">5. Virtual Memory & Paging</h2>
+            <p>Virtual memory maps logical addresses to physical memory frames using a <strong>Page Table</strong>. The <strong>Translation Lookaside Buffer (TLB)</strong> caches frequent address translations to avoid dual memory accesses. When a referenced page is absent from physical RAM, a <strong>Page Fault</strong> triggers OS disk swapping using algorithms like FIFO, LRU, or Optimal Page Replacement.</p>
+
+            <h2 id="faqs">6. Frequently Asked Questions</h2>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <h4>What causes thrashing in operating systems?</h4>
+                    <p>Thrashing occurs when the total memory demand of active processes exceeds physical RAM capacity. The CPU spends more time servicing page faults and swapping pages between disk and memory than executing actual instructions, collapsing system throughput.</p>
+                </div>
+            </div>
+
+            <div class="tool-banner">
+                <h3>Preparing for University Exams?</h3>
+                <p>Review course syllabus breakdowns and verified study notes in our student portal.</p>
+                <a href="/resources" class="tool-link-btn">Open First Year Hub &rarr;</a>
+            </div>
+        
+
+            <!-- Author Box -->
+            <div class="author-card">
+                <div class="author-avatar">JV</div>
+                <div class="author-info">
+                    <h4>Written by Jatin Verma</h4>
+                    <p>Full-Stack Developer, Founder of OGEDU AI. Specializing in educational software tools, university grade calculations, and student productivity systems.</p>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/tools/cgpa-calculator">CGPA Calculator</a>
+            <a href="/tools/tgpa-calculator">TGPA Calculator</a>
+            <a href="/tools/pass-fail-checker">Pass/Fail Checker</a>
+            <a href="/editorial-policy">Editorial Policy</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms">Terms</a>
+        </div>
+        <p>&copy; 2026 OGEDU AI. Free Academic Knowledge Base. All rights reserved.</p>
+    </footer>
+</body>
+</html>

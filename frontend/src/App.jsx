@@ -1034,11 +1034,36 @@ export default function App() {
           <div className="og-jatin-footer">
             <span className="jatin-brand">DESIGNED BY JATIN VERMA FULL STACK DEVELOPER, CREATOR AND INFLUENCER</span>
           </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '10px 18px', margin: '14px 0', fontSize: '0.8rem' }}>
+            <a href="/" style={{ color: 'var(--text-secondary, #94a3b8)', textDecoration: 'none' }}>Home</a>
+            <span style={{ color: '#475569' }}>&bull;</span>
+            <a href="/blog" style={{ color: 'var(--text-secondary, #94a3b8)', textDecoration: 'none' }}>Academic Guides</a>
+            <span style={{ color: '#475569' }}>&bull;</span>
+            <a href="/tools/cgpa-calculator" style={{ color: 'var(--text-secondary, #94a3b8)', textDecoration: 'none' }}>CGPA Calculator</a>
+            <span style={{ color: '#475569' }}>&bull;</span>
+            <a href="/tools/tgpa-calculator" style={{ color: 'var(--text-secondary, #94a3b8)', textDecoration: 'none' }}>TGPA Calculator</a>
+            <span style={{ color: '#475569' }}>&bull;</span>
+            <a href="/tools/attendance-calculator" style={{ color: 'var(--text-secondary, #94a3b8)', textDecoration: 'none' }}>Attendance Tool</a>
+            <span style={{ color: '#475569' }}>&bull;</span>
+            <a href="/resources" style={{ color: 'var(--text-secondary, #94a3b8)', textDecoration: 'none' }}>Notes Vault</a>
+            <span style={{ color: '#475569' }}>&bull;</span>
+            <a href="/editorial-policy" style={{ color: 'var(--text-secondary, #94a3b8)', textDecoration: 'none' }}>Editorial Policy</a>
+            <span style={{ color: '#475569' }}>&bull;</span>
+            <a href="/privacy-policy" style={{ color: 'var(--text-secondary, #94a3b8)', textDecoration: 'none' }}>Privacy Policy</a>
+            <span style={{ color: '#475569' }}>&bull;</span>
+            <a href="/terms" style={{ color: 'var(--text-secondary, #94a3b8)', textDecoration: 'none' }}>Terms</a>
+            <span style={{ color: '#475569' }}>&bull;</span>
+            <a href="/disclaimer" style={{ color: 'var(--text-secondary, #94a3b8)', textDecoration: 'none' }}>Disclaimer</a>
+            <span style={{ color: '#475569' }}>&bull;</span>
+            <a href="/about" style={{ color: 'var(--text-secondary, #94a3b8)', textDecoration: 'none' }}>About</a>
+            <span style={{ color: '#475569' }}>&bull;</span>
+            <a href="/contact" style={{ color: 'var(--text-secondary, #94a3b8)', textDecoration: 'none' }}>Contact</a>
+          </div>
           <p className="disclaimer">
             Disclaimer: This is an unofficial helper website designed for freshman student onboarding reference. The developers are not liable for scheduling shifts, cancellations, or inaccuracies. Please cross-reference all dates and instructions on the official Lovely Professional University website (<a href="https://www.lpu.in" target="_blank" rel="noopener noreferrer">lpu.in</a>) and UMS portal.
           </p>
           <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '8px' }}>
-            &copy; {new Date().getFullYear()} LPU Freshman Induction Hub. All rights reserved.
+            &copy; {new Date().getFullYear()} OGEDU AI Freshman Induction Hub. All rights reserved.
           </p>
         </div>
       </footer>

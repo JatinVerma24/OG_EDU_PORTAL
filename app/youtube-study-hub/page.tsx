@@ -275,30 +275,36 @@ export default function YouTubeStudyHubPage() {
       />
 
       {/* ── Footer ──────────────────────────────────────────────────────── */}
-      <footer className="mt-20 border-t border-surface-border/60 bg-surface-card/40 py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded bg-brand-500 flex items-center justify-center text-zinc-950 font-bold text-[10px]">
-              OG
-            </div>
-            <span>
-              &copy; {new Date().getFullYear()} OGEDU AI &bull; Built for University Students
-            </span>
+      <footer className="mt-20 border-t border-surface-border/60 bg-surface-card/40 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-xs text-zinc-400">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-zinc-400">
+            <Link href="/" className="hover:text-zinc-200 transition-colors">Home</Link>
+            <Link href="/tools/cgpa-calculator" className="hover:text-zinc-200 transition-colors text-brand-400">CGPA Calculator</Link>
+            <Link href="/tools/tgpa-calculator" className="hover:text-zinc-200 transition-colors text-brand-400">TGPA Calculator</Link>
+            <Link href="/tools/pass-fail-checker" className="hover:text-zinc-200 transition-colors text-brand-400">Pass/Fail Checker</Link>
+            <Link href="/tools/attendance-calculator" className="hover:text-zinc-200 transition-colors text-brand-400">Attendance Tool</Link>
+            <Link href="/blog" className="hover:text-zinc-200 transition-colors">Academic Guides</Link>
+            <Link href="/editorial-policy" className="hover:text-zinc-200 transition-colors">Editorial Policy</Link>
+            <Link href="/about" className="hover:text-zinc-200 transition-colors">About Us</Link>
+            <Link href="/contact" className="hover:text-zinc-200 transition-colors">Contact</Link>
+            <Link href="/privacy-policy" className="hover:text-zinc-200 transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-zinc-200 transition-colors">Terms</Link>
+            <Link href="/disclaimer" className="hover:text-zinc-200 transition-colors">Disclaimer</Link>
+            <Link href="/cookie-policy" className="hover:text-zinc-200 transition-colors">Cookie Policy</Link>
           </div>
 
-          <div className="flex items-center gap-5">
-            <Link href="/" className="hover:text-zinc-200 transition-colors">
-              Home
-            </Link>
-            <Link href="/sih" className="hover:text-zinc-200 transition-colors">
-              SIH 2026 Playbook
-            </Link>
-            <Link href="/resources" className="hover:text-zinc-200 transition-colors">
-              Notes Vault
-            </Link>
-            <Link href="/disclaimer.html" className="hover:text-zinc-200 transition-colors">
-              Disclaimer
-            </Link>
+          <div className="pt-4 border-t border-surface-border/40 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded bg-brand-500 flex items-center justify-center text-zinc-950 font-bold text-[10px]">
+                OG
+              </div>
+              <span>
+                &copy; {new Date().getFullYear()} OGEDU AI &bull; Free Open-Access Knowledge Base &bull; Designed by Jatin Verma
+              </span>
+            </div>
+            <p className="text-zinc-500 text-[11px] text-center sm:text-right">
+              Curated educational playlists for university engineering and management coursework.
+            </p>
           </div>
         </div>
       </footer>

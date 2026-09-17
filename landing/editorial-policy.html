@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2034578803232828"
+         crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZT0FTDEWMH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZT0FTDEWMH');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editorial Policy & Standards | OGEDU AI</title>
+    <meta name="description" content="Editorial principles, content curation guidelines, source verification methods, and correction procedures for OGEDU AI academic resources and student guides.">
+    <link rel="canonical" href="https://ogedu-portal.vercel.app/editorial-policy">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Editorial Policy & Standards | OGEDU AI">
+    <meta property="og:description" content="Editorial principles, content curation guidelines, source verification methods, and correction procedures for OGEDU AI.">
+    <meta property="og:url" content="https://ogedu-portal.vercel.app/editorial-policy">
+    <meta property="og:site_name" content="OGEDU AI">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        :root {
+            --primary-orange: #f97316;
+            --primary-purple: #8b5cf6;
+            --bg-color: #030712;
+            --panel-bg: rgba(10, 15, 30, 0.7);
+            --border-color: rgba(255, 255, 255, 0.06);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --radius-lg: 32px;
+            --radius-md: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+            mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 80%);
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 99;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-icon {
+            font-size: 1.3rem;
+            color: var(--primary-orange);
+            background: linear-gradient(135deg, var(--primary-orange), #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-title span {
+            color: var(--primary-orange);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: rgba(249, 115, 22, 0.1);
+            border-color: var(--primary-orange);
+            color: var(--primary-orange);
+        }
+
+        main {
+            flex: 1;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 60px 24px 100px 24px;
+            z-index: 10;
+        }
+
+        .page-header {
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary-purple);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            background: linear-gradient(180deg, #fff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .policy-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(16px);
+        }
+
+        .policy-card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .policy-card h2 i {
+            color: var(--primary-orange);
+            font-size: 1.15rem;
+        }
+
+        .policy-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .policy-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-card ul {
+            list-style: none;
+            margin: 14px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .policy-card li {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .policy-card li i {
+            color: var(--primary-purple);
+            font-size: 0.75rem;
+            margin-top: 6px;
+        }
+
+        .contact-box {
+            background: rgba(249, 115, 22, 0.05);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            background: #02040a;
+            padding: 40px 24px;
+            margin-top: auto;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo-area">
+                <i class="fa-solid fa-graduation-cap logo-icon"></i>
+                <div class="logo-title">OGEDU <span>AI</span></div>
+            </a>
+            <a href="/" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Home</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <div class="badge"><i class="fa-solid fa-book-open"></i> Editorial Standards</div>
+            <h1>Editorial Policy & Content Guidelines</h1>
+            <p class="subtitle">Our commitment to transparency, factual verification, and responsible student-first education.</p>
+        </div>
+
+        <div class="policy-card">
+            <h2><i class="fa-solid fa-bullseye"></i> 1. Mission & Educational Purpose</h2>
+            <p>OGEDU AI is an independent, student-created educational platform built to reduce administrative confusion, provide transparent academic calculation models, and curate high-quality learning roadmaps for undergraduate engineering and business students.</p>
+            <p>Every tool, article, and roadmap published on this platform is designed to answer real student challenges—ranging from understanding official grade weight calculations to preparing for campus examinations and technical placement interviews.</p>
+        </div>
+
+        <div class="policy-card">
+            <h2><i class="fa-solid fa-shield-halved"></i> 2. Source Selection & Preference for Official Bodies</h2>
+            <p>To ensure our academic guidance remains accurate and reliable, we adhere to strict sourcing criteria:</p>
+            <ul>
+                <li><i class="fa-solid fa-circle"></i> <span><strong>Official Academic Guidelines:</strong> Mathematical formulas for TGPA, CGPA, and exam criteria are strictly modeled after standard university ordinances, UGC guidelines, and AICTE curricular frameworks.</span></li>
+                <li><i class="fa-solid fa-circle"></i> <span><strong>Standard Curricular Textbooks:</strong> Technical roadmaps (such as Data Structures, DBMS, Operating Systems, and Computer Networks) cite recognized academic standards (Cormen/Rivest, Silberschatz, Tanenbaum).</span></li>
+                <li><i class="fa-solid fa-circle"></i> <span><strong>Public Examination Gazettes:</strong> Admission and scholarship advice draws directly from publicly released notifications from NTA, university admission cells, and official counseling brochures.</span></li>
+            </ul>
+        </div>
+
+        <div class="policy-card">
+            <h2><i class="fa-solid fa-filter"></i> 3. Curation vs. Verification Transparency</h2>
+            <p>We believe in absolute honesty regarding third-party resources:</p>
+            <ul>
+                <li><i class="fa-solid fa-circle"></i> <span><strong>Curated Study Resources:</strong> In our YouTube Study Hub, channels and playlists are selected based on alignment with university syllabus modules. We describe them as <em>curated educational resources</em> rather than claiming blanket institutional verification.</span></li>
+                <li><i class="fa-solid fa-circle"></i> <span><strong>External Link Distinctions:</strong> All external resources link directly to the creator's official YouTube channel or repository. We do not host, re-encode, or claim ownership of any third-party multimedia content.</span></li>
+            </ul>
+        </div>
+
+        <div class="policy-card">
+            <h2><i class="fa-solid fa-pen-ruler"></i> 4. Originality & Anti-Plagiarism Standards</h2>
+            <p>All roadmaps, calculator documentation, and explanatory guides are written by student developers and contributors. We prohibit:</p>
+            <ul>
+                <li><i class="fa-solid fa-circle"></i> <span>Copying articles or text verbatim from external websites or commercial blogs.</span></li>
+                <li><i class="fa-solid fa-circle"></i> <span>Mass-generating low-value automated text for search engine manipulation.</span></li>
+                <li><i class="fa-solid fa-circle"></i> <span>Presenting speculative estimations as guaranteed academic outcomes.</span></li>
+            </ul>
+        </div>
+
+        <div class="policy-card">
+            <h2><i class="fa-solid fa-wrench"></i> 5. Calculator Limitations & Accuracy Commitments</h2>
+            <p>Our academic calculators (TGPA, CGPA, Attendance, Exam Pass Checker) are tested against official grading scale matrices. However, university evaluation rules may introduce continuous assessment adjustments, relative grading scales, or departmental caveats.</p>
+            <p>Every tool page explicitly states its mathematical methodology, assumptions, and limitations, urging students to confirm official transcripts through their designated university portal.</p>
+        </div>
+
+        <div class="policy-card">
+            <h2><i class="fa-solid fa-rotate"></i> 6. Corrections & Feedback Procedure</h2>
+            <p>Academic syllabi and grading regulations evolve. We actively review our resources each semester. If you spot an inaccurate credit weighting, an outdated playlist link, or a typo in any guide, we invite you to report it immediately.</p>
+            <div class="contact-box">
+                <p><strong>To report a correction or suggest an improvement:</strong></p>
+                <p>Email our editorial lead at <a href="mailto:jv242buisness@gmail.com" style="color: var(--primary-orange); text-decoration: none; font-weight: 600;">jv242buisness@gmail.com</a> with the subject line <code>[Correction] [Page URL]</code>. We review and update verified corrections within 24–48 hours.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/about">About Us</a>
+                <a href="/contact">Contact</a>
+                <a href="/editorial-policy">Editorial Policy</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms & Conditions</a>
+                <a href="/disclaimer">Disclaimer</a>
+                <a href="/cookie-policy">Cookie Policy</a>
+            </div>
+            <div class="footer-copy">&copy; 2026 OGEDU AI. An independent, free educational resource platform.</div>
+        </div>
+    </footer>
+</body>
+</html>
