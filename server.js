@@ -407,6 +407,50 @@ app.get('/youtube-study-hub/*', (req, res) => {
     res.status(404).send('Page not found');
 });
 
+// Helper to find Midterm Survival Kit pre-rendered Next.js HTML files
+function getMidtermHtmlFile(subpath = '') {
+    const candidates = [
+        path.join(__dirname, 'landing', 'midterm', subpath ? `${subpath}.html` : 'index.html'),
+        path.join(__dirname, '.next', 'server', 'app', 'midterm', subpath ? `${subpath}.html` : 'index.html'),
+        path.join(__dirname, '.next', 'server', 'app', 'midterm', subpath, 'page.html'),
+        path.join(__dirname, '.next', 'server', 'app', subpath ? `midterm/${subpath}.html` : 'midterm.html')
+    ];
+    for (const candidate of candidates) {
+        if (fs.existsSync(candidate)) return candidate;
+    }
+    return null;
+}
+
+// OGEDU Mid-Term Survival Kit 2026 Routes (Next.js)
+app.get(['/midterm', '/midterm/'], (req, res) => {
+    const hubFile = getMidtermHtmlFile('');
+    if (hubFile) {
+        return res.sendFile(hubFile);
+    }
+    res.status(404).send('Midterm Hub build not found. Please run next build.');
+});
+
+app.get('/midterm/:section', (req, res, next) => {
+    const section = req.params.section.replace(/[^a-zA-Z0-9_-]/g, '');
+    const sectionFile = getMidtermHtmlFile(section);
+    if (sectionFile) {
+        return res.sendFile(sectionFile);
+    }
+    const hubFile = getMidtermHtmlFile('');
+    if (hubFile) {
+        return res.sendFile(hubFile);
+    }
+    next();
+});
+
+app.get('/midterm/*', (req, res) => {
+    const hubFile = getMidtermHtmlFile('');
+    if (hubFile) {
+        return res.sendFile(hubFile);
+    }
+    res.status(404).send('Midterm page not found');
+});
+
 // Root route
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'landing', 'index.html'));

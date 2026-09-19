@@ -1,7 +1,7 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/youtube-study-hub/page.js")
 R.c("server/chunks/ssr/[root-of-the-server]__1y-i6av._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_1n3w9lb._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__1zx6qpa._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__04uszyn._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__1p4rvjx._.js")
 R.c("server/chunks/ssr/app_layout_tsx_2144vk_._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_0wpq8j3._.js")
