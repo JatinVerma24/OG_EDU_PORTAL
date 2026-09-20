@@ -2,32 +2,29 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'OGEDU YouTube Study Hub | Find the Right YouTube Channel for Every Subject',
-  description: 'Search by course code or subject name and discover verified university YouTube channels, playlists, and lecture series for B.Tech & BBA students.',
+  title: 'OGEDU AI — Student Tools, Learning Resources & Academic Guides',
+  description: 'Free academic platform for university students. Calculate CGPA, TGPA, and attendance, verify exam passing criteria, and access curated study resources.',
   keywords: [
-    'B.Tech CSE YouTube channels',
-    'CSE101 Computer Programming YouTube',
-    'DBMS YouTube channel',
-    'Data Structures YouTube',
-    'Operating Systems YouTube',
-    'Engineering Mathematics YouTube',
-    'Programming in Java YouTube',
-    'AI Essentials YouTube',
+    'B.Tech CSE study tools',
+    'Midterm safe marks predictor',
+    'CGPA calculator',
+    '75% attendance calculator',
+    'University study hub',
     'OGEDU AI'
   ],
   authors: [{ name: 'OGEDU AI' }],
   openGraph: {
-    title: 'OGEDU YouTube Study Hub',
-    description: 'Find the right YouTube channel for every university subject.',
-    url: 'https://ogedu-portal.vercel.app/youtube-study-hub',
+    title: 'OGEDU AI — Student Tools & Study Hub',
+    description: 'Free academic platform for university students.',
+    url: 'https://ogedu-portal.vercel.app/',
     siteName: 'OGEDU AI',
     locale: 'en_IN',
     type: 'website'
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OGEDU YouTube Study Hub',
-    description: 'Find the right YouTube channel for every subject.'
+    title: 'OGEDU AI — Academic Suite',
+    description: 'Free academic tools, guides, and study materials.'
   }
 };
 
@@ -57,7 +54,37 @@ export default function RootLayout({
             `
           }}
         />
-        <link rel="canonical" href="https://ogedu-portal.vercel.app/youtube-study-hub" />
+        {/* Tailwind CSS CDN fallback for 100% styling guarantee */}
+        <script src="https://cdn.tailwindcss.com" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                  extend: {
+                    colors: {
+                      brand: {
+                        50: '#faf5ff', 100: '#f3e8ff', 200: '#e9d5ff', 300: '#d8b4fe',
+                        400: '#c084fc', 500: '#a855f7', 600: '#9333ea', 700: '#7e22ce',
+                        800: '#6b21a8', 900: '#581c87', 950: '#3b0764',
+                      },
+                      surface: {
+                        base: '#09090b', card: '#121215', elevated: '#18181b',
+                        border: '#27272a', 'border-subtle': '#1e1e24', 'border-hover': '#3f3f46',
+                      }
+                    },
+                    fontFamily: {
+                      sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                      display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                      mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                  }
+                }
+              };
+            `
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
