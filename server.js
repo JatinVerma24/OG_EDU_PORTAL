@@ -409,6 +409,9 @@ app.get('/youtube-study-hub/*', (req, res) => {
 
 // Helper to find Midterm Survival Kit pre-rendered Next.js HTML files
 function getMidtermHtmlFile(subpath = '') {
+    if (['online-guidance', 'online-classes', 'online-class', 'lpu-online-class-guidance', 'lpu-online', 'guidance'].includes(subpath.toLowerCase())) {
+        subpath = 'online-guide';
+    }
     const candidates = [
         path.join(__dirname, 'landing', 'midterm', subpath ? `${subpath}.html` : 'index.html'),
         path.join(__dirname, '.next', 'server', 'app', 'midterm', subpath ? `${subpath}.html` : 'index.html'),
