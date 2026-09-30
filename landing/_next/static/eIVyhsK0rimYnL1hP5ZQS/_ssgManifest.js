@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fyoutube-study-hub\u002F[course]\u002F[semester]\u002F[subjectCode]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

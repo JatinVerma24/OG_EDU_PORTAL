@@ -675,12 +675,12 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div class="space-y-1">
                   <label class="block text-[11px] text-zinc-400">Student Name:</label>
-                  <input type="text" id="rmsStudentName" value="Jatin Verma" oninput="updateRmsTicket()" class="w-full p-2.5 rounded-xl bg-surface-elevated border border-surface-border text-xs text-white focus:outline-none focus:border-rose-500" />
+                  <input type="text" id="rmsStudentName" value="" placeholder="e.g. Rahul Sharma" oninput="updateRmsTicket()" class="w-full p-2.5 rounded-xl bg-surface-elevated border border-surface-border text-xs text-white focus:outline-none focus:border-rose-500" />
                 </div>
 
                 <div class="space-y-1">
                   <label class="block text-[11px] text-zinc-400">Registration Number:</label>
-                  <input type="text" id="rmsRegNo" value="12215432" oninput="updateRmsTicket()" class="w-full p-2.5 rounded-xl bg-surface-elevated border border-surface-border text-xs text-white focus:outline-none focus:border-rose-500" />
+                  <input type="text" id="rmsRegNo" value="" placeholder="e.g. 12200000" oninput="updateRmsTicket()" class="w-full p-2.5 rounded-xl bg-surface-elevated border border-surface-border text-xs text-white focus:outline-none focus:border-rose-500" />
                 </div>
               </div>
 
@@ -1124,9 +1124,9 @@
     }
 
     function updateRmsTicket() {
-      const name = document.getElementById('rmsStudentName').value;
-      const regNo = document.getElementById('rmsRegNo').value;
-      const code = document.getElementById('rmsCourseCode').value;
+      const name = document.getElementById('rmsStudentName').value.trim() || '[Your Name]';
+      const regNo = document.getElementById('rmsRegNo').value.trim() || '[Your Registration Number]';
+      const code = document.getElementById('rmsCourseCode').value.trim() || '[Course Code]';
       const date = document.getElementById('rmsClassDate').value;
       const details = document.getElementById('rmsDetails').value;
 

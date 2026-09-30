@@ -45,8 +45,8 @@ export default function LpuOnlineClassMidtermGuidancePage() {
   const [rmsCategory] = useState<string>('Academics');
   const [rmsSubCategory] = useState<string>('Online Classes');
   const [rmsIssueType, setRmsIssueType] = useState<string>('attendance');
-  const [studentName, setStudentName] = useState<string>('Jatin Verma');
-  const [regNo, setRegNo] = useState<string>('12215432');
+  const [studentName, setStudentName] = useState<string>('');
+  const [regNo, setRegNo] = useState<string>('');
   const [courseCode, setCourseCode] = useState<string>('CSE205');
   const [classDate, setClassDate] = useState<string>('2026-10-05');
   const [customDetail, setCustomDetail] = useState<string>('Attended full lecture from 10:00 AM to 11:00 AM on My Class, but attendance status on UMS is reflecting Absent/Pending due to platform timeout.');
@@ -74,10 +74,13 @@ export default function LpuOnlineClassMidtermGuidancePage() {
   };
 
   // Generate RMS ticket format
+  const displayStudentName = studentName.trim() || '[Your Name]';
+  const displayRegNo = regNo.trim() || '[Your Registration Number]';
+
   const rmsTicketText = `RMS CATEGORY: ${rmsCategory}
 RMS SUB-CATEGORY: ${rmsSubCategory}
-REGISTRATION NUMBER: ${regNo}
-STUDENT NAME: ${studentName}
+REGISTRATION NUMBER: ${displayRegNo}
+STUDENT NAME: ${displayStudentName}
 COURSE CODE: ${courseCode}
 DATE OF CLASS: ${classDate}
 ISSUE TYPE: ${
@@ -92,15 +95,15 @@ ISSUE TYPE: ${
 
 DESCRIPTION:
 Respected Academic Team,
-I am ${studentName} (Reg. No: ${regNo}). Regarding the online classes conducted on LPU My Class as per the official notification dated 29 Sept 2026:
+I am ${displayStudentName} (Reg. No: ${displayRegNo}). Regarding the online classes conducted on LPU My Class as per the official notification dated 29 Sept 2026:
 
 ${customDetail}
 
 Kindly review my active connection logs / session records on the LPU My Class platform and update my records accordingly.
 
 Thank you,
-${studentName}
-Reg No: ${regNo}`;
+${displayStudentName}
+Reg No: ${displayRegNo}`;
 
   // Steps to Remember for Online Classes
   const onlineSteps = [
@@ -972,6 +975,7 @@ Reg No: ${regNo}`;
                   type="text"
                   value={studentName}
                   onChange={(e) => setStudentName(e.target.value)}
+                  placeholder="e.g. Rahul Sharma"
                   className="w-full p-2.5 rounded-xl bg-surface-elevated border border-surface-border text-xs text-white focus:outline-none focus:border-rose-500"
                 />
               </div>
@@ -982,6 +986,7 @@ Reg No: ${regNo}`;
                   type="text"
                   value={regNo}
                   onChange={(e) => setRegNo(e.target.value)}
+                  placeholder="e.g. 12200000"
                   className="w-full p-2.5 rounded-xl bg-surface-elevated border border-surface-border text-xs text-white focus:outline-none focus:border-rose-500"
                 />
               </div>

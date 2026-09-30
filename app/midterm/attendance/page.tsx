@@ -20,8 +20,8 @@ export default function MidtermAttendancePage() {
   const [dutyDays, setDutyDays] = useState<number>(1);
 
   // Student Info for Letter
-  const [studentName, setStudentName] = useState<string>('Jatin Verma');
-  const [regNo, setRegNo] = useState<string>('12215432');
+  const [studentName, setStudentName] = useState<string>('');
+  const [regNo, setRegNo] = useState<string>('');
   const [courseBranch, setCourseBranch] = useState<string>('B.Tech CSE, 3rd Year');
   const [reason, setReason] = useState<string>('Acute viral illness and recovery under medical supervision');
   const [copiedLetter, setCopiedLetter] = useState<boolean>(false);
@@ -40,6 +40,9 @@ export default function MidtermAttendancePage() {
   const isRawEligible = rawPercentage >= 75;
   const isAdjustedEligible = adjustedPercentage >= 75;
 
+  const displayName = studentName.trim() || '[Your Name]';
+  const displayRegNo = regNo.trim() || '[Your Registration Number]';
+
   // Generate Letter Text
   const letterText = `To,
 The Dean / Head of Department,
@@ -50,7 +53,7 @@ Subject: Request for Attendance Condonation / Admit Card Approval for Mid-Term E
 
 Respected Sir/Madam,
 
-I am ${studentName}, a student of ${courseBranch}, bearing Registration Number ${regNo}.
+I am ${displayName}, a student of ${courseBranch}, bearing Registration Number ${displayRegNo}.
 
 I am writing this application to formally request the condonation of my short attendance for the upcoming Mid-Term Examinations 2026. My current recorded attendance stands at ${rawPercentage.toFixed(1)}%, which is temporarily below the mandatory 75% threshold due to unavoidable circumstances (${reason}).
 
@@ -63,8 +66,8 @@ Kindly grant approval for my Mid-Term Admit Card / Hall Ticket so that I may sit
 Thanking You.
 
 Yours sincerely,
-${studentName}
-Registration No: ${regNo}
+${displayName}
+Registration No: ${displayRegNo}
 Department: ${courseBranch}
 Date: ${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
 Attachments: Medical Prescription / Duty Clearance Slips`;
@@ -208,14 +211,14 @@ Attachments: Medical Prescription / Duty Clearance Slips`;
               type="text"
               value={studentName}
               onChange={(e) => setStudentName(e.target.value)}
-              placeholder="Your Full Name"
+              placeholder="Your Full Name (e.g. Rahul Sharma)"
               className="p-2 rounded-lg bg-surface-elevated border border-surface-border text-xs text-zinc-200"
             />
             <input
               type="text"
               value={regNo}
               onChange={(e) => setRegNo(e.target.value)}
-              placeholder="Registration Number"
+              placeholder="Registration Number (e.g. 12200000)"
               className="p-2 rounded-lg bg-surface-elevated border border-surface-border text-xs text-zinc-200"
             />
           </div>
