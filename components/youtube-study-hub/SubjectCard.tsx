@@ -33,9 +33,14 @@ export const SubjectCard: React.FC<SubjectCardProps> = ({ subject, onSelect }) =
       <div>
         {/* Header Tags: Code & Badges */}
         <div className="flex items-center justify-between gap-2 mb-3">
-          <span className="font-mono text-xs sm:text-sm font-bold tracking-wider text-brand-400 bg-brand-500/10 border border-brand-500/20 px-2.5 py-1 rounded-lg">
-            {subject.code}
-          </span>
+          <div className="flex items-center gap-1.5">
+            <span className="font-mono text-xs sm:text-sm font-bold tracking-wider text-brand-400 bg-brand-500/10 border border-brand-500/20 px-2.5 py-1 rounded-lg">
+              {subject.code}
+            </span>
+            <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded-md bg-surface-elevated text-zinc-300 border border-surface-border">
+              {subject.courseId} • Sem {subject.semester}
+            </span>
+          </div>
 
           <div className="flex items-center gap-1.5">
             <span

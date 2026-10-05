@@ -1,4 +1,4 @@
-export type CourseId = 'btech' | 'bba';
+export type CourseId = 'btech' | 'bba' | 'bca';
 
 export type SemesterNumber = 1 | 2 | 3 | 4;
 

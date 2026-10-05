@@ -3,7 +3,7 @@ import { getAllSubjects, getSubjectsByCourse } from '../../data/courses';
 
 export interface SubjectFilterOptions {
   query?: string;
-  courseId?: CourseId;
+  courseId?: CourseId | 'all';
   semester?: SemesterNumber | 'all';
   type?: SubjectType | 'all';
 }
@@ -20,9 +20,9 @@ function normalize(str: string): string {
  * Filter and search subjects based on multi-field query and filters
  */
 export function searchSubjects(options: SubjectFilterOptions = {}): Subject[] {
-  const { query = '', courseId = 'btech', semester = 'all', type = 'all' } = options;
+  const { query = '', courseId = 'bca', semester = 'all', type = 'all' } = options;
 
-  let subjects = getSubjectsByCourse(courseId);
+  let subjects = courseId === 'all' ? getAllSubjects() : getSubjectsByCourse(courseId);
 
   // 1. Filter by Semester
   if (semester !== 'all' && semester !== undefined) {

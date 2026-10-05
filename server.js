@@ -356,15 +356,23 @@ app.get('/sih/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'landing', 'sih.html'));
 });
 
-// Serve Next.js static assets (_next) from landing or .next
-app.use('/_next', express.static(path.join(__dirname, 'landing', '_next')), express.static(path.join(__dirname, '.next')));
+// Serve Next.js static assets (_next) from .next or landing/_next
+app.use('/_next', 
+    express.static(path.join(__dirname, '.next')),
+    express.static(path.join(__dirname, 'landing', '_next'))
+);
+
+// Guard against returning HTML for missing Next.js assets to prevent strict MIME type errors
+app.use('/_next', (req, res) => {
+    res.status(404).type('text/plain').send('Next.js asset not found');
+});
 
 // Helper to find the best available Study Hub pre-rendered HTML file
 function getStudyHubHtmlFile() {
-    const landingPath = path.join(__dirname, 'landing', 'youtube-study-hub.html');
-    if (fs.existsSync(landingPath)) return landingPath;
     const nextPath = path.join(__dirname, '.next', 'server', 'app', 'youtube-study-hub.html');
     if (fs.existsSync(nextPath)) return nextPath;
+    const landingPath = path.join(__dirname, 'landing', 'youtube-study-hub.html');
+    if (fs.existsSync(landingPath)) return landingPath;
     return null;
 }
 
@@ -379,22 +387,15 @@ app.get(['/youtube-study-hub', '/youtube-study-hub/'], (req, res) => {
 
 app.get('/youtube-study-hub/:course/:semester/:subjectCode', (req, res) => {
     const { course, semester, subjectCode } = req.params;
-    const subjectFile = path.join(
-        __dirname,
-        '.next',
-        'server',
-        'app',
-        'youtube-study-hub',
-        course.toLowerCase(),
-        semester.toLowerCase(),
-        `${subjectCode.toLowerCase()}.html`
-    );
-    if (fs.existsSync(subjectFile)) {
-        return res.sendFile(subjectFile);
-    }
-    const hubFile = getStudyHubHtmlFile();
-    if (hubFile) {
-        return res.sendFile(hubFile);
+    const candidates = [
+        path.join(__dirname, '.next', 'server', 'app', 'youtube-study-hub', course.toLowerCase(), semester.toLowerCase(), `${subjectCode.toLowerCase()}.html`),
+        path.join(__dirname, 'landing', 'youtube-study-hub', course.toLowerCase(), semester.toLowerCase(), `${subjectCode.toLowerCase()}.html`),
+        getStudyHubHtmlFile()
+    ];
+    for (const candidate of candidates) {
+        if (candidate && fs.existsSync(candidate)) {
+            return res.sendFile(candidate);
+        }
     }
     res.status(404).send('Subject page not found');
 });

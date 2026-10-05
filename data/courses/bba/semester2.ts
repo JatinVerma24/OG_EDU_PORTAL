@@ -36,16 +36,27 @@ export const BBA_SEMESTER_2_SUBJECTS: Subject[] = [
     ]
   },
   {
-    id: 'bba-sem2-acc201',
+    id: 'bba-sem2-acc205',
     courseId: 'bba',
     semester: 2,
-    code: 'ACC201',
-    name: 'Cost & Management Accounting',
+    code: 'ACC205',
+    name: 'Cost and Management Accounting',
     credits: 4,
     type: 'Core',
-    description: 'Elements of cost, preparation of Cost Sheets, Marginal Costing and Break-Even Point (BEP) analysis, Standard Costing with variance analysis, and budgetary control.',
-    keywords: ['cost accounting', 'cost sheet', 'marginal costing', 'break even point', 'standard costing', 'variance analysis', 'acc201'],
-    slug: 'acc201-cost-and-management-accounting',
+    description: 'Elements of cost, preparation of Cost Sheets, Marginal Costing and Break-Even Point (BEP) analysis, Standard Costing with variance analysis (Material, Labour, Overhead), and budgetary control systems.',
+    keywords: [
+      'cost and management accounting',
+      'acc205',
+      'acc201',
+      'cost accounting',
+      'cost sheet',
+      'marginal costing',
+      'break even point',
+      'standard costing',
+      'variance analysis',
+      'budgetary control'
+    ],
+    slug: 'acc205-cost-and-management-accounting',
     channels: [
       {
         channelId: 'ca-parag-gupta',
@@ -55,7 +66,9 @@ export const BBA_SEMESTER_2_SUBJECTS: Subject[] = [
         language: 'Hindi',
         level: 'Comprehensive',
         recommendationReason: 'Crucial for scoring full marks in university numerical costing questions.',
-        priority: 1
+        priority: 1,
+        featuredPlaylistUrl: 'https://www.youtube.com/results?search_query=CA+Parag+Gupta+cost+accounting+playlist',
+        playlistTitle: 'Cost & Management Accounting Masterclass'
       },
       {
         channelId: 'grooming-education',
@@ -65,21 +78,43 @@ export const BBA_SEMESTER_2_SUBJECTS: Subject[] = [
         language: 'Hindi',
         level: 'Exam-Focused',
         recommendationReason: 'Clear format templates and solved university past papers.',
-        priority: 2
+        priority: 2,
+        featuredPlaylistUrl: 'https://www.youtube.com/results?search_query=Grooming+Education+Cost+Accounting',
+        playlistTitle: 'Cost Accounting for BBA & Commerce'
+      },
+      {
+        channelId: 'sunil-panda',
+        name: 'Sunil Panda - The Educator',
+        channelUrl: 'https://www.youtube.com/@sunilpandaofficial/videos',
+        description: 'Targeted capsules breaking down standard costing formulas and break-even charts in simple Hindi.',
+        language: 'Hindi',
+        level: 'Beginner Friendly',
+        recommendationReason: 'Fast conceptual revision before mid-term examinations.',
+        priority: 3
       }
     ]
   },
   {
-    id: 'bba-sem2-mkt101',
+    id: 'bba-sem2-mkt201',
     courseId: 'bba',
     semester: 2,
-    code: 'MKT101',
-    name: 'Marketing Management',
+    code: 'MKT201',
+    name: 'Principles of Marketing',
     credits: 4,
     type: 'Core',
-    description: 'Strategic marketing planning, Segmentation, Targeting, and Positioning (STP), the 4Ps of marketing (Product, Price, Place, Promotion), and consumer buying behavior.',
-    keywords: ['marketing management', '4 ps of marketing', 'stp marketing', 'consumer behavior', 'product life cycle', 'branding', 'mkt101'],
-    slug: 'mkt101-marketing-management',
+    description: 'Strategic marketing concepts: Segmentation, Targeting, and Positioning (STP), the 4Ps of marketing (Product, Price, Place, Promotion), Consumer Buying Behaviour, Product Life Cycle (PLC), brand management, and digital marketing channels.',
+    keywords: [
+      'principles of marketing',
+      'mkt201',
+      'mkt101',
+      'marketing management',
+      '4 ps of marketing',
+      'stp marketing',
+      'consumer behavior',
+      'product life cycle',
+      'branding'
+    ],
+    slug: 'mkt201-principles-of-marketing',
     channels: [
       {
         channelId: 'management-adda',
@@ -89,7 +124,9 @@ export const BBA_SEMESTER_2_SUBJECTS: Subject[] = [
         language: 'Hinglish',
         level: 'Beginner Friendly',
         recommendationReason: 'Superb conceptual clarity for BBA theoretical questions and case studies.',
-        priority: 1
+        priority: 1,
+        featuredPlaylistUrl: 'https://www.youtube.com/playlist?list=PLBfnL_QO-Gv43fWj4qZ7r9Rrq3hPzJv8f',
+        playlistTitle: 'Principles of Marketing Full Course'
       },
       {
         channelId: 'commerce-wallah-pw',
@@ -99,7 +136,67 @@ export const BBA_SEMESTER_2_SUBJECTS: Subject[] = [
         language: 'Hinglish',
         level: 'Comprehensive',
         recommendationReason: 'Covers practical corporate campaigns and Indian FMCG market examples.',
-        priority: 2
+        priority: 2,
+        featuredPlaylistUrl: 'https://www.youtube.com/results?search_query=Commerce+Wallah+principles+of+marketing',
+        playlistTitle: 'Principles of Marketing Masterclass'
+      },
+      {
+        channelId: 'sunil-panda',
+        name: 'Sunil Panda - The Educator',
+        channelUrl: 'https://www.youtube.com/@sunilpandaofficial/videos',
+        description: 'Fast-paced, engaging marketing lectures breaking down pricing strategies, channels of distribution, and advertising.',
+        language: 'Hindi',
+        level: 'Exam-Focused',
+        recommendationReason: 'Helpful for quick revision of marketing definitions and features.',
+        priority: 3
+      }
+    ]
+  },
+  {
+    id: 'bba-sem2-mgn206',
+    courseId: 'bba',
+    semester: 2,
+    code: 'MGN206',
+    name: 'Research Methodology',
+    credits: 4,
+    type: 'Core',
+    description: 'Systematic business research process: Problem identification, exploratory & descriptive research design, sampling methods (probability and non-probability), questionnaire formulation, data collection, hypothesis testing (t-test, chi-square, ANOVA), and formal research report writing.',
+    keywords: [
+      'research methodology',
+      'mgn206',
+      'res301',
+      'business research',
+      'sampling methods',
+      'hypothesis testing',
+      'chi square test',
+      'questionnaire design',
+      'report writing'
+    ],
+    slug: 'mgn206-research-methodology',
+    channels: [
+      {
+        channelId: 'dr-neha-aneja',
+        name: 'Dr. Neha Aneja',
+        channelUrl: 'https://www.youtube.com/@DrNehaAneja/videos',
+        description: 'Complete university research series explaining null hypothesis, Type I/II errors, and parametric vs. non-parametric tests.',
+        language: 'Hinglish',
+        level: 'Comprehensive',
+        recommendationReason: 'Highest scoring guidance for BBA research methodology papers and project dissertations.',
+        priority: 1,
+        featuredPlaylistUrl: 'https://www.youtube.com/results?search_query=Dr+Neha+Aneja+research+methodology',
+        playlistTitle: 'Research Methodology Lecture Series'
+      },
+      {
+        channelId: 'management-adda',
+        name: 'Management Adda',
+        channelUrl: 'https://www.youtube.com/@ManagementAdda/videos',
+        description: 'Visual whiteboard tutorials on research problem definition, literature review, and sampling methods.',
+        language: 'Hinglish',
+        level: 'Beginner Friendly',
+        recommendationReason: 'Simplifies complex statistical methodology terms into clean diagrams.',
+        priority: 2,
+        featuredPlaylistUrl: 'https://www.youtube.com/results?search_query=Management+Adda+research+methodology',
+        playlistTitle: 'Research Methodology Simplified'
       }
     ]
   },

@@ -5,8 +5,9 @@
   "scripts": {
     "start": "node server.js",
     "dev": "concurrently \"node server.js\" \"cd frontend && npm run dev\" \"cd senior_portal/client && npm run dev\"",
-    "build": "npm run build-fresher && npm run build-senior && next build",
-    "build-hub": "next build",
+    "build": "npm run build-fresher && npm run build-senior && next build && node scripts/sync-next-assets.js",
+    "build-hub": "next build && node scripts/sync-next-assets.js",
+    "sync-assets": "node scripts/sync-next-assets.js",
     "build-fresher": "cd frontend && npm run build",
     "build-senior": "cd senior_portal/client && npm run build",
     "install-all": "npm install && cd frontend && npm install && cd ../senior_portal/client && npm install"

@@ -46,7 +46,7 @@ export const SubjectModal: React.FC<SubjectModalProps> = ({ subject, onClose }) 
               </span>
               <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-surface-elevated text-zinc-300 border border-surface-border flex items-center gap-1">
                 <GraduationCap className="w-3 h-3 text-brand-400" />
-                {subject.courseId === 'btech' ? 'B.Tech' : 'BBA'} • Semester {subject.semester}
+                {subject.courseId === 'bca' ? 'BCA' : subject.courseId === 'bba' ? 'BBA' : 'B.Tech'} • Semester {subject.semester}
               </span>
               {subject.credits > 0 && (
                 <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-surface-elevated text-zinc-300 border border-surface-border flex items-center gap-1">

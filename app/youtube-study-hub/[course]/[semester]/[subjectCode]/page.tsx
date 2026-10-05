@@ -115,7 +115,7 @@ export default async function SubjectDetailPage({ params }: PageProps) {
             </span>
             <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-surface-elevated text-zinc-300 border border-surface-border flex items-center gap-1.5">
               <GraduationCap className="w-3.5 h-3.5 text-brand-400" />
-              {subject.courseId === 'btech' ? 'B.Tech' : 'BBA'} &bull; Semester {subject.semester}
+              {subject.courseId === 'bca' ? 'BCA' : subject.courseId === 'bba' ? 'BBA' : 'B.Tech'} &bull; Semester {subject.semester}
             </span>
             <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-surface-elevated text-zinc-300 border border-surface-border flex items-center gap-1.5">
               <Award className="w-3.5 h-3.5 text-amber-400" />

@@ -174,5 +174,63 @@ export const BBA_SEMESTER_1_SUBJECTS: Subject[] = [
         priority: 1
       }
     ]
+  },
+  {
+    id: 'bba-sem1-mgn253',
+    courseId: 'bba',
+    semester: 1,
+    code: 'MGN253',
+    name: 'Human Values and Business Ethics',
+    credits: 3,
+    type: 'Core',
+    description: 'Foundations of human values, self-exploration, harmony in human relationships and society, professional ethics, corporate moral responsibility, ethical decision-making frameworks, whistleblower policies, and corporate governance.',
+    keywords: [
+      'human values and business ethics',
+      'mgn253',
+      'business ethics',
+      'human values',
+      'corporate governance',
+      'whistleblower policy',
+      'csr',
+      'moral values',
+      'professional ethics'
+    ],
+    slug: 'mgn253-human-values-and-business-ethics',
+    channels: [
+      {
+        channelId: 'management-adda',
+        name: 'Management Adda',
+        channelUrl: 'https://www.youtube.com/@ManagementAdda/videos',
+        description: 'Visual whiteboard tutorials explaining business ethics, moral theories, Kohlberg stages, and corporate governance.',
+        language: 'Hinglish',
+        level: 'Beginner Friendly',
+        recommendationReason: 'Best visual clarity for management exam case studies and ethical dilemmas.',
+        priority: 1,
+        featuredPlaylistUrl: 'https://www.youtube.com/results?search_query=Management+Adda+business+ethics+playlist',
+        playlistTitle: 'Business Ethics & Values Series'
+      },
+      {
+        channelId: 'commerce-wallah-pw',
+        name: 'Commerce Wallah by PW',
+        channelUrl: 'https://www.youtube.com/@CommerceWallahPW/videos',
+        description: 'Comprehensive university lectures covering human values, social responsibility, and corporate ethics.',
+        language: 'Hinglish',
+        level: 'Comprehensive',
+        recommendationReason: 'Detailed syllabus-focused breakdown with real-world corporate case examples.',
+        priority: 2,
+        featuredPlaylistUrl: 'https://www.youtube.com/results?search_query=Commerce+Wallah+business+ethics',
+        playlistTitle: 'Business Ethics Full Lectures'
+      },
+      {
+        channelId: 'dr-neha-aneja',
+        name: 'Dr. Neha Aneja',
+        channelUrl: 'https://www.youtube.com/@DrNehaAneja/videos',
+        description: 'Academic scholar lectures covering professional code of conduct, ethical leadership, and values in organization.',
+        language: 'Hinglish',
+        level: 'Exam-Focused',
+        recommendationReason: 'Ideal for theoretical long-answer scoring in university semester exams.',
+        priority: 3
+      }
+    ]
   }
 ];
