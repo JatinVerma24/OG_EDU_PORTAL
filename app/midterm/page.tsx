@@ -14,7 +14,8 @@ import {
   Clock,
   ArrowRight,
   Target,
-  Video
+  Video,
+  FolderArchive
 } from 'lucide-react';
 
 export default function MidtermOverviewPage() {
@@ -30,6 +31,16 @@ export default function MidtermOverviewPage() {
   };
 
   const tools = [
+    {
+      title: 'First-Year Study Resources & PYQ Vault',
+      tag: '📂 Mega Drive Vault',
+      tagColor: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
+      desc: 'Complete cloud library: verified lecture notes, textbooks, 11+ scanned previous year question papers per subject, and 220-question MCQ banks.',
+      icon: FolderArchive,
+      color: 'from-amber-500 to-rose-600',
+      href: '/midterm/resources',
+      stats: '150+ Resources in Drive'
+    },
     {
       title: 'LPU Online Class & Mid-Term Guidance',
       tag: '📢 Official Notice (29 Sep)',
@@ -106,11 +117,19 @@ export default function MidtermOverviewPage() {
         {/* Action Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
           <Link
-            href="/midterm/calculator"
+            href="/midterm/resources"
             className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-600 text-white text-sm font-semibold shadow-lg shadow-rose-500/25 hover:opacity-95 transition-opacity flex items-center gap-2"
           >
-            <Calculator className="w-4 h-4" />
-            Calculate Safe Marks Now
+            <FolderArchive className="w-4 h-4" />
+            Study Resources &amp; PYQ Vault
+          </Link>
+
+          <Link
+            href="/midterm/calculator"
+            className="px-5 py-2.5 rounded-xl bg-surface-card hover:bg-surface-elevated text-zinc-200 hover:text-white border border-surface-border text-sm font-semibold transition-colors flex items-center gap-2"
+          >
+            <Calculator className="w-4 h-4 text-amber-400" />
+            Safe Marks Calculator
           </Link>
 
           <a
