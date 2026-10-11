@@ -146,6 +146,23 @@ export default function YouTubeStudyHubPage() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      {/* ── Mid-Term 2026 Urgent Announcement Banner ───────────────────── */}
+      <div className="bg-gradient-to-r from-amber-600 via-rose-600 to-purple-600 text-white text-xs sm:text-sm py-2.5 px-3 sm:px-4 font-semibold text-center flex items-center justify-center gap-1.5 sm:gap-2 relative z-50 shadow-md">
+        <span className="flex h-2 w-2 relative shrink-0">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+        </span>
+        <span className="truncate sm:overflow-visible">
+          🔥 <strong>University Mid-Terms 2026:</strong> B.Tech, BBA &amp; PVA Drive Vault, Safe Marks Predictor &amp; AI Prep Kit!
+        </span>
+        <Link
+          href="/midterm"
+          className="underline underline-offset-2 hover:text-amber-200 font-bold ml-1 shrink-0 flex items-center gap-0.5"
+        >
+          <span>Open Hub</span> &rarr;
+        </Link>
+      </div>
+
       {/* ── Top Header Navigation ────────────────────────────────────────── */}
       <header className="sticky top-0 z-40 backdrop-blur-xl bg-surface-base/80 border-b border-surface-border/60 transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -167,15 +184,21 @@ export default function YouTubeStudyHubPage() {
           </Link>
 
           {/* Center Links */}
-          <nav className="hidden md:flex items-center gap-6 text-xs sm:text-sm font-medium text-zinc-400 shrink-0">
+          <nav className="hidden md:flex items-center gap-5 text-xs sm:text-sm font-medium text-zinc-400 shrink-0">
+            <Link
+              href="/midterm"
+              className="text-amber-300 hover:text-amber-200 font-bold flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/30 whitespace-nowrap"
+            >
+              🔥 Mid-Term 2026 Hub
+            </Link>
             <Link href="/" className="hover:text-zinc-100 transition-colors whitespace-nowrap">
               Home
             </Link>
-            <Link href="/resources" className="hover:text-zinc-100 transition-colors whitespace-nowrap">
-              Notes Vault
+            <Link href="/midterm/resources" className="hover:text-zinc-100 transition-colors whitespace-nowrap">
+              Drive Vault
             </Link>
-            <Link href="/tools/cgpa-calculator" className="hover:text-zinc-100 transition-colors whitespace-nowrap">
-              GPA Calculators
+            <Link href="/midterm/calculator" className="hover:text-zinc-100 transition-colors whitespace-nowrap">
+              Marks Predictor
             </Link>
             <Link href="/sih" className="hover:text-brand-300 text-zinc-400 transition-colors whitespace-nowrap">
               🏆 SIH Guide
@@ -185,11 +208,10 @@ export default function YouTubeStudyHubPage() {
           {/* Right Action */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Link
-              href="/"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-zinc-300 hover:text-white bg-surface-card hover:bg-surface-elevated border border-surface-border rounded-xl transition-all whitespace-nowrap"
+              href="/midterm"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-zinc-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 rounded-xl shadow-md shadow-amber-500/20 transition-all whitespace-nowrap"
             >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Back to</span> Portal
+              <span>🔥 Mid-Term Hub</span>
             </Link>
           </div>
         </div>
@@ -250,6 +272,35 @@ export default function YouTubeStudyHubPage() {
             })}
           </div>
         </section>
+
+        {/* ── Mid-Term 2026 Super Banner ─────────────────────────────────── */}
+        <div className="mb-8 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-950/40 via-surface-card to-purple-950/30 border border-amber-500/40 flex flex-col md:flex-row items-center justify-between gap-4 shadow-lg shadow-amber-500/10">
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-500 to-rose-600 flex items-center justify-center text-white text-xl font-bold shadow-md shadow-rose-500/20 shrink-0">
+              🔥
+            </div>
+            <div className="space-y-0.5 text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start gap-2 flex-wrap">
+                <span className="text-sm sm:text-base font-bold text-white">
+                  University Mid-Term Exams 2026 Toolkit
+                </span>
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                  Updated with B.Tech, BBA, PVA &amp; AI Tools
+                </span>
+              </div>
+              <p className="text-xs text-zinc-300">
+                Access 245+ verified lecture notes, 11+ solved PYQs per subject, safe passing score predictor, and Jatin Verma&apos;s 5 AI study prompts.
+              </p>
+            </div>
+          </div>
+
+          <Link
+            href="/midterm"
+            className="shrink-0 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-400 hover:to-rose-500 text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-md shadow-rose-500/20"
+          >
+            <span>Explore Mid-Term Hub</span> &rarr;
+          </Link>
+        </div>
 
         {/* Cross-Course Match Banner if user searched a course code from another degree */}
         {crossCourseMatch && (

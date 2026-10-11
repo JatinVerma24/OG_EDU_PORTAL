@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Sparkles, Calculator, Calendar, ShieldCheck, FileText, ArrowLeft, Video, FolderArchive } from 'lucide-react';
+import { Sparkles, Calculator, Calendar, ShieldCheck, FileText, ArrowLeft, FolderArchive, Bot } from 'lucide-react';
 
 export default function MidtermLayout({
   children,
@@ -14,8 +14,8 @@ export default function MidtermLayout({
 
   const navItems = [
     { href: '/midterm', label: 'Overview', icon: Sparkles, color: 'text-amber-400' },
-    { href: '/midterm/resources', label: 'Resources & PYQs', icon: FolderArchive, color: 'text-amber-400' },
-    { href: '/midterm/online-guide', label: 'Online Class & MTT Guide', icon: Video, color: 'text-violet-400' },
+    { href: '/midterm/resources', label: 'Resources & PYQs (B.Tech / BBA / PVA)', icon: FolderArchive, color: 'text-amber-400' },
+    { href: '/midterm/resources?stream=ai', label: 'AI Study Prompts & Tools', icon: Bot, color: 'text-purple-400' },
     { href: '/midterm/calculator', label: 'Safe Marks Predictor', icon: Calculator, color: 'text-brand-400' },
     { href: '/midterm/planner', label: '72h Study Planner', icon: Calendar, color: 'text-emerald-400' },
     { href: '/midterm/attendance', label: 'Hall Ticket Checker', icon: ShieldCheck, color: 'text-sky-400' },
@@ -113,7 +113,7 @@ export default function MidtermLayout({
             <span>&bull;</span>
             <Link href="/midterm/resources" className="hover:text-white transition-colors text-amber-300">Resources &amp; PYQs</Link>
             <span>&bull;</span>
-            <Link href="/midterm/online-guide" className="hover:text-white transition-colors text-violet-300">Online Class & MTT Guide</Link>
+            <Link href="/midterm/resources?stream=ai" className="hover:text-white transition-colors text-purple-300">AI Study Prompts</Link>
             <span>&bull;</span>
             <Link href="/midterm/calculator" className="hover:text-white transition-colors">Safe Score Calculator</Link>
             <span>&bull;</span>

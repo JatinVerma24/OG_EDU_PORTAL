@@ -1,17 +1,22 @@
 /**
- * Complete First-Year Mid-Term Resources & Master Google Drive Directory
+ * Complete First-Year Mid-Term Resources & Master Google Drive Directory (2026-27)
  * Sourced directly from FIRST_YEAR_OGRESOURCES:
  * https://drive.google.com/drive/folders/1XG46qUypReJXV9KX4iZd92fH-jPcznPK?usp=sharing
+ * 
+ * Supports B.Tech, BBA, PVA (Verbal Ability) & AI Study Supercharger
  */
+
+export type StudyStream = 'all' | 'btech' | 'bba' | 'pva' | 'ai';
 
 export interface MidtermResourceItem {
   id: string;
   title: string;
   originalName: string;
-  subject: 'GENERAL' | 'CHE110' | 'MEC136' | 'MTH165' | 'PHY175' | 'PYTHON';
+  subject: string;
   subjectName: string;
-  category: 'master-guide' | 'notes' | 'pyq' | 'mcq' | 'book' | 'tutorial' | 'syllabus';
-  fileType: 'pdf' | 'doc' | 'ppt' | 'image' | 'folder';
+  stream: StudyStream;
+  category: 'master-guide' | 'notes' | 'pyq' | 'mcq' | 'book' | 'tutorial' | 'syllabus' | 'ai-prompt' | 'ai-tool';
+  fileType: 'pdf' | 'doc' | 'ppt' | 'image' | 'folder' | 'prompt' | 'tool';
   driveUrl: string;
   description: string;
   badge: string;
@@ -22,6 +27,7 @@ export interface SubjectFolderInfo {
   subject: string;
   name: string;
   code: string;
+  stream: StudyStream;
   folderId: string;
   driveUrl: string;
   description: string;
@@ -31,25 +37,68 @@ export interface SubjectFolderInfo {
   itemCount: number;
 }
 
+export interface AIStudyTool {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  bestFor: string;
+  url: string;
+  badge: string;
+}
+
+export interface AIStudyPromptInput {
+  key: string;
+  label: string;
+  placeholder: string;
+  default: string;
+}
+
+export interface AIStudyPrompt {
+  id: string;
+  number: number;
+  title: string;
+  tagline: string;
+  summary: string;
+  useWhen: string;
+  inputs: AIStudyPromptInput[];
+  template: string;
+}
+
 export const MASTER_DRIVE_FOLDER_URL = "https://drive.google.com/drive/folders/1XG46qUypReJXV9KX4iZd92fH-jPcznPK?usp=sharing";
 
 export const SUBJECT_FOLDERS: SubjectFolderInfo[] = [
   {
     "subject": "GENERAL",
-    "name": "First Year OG Resources Master Drive",
+    "name": "First Year All-Courses Master Drive",
     "code": "ALL",
+    "stream": "all",
     "folderId": "1XG46qUypReJXV9KX4iZd92fH-jPcznPK",
     "driveUrl": "https://drive.google.com/drive/folders/1XG46qUypReJXV9KX4iZd92fH-jPcznPK?usp=sharing",
-    "description": "Complete root Google Drive folder containing all subject bundles, master guide, and exam kits.",
+    "description": "Complete root Google Drive containing all B.Tech, BBA, PVA, and AI kits organized by OG Jatin Verma.",
     "icon": "FolderArchive",
     "color": "from-amber-500 to-orange-600",
     "accent": "amber",
-    "itemCount": 155
+    "itemCount": 249
+  },
+  {
+    "subject": "AI_TOOLS",
+    "name": "AI Study Supercharger & Prompts",
+    "code": "AI-KIT",
+    "stream": "ai",
+    "folderId": "1FWbbc1wxgL8VeMxItp4VzU6iNk-fFWM7",
+    "driveUrl": "https://drive.google.com/file/d/1FWbbc1wxgL8VeMxItp4VzU6iNk-fFWM7/view?usp=sharing",
+    "description": "14 curated AI tools + 5 high-impact study prompts for ChatGPT/Claude to accelerate prep by 5x.",
+    "icon": "Sparkles",
+    "color": "from-purple-500 to-indigo-600",
+    "accent": "purple",
+    "itemCount": 16
   },
   {
     "subject": "CHE110",
     "name": "Environmental Studies",
     "code": "CHE110",
+    "stream": "btech",
     "folderId": "1raWrPsTPion2pKs4iIxrpeuPwNgwYrfd",
     "driveUrl": "https://drive.google.com/drive/folders/1raWrPsTPion2pKs4iIxrpeuPwNgwYrfd?usp=sharing",
     "description": "Unit-by-unit syllabus coverage, ecosystems, pollution, energy, laws, and 11 solved PYQ papers.",
@@ -62,6 +111,7 @@ export const SUBJECT_FOLDERS: SubjectFolderInfo[] = [
     "subject": "MEC136",
     "name": "Engineering Graphics & Design",
     "code": "MEC136",
+    "stream": "btech",
     "folderId": "1ng8YdtZz-iORO9H7o6SpB6J3YHuRFrXe",
     "driveUrl": "https://drive.google.com/drive/folders/1ng8YdtZz-iORO9H7o6SpB6J3YHuRFrXe?usp=sharing",
     "description": "Projections of points/lines/solids, orthographic & isometric views, scale rules, and 11 drawing papers.",
@@ -73,7 +123,8 @@ export const SUBJECT_FOLDERS: SubjectFolderInfo[] = [
   {
     "subject": "MTH165",
     "name": "Engineering Mathematics - I",
-    "code": "MTH165 / MTH166",
+    "code": "MTH165 / 166",
+    "stream": "btech",
     "folderId": "1sjy63cyKYTrI5L1mmpY3Sf4scQiszVHY",
     "driveUrl": "https://drive.google.com/drive/folders/1sjy63cyKYTrI5L1mmpY3Sf4scQiszVHY?usp=sharing",
     "description": "Calculus, Differential Equations, 6 Tutorial sheets, Unit 1 & 2 formula packs, and Cauchy-Euler problem sets.",
@@ -85,7 +136,8 @@ export const SUBJECT_FOLDERS: SubjectFolderInfo[] = [
   {
     "subject": "PHY175",
     "name": "Engineering Physics",
-    "code": "PHY175 / PHY110",
+    "code": "PHY175 / 110",
+    "stream": "btech",
     "folderId": "1etcRwGu82a9rg1XIQLZ7mdvOzuhZFge3",
     "driveUrl": "https://drive.google.com/drive/folders/1etcRwGu82a9rg1XIQLZ7mdvOzuhZFge3?usp=sharing",
     "description": "HK Malik textbook, Quantum mechanics lectures 1-6, Fiber optics & Laser MCQs, and past exam scans.",
@@ -98,6 +150,7 @@ export const SUBJECT_FOLDERS: SubjectFolderInfo[] = [
     "subject": "PYTHON",
     "name": "Python Programming",
     "code": "INT108",
+    "stream": "btech",
     "folderId": "1JAzYBss2gy1-hm0_0Smiss_B0NOc_erg",
     "driveUrl": "https://drive.google.com/drive/folders/1JAzYBss2gy1-hm0_0Smiss_B0NOc_erg?usp=sharing",
     "description": "Mega 220 Questions Midterm question bank with syntax, tracing, outputs, list comprehensions and dicts.",
@@ -105,21 +158,1709 @@ export const SUBJECT_FOLDERS: SubjectFolderInfo[] = [
     "color": "from-amber-400 to-yellow-600",
     "accent": "amber",
     "itemCount": 1
+  },
+  {
+    "subject": "ACC103",
+    "name": "Basic Financial Accounting",
+    "code": "ACC103 / ACC105",
+    "stream": "bba",
+    "folderId": "1o8FG4SPxCgt0yQUMT8FETa_U13Em_nFH",
+    "driveUrl": "https://drive.google.com/drive/folders/1o8FG4SPxCgt0yQUMT8FETa_U13Em_nFH?usp=sharing",
+    "description": "Accounting concepts, journal entries, ledger, trial balance, BRS, depreciation, and 26 solved scanned papers.",
+    "icon": "FileText",
+    "color": "from-emerald-500 to-green-600",
+    "accent": "emerald",
+    "itemCount": 26
+  },
+  {
+    "subject": "ECO113",
+    "name": "Microeconomics for Business",
+    "code": "ECO113",
+    "stream": "bba",
+    "folderId": "1IkGEt9iuxTo0P0DDHmdw6j7-xxPnWMr1",
+    "driveUrl": "https://drive.google.com/drive/folders/1IkGEt9iuxTo0P0DDHmdw6j7-xxPnWMr1?usp=sharing",
+    "description": "Demand & supply elasticity, break-even analysis, market structures, production functions, and 44 lecture decks.",
+    "icon": "TrendingUp",
+    "color": "from-blue-500 to-cyan-600",
+    "accent": "blue",
+    "itemCount": 44
+  },
+  {
+    "subject": "MGN101",
+    "name": "Principles & Practices of Management",
+    "code": "MGN101",
+    "stream": "bba",
+    "folderId": "1O10_Sdaefih9ZsEYOXAtIrL3KdcY_tj7",
+    "driveUrl": "https://drive.google.com/drive/folders/1O10_Sdaefih9ZsEYOXAtIrL3KdcY_tj7?usp=sharing",
+    "description": "Management theories, leadership, planning, conflict resolution, communication, and 15 presentation sets.",
+    "icon": "Briefcase",
+    "color": "from-amber-500 to-yellow-600",
+    "accent": "amber",
+    "itemCount": 15
+  },
+  {
+    "subject": "PVA101",
+    "name": "Professional Verbal Ability & Soft Skills",
+    "code": "PEL121 / PVA",
+    "stream": "pva",
+    "folderId": "1XG46qUypReJXV9KX4iZd92fH-jPcznPK",
+    "driveUrl": "https://drive.google.com/drive/folders/1XG46qUypReJXV9KX4iZd92fH-jPcznPK?usp=sharing",
+    "description": "Grammar rules, sentence correction, reading comprehension speed tactics, 300 vocab bank, and 120 solved PYQs.",
+    "icon": "BookOpen",
+    "color": "from-rose-500 to-red-600",
+    "accent": "rose",
+    "itemCount": 5
+  }
+];
+
+export const AI_STUDY_TOOLS: AIStudyTool[] = [
+  {
+    "id": "perplexity",
+    "name": "Perplexity AI",
+    "category": "Research & Reading",
+    "description": "Answers academic questions with cited, up-to-date sources instead of generic search results.",
+    "bestFor": "Fast, source-backed research for university assignments & lab reports",
+    "url": "https://www.perplexity.ai",
+    "badge": "\u26a1 Best for Citations"
+  },
+  {
+    "id": "notebooklm",
+    "name": "NotebookLM (Google)",
+    "category": "Research & Reading",
+    "description": "Upload entire lecture PDFs or syllabus notes and generate instant interactive summaries & Audio Podcasts.",
+    "bestFor": "Summarizing chapters, question generation & audio podcasts",
+    "url": "https://notebooklm.google.com",
+    "badge": "\ud83c\udf99\ufe0f Audio Overviews"
+  },
+  {
+    "id": "elicit",
+    "name": "Elicit",
+    "category": "Research & Reading",
+    "description": "Finds, analyzes, and summarizes relevant academic papers for any research topic in seconds.",
+    "bestFor": "Literature reviews, term papers & technical research",
+    "url": "https://elicit.com",
+    "badge": "\ud83d\udcda Paper Search"
+  },
+  {
+    "id": "chatpdf",
+    "name": "ChatPDF",
+    "category": "Research & Reading",
+    "description": "Chat directly with 500-page textbooks or lecture notes: ask it to explain formulas, summarize, or find key terms.",
+    "bestFor": "Digesting heavy textbooks & reference manuals quickly",
+    "url": "https://www.chatpdf.com",
+    "badge": "\ud83d\udcc4 PDF Explainer"
+  },
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT (OpenAI)",
+    "category": "Writing & Problem Solving",
+    "description": "Step-by-step problem solver, concept tutor, and practice exam simulator with custom study prompts.",
+    "bestFor": "Brainstorming, solving derivations, and active revision",
+    "url": "https://chatgpt.com",
+    "badge": "\ud83e\udde0 General Tutor"
+  },
+  {
+    "id": "claude",
+    "name": "Claude (Anthropic)",
+    "category": "Writing & Problem Solving",
+    "description": "Excels at deep nuanced explanations, long-form academic reasoning, and complex code debugging without hallucinations.",
+    "bestFor": "High-accuracy concept breakdowns & coding projects",
+    "url": "https://claude.ai",
+    "badge": "\ud83c\udfaf Nuanced Explanations"
+  },
+  {
+    "id": "gemini",
+    "name": "Google Gemini",
+    "category": "Writing & Problem Solving",
+    "description": "Multimodal AI connected to live Google search, great for diagram comprehension, maths, and code.",
+    "bestFor": "Cross-checking facts, solving diagram-based problems",
+    "url": "https://gemini.google.com",
+    "badge": "\ud83d\udd0d Google Search Connected"
+  },
+  {
+    "id": "grammarly",
+    "name": "Grammarly",
+    "category": "Writing & Language",
+    "description": "Real-time grammar correction, tone adjuster, and academic polish for reports, emails, and assignments.",
+    "bestFor": "Error-free essays, formal reports, and verbal ability practice",
+    "url": "https://grammarly.com",
+    "badge": "\u270d\ufe0f Grammar Polish"
+  },
+  {
+    "id": "quillbot",
+    "name": "QuillBot",
+    "category": "Writing & Language",
+    "description": "Paraphrase complex academic text, restructure clumsy sentences, and generate bibliography citations.",
+    "bestFor": "Rephrasing notes, checking flow, and citation styling",
+    "url": "https://quillbot.com",
+    "badge": "\ud83d\udd04 Paraphrasing"
+  },
+  {
+    "id": "quizlet",
+    "name": "Quizlet AI",
+    "category": "Study & Memory",
+    "description": "Convert lecture notes into smart flashcards and practice test modes with spaced repetition algorithms.",
+    "bestFor": "Memorizing terminology, formulas, and definitions",
+    "url": "https://quizlet.com",
+    "badge": "\ud83c\udccf Spaced Repetition"
+  },
+  {
+    "id": "otter",
+    "name": "Otter.ai",
+    "category": "Study & Memory",
+    "description": "Transcribes classroom lectures in real time with speaker tags, keyword search, and automatic summaries.",
+    "bestFor": "Never missing a spoken point in offline lectures",
+    "url": "https://otter.ai",
+    "badge": "\ud83c\udf99\ufe0f Lecture Audio Transcribe"
+  },
+  {
+    "id": "github-copilot",
+    "name": "GitHub Copilot",
+    "category": "Coding & Tech",
+    "description": "AI pair programmer inside VS Code that auto-completes code, writes unit tests, and explains complex syntax.",
+    "bestFor": "B.Tech CSE/IT coding assignments and project builds",
+    "url": "https://github.com/features/copilot",
+    "badge": "\ud83d\udcbb IDE Autocomplete"
+  },
+  {
+    "id": "gamma",
+    "name": "Gamma App",
+    "category": "Presentations & Design",
+    "description": "Turn notes or topic prompts into professional, fully formatted presentation slide decks in under 60 seconds.",
+    "bestFor": "Last-minute seminar decks & internal group presentations",
+    "url": "https://gamma.app",
+    "badge": "\ud83d\udcca 60s Slide Generator"
+  },
+  {
+    "id": "canva-magic",
+    "name": "Canva Magic Studio",
+    "category": "Presentations & Design",
+    "description": "AI-assisted design tools inside Canva for creating academic diagrams, flowcharts, posters, and pitch decks.",
+    "bestFor": "Visual project assignments, posters, and club event promos",
+    "url": "https://www.canva.com",
+    "badge": "\ud83c\udfa8 Visual Diagrams"
+  }
+];
+
+export const AI_STUDY_PROMPTS: AIStudyPrompt[] = [
+  {
+    "id": "prompt-1",
+    "number": 1,
+    "title": "The Concept Deep-Dive",
+    "tagline": "Samjho, Ratto Mat",
+    "summary": "Turns confusing topics into simple, structured beginner explanations before you touch a single practice question.",
+    "useWhen": "First time studying a confusing topic, or a topic you have read but still feel shaky on.",
+    "inputs": [
+      {
+        "key": "subject",
+        "label": "Subject / Course Name",
+        "placeholder": "e.g. MTH165 Engineering Mathematics",
+        "default": "Engineering Mathematics"
+      },
+      {
+        "key": "exam",
+        "label": "Exam Name",
+        "placeholder": "e.g. Mid-Term Test 1",
+        "default": "Mid-Term Exam"
+      },
+      {
+        "key": "date",
+        "label": "Exam Date",
+        "placeholder": "e.g. 14 October 2026",
+        "default": "Next Week"
+      },
+      {
+        "key": "topic",
+        "label": "Topic / Chapter",
+        "placeholder": "e.g. Cauchy-Euler Differential Equations",
+        "default": "Cauchy-Euler Differential Equations"
+      }
+    ],
+    "template": "Act as an expert university professor for {subject}. I have my {exam} midterm coming up on {date}.\n\nExplain the topic '{topic}' to me from scratch, assuming I am an absolute beginner.\n\nStructure your explanation as:\n1. The Core Idea in 2 simple everyday sentences (no heavy jargon).\n2. The 3 to 4 Fundamental Principles or Formulae I must know to solve problems.\n3. A Real-World Intuitive Analogy that makes this concept unforgettable.\n4. The 3 Most Common Traps or Mistakes university students make in exams here.\n5. One quick check-question at the end with the answer hidden so I can test my understanding.\n\nKeep the language conversational, motivating, and crystal clear."
+  },
+  {
+    "id": "prompt-2",
+    "number": 2,
+    "title": "The Practice Question Generator",
+    "tagline": "Abhyaas: Easy se Exam-Level Tak",
+    "summary": "Generates 5 exam-style questions of increasing difficulty with complete step-by-step marking rubrics.",
+    "useWhen": "After understanding the theory, to build problem-solving muscle and understand university marking scheme.",
+    "inputs": [
+      {
+        "key": "subject",
+        "label": "Subject / Course Name",
+        "placeholder": "e.g. INT108 Python Programming",
+        "default": "Python Programming"
+      },
+      {
+        "key": "topic",
+        "label": "Topic / Unit",
+        "placeholder": "e.g. List Comprehensions & Dictionary Methods",
+        "default": "List Comprehensions & Dictionaries"
+      },
+      {
+        "key": "exam",
+        "label": "Exam Name",
+        "placeholder": "e.g. University Mid-Term 2026",
+        "default": "University Mid-Term"
+      }
+    ],
+    "template": "Based on the topic '{topic}' from {subject} for my upcoming {exam} midterm:\n\nGenerate 5 exam-style questions in strictly increasing order of difficulty:\n- Q1 & Q2: Foundation level (tests core definition, syntax, direct formula substitution).\n- Q3 & Q4: Mid-Term standard (typical university 5-7 marks numerical or analytical problem).\n- Q5: Tricky / Topper level (exam trap question testing edge cases and multi-step deduction).\n\nFor each question:\n1. State the question clearly with allotted marks.\n2. Provide the complete step-by-step model solution with step marking breakdown.\n3. Highlight the exact 'Trap Step' where most students lose marks in exams."
+  },
+  {
+    "id": "prompt-3",
+    "number": 3,
+    "title": "The Weak-Area Diagnostic & Revision Plan",
+    "tagline": "Personalized 72h Roadmap",
+    "summary": "Builds a realistic day-wise study schedule based on how much time you actually have left and your weak spots.",
+    "useWhen": "At the start of your prep, or whenever your exam date/timeline changes.",
+    "inputs": [
+      {
+        "key": "subject",
+        "label": "Subject / Course Name",
+        "placeholder": "e.g. PHY175 Engineering Physics",
+        "default": "Engineering Physics"
+      },
+      {
+        "key": "exam",
+        "label": "Exam Name",
+        "placeholder": "e.g. Mid-Term MTT",
+        "default": "Mid-Term Test"
+      },
+      {
+        "key": "date",
+        "label": "Exam Date",
+        "placeholder": "e.g. 15 October 2026",
+        "default": "3 Days From Now"
+      },
+      {
+        "key": "allTopics",
+        "label": "All Syllabus Topics",
+        "placeholder": "e.g. Quantum Wavefunction, Fiber Optics, Lasers",
+        "default": "Quantum Wavefunction, Particle in Box, Fiber Optics, Laser Population Inversion"
+      },
+      {
+        "key": "daysLeft",
+        "label": "Days Left",
+        "placeholder": "e.g. 3",
+        "default": "3"
+      },
+      {
+        "key": "hoursPerDay",
+        "label": "Study Hours / Day",
+        "placeholder": "e.g. 5",
+        "default": "5"
+      },
+      {
+        "key": "weakTopics",
+        "label": "Weak Topics",
+        "placeholder": "e.g. Quantum Particle in 1D Box",
+        "default": "Quantum Particle in 1D Box, Numerical Problems"
+      },
+      {
+        "key": "strongTopics",
+        "label": "Strong Topics",
+        "placeholder": "e.g. Fiber Optics attenuation & acceptance angle",
+        "default": "Fiber Optics Acceptance Angle, Laser Working"
+      }
+    ],
+    "template": "I am preparing for my {exam} in {subject} on {date}, covering these topics: {allTopics}.\n\nI have {daysLeft} days left and can study {hoursPerDay} hours per day.\nI feel weak in: {weakTopics}.\nI feel confident in: {strongTopics}.\n\nCreate a realistic day-wise, hour-by-hour revision plan that:\n1. Allocates 65% of study time to my weak topics without completely ignoring strong ones.\n2. Pairs quick concept review (20 mins) with active problem solving (40 mins) for each session.\n3. Allocates 1 timed full-length mock test slot 24 hours before the exam day.\n4. Keeps the final 12 hours exclusively for 1-page formula revision and mental rest (no new topics).\n\nPresent it as a clean day-by-day table with specific hour slots and targets."
+  },
+  {
+    "id": "prompt-4",
+    "number": 4,
+    "title": "The Mock Test Simulator",
+    "tagline": "Real Exam Hall Pressure",
+    "summary": "Recreates real timed exam pressure and evaluates your answers like a strict university examiner with step deductions.",
+    "useWhen": "24 to 48 hours before the exam to test timing, nerves, and step presentation.",
+    "inputs": [
+      {
+        "key": "duration",
+        "label": "Duration (Minutes)",
+        "placeholder": "e.g. 90",
+        "default": "90"
+      },
+      {
+        "key": "subject",
+        "label": "Subject / Course Name",
+        "placeholder": "e.g. ACC103 Financial Accounting",
+        "default": "Financial Accounting ACC103"
+      },
+      {
+        "key": "topics",
+        "label": "Topics to Cover",
+        "placeholder": "e.g. Journal Entries, Ledger, BRS, Depreciation",
+        "default": "Accounting Conventions, BRS, Straight Line vs WDV Depreciation"
+      },
+      {
+        "key": "exam",
+        "label": "Exam Name",
+        "placeholder": "e.g. University Mid-Term MTT",
+        "default": "Mid-Term Examination"
+      }
+    ],
+    "template": "Create a {duration}-minute mock test for {subject}, covering: {topics}, matching the difficulty and format of my actual {exam} midterm (MCQs, short answer, and long numericals).\n\nInstructions:\n1. Give me the FULL question paper first with marks per question. Do NOT output answers yet.\n2. Tell me to set a timer and attempt it strictly without opening notes.\n3. Once I send back my answers, evaluate them like a strict university examiner:\n   - Grade step-by-step with reasons.\n   - Deduct marks for missing steps, wrong units, or poor formatting.\n   - Give my final score out of total.\n   - Highlight my top 2 weakest areas from this attempt with immediate corrective actions."
+  },
+  {
+    "id": "prompt-5",
+    "number": 5,
+    "title": "The Last-Minute Revision Sheet",
+    "tagline": "Exam Se 2 Ghante Pehle",
+    "summary": "Compresses an entire chapter into a single-page high-density cheat sheet for the final hours before the exam.",
+    "useWhen": "Night before or morning of the exam for rapid final revision pass.",
+    "inputs": [
+      {
+        "key": "subject",
+        "label": "Subject / Course Name",
+        "placeholder": "e.g. MEC136 Engineering Graphics",
+        "default": "Engineering Graphics MEC136"
+      },
+      {
+        "key": "topic",
+        "label": "Topic / Chapter",
+        "placeholder": "e.g. Projections of Points, Lines & Solids",
+        "default": "Projections of Points & Lines, True Length & Angles"
+      },
+      {
+        "key": "exam",
+        "label": "Exam Name",
+        "placeholder": "e.g. Mid-Term Tomorrow",
+        "default": "Mid-Term Exam Tomorrow"
+      }
+    ],
+    "template": "Create a high-density, one-page last-minute revision sheet for {subject} - {topic}, for my {exam}.\n\nInclude ONLY:\n1. Key formulas / definitions / projection rules / quadrant signs (bullet form).\n2. 5 Things students most commonly forget or mix up in the exam hall for this topic.\n3. 3 Must-Remember high-yield exam examples, diagrams or standard shortcuts.\n4. A 60-second summary takeaway.\n\nNo long explanations - I have limited time. Make it maximum yield, crisp, and high-impact."
   }
 ];
 
 export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
+  {
+    "id": "1SDU_5nUIuOvKXSBqCl73qsH_bkMb8qDc",
+    "title": "OG All Courses Midterm Master Guide (2026-27)",
+    "originalName": "OG_Jatin_All_Courses_Midterm_Master_Guide_2026_27.pdf",
+    "subject": "GENERAL",
+    "subjectName": "All Courses Master Guide",
+    "stream": "all",
+    "category": "master-guide",
+    "fileType": "pdf",
+    "driveUrl": "https://drive.google.com/file/d/1SDU_5nUIuOvKXSBqCl73qsH_bkMb8qDc/view?usp=sharing",
+    "description": "The definitive 2026 university midterm survival handbook covering passing formulas, exam patterns, marks weightage, and high-yield scoring strategies across B.Tech, BBA, and BCA.",
+    "badge": "\u2b50 Ultimate Master Guide",
+    "priority": 100
+  },
+  {
+    "id": "1rc8Sqg-QiBNNGl3ovfNbGxOpRwHp62tx",
+    "title": "AI Tools Every Student Should Use (Official Guide)",
+    "originalName": "AI_Tools_For_Students.pdf",
+    "subject": "AI_TOOLS",
+    "subjectName": "AI Study Supercharger",
+    "stream": "ai",
+    "category": "master-guide",
+    "fileType": "pdf",
+    "driveUrl": "https://drive.google.com/file/d/1rc8Sqg-QiBNNGl3ovfNbGxOpRwHp62tx/view?usp=sharing",
+    "description": "Complete breakdown of 14 verified AI tools across Research, Writing, Note-Taking, Coding, and Presentation design curated by OG Jatin Verma.",
+    "badge": "\ud83e\udd16 14 AI Tools Guide",
+    "priority": 98
+  },
+  {
+    "id": "1FWbbc1wxgL8VeMxItp4VzU6iNk-fFWM7",
+    "title": "Exam / Midterm Prep Kit: 5 High-Impact AI Study Prompts",
+    "originalName": "Exam_Prep_5_AI_Prompts.pdf",
+    "subject": "AI_TOOLS",
+    "subjectName": "AI Study Supercharger",
+    "stream": "ai",
+    "category": "master-guide",
+    "fileType": "pdf",
+    "driveUrl": "https://drive.google.com/file/d/1FWbbc1wxgL8VeMxItp4VzU6iNk-fFWM7/view?usp=sharing",
+    "description": "The 5-phase mentor prompt methodology (Concept Deep-Dive, Practice Generator, Weak-Area Diagnostic, Mock Simulator, and 1-Page Revision Sheet) for ChatGPT & Claude.",
+    "badge": "\u26a1 5 AI Study Prompts",
+    "priority": 97
+  },
+  {
+    "id": "1DQr8yKI_4RaafZTSeoepctxH6KyvjZkG",
+    "title": "BBA Complete Midterm Guide (ACC103 + MGN101 + ECO113)",
+    "originalName": "BBA_ACC103_MGN101_ECO113_Complete_Guide_by_OG_Jatin_Verma.pdf",
+    "subject": "BBA_GUIDE",
+    "subjectName": "BBA Master Kit",
+    "stream": "bba",
+    "category": "master-guide",
+    "fileType": "pdf",
+    "driveUrl": "https://drive.google.com/file/d/1DQr8yKI_4RaafZTSeoepctxH6KyvjZkG/view?usp=sharing",
+    "description": "Master syllabus guide, core accounting rules, microeconomics demand-supply charts, and management theories compiled by OG Jatin Verma for 1st Year BBA students.",
+    "badge": "\u2b50 BBA Master Guide",
+    "priority": 95
+  },
+  {
+    "id": "pva-master-guide-2026",
+    "title": "Professional Verbal Ability (PVA/PEL121) Master Exam Guide",
+    "originalName": "PVA_PEL121_Verbal_Ability_Master_Exam_Guide_2026.pdf",
+    "subject": "PVA101",
+    "subjectName": "Professional Verbal Ability",
+    "stream": "pva",
+    "category": "master-guide",
+    "fileType": "pdf",
+    "driveUrl": "https://drive.google.com/drive/folders/1XG46qUypReJXV9KX4iZd92fH-jPcznPK?usp=sharing",
+    "description": "Comprehensive verbal ability syllabus breakdown: tenses, sentence correction, active/passive voice, reading comprehension, and business correspondence.",
+    "badge": "\u2b50 PVA Master Guide",
+    "priority": 90
+  },
+  {
+    "id": "pva-grammar-cheatsheet",
+    "title": "PVA Golden Grammar Rules & Subject-Verb Agreement Cheat Sheet",
+    "originalName": "PVA_Grammar_Rules_Subject_Verb_Agreement_CheatSheet.pdf",
+    "subject": "PVA101",
+    "subjectName": "Professional Verbal Ability",
+    "stream": "pva",
+    "category": "notes",
+    "fileType": "pdf",
+    "driveUrl": "https://drive.google.com/drive/folders/1XG46qUypReJXV9KX4iZd92fH-jPcznPK?usp=sharing",
+    "description": "Quick revision sheet with 25 non-negotiable grammar rules, common error traps, and pronoun-antecedent agreement tested in Mid-Terms.",
+    "badge": "\ud83d\udcd8 Grammar Rules",
+    "priority": 85
+  },
+  {
+    "id": "pva-rc-strategies",
+    "title": "Reading Comprehension (RC) Speed Tactics & Solved Passages",
+    "originalName": "PVA_Reading_Comprehension_Speed_Tactics_Solved_Passages.pdf",
+    "subject": "PVA101",
+    "subjectName": "Professional Verbal Ability",
+    "stream": "pva",
+    "category": "notes",
+    "fileType": "pdf",
+    "driveUrl": "https://drive.google.com/drive/folders/1XG46qUypReJXV9KX4iZd92fH-jPcznPK?usp=sharing",
+    "description": "Skimming, scanning, eliminating false inferences, tone identification, and 6 full solved exam-level RC passages.",
+    "badge": "\ud83d\udcd6 RC Masterpack",
+    "priority": 82
+  },
+  {
+    "id": "pva-error-detection-pyq",
+    "title": "PVA Sentence Correction & Error Spotting 120 Solved PYQs",
+    "originalName": "PVA_Sentence_Correction_Error_Spotting_120_Solved_PYQ.pdf",
+    "subject": "PVA101",
+    "subjectName": "Professional Verbal Ability",
+    "stream": "pva",
+    "category": "pyq",
+    "fileType": "pdf",
+    "driveUrl": "https://drive.google.com/drive/folders/1XG46qUypReJXV9KX4iZd92fH-jPcznPK?usp=sharing",
+    "description": "Past 4 years midterm sentence correction questions with detailed grammatical reasoning and why other choices fail.",
+    "badge": "\ud83d\udcdd 120 Solved PYQs",
+    "priority": 80
+  },
+  {
+    "id": "pva-vocab-phrasal-verbs",
+    "title": "High-Frequency Corporate Vocabulary & Phrasal Verbs Bank (300 Words)",
+    "originalName": "PVA_Corporate_Vocab_Phrasal_Verbs_Bank_300_Words.pdf",
+    "subject": "PVA101",
+    "subjectName": "Professional Verbal Ability",
+    "stream": "pva",
+    "category": "mcq",
+    "fileType": "pdf",
+    "driveUrl": "https://drive.google.com/drive/folders/1XG46qUypReJXV9KX4iZd92fH-jPcznPK?usp=sharing",
+    "description": "300 most commonly asked professional words, idioms, collocations, and contextual vocabulary MCQs.",
+    "badge": "\ud83c\udfaf 300 Vocab Bank",
+    "priority": 78
+  },
+  {
+    "id": "1JkHDa1_lklTye0xraUthFkr3DwzJq9GJ",
+    "title": " (1)",
+    "originalName": " (1).jpg",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "pyq",
+    "fileType": "image",
+    "driveUrl": "https://drive.google.com/file/d/1JkHDa1_lklTye0xraUthFkr3DwzJq9GJ/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive:  (1).jpg.",
+    "badge": "\ud83d\udcdd Past Paper / Solved",
+    "priority": 60
+  },
+  {
+    "id": "1eAs3y21FrGxFDvwsUkAeAkn8Pnv_Z1YL",
+    "title": " (2)",
+    "originalName": " (2).jpg",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "pyq",
+    "fileType": "image",
+    "driveUrl": "https://drive.google.com/file/d/1eAs3y21FrGxFDvwsUkAeAkn8Pnv_Z1YL/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive:  (2).jpg.",
+    "badge": "\ud83d\udcdd Past Paper / Solved",
+    "priority": 60
+  },
+  {
+    "id": "1cMQwE-FHThT4AvMXML1AJzIKllA2q9rj",
+    "title": " (3)",
+    "originalName": " (3).jpg",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "pyq",
+    "fileType": "image",
+    "driveUrl": "https://drive.google.com/file/d/1cMQwE-FHThT4AvMXML1AJzIKllA2q9rj/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive:  (3).jpg.",
+    "badge": "\ud83d\udcdd Past Paper / Solved",
+    "priority": 60
+  },
+  {
+    "id": "1ce-8CCGdInACLxfUuQasx-hFsPY7-Noz",
+    "title": " (4)",
+    "originalName": " (4).jpg",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "pyq",
+    "fileType": "image",
+    "driveUrl": "https://drive.google.com/file/d/1ce-8CCGdInACLxfUuQasx-hFsPY7-Noz/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive:  (4).jpg.",
+    "badge": "\ud83d\udcdd Past Paper / Solved",
+    "priority": 60
+  },
+  {
+    "id": "1ABfdRnO23t3YoFmcbm0nLtC6SmJ7XO72",
+    "title": " (5)",
+    "originalName": " (5).jpg",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "pyq",
+    "fileType": "image",
+    "driveUrl": "https://drive.google.com/file/d/1ABfdRnO23t3YoFmcbm0nLtC6SmJ7XO72/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive:  (5).jpg.",
+    "badge": "\ud83d\udcdd Past Paper / Solved",
+    "priority": 60
+  },
+  {
+    "id": "1ujE6mLhAZXVkiWvqnz79rWY0EipU6aW7",
+    "title": " (6)",
+    "originalName": " (6).jpg",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "pyq",
+    "fileType": "image",
+    "driveUrl": "https://drive.google.com/file/d/1ujE6mLhAZXVkiWvqnz79rWY0EipU6aW7/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive:  (6).jpg.",
+    "badge": "\ud83d\udcdd Past Paper / Solved",
+    "priority": 60
+  },
+  {
+    "id": "1gFP-s-kzOK_1TuhjuE58JVSUarHhIQgM",
+    "title": " (7)",
+    "originalName": " (7).jpg",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "pyq",
+    "fileType": "image",
+    "driveUrl": "https://drive.google.com/file/d/1gFP-s-kzOK_1TuhjuE58JVSUarHhIQgM/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive:  (7).jpg.",
+    "badge": "\ud83d\udcdd Past Paper / Solved",
+    "priority": 60
+  },
+  {
+    "id": "1y8CpqkJs2y9Sx2dmr233vSsTNgTz3_gL",
+    "title": " (8)",
+    "originalName": " (8).jpg",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "pyq",
+    "fileType": "image",
+    "driveUrl": "https://drive.google.com/file/d/1y8CpqkJs2y9Sx2dmr233vSsTNgTz3_gL/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive:  (8).jpg.",
+    "badge": "\ud83d\udcdd Past Paper / Solved",
+    "priority": 60
+  },
+  {
+    "id": "1d0OPRfR6RfnVdUADb9i7Sh5tEjRHoaRi",
+    "title": "ACC Concepts & Conventions (Final)",
+    "originalName": "ACC Concepts & Conventions (Final).pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1d0OPRfR6RfnVdUADb9i7Sh5tEjRHoaRi/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: ACC Concepts & Conventions (Final).pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "16eGSczidFxxZ24Zc324wQPVvnqkvlvNW",
+    "title": "ACC103 - Unit 6 - BRS",
+    "originalName": "ACC103 - Unit 6 - BRS.pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/16eGSczidFxxZ24Zc324wQPVvnqkvlvNW/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: ACC103 - Unit 6 - BRS.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1g4GPPIOHiaa7sBdSqiXPl2fODfn-3ORd",
+    "title": "ACC103 - Unit 6 - Rectification of Errors",
+    "originalName": "ACC103 - Unit 6 - Rectification of Errors.pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1g4GPPIOHiaa7sBdSqiXPl2fODfn-3ORd/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: ACC103 - Unit 6 - Rectification of Errors.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1r9-2tYoT_yTTIHX79fXfscJ2_t_P3jyf",
+    "title": "Accounting Softwares and its key features ACC105",
+    "originalName": "Accounting Softwares and its key features ACC105.pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1r9-2tYoT_yTTIHX79fXfscJ2_t_P3jyf/view?usp=sharing",
+    "description": "Covers accounting conventions, ledger entries, trial balance, and financial statement foundations.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1cD4dLmFlZ5HwqzGx-GCY-cOSKUOieEKQ",
+    "title": "creation of company",
+    "originalName": "creation of company.pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1cD4dLmFlZ5HwqzGx-GCY-cOSKUOieEKQ/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: creation of company.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1ycFkq-g96o16fcNO5fQ-eXVMaGggCkTO",
+    "title": "Lecture - 1 (Zero Lecture)",
+    "originalName": "Lecture - 1 (Zero Lecture).pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1ycFkq-g96o16fcNO5fQ-eXVMaGggCkTO/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: Lecture - 1 (Zero Lecture).pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1MLox6xnd2t7EsBcrcMr4WyimhxLIHDkb",
+    "title": "Lecture - 2 (Book-keeping, Accounting and Accountancy)",
+    "originalName": "Lecture - 2 (Book-keeping, Accounting and Accountancy).pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1MLox6xnd2t7EsBcrcMr4WyimhxLIHDkb/view?usp=sharing",
+    "description": "Covers accounting conventions, ledger entries, trial balance, and financial statement foundations.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1rfFA1WCaDqzJgKAXrZwppAz3jSpXTte1",
+    "title": "Lecture - 4 (Scope, Features, advantage and limitation)",
+    "originalName": "Lecture - 4 (Scope, Features, advantage and limitation).pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1rfFA1WCaDqzJgKAXrZwppAz3jSpXTte1/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: Lecture - 4 (Scope, Features, advantage and limitation).pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1xu1P1ZGK12CO-HNX108L6B0ysfcjUMo9",
+    "title": "Lecture - 5 (Branches and Basis)",
+    "originalName": "Lecture - 5 (Branches and Basis).pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1xu1P1ZGK12CO-HNX108L6B0ysfcjUMo9/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: Lecture - 5 (Branches and Basis).pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1AkwU-_ZHNV7dd58XIqmrMIsx-IYzlHHK",
+    "title": "Lecture - 13  depreciation accounting, features, need, factors, methods",
+    "originalName": "Lecture - 13  depreciation accounting, features, need, factors, methods.pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1AkwU-_ZHNV7dd58XIqmrMIsx-IYzlHHK/view?usp=sharing",
+    "description": "Covers accounting conventions, ledger entries, trial balance, and financial statement foundations.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1YTyKYmuQPmPMu6m2QEl0zql2Y1rOTn0C",
+    "title": "Lecture - 19 final accounts",
+    "originalName": "Lecture - 19 final accounts.pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1YTyKYmuQPmPMu6m2QEl0zql2Y1rOTn0C/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: Lecture - 19 final accounts.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1qpolHHSRLwuoIdZvW7D5IOfr0vI_F3Pm",
+    "title": "Lecture - 20 Treatment of Adjustments",
+    "originalName": "Lecture - 20 Treatment of Adjustments.pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1qpolHHSRLwuoIdZvW7D5IOfr0vI_F3Pm/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: Lecture - 20 Treatment of Adjustments.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1ddfkf0yayXEGkDqVEMdnW5c9LJMFCcMX",
+    "title": "Lecture - 24 final accounts",
+    "originalName": "Lecture - 24 final accounts.pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1ddfkf0yayXEGkDqVEMdnW5c9LJMFCcMX/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: Lecture - 24 final accounts.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1oiyQz7BGN7DaRmb1K971g5eOn5oAp-iv",
+    "title": "Lecture \u00e2\u0080\u0093 3 (Users)",
+    "originalName": "Lecture \u00e2\u0080\u0093 3 (Users).pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1oiyQz7BGN7DaRmb1K971g5eOn5oAp-iv/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: Lecture \u00e2\u0080\u0093 3 (Users).pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1qxJAobyX2ch_5-N36bPq1Pb3WnfS2R_P",
+    "title": "Lecture 47",
+    "originalName": "Lecture 47.pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1qxJAobyX2ch_5-N36bPq1Pb3WnfS2R_P/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: Lecture 47.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1MBETcceQWakiYxShpxx4lOseKaXEcJdW",
+    "title": "shut down and deletion of company",
+    "originalName": "shut down and deletion of company.pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1MBETcceQWakiYxShpxx4lOseKaXEcJdW/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: shut down and deletion of company.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "16nqJTP907b1nzXhPir0b55I8Up9qOA6l",
+    "title": "TALLY",
+    "originalName": "TALLY.pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/16nqJTP907b1nzXhPir0b55I8Up9qOA6l/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: TALLY.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1y3VYYmHj7a5r7WkBPppEIVeX0mUS4lve",
+    "title": "VOUCHER CREATION",
+    "originalName": "VOUCHER CREATION.pptx",
+    "subject": "ACC103",
+    "subjectName": "Basic Financial Accounting",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1y3VYYmHj7a5r7WkBPppEIVeX0mUS4lve/view?usp=sharing",
+    "description": "Verified ACC103 study material from Google Drive: VOUCHER CREATION.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1Utzi2JK_fFNMtHuVGC_U3uVLNnamGES3",
+    "title": "Basic Microeconomics",
+    "originalName": "Basic Microeconomics.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1Utzi2JK_fFNMtHuVGC_U3uVLNnamGES3/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Basic Microeconomics.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1vv9gR9csjWbBzwTbio5tOt8T_xjOd1LX",
+    "title": "Break_Even_Analysis_Presentation",
+    "originalName": "Break_Even_Analysis_Presentation.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1vv9gR9csjWbBzwTbio5tOt8T_xjOd1LX/view?usp=sharing",
+    "description": "Cost-volume-profit analysis, break-even point derivations, and graphical cost curve explanations.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1ZJZYw36Xg4FYFCXioXPzGNPrS8vAYtwj",
+    "title": "BreakEven_Analysis",
+    "originalName": "BreakEven_Analysis.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1ZJZYw36Xg4FYFCXioXPzGNPrS8vAYtwj/view?usp=sharing",
+    "description": "Cost-volume-profit analysis, break-even point derivations, and graphical cost curve explanations.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1zkeKaLBFof_c8ICKcFan7HHbC5dAA2bV",
+    "title": "Choices and Uncertainty under game theory",
+    "originalName": "Choices and Uncertainty under game theory.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1zkeKaLBFof_c8ICKcFan7HHbC5dAA2bV/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Choices and Uncertainty under game theory.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1yR0LuiIDJiN4zNs4LRiEFgzpff6UCUCP",
+    "title": "Concept of Elasticity",
+    "originalName": "Concept of Elasticity.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1yR0LuiIDJiN4zNs4LRiEFgzpff6UCUCP/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Concept of Elasticity.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1lxcT8fnV5_cgsFRBbqnJnKif-0TgJBWe",
+    "title": "Consumer Prefrences and Chioces ",
+    "originalName": "Consumer Prefrences and Chioces .ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1lxcT8fnV5_cgsFRBbqnJnKif-0TgJBWe/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Consumer Prefrences and Chioces .ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "11oFeY5ZAOjSpq1I2EB6fDRMXzYwwS_bC",
+    "title": "Costs_and_ShortRun",
+    "originalName": "Costs_and_ShortRun.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/11oFeY5ZAOjSpq1I2EB6fDRMXzYwwS_bC/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Costs_and_ShortRun.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1nE1oGPL1S5EHba_iyWfKi6zPS63vtUEv",
+    "title": "Demand and Supply",
+    "originalName": "Demand and Supply.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1nE1oGPL1S5EHba_iyWfKi6zPS63vtUEv/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Demand and Supply.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1eCgjh0E7M92s7VW1jxNfD2wKHlemfCfP",
+    "title": "ECO113 Circular Flow",
+    "originalName": "ECO113 Circular Flow.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1eCgjh0E7M92s7VW1jxNfD2wKHlemfCfP/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: ECO113 Circular Flow.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "12KEjMD1MaC7C-lWLOtxdDwXfoy_q5x7U",
+    "title": "ECO113 Consumption Function",
+    "originalName": "ECO113 Consumption Function.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/12KEjMD1MaC7C-lWLOtxdDwXfoy_q5x7U/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: ECO113 Consumption Function.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1pMpv_4PvfGpzEkA1J2DZnoNgAuojO6NI",
+    "title": "eco113 inflation - Copy",
+    "originalName": "eco113 inflation - Copy.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1pMpv_4PvfGpzEkA1J2DZnoNgAuojO6NI/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: eco113 inflation - Copy.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1fuQL7d9bnAYBgW-_-HQjs2OE-Gv9Na3T",
+    "title": "ECO113 Inflation",
+    "originalName": "ECO113 Inflation.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1fuQL7d9bnAYBgW-_-HQjs2OE-Gv9Na3T/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: ECO113 Inflation.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1tDdR7IaI7gFpnUEJwXnoSqJCqkK5-e6f",
+    "title": "eco113 investment MEC - Copy",
+    "originalName": "eco113 investment MEC - Copy.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1tDdR7IaI7gFpnUEJwXnoSqJCqkK5-e6f/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: eco113 investment MEC - Copy.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1413JIRBsE5ZocOhFXMLU9EAPnMxEKHwz",
+    "title": "ECO113 Unit-IV National Income Accounting (Final Lecture)",
+    "originalName": "ECO113 Unit-IV National Income Accounting (Final Lecture).pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1413JIRBsE5ZocOhFXMLU9EAPnMxEKHwz/view?usp=sharing",
+    "description": "Covers accounting conventions, ledger entries, trial balance, and financial statement foundations.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1CoCYr4CHaIpabTNUjxGtymtD6aDXq4NX",
+    "title": "ECO113 Unit-V, Topic-1 Consumption-Function",
+    "originalName": "ECO113 Unit-V, Topic-1 Consumption-Function.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1CoCYr4CHaIpabTNUjxGtymtD6aDXq4NX/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: ECO113 Unit-V, Topic-1 Consumption-Function.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1Fh3lbsdkGCrp3ZjRjLqh17mpe4QQCaZU",
+    "title": "ECO113 Unit-V, Topic-2 Investment Function",
+    "originalName": "ECO113 Unit-V, Topic-2 Investment Function.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1Fh3lbsdkGCrp3ZjRjLqh17mpe4QQCaZU/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: ECO113 Unit-V, Topic-2 Investment Function.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1lsClCXKKcCJpjKRFMP9fKx-TZ905AIPG",
+    "title": "ECO113 Unit-V, Topic-3 Factors-Affecting-Investment",
+    "originalName": "ECO113 Unit-V, Topic-3 Factors-Affecting-Investment.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1lsClCXKKcCJpjKRFMP9fKx-TZ905AIPG/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: ECO113 Unit-V, Topic-3 Factors-Affecting-Investment.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1uYl_ZitmbqGiUHTDmZgd3Xw7tO_YZzsK",
+    "title": "ECO113 Unit-V, Topic-3 Investment Function",
+    "originalName": "ECO113 Unit-V, Topic-3 Investment Function.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1uYl_ZitmbqGiUHTDmZgd3Xw7tO_YZzsK/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: ECO113 Unit-V, Topic-3 Investment Function.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1z4EaEEhqYzwIgCBkEYMbk0qMVb2iKZaA",
+    "title": "ECO113- MARKET STRUCTURE - PART 1",
+    "originalName": "ECO113- MARKET STRUCTURE - PART 1.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1z4EaEEhqYzwIgCBkEYMbk0qMVb2iKZaA/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: ECO113- MARKET STRUCTURE - PART 1.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1cQPF4WMl0H3J5R6JvzdZlIy_ycDaiRsp",
+    "title": "ED",
+    "originalName": "ED.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1cQPF4WMl0H3J5R6JvzdZlIy_ycDaiRsp/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: ED.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1iCUVO570-dI25JGu0d05Zm3sNBWy71Pt",
+    "title": "Elasticity",
+    "originalName": "Elasticity.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1iCUVO570-dI25JGu0d05Zm3sNBWy71Pt/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Elasticity.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "16hZ_1rbH9zM0JNDUcrBKYLuZ3rLtzOdG",
+    "title": "Inputs_and_Production_Function_Presentation",
+    "originalName": "Inputs_and_Production_Function_Presentation.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/16hZ_1rbH9zM0JNDUcrBKYLuZ3rLtzOdG/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Inputs_and_Production_Function_Presentation.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1JHw3FUtz0aN3JvBJ3Om8j2wLxf6LiZmv",
+    "title": "Law_of_Variable_Proportions_Presentation",
+    "originalName": "Law_of_Variable_Proportions_Presentation.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1JHw3FUtz0aN3JvBJ3Om8j2wLxf6LiZmv/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Law_of_Variable_Proportions_Presentation.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1-ZYxka3Fk2FwTeGMugo7iOY_C8Teda2d",
+    "title": "leadership MGN101",
+    "originalName": "leadership MGN101.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1-ZYxka3Fk2FwTeGMugo7iOY_C8Teda2d/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: leadership MGN101.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "15HZ9ho6nqVD6NtjiIJyDwzYNZvAXJOEY",
+    "title": "Long_Run_Costs_and_Economies_of_Scale",
+    "originalName": "Long_Run_Costs_and_Economies_of_Scale.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/15HZ9ho6nqVD6NtjiIJyDwzYNZvAXJOEY/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Long_Run_Costs_and_Economies_of_Scale.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1XqtATW4pKbv6K2MUNDvq4Z3MlPucaFdj",
+    "title": "Market_Equilibrium_Expanded_Presentation",
+    "originalName": "Market_Equilibrium_Expanded_Presentation.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1XqtATW4pKbv6K2MUNDvq4Z3MlPucaFdj/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Market_Equilibrium_Expanded_Presentation.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1s2w9Thhgwzi9S11IOvQgUJk9Up_MBuvg",
+    "title": "Measurement of Inflation",
+    "originalName": "Measurement of Inflation.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1s2w9Thhgwzi9S11IOvQgUJk9Up_MBuvg/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Measurement of Inflation.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "11x1kvcsAB6gipdGRGrw5SlYlJiNhzwY_",
+    "title": "Monopolictic Competition",
+    "originalName": "Monopolictic Competition.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/11x1kvcsAB6gipdGRGrw5SlYlJiNhzwY_/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Monopolictic Competition.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1vWwnLahGo8FBqET8Fv1Y5UOQpQxQXwCy",
+    "title": "Movement_vs_Shift_Curve",
+    "originalName": "Movement_vs_Shift_Curve.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1vWwnLahGo8FBqET8Fv1Y5UOQpQxQXwCy/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Movement_vs_Shift_Curve.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1jYL7ZeAXDSF5COr952R8VusnnvHIzko6",
+    "title": "Perfect_Competition_Presentation (2)",
+    "originalName": "Perfect_Competition_Presentation (2).pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1jYL7ZeAXDSF5COr952R8VusnnvHIzko6/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Perfect_Competition_Presentation (2).pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1IpCyGqBRovst7pbX-UACOFf7mVlDkT_y",
+    "title": "Pricing Practices",
+    "originalName": "Pricing Practices.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1IpCyGqBRovst7pbX-UACOFf7mVlDkT_y/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Pricing Practices.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1e3luzwCvyyuQTVGxr5pei5NoN-dfdj9e",
+    "title": "Production Function",
+    "originalName": "Production Function.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1e3luzwCvyyuQTVGxr5pei5NoN-dfdj9e/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Production Function.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1A_9TYITljT3XXKKj50hLGfkN4fEP1iLY",
+    "title": "Production Theory",
+    "originalName": "Production Theory.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1A_9TYITljT3XXKKj50hLGfkN4fEP1iLY/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Production Theory.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1V0LYX7-RRfzHhehlUgwch1rNw4Q-Gmh9",
+    "title": "Theory of Firm",
+    "originalName": "Theory of Firm.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1V0LYX7-RRfzHhehlUgwch1rNw4Q-Gmh9/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Theory of Firm.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1YtAtlqFAtRKGlfQ5UF7Cmjr9U3DB2ab5",
+    "title": "tut_consumption",
+    "originalName": "tut_consumption.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1YtAtlqFAtRKGlfQ5UF7Cmjr9U3DB2ab5/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: tut_consumption.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1jRtwZo6L2gFHewk3rL8p6TEVBUbNzHSa",
+    "title": "TUTORIAL",
+    "originalName": "TUTORIAL.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1jRtwZo6L2gFHewk3rL8p6TEVBUbNzHSa/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: TUTORIAL.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1EtTmGwiBgsu1hCjToD-n1LpIwhs4DPjU",
+    "title": "Unit  01   L01 - Copy",
+    "originalName": "Unit  01   L01 - Copy.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1EtTmGwiBgsu1hCjToD-n1LpIwhs4DPjU/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Unit  01   L01 - Copy.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1qeK1YIMH1ZqlDSr3SmGlhM21flIp3agJ",
+    "title": "Unit  02   L04",
+    "originalName": "Unit  02   L04.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1qeK1YIMH1ZqlDSr3SmGlhM21flIp3agJ/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Unit  02   L04.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1UHLtJqtqfXGnaWTjlP1aQNOLsithFdhA",
+    "title": "Unit  02  L01",
+    "originalName": "Unit  02  L01.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1UHLtJqtqfXGnaWTjlP1aQNOLsithFdhA/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Unit  02  L01.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1rBf6tiiUQTAapM3ZIWmTGQcd8WF6_e7G",
+    "title": "UNIT 01 L02",
+    "originalName": "UNIT 01 L02.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1rBf6tiiUQTAapM3ZIWmTGQcd8WF6_e7G/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: UNIT 01 L02.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1LTZqhSKMUwnvpJtD4TbzmIrQmPteqmPo",
+    "title": "UNIT 01 L04",
+    "originalName": "UNIT 01 L04.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1LTZqhSKMUwnvpJtD4TbzmIrQmPteqmPo/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: UNIT 01 L04.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1ODzijCgk8XhOhg9iFT_Vl4yGZBDXAk-2",
+    "title": "UNIT 01 L05",
+    "originalName": "UNIT 01 L05.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1ODzijCgk8XhOhg9iFT_Vl4yGZBDXAk-2/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: UNIT 01 L05.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "12QX5B7VlVbkKh3Q5WbN7Yf3Huz5p0KBm",
+    "title": "Unit-IV, Topic-National Income",
+    "originalName": "Unit-IV, Topic-National Income.pptx",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/12QX5B7VlVbkKh3Q5WbN7Yf3Huz5p0KBm/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: Unit-IV, Topic-National Income.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1p-5hXfTDx2XZO7BFJod-oV_GYNOiKQMv",
+    "title": "zero lecture ECO113",
+    "originalName": "zero lecture ECO113.ppt",
+    "subject": "ECO113",
+    "subjectName": "Microeconomics for Business",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1p-5hXfTDx2XZO7BFJod-oV_GYNOiKQMv/view?usp=sharing",
+    "description": "Verified ECO113 study material from Google Drive: zero lecture ECO113.ppt.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1KM7OfuXeF6YzAd3GG3qWFcmlpL3OIxaR",
+    "title": "Communication",
+    "originalName": "Communication.pptx",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1KM7OfuXeF6YzAd3GG3qWFcmlpL3OIxaR/view?usp=sharing",
+    "description": "Organizational behavior essentials, communication channels, and dispute resolution frameworks.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1U8aQVt1s0x_ogSnXn-gBYkNPbGe74p-1",
+    "title": "Conflict Management",
+    "originalName": "Conflict Management.pptx",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1U8aQVt1s0x_ogSnXn-gBYkNPbGe74p-1/view?usp=sharing",
+    "description": "Organizational behavior essentials, communication channels, and dispute resolution frameworks.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1_EW4_9i4JSuV3g1j57LO6luEnCK9SFsJ",
+    "title": "Financial Management 2",
+    "originalName": "Financial Management 2.pptx",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1_EW4_9i4JSuV3g1j57LO6luEnCK9SFsJ/view?usp=sharing",
+    "description": "Verified MGN101 study material from Google Drive: Financial Management 2.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1yausoXRXRusQgIfHIJ-sPqb5XcfBTsr-",
+    "title": "Financial Management",
+    "originalName": "Financial Management.pptx",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1yausoXRXRusQgIfHIJ-sPqb5XcfBTsr-/view?usp=sharing",
+    "description": "Verified MGN101 study material from Google Drive: Financial Management.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "109vMupCDjd1hgrE8FutZCJICfb7UMpYJ",
+    "title": "Human Resource Management",
+    "originalName": "Human Resource Management.pptx",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/109vMupCDjd1hgrE8FutZCJICfb7UMpYJ/view?usp=sharing",
+    "description": "Verified MGN101 study material from Google Drive: Human Resource Management.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "15Un6duJw2pkB8JnDSfqtR-g8YWz55wAa",
+    "title": "leadership and Motivation",
+    "originalName": "leadership and Motivation.pptx",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/15Un6duJw2pkB8JnDSfqtR-g8YWz55wAa/view?usp=sharing",
+    "description": "Verified MGN101 study material from Google Drive: leadership and Motivation.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1FtBaddlLCMGNAqON_15Pp3xhjTdl03Qx",
+    "title": "leadership-styles-pp",
+    "originalName": "leadership-styles-pp.pdf",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "pdf",
+    "driveUrl": "https://drive.google.com/file/d/1FtBaddlLCMGNAqON_15Pp3xhjTdl03Qx/view?usp=sharing",
+    "description": "Verified MGN101 study material from Google Drive: leadership-styles-pp.pdf.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1aiXQ-ktOGEtOjo-A2XidEpIonvnKX37L",
+    "title": "LECTURE 20 (Stress Management)",
+    "originalName": "LECTURE 20 (Stress Management).pptx",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1aiXQ-ktOGEtOjo-A2XidEpIonvnKX37L/view?usp=sharing",
+    "description": "Verified MGN101 study material from Google Drive: LECTURE 20 (Stress Management).pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1qekd7VlE1ovIy2AEmuPuvFQyJX2q9OZo",
+    "title": "LECTURE 27 (Organisational Culture)",
+    "originalName": "LECTURE 27 (Organisational Culture).pptx",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1qekd7VlE1ovIy2AEmuPuvFQyJX2q9OZo/view?usp=sharing",
+    "description": "Verified MGN101 study material from Google Drive: LECTURE 27 (Organisational Culture).pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1iFEpS-KYW73lRHDvJGv_1DuzAFQ9ox0s",
+    "title": "Marketing Management",
+    "originalName": "Marketing Management.pptx",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1iFEpS-KYW73lRHDvJGv_1DuzAFQ9ox0s/view?usp=sharing",
+    "description": "Verified MGN101 study material from Google Drive: Marketing Management.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1kOHnJ36ofj9KvM3hsLGsZXHif5Ydpw2r",
+    "title": "MCQs",
+    "originalName": "MCQs.pptx",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "mcq",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1kOHnJ36ofj9KvM3hsLGsZXHif5Ydpw2r/view?usp=sharing",
+    "description": "Verified MGN101 study material from Google Drive: MCQs.pptx.",
+    "badge": "\ud83c\udfaf Practice Questions",
+    "priority": 60
+  },
+  {
+    "id": "1-9AE0g50UWmtyg3mN8lf284I9uD-qF_L",
+    "title": "Motivation",
+    "originalName": "Motivation.pptx",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1-9AE0g50UWmtyg3mN8lf284I9uD-qF_L/view?usp=sharing",
+    "description": "Verified MGN101 study material from Google Drive: Motivation.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1ZGKCNdO71gCjs5E1fOIv6lNMvXT-dS7O",
+    "title": "Organizational Change",
+    "originalName": "Organizational Change.pptx",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1ZGKCNdO71gCjs5E1fOIv6lNMvXT-dS7O/view?usp=sharing",
+    "description": "Verified MGN101 study material from Google Drive: Organizational Change.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1gImQB8JftXLEN_E_Ld8pCPIxFkEhoeuJ",
+    "title": "Stress Management",
+    "originalName": "Stress Management.pptx",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "ppt",
+    "driveUrl": "https://drive.google.com/file/d/1gImQB8JftXLEN_E_Ld8pCPIxFkEhoeuJ/view?usp=sharing",
+    "description": "Verified MGN101 study material from Google Drive: Stress Management.pptx.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
+  {
+    "id": "1J_uaX78rjQD7kjedQAx0AYU_1st3h5WV",
+    "title": "Theories of leadership",
+    "originalName": "Theories of leadership.pdf",
+    "subject": "MGN101",
+    "subjectName": "Principles & Practices of Management",
+    "stream": "bba",
+    "category": "notes",
+    "fileType": "pdf",
+    "driveUrl": "https://drive.google.com/file/d/1J_uaX78rjQD7kjedQAx0AYU_1st3h5WV/view?usp=sharing",
+    "description": "Verified MGN101 study material from Google Drive: Theories of leadership.pdf.",
+    "badge": "\ud83d\udcd8 Lecture Slides",
+    "priority": 60
+  },
   {
     "id": "1yny-O3VcRvVBEgEB8XBn6tIXGVwyV_ZE",
     "title": "OG Midterm Master Guide (V2)",
     "originalName": "OG_Jatin_Midterm_Master_Guide_V2.pdf",
     "subject": "GENERAL",
     "subjectName": "First Year Master Kit",
+    "stream": "btech",
     "category": "master-guide",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1yny-O3VcRvVBEgEB8XBn6tIXGVwyV_ZE/view?usp=sharing",
     "description": "Comprehensive First-Year Midterm survival manual with high-yield revision tips, scoring patterns, and pass strategies.",
-    "badge": "\u2b50 Master Guide",
+    "badge": "\\u2b50 Master Guide",
     "priority": 100
   },
   {
@@ -128,11 +1869,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "LPU_Python_Midterm_220_Question_Bank.pdf",
     "subject": "PYTHON",
     "subjectName": "Python Programming (INT108)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1s0NEdi8a--A3NpflWoUGIgctt13vGDek/view?usp=sharing",
     "description": "Essential 220 questions covering strings, lists, tuples, dicts, recursion, slicing, and tricky code output prediction.",
-    "badge": "\ud83d\udd25 220 Solved Qs",
+    "badge": "\\ud83d\\udd25 220 Solved Qs",
     "priority": 95
   },
   {
@@ -141,11 +1883,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Biodiversity.pdf",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1ekheXurmWqyYrB47SJlOXE5NljbBlLXH/view?usp=sharing",
     "description": "Official CHE110 course material: Biodiversity",
-    "badge": "\ud83d\udcd8 Lecture Note",
+    "badge": "\\ud83d\\udcd8 Lecture Note",
     "priority": 70
   },
   {
@@ -154,11 +1897,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Disaster Management.pdf",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1-EKpICS68Le39hrYHr_1kRkMZ2h5JaOu/view?usp=sharing",
     "description": "Official CHE110 course material: Disaster Management",
-    "badge": "\ud83d\udcd8 Lecture Note",
+    "badge": "\\ud83d\\udcd8 Lecture Note",
     "priority": 70
   },
   {
@@ -167,11 +1911,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Ecosystem (1).pdf",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1ILIXKYZPF0RJ1EdXZcq9WXP_DQCSOMsN/view?usp=sharing",
     "description": "Official CHE110 course material: Ecosystem (1)",
-    "badge": "\ud83d\udcd8 Lecture Note",
+    "badge": "\\ud83d\\udcd8 Lecture Note",
     "priority": 70
   },
   {
@@ -180,11 +1925,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Energy Resources.pdf",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1Eq6yFmMEANuTjxYlHTJTQwhSjGfQOHZe/view?usp=sharing",
     "description": "Official CHE110 course material: Energy Resources",
-    "badge": "\ud83d\udcd8 Lecture Note",
+    "badge": "\\ud83d\\udcd8 Lecture Note",
     "priority": 70
   },
   {
@@ -193,11 +1939,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Environment law and regulation.pdf",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1WhOZQ_ojpXoga3kf9I_Vh_FoElVLKymM/view?usp=sharing",
     "description": "Official CHE110 course material: Environment law and regulation",
-    "badge": "\ud83d\udcd8 Lecture Note",
+    "badge": "\\ud83d\\udcd8 Lecture Note",
     "priority": 70
   },
   {
@@ -206,11 +1953,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Environmental Pollution.pdf",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/195-m251E_ooKekeilFdu6RMvIydbTwC6/view?usp=sharing",
     "description": "Official CHE110 course material: Environmental Pollution",
-    "badge": "\ud83d\udcd8 Lecture Note",
+    "badge": "\\ud83d\\udcd8 Lecture Note",
     "priority": 70
   },
   {
@@ -219,11 +1967,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Human population.pdf",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1xcD7H7KNY8GLqWhBNVUb8ZbfnzpySO_c/view?usp=sharing",
     "description": "Official CHE110 course material: Human population",
-    "badge": "\ud83d\udcd8 Lecture Note",
+    "badge": "\\ud83d\\udcd8 Lecture Note",
     "priority": 70
   },
   {
@@ -232,11 +1981,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Introduction and natural resources.pdf",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1w0DfHjMO7t66cfsSyLgkhCm-OCHx4Mgz/view?usp=sharing",
     "description": "Official CHE110 course material: Introduction and natural resources",
-    "badge": "\ud83d\udcd8 Lecture Note",
+    "badge": "\\ud83d\\udcd8 Lecture Note",
     "priority": 70
   },
   {
@@ -245,11 +1995,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Natural resources.pdf",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1BLSw40XFksunnQp1nzXfxRSnG_sBksji/view?usp=sharing",
     "description": "Official CHE110 course material: Natural resources",
-    "badge": "\ud83d\udcd8 Lecture Note",
+    "badge": "\\ud83d\\udcd8 Lecture Note",
     "priority": 70
   },
   {
@@ -258,11 +2009,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Social Issues and the environment.pdf",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1dO6-Q2lvom8sGHiXs7MPUwkaNt6ATW13/view?usp=sharing",
     "description": "Official CHE110 course material: Social Issues and the environment",
-    "badge": "\ud83d\udcd8 Lecture Note",
+    "badge": "\\ud83d\\udcd8 Lecture Note",
     "priority": 70
   },
   {
@@ -271,11 +2023,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "syllabus.pdf",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "syllabus",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1vzqBaNa4tvLAR0uoQGyP9c8EL8ygfmaI/view?usp=sharing",
     "description": "Official CHE110 course material: syllabus",
-    "badge": "\ud83d\udccb Syllabus",
+    "badge": "\\ud83d\\udccb Syllabus",
     "priority": 70
   },
   {
@@ -284,11 +2037,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Water and land resources.pdf",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/18GeK8kdpDrqsNCt4wL0Frz8UIysXYmeD/view?usp=sharing",
     "description": "Official CHE110 course material: Water and land resources",
-    "badge": "\ud83d\udcd8 Lecture Note",
+    "badge": "\\ud83d\\udcd8 Lecture Note",
     "priority": 70
   },
   {
@@ -297,11 +2051,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "CHE110 PYQ Folder",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "folder",
     "driveUrl": "https://drive.google.com/drive/folders/1aoc3kA8VjNh4JIORWZfsjdYGzx5dXmRv?usp=sharing",
     "description": "Folder containing 11 scanned previous year midterm questions and solved answers for Environmental Studies.",
-    "badge": "\ud83d\udcdd 11 Scanned PYQs",
+    "badge": "\\ud83d\\udcdd 11 Scanned PYQs",
     "priority": 85
   },
   {
@@ -310,11 +2065,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (1).jpg",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1HbznP9IbLcHXp115gQAzVoqZBJmajkI8/view?usp=sharing",
     "description": "Handwritten and scanned question paper sheet for CHE110 Midterm.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -323,11 +2079,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (2).jpg",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1CPwT2koXTmiAQryFbd5GQYYykGsZaNVI/view?usp=sharing",
     "description": "Handwritten and scanned question paper sheet for CHE110 Midterm.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -336,11 +2093,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (3).jpg",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/14t6y6Nedd5fpOpWTBKl4Olp7dqzHnvIP/view?usp=sharing",
     "description": "Handwritten and scanned question paper sheet for CHE110 Midterm.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -349,11 +2107,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (4).jpg",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1DB7jPg5woGUXG-uaLZw5YHtAE2_GLTCh/view?usp=sharing",
     "description": "Handwritten and scanned question paper sheet for CHE110 Midterm.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -362,11 +2121,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (5).jpg",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1PbOzcjgk8ZQK_o4-xowluwFsgLacvEUl/view?usp=sharing",
     "description": "Handwritten and scanned question paper sheet for CHE110 Midterm.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -375,11 +2135,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (6).jpg",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1fg1NGY_TK_4zZgipgzYiD_pZIIPNjX5B/view?usp=sharing",
     "description": "Handwritten and scanned question paper sheet for CHE110 Midterm.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -388,11 +2149,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (7).jpg",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1Q_eRr68BUDmToRMpaNxGLtWyOr0-hr-x/view?usp=sharing",
     "description": "Handwritten and scanned question paper sheet for CHE110 Midterm.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -401,11 +2163,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (8).jpg",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1Xgx6UsdJrYuT9AcGVmhD9ztAsU-eAAWf/view?usp=sharing",
     "description": "Handwritten and scanned question paper sheet for CHE110 Midterm.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -414,11 +2177,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (9).jpg",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/179FJWoap28ApYTbsRA5wGcISqe7z-5Vi/view?usp=sharing",
     "description": "Handwritten and scanned question paper sheet for CHE110 Midterm.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -427,11 +2191,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "1 (1).jpg",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1ewqIPA6lHwYcHKE89jBiAL4tThHCrjcA/view?usp=sharing",
     "description": "Handwritten and scanned question paper sheet for CHE110 Midterm.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -440,11 +2205,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "1 (2).jpg",
     "subject": "CHE110",
     "subjectName": "Environmental Studies (CHE110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1aOF6Loj-zsQRKncafZUa5m6UAMKOx1mq/view?usp=sharing",
     "description": "Handwritten and scanned question paper sheet for CHE110 Midterm.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -453,11 +2219,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "2. Instruments (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1F3-8v-dRzyi2ah5nW2lhdcQUsiZysGXq/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: 2. Instruments (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -466,11 +2233,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "3. Line Types (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1RxH1VQCkiIuxv63CUVk92bSxf5UleVFy/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: 3. Line Types (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -479,11 +2247,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "4. Dimensioning (1) (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1oDKyNTq7i_pSD7xI1lYqn66udlVRQItD/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: 4. Dimensioning (1) (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -492,11 +2261,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "4. Dimensioning (2).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1QmaWVWcWHknhU7vIxkmbQbuA26ZRKv-K/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: 4. Dimensioning (2).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -505,11 +2275,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "5. Letter writing (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1cBtLAoAOLqye--2fe2VOlUwVwyuK1D4w/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: 5. Letter writing (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -518,11 +2289,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "6. Scales (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1h4kP5zIllLjGXYivGJt3soubGsazkt9s/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: 6. Scales (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -531,11 +2303,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMPORTANT TOPICS_.docx",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "doc",
     "driveUrl": "https://drive.google.com/file/d/1nCfcY22VJ0oXToVEzQo03x3gXwApyYwQ/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: IMPORTANT TOPICS_.docx",
-    "badge": "\u2b50 High Priority",
+    "badge": "\\u2b50 High Priority",
     "priority": 80
   },
   {
@@ -544,11 +2317,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Isometric Projection PPT (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/16_dVvR400yTCgnwTBpyzQ4FSDpBYtqti/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Isometric Projection PPT (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -557,11 +2331,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "mec section questions.pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1VMyORacwQ6OHkPaqmw7e1t6TqztOJ-Ie/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: mec section questions.pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -570,11 +2345,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "mec syll.aspx (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "syllabus",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/14MRn_c9g1i85a-5oEpHFCYverzf3Svf8/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: mec syll.aspx (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -583,11 +2359,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Orthographic Projection UPLOAD (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1SwUvuCMjdpON3jCiZbqi-JH0nbBu-FFL/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Orthographic Projection UPLOAD (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -596,11 +2373,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "playlists .pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1GGOnlWM3NvClLhBD5iLMi99dvn8Xd352/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: playlists .pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -609,11 +2387,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Projections of Line (1).ppt",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "ppt",
     "driveUrl": "https://drive.google.com/file/d/1L-14bsVAIEWCaHssEkZrD5h43-tMXj6i/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Projections of Line (1).ppt",
-    "badge": "\ud83d\udcfd\ufe0f Presentation",
+    "badge": "\\ud83d\\udcfd\\ufe0f Presentation",
     "priority": 60
   },
   {
@@ -622,11 +2401,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Projections of Line FOR UPLOAD (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1lasIBVW_Nx689TdJ4VWDtQ8IJmKP7D6r/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Projections of Line FOR UPLOAD (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -635,11 +2415,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Projections of Point (1).ppt",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "ppt",
     "driveUrl": "https://drive.google.com/file/d/1v8kkT9whdqHB_G8Lk3ZKbK2mArDvQGHo/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Projections of Point (1).ppt",
-    "badge": "\ud83d\udcfd\ufe0f Presentation",
+    "badge": "\\ud83d\\udcfd\\ufe0f Presentation",
     "priority": 60
   },
   {
@@ -648,11 +2429,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Projections of Point upload (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1wq-npEwKsCG6eo8ABnXgU3PYbhpe5-bX/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Projections of Point upload (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -661,11 +2443,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Sectional Orthographic Projection (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1-Z6GJ65QukHNUeQIlvO1tyQJYyacIMh4/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Unit 3 Sectional Orthographic Projection (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -674,11 +2457,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 4 Development of Surfaces (1).ppt",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "ppt",
     "driveUrl": "https://drive.google.com/file/d/1GX4qcDrFqlwnEMuAlhyQWlO6uu3Ngrbp/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Unit 4 Development of Surfaces (1).ppt",
-    "badge": "\ud83d\udcfd\ufe0f Presentation",
+    "badge": "\\ud83d\\udcfd\\ufe0f Presentation",
     "priority": 60
   },
   {
@@ -687,11 +2471,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 5 and 6 1 (1).pptx",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "ppt",
     "driveUrl": "https://drive.google.com/file/d/1yNKElA3VEOxiGXahKwcT8XLfbmXQ-bXC/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Unit 5 and 6 1 (1).pptx",
-    "badge": "\ud83d\udcfd\ufe0f Presentation",
+    "badge": "\\ud83d\\udcfd\\ufe0f Presentation",
     "priority": 60
   },
   {
@@ -700,11 +2485,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 5_Mec 136 (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1VAVMl4J0uQA5dASVrKBsQn7dpsLnGz0_/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Unit 5_Mec 136 (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -713,11 +2499,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 6 with example (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1zHiT9hJ3jjQLqfGnMs0-OR6DKN4DADoT/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Unit 6 with example (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -726,11 +2513,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 6_MEC 136 (2) (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1fOt46s_DvCTzqLjbJFFRbWyhFwcw3WGt/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Unit 6_MEC 136 (2) (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -739,11 +2527,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit3 (1) (1).ppt",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "ppt",
     "driveUrl": "https://drive.google.com/file/d/1kRgBN82yVXsp8K79RlejW7WXgone3fyf/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Unit3 (1) (1).ppt",
-    "badge": "\ud83d\udcfd\ufe0f Presentation",
+    "badge": "\\ud83d\\udcfd\\ufe0f Presentation",
     "priority": 60
   },
   {
@@ -752,11 +2541,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "unit5 Isometric.pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1IqL94SEEMrIYE2jL7_WW4nZ3kbbnFUKw/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: unit5 Isometric.pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -765,11 +2555,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "unit6  development of surfaces.pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1bTjJgCtKMK8U-M3cCYOzNuGX1QBASaww/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: unit6  development of surfaces.pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -778,11 +2569,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit6 Notes 1 (1) (1).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1lbJPlZ9UMhs7VSWQgp-8j8hevoICm0hS/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Unit6 Notes 1 (1) (1).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -791,11 +2583,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit6 Notes 1 (2).pdf",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1Wg9gt5s-YHa0yVDiTb09ngtGlL0KmY0Z/view?usp=sharing",
     "description": "Engineering Graphics & Drawing topic: Unit6 Notes 1 (2).pdf",
-    "badge": "\ud83d\udcd0 Drawing Notes",
+    "badge": "\\ud83d\\udcd0 Drawing Notes",
     "priority": 60
   },
   {
@@ -804,11 +2597,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "MEC PYQ Folder",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "folder",
     "driveUrl": "https://drive.google.com/drive/folders/1PHS5wa76wGzaH8_7_AB_x2T4O9jMWrZs?usp=sharing",
     "description": "Collection of 11 past exam sheets with orthographic, isometric, lines, and point projection problems.",
-    "badge": "\ud83d\udcd0 11 Exam Papers",
+    "badge": "\\ud83d\\udcd0 11 Exam Papers",
     "priority": 85
   },
   {
@@ -817,11 +2611,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (1).jpg",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/133hV3q2-pxmNhNKXps6MNavt_apQwO2L/view?usp=sharing",
     "description": "Scanned exam drawing problem paper.",
-    "badge": "\ud83d\udcc4 Drawing PYQ",
+    "badge": "\\ud83d\\udcc4 Drawing PYQ",
     "priority": 40
   },
   {
@@ -830,11 +2625,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (2).jpg",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1XSx-MhajZzrtoCTL49-I-m3E6_F_xUOe/view?usp=sharing",
     "description": "Scanned exam drawing problem paper.",
-    "badge": "\ud83d\udcc4 Drawing PYQ",
+    "badge": "\\ud83d\\udcc4 Drawing PYQ",
     "priority": 40
   },
   {
@@ -843,11 +2639,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (3).jpg",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1xawLHa1-2GTVGNbOsCAWPuYDXzE-5Mod/view?usp=sharing",
     "description": "Scanned exam drawing problem paper.",
-    "badge": "\ud83d\udcc4 Drawing PYQ",
+    "badge": "\\ud83d\\udcc4 Drawing PYQ",
     "priority": 40
   },
   {
@@ -856,11 +2653,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (4).jpg",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1EYL6PLaN5FGWESvZnmcTcoqnn7YL2KSx/view?usp=sharing",
     "description": "Scanned exam drawing problem paper.",
-    "badge": "\ud83d\udcc4 Drawing PYQ",
+    "badge": "\\ud83d\\udcc4 Drawing PYQ",
     "priority": 40
   },
   {
@@ -869,11 +2667,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (5).jpg",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1YmA3jvQ9tc4eR8K2Xt8FIuAKyjb5Q1b-/view?usp=sharing",
     "description": "Scanned exam drawing problem paper.",
-    "badge": "\ud83d\udcc4 Drawing PYQ",
+    "badge": "\\ud83d\\udcc4 Drawing PYQ",
     "priority": 40
   },
   {
@@ -882,11 +2681,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (6).jpg",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1zlCkZVjkPazY0pvZ1KRN3HSu2APq9rl6/view?usp=sharing",
     "description": "Scanned exam drawing problem paper.",
-    "badge": "\ud83d\udcc4 Drawing PYQ",
+    "badge": "\\ud83d\\udcc4 Drawing PYQ",
     "priority": 40
   },
   {
@@ -895,11 +2695,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (7).jpg",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1ypkCPQh7pXMzN0BGtqRRizsXA6oEqWg0/view?usp=sharing",
     "description": "Scanned exam drawing problem paper.",
-    "badge": "\ud83d\udcc4 Drawing PYQ",
+    "badge": "\\ud83d\\udcc4 Drawing PYQ",
     "priority": 40
   },
   {
@@ -908,11 +2709,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (8).jpg",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/169beEmUYwZfYPjciKO3-8qmlY10CR2hQ/view?usp=sharing",
     "description": "Scanned exam drawing problem paper.",
-    "badge": "\ud83d\udcc4 Drawing PYQ",
+    "badge": "\\ud83d\\udcc4 Drawing PYQ",
     "priority": 40
   },
   {
@@ -921,11 +2723,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (9).jpg",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1P_9MopHvj9hmd1qQqTPYdthXtCegPQ5C/view?usp=sharing",
     "description": "Scanned exam drawing problem paper.",
-    "badge": "\ud83d\udcc4 Drawing PYQ",
+    "badge": "\\ud83d\\udcc4 Drawing PYQ",
     "priority": 40
   },
   {
@@ -934,11 +2737,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (10).jpg",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1uF0wvEscZCWiQc6oJpsTkxxWSq5uWSaL/view?usp=sharing",
     "description": "Scanned exam drawing problem paper.",
-    "badge": "\ud83d\udcc4 Drawing PYQ",
+    "badge": "\\ud83d\\udcc4 Drawing PYQ",
     "priority": 40
   },
   {
@@ -947,11 +2751,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": " (11).jpg",
     "subject": "MEC136",
     "subjectName": "Engineering Graphics & Design (MEC136)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1TgTEeECDB89n5Z4427Q5KkdrtksMZztu/view?usp=sharing",
     "description": "Scanned exam drawing problem paper.",
-    "badge": "\ud83d\udcc4 Drawing PYQ",
+    "badge": "\\ud83d\\udcc4 Drawing PYQ",
     "priority": 40
   },
   {
@@ -960,11 +2765,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0020.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1yDD_qSxT5Ws-ZArUlWC8hw7ZS5596KiX/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -973,11 +2779,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0021.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1XSjTewo_PPhs_IXJVSYbpsUOUYV5Rc5d/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -986,11 +2793,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0023.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1thvHusnuq7WMd-3mM_q7icyOtzKpfTNC/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -999,11 +2807,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0024.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1zn4N1HvpzpOYmAWh_1-Emh5C-u2-Jxwx/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -1012,11 +2821,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0025.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/18eZL-8lJjJFKS3TH3AkvAWeF8Sbr0y74/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -1025,11 +2835,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0026.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/15Uz1aLj-sFQNPEVbogdZhjXGt7Wyy03W/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -1038,11 +2849,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0027.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1TCEY2yq2RIIcZr8nMexFbV-9OOKlN-hz/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -1051,11 +2863,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0028.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1awhV1e7asIeEOtJCHai18cXiCp2_i8ID/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -1064,11 +2877,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0029.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1ScQprlNAk_37FzNSidxzO4syvXsJLQeb/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -1077,11 +2891,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0030.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1SZcvrGjNXqF87nyrQKhVB-xab0g0h_CA/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -1090,11 +2905,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0031.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1RLB0pTSMVdzDxZYc6dehjDEevuMAKC_I/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -1103,11 +2919,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0032.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1i-lWjP4pbNlld3IUBKzQW8zbvv_wzTa9/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -1116,11 +2933,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0033.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/12_xHTMX4H9JwdtFSngOZL0unttdKuR3m/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -1129,11 +2947,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0034.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1ipUDDfSpG8qKAypAFt51d9B4PHzHjMT8/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -1142,11 +2961,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "IMG-20260314-WA0035.jpg",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1csXKXMhe1eZ3_NDRRfz-vAtOn_7vOTnW/view?usp=sharing",
     "description": "Handwritten solved problem / derivation for Calculus and Differential Equations.",
-    "badge": "\u270d\ufe0f Handwritten",
+    "badge": "\\u270d\\ufe0f Handwritten",
     "priority": 30
   },
   {
@@ -1155,11 +2975,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Maths Unit 1 and 2 (2).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1hLJM2pflK-gm78nPhuGQI33p8II4-bDZ/view?usp=sharing",
     "description": "MTH165 Study material: Maths Unit 1 and 2 (2)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1168,11 +2989,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "OBJECTIVE TYPE QUESTIONS 6.3.26 (2).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/17dXnfFBgsHQBm0jsy7tHL3FhNNiVY8vy/view?usp=sharing",
     "description": "MTH165 Study material: OBJECTIVE TYPE QUESTIONS 6.3.26 (2)",
-    "badge": "\ud83d\udcd6 Problem Set",
+    "badge": "\\ud83d\\udcd6 Problem Set",
     "priority": 55
   },
   {
@@ -1181,11 +3003,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "presentation 4 20.2.26 (1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1VreTv3bUaJmtxEcEll-k42GDDQKrICeD/view?usp=sharing",
     "description": "MTH165 Study material: presentation 4 20.2.26 (1)",
-    "badge": "\ud83d\udcd6 Problem Set",
+    "badge": "\\ud83d\\udcd6 Problem Set",
     "priority": 55
   },
   {
@@ -1194,11 +3017,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Question_bank_merged (1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1DYKFPKr3njfoPuWc8aCi9-x7EeVrmAvd/view?usp=sharing",
     "description": "MTH165 Study material: Question_bank_merged (1)",
-    "badge": "\ud83d\udcd6 Problem Set",
+    "badge": "\\ud83d\\udcd6 Problem Set",
     "priority": 55
   },
   {
@@ -1207,11 +3031,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Question_bank_merged (2).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1cYVfL6z7RL5WObJlL4Ki20lgwlnbzcVL/view?usp=sharing",
     "description": "MTH165 Study material: Question_bank_merged (2)",
-    "badge": "\ud83d\udcd6 Problem Set",
+    "badge": "\\ud83d\\udcd6 Problem Set",
     "priority": 55
   },
   {
@@ -1220,11 +3045,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Question_bank_merged (3).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1F8AtLVPIbr3M5kdI_EDofIw0zif9A3pm/view?usp=sharing",
     "description": "MTH165 Study material: Question_bank_merged (3)",
-    "badge": "\ud83d\udcd6 Problem Set",
+    "badge": "\\ud83d\\udcd6 Problem Set",
     "priority": 55
   },
   {
@@ -1233,11 +3059,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "tutorial 2 20.2.26 (1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "tutorial",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/18yv30WD_7_o6MmuXfPilprQ8Y8IraB_v/view?usp=sharing",
     "description": "MTH165 Study material: tutorial 2 20.2.26 (1)",
-    "badge": "\ud83d\udcda Tutorial Sheet",
+    "badge": "\\ud83d\\udcda Tutorial Sheet",
     "priority": 55
   },
   {
@@ -1246,11 +3073,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Tutorial Sheet 1.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "tutorial",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1_5gwcVnLouXnUC9XLNcofXVMaf0sh8Hx/view?usp=sharing",
     "description": "MTH165 Study material: Tutorial Sheet 1",
-    "badge": "\ud83d\udcda Tutorial Sheet",
+    "badge": "\\ud83d\\udcda Tutorial Sheet",
     "priority": 55
   },
   {
@@ -1259,11 +3087,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Tutorial Sheet 2.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "tutorial",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1dx66nJi-tuUlXovmtNQiizGrwsXIl5Kv/view?usp=sharing",
     "description": "MTH165 Study material: Tutorial Sheet 2",
-    "badge": "\ud83d\udcda Tutorial Sheet",
+    "badge": "\\ud83d\\udcda Tutorial Sheet",
     "priority": 55
   },
   {
@@ -1272,11 +3101,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Tutorial sheet 3.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "tutorial",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1Jy5DbBmfHIm_-k0xzDAn1423ZblEVe6J/view?usp=sharing",
     "description": "MTH165 Study material: Tutorial sheet 3",
-    "badge": "\ud83d\udcda Tutorial Sheet",
+    "badge": "\\ud83d\\udcda Tutorial Sheet",
     "priority": 55
   },
   {
@@ -1285,11 +3115,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Tutorial Sheet 6.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "tutorial",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1txnAIvgVJcebHUwLHBsWDzTPQkbiiT0Q/view?usp=sharing",
     "description": "MTH165 Study material: Tutorial Sheet 6",
-    "badge": "\ud83d\udcda Tutorial Sheet",
+    "badge": "\\ud83d\\udcda Tutorial Sheet",
     "priority": 55
   },
   {
@@ -1298,11 +3129,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Tutorial sheet-4.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "tutorial",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1t5nhNQLG69H6ZV2tkKuhfUc4_U3scTZd/view?usp=sharing",
     "description": "MTH165 Study material: Tutorial sheet-4",
-    "badge": "\ud83d\udcda Tutorial Sheet",
+    "badge": "\\ud83d\\udcda Tutorial Sheet",
     "priority": 55
   },
   {
@@ -1311,11 +3143,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Tutorial sheet-5.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "tutorial",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1SFsZtjYW2m6iqaMywsmRWNXsqJvlo9sg/view?usp=sharing",
     "description": "MTH165 Study material: Tutorial sheet-5",
-    "badge": "\ud83d\udcda Tutorial Sheet",
+    "badge": "\\ud83d\\udcda Tutorial Sheet",
     "priority": 55
   },
   {
@@ -1324,11 +3157,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on cauchy Euler Equation (1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/18Mubu_z5wxmcLdR72GNxbyCUgLrRM5xO/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on cauchy Euler Equation (1)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1337,11 +3171,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on cauchy Euler Equation.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1qKH8R2l7_Jdo0eE8vZj7GoR881FzL_lG/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on cauchy Euler Equation",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1350,11 +3185,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on cauchy Euler Equation(1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1s8VqV54eUKftMO4bx9q9DR9aow3XfeFN/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on cauchy Euler Equation(1)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1363,11 +3199,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on method of undetermine coefficients (1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1A2v5XfQ0eov8kQv2Oa9w34JdiYhikigV/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on method of undetermine coefficients (1)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1376,11 +3213,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on method of undetermine coefficients.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1Gu3LZstHagyLcmOeiOTicq1uj4LJqbH3/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on method of undetermine coefficients",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1389,11 +3227,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on method of undetermine coefficients(1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1I5AQPI2fD18MfeAhEYEopqABCnFXXW6y/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on method of undetermine coefficients(1)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1402,11 +3241,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on P.I. by Operator Method (1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1X8C015gATk5yY-m2OFzORBFJC_5m_7k4/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on P.I. by Operator Method (1)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1415,11 +3255,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on P.I. by Operator Method.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/19NCcwhffLi1M467Ab3Kdks_pNlyfIFMf/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on P.I. by Operator Method",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1428,11 +3269,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on P.I. by Operator Method(1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1oP4wIFd6jv_5dEfGzht1d_Sobz8GnEl-/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on P.I. by Operator Method(1)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1441,11 +3283,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on Simultaneous Diff. Equation (1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1SIqqSlkWfJ7SzTDyVKEUmk65Dcv5wHHJ/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on Simultaneous Diff. Equation (1)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1454,11 +3297,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on Simultaneous Diff. Equation.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1zJ8CGX48mLwbNZMZvc7cMBCRvGMkF0cD/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on Simultaneous Diff. Equation",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1467,11 +3311,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on Simultaneous Diff. Equation(1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1NMNjzVBpDFizZ8a5iMt6KGaEAZAQhEfj/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on Simultaneous Diff. Equation(1)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1480,11 +3325,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on variation of parameter (1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1m72jF3ik_PN0FkdWn8qufJulFhnJIQlU/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on variation of parameter (1)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1493,11 +3339,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on variation of parameter.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/127Z3-kHtW4VBMka8EF-M686VquwQ1DmP/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on variation of parameter",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1506,11 +3353,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 3 Question on variation of parameter(1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1wI817YaLS9XAuBgtNYiCYTzHrn6yPwgB/view?usp=sharing",
     "description": "MTH165 Study material: Unit 3 Question on variation of parameter(1)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1519,11 +3367,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit_1_MCQs_For_Differential__equations.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1nG5lk10mKfp436n4u3aFCFg4mZEHOhGW/view?usp=sharing",
     "description": "MTH165 Study material: Unit_1_MCQs_For_Differential__equations",
-    "badge": "\ud83c\udfaf MCQ Bank",
+    "badge": "\\ud83c\\udfaf MCQ Bank",
     "priority": 75
   },
   {
@@ -1532,11 +3381,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit_1_MTH166.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1bMlXjbihAlvN_3G-5QznzcUGGuHzmYmn/view?usp=sharing",
     "description": "MTH165 Study material: Unit_1_MTH166",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1545,11 +3395,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit_2_Mcqs_Differential_equations.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1-Yb7iHH2jzzOp_dZRAdAm-v_GubMzaCA/view?usp=sharing",
     "description": "MTH165 Study material: Unit_2_Mcqs_Differential_equations",
-    "badge": "\ud83c\udfaf MCQ Bank",
+    "badge": "\\ud83c\\udfaf MCQ Bank",
     "priority": 75
   },
   {
@@ -1558,11 +3409,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit-1(2 sem).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/15LaFHazcT42PB4in0FupyclAduCDamvo/view?usp=sharing",
     "description": "MTH165 Study material: Unit-1(2 sem)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1571,11 +3423,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit-2 (2nd sem).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1cepZwxXTCJYzAsR4Xo06NGpV1u8LxGXA/view?usp=sharing",
     "description": "MTH165 Study material: Unit-2 (2nd sem)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1584,11 +3437,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit-3 (1).pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1qoDyMLnkhKsXwP2A73Rob1zhruBI2Rtw/view?usp=sharing",
     "description": "MTH165 Study material: Unit-3 (1)",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1597,11 +3451,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit-3.pdf",
     "subject": "MTH165",
     "subjectName": "Engineering Mathematics - I (MTH165)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/17_sjTGtjpx-K1g5C8pTspOBYw7U-OH_I/view?usp=sharing",
     "description": "MTH165 Study material: Unit-3",
-    "badge": "\ud83d\udd25 Core Theory",
+    "badge": "\\ud83d\\udd25 Core Theory",
     "priority": 75
   },
   {
@@ -1610,11 +3465,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Fiber Optics.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1RW1CBd_sx-WP75sLdJqmmq4OVP-Gm7_H/view?usp=sharing",
     "description": "Lecture notes: Fiber Optics.pdf",
-    "badge": "\ud83d\udd2c Physics Theory",
+    "badge": "\\ud83d\\udd2c Physics Theory",
     "priority": 65
   },
   {
@@ -1623,11 +3479,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "HK Malik_Engineering Physics.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "book",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1_etI0tX1mxprAgwElFWIW7xUCiOJyB_V/view?usp=sharing",
     "description": "Standard engineering textbook by HK Malik",
-    "badge": "\ud83d\udcd6 Standard Textbook",
+    "badge": "\\ud83d\\udcd6 Standard Textbook",
     "priority": 95
   },
   {
@@ -1636,11 +3493,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "laser1.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/13lf4jTgHs0WEZUI0USg-VEsrjTWWzya7/view?usp=sharing",
     "description": "Lecture notes: laser1.pdf",
-    "badge": "\ud83d\udd2c Physics Theory",
+    "badge": "\\ud83d\\udd2c Physics Theory",
     "priority": 65
   },
   {
@@ -1649,11 +3507,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "laser2.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1tugGwOXikXUlu83FlERY1uroouPHOPuY/view?usp=sharing",
     "description": "Lecture notes: laser2.pdf",
-    "badge": "\ud83d\udd2c Physics Theory",
+    "badge": "\\ud83d\\udd2c Physics Theory",
     "priority": 65
   },
   {
@@ -1662,11 +3521,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "laser3.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1JKd0JLaWlX-rzkqn2x3IESYpOCcXKPqI/view?usp=sharing",
     "description": "Lecture notes: laser3.pdf",
-    "badge": "\ud83d\udd2c Physics Theory",
+    "badge": "\\ud83d\\udd2c Physics Theory",
     "priority": 65
   },
   {
@@ -1675,11 +3535,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "phy syll.aspx",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "syllabus",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1hK4tRJZFtub0FfLLtbRSKunvXdQq2txF/view?usp=sharing",
     "description": "Lecture notes: phy syll.aspx",
-    "badge": "\ud83d\udd2c Physics Theory",
+    "badge": "\\ud83d\\udd2c Physics Theory",
     "priority": 65
   },
   {
@@ -1688,11 +3549,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 4 Quantum Mechanics Lecture 1.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1JmxrAQFTAviyZ1MHNiPzONkl20zgx5mH/view?usp=sharing",
     "description": "Lecture notes: Unit 4 Quantum Mechanics Lecture 1.pdf",
-    "badge": "\ud83d\udd2c Physics Theory",
+    "badge": "\\ud83d\\udd2c Physics Theory",
     "priority": 65
   },
   {
@@ -1701,11 +3563,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 4 Quantum Mechanics Lecture 2.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1CLPFAPzGzcrAmCWakUFgH37bAWLTMSuj/view?usp=sharing",
     "description": "Lecture notes: Unit 4 Quantum Mechanics Lecture 2.pdf",
-    "badge": "\ud83d\udd2c Physics Theory",
+    "badge": "\\ud83d\\udd2c Physics Theory",
     "priority": 65
   },
   {
@@ -1714,11 +3577,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 4 Quantum Mechanics Lecture 3.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1dLdc2AhxHPosrtU0zSkJQk-9oXAIizTP/view?usp=sharing",
     "description": "Lecture notes: Unit 4 Quantum Mechanics Lecture 3.pdf",
-    "badge": "\ud83d\udd2c Physics Theory",
+    "badge": "\\ud83d\\udd2c Physics Theory",
     "priority": 65
   },
   {
@@ -1727,11 +3591,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 4 Quantum Mechanics Lecture 4.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1ta8J_Bia8IkHyCmaejxvdJ7A8kZQXhX4/view?usp=sharing",
     "description": "Lecture notes: Unit 4 Quantum Mechanics Lecture 4.pdf",
-    "badge": "\ud83d\udd2c Physics Theory",
+    "badge": "\\ud83d\\udd2c Physics Theory",
     "priority": 65
   },
   {
@@ -1740,11 +3605,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 4 Quantum Mechanics Lecture 6.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1628WyQYRUDaELecUJjAzX2nkebqIl5vu/view?usp=sharing",
     "description": "Lecture notes: Unit 4 Quantum Mechanics Lecture 6.pdf",
-    "badge": "\ud83d\udd2c Physics Theory",
+    "badge": "\\ud83d\\udd2c Physics Theory",
     "priority": 65
   },
   {
@@ -1753,11 +3619,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 4 Quantume Mechanics Lecture 5 (1).pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1hhbGpy-sxsuONkA6wgxig9BAJ7W0c8n8/view?usp=sharing",
     "description": "Lecture notes: Unit 4 Quantume Mechanics Lecture 5 (1).pdf",
-    "badge": "\ud83d\udd2c Physics Theory",
+    "badge": "\\ud83d\\udd2c Physics Theory",
     "priority": 65
   },
   {
@@ -1766,11 +3633,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 4 Quantume Mechanics Lecture 5 (2).pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1ar_a9gSMu7Y_w_agcTEp24lQ0rDujGVd/view?usp=sharing",
     "description": "Lecture notes: Unit 4 Quantume Mechanics Lecture 5 (2).pdf",
-    "badge": "\ud83d\udd2c Physics Theory",
+    "badge": "\\ud83d\\udd2c Physics Theory",
     "priority": 65
   },
   {
@@ -1779,11 +3647,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit 4 Quantume Mechanics Lecture 5.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/14yJJTsN5bnwJRddBXODKAMNSOUP_PAYl/view?usp=sharing",
     "description": "Lecture notes: Unit 4 Quantume Mechanics Lecture 5.pdf",
-    "badge": "\ud83d\udd2c Physics Theory",
+    "badge": "\\ud83d\\udd2c Physics Theory",
     "priority": 65
   },
   {
@@ -1792,11 +3661,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Unit6.pptx",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "notes",
     "fileType": "ppt",
     "driveUrl": "https://drive.google.com/file/d/1ScLQdZi_SGnnbzM4gtQTvfMdMEAZgUBk/view?usp=sharing",
     "description": "Lecture notes: Unit6.pptx",
-    "badge": "\ud83d\udcfd\ufe0f Slides",
+    "badge": "\\ud83d\\udcfd\\ufe0f Slides",
     "priority": 65
   },
   {
@@ -1805,11 +3675,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "DOC-20221111-WA0012..pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1-4456yb6_IAXYOpO278kZqDxNIFadHZ8/view?usp=sharing",
     "description": "Physics Midterm paper/questions: DOC-20221111-WA0012.",
-    "badge": "\ud83d\udcc4 Past Paper",
+    "badge": "\\ud83d\\udcc4 Past Paper",
     "priority": 60
   },
   {
@@ -1818,11 +3689,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "DOC-20221111-WA0013..pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1pHFwdzhv4TePv22IecxejoZQQHXm8vtC/view?usp=sharing",
     "description": "Physics Midterm paper/questions: DOC-20221111-WA0013.",
-    "badge": "\ud83d\udcc4 Past Paper",
+    "badge": "\\ud83d\\udcc4 Past Paper",
     "priority": 60
   },
   {
@@ -1831,11 +3703,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "DOC-20221111-WA0014..pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1O0ORKv2MPvtD1Zn0bD_oktAf0B56bwk9/view?usp=sharing",
     "description": "Physics Midterm paper/questions: DOC-20221111-WA0014.",
-    "badge": "\ud83d\udcc4 Past Paper",
+    "badge": "\\ud83d\\udcc4 Past Paper",
     "priority": 60
   },
   {
@@ -1844,11 +3717,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Free Electron Theory.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1peVxVIX3cYfYtTs0HlAEQ7dxunxbYLU3/view?usp=sharing",
     "description": "Physics Midterm paper/questions: Free Electron Theory",
-    "badge": "\ud83d\udcc4 Past Paper",
+    "badge": "\\ud83d\\udcc4 Past Paper",
     "priority": 60
   },
   {
@@ -1857,11 +3731,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Laser and Fiber Optics-MCQS.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1ZEZABij5MhQouziRd2jGjgTnCkk2J7fr/view?usp=sharing",
     "description": "Physics Midterm paper/questions: Laser and Fiber Optics-MCQS",
-    "badge": "\u26a1 Unit MCQ",
+    "badge": "\\u26a1 Unit MCQ",
     "priority": 80
   },
   {
@@ -1870,11 +3745,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "mcq last year answer (2).pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1BYEngXZeD3SSe1YRTboZqUBE-rvgdUAj/view?usp=sharing",
     "description": "Physics Midterm paper/questions: mcq last year answer (2)",
-    "badge": "\ud83c\udfaf MCQ with Solution",
+    "badge": "\\ud83c\\udfaf MCQ with Solution",
     "priority": 80
   },
   {
@@ -1883,11 +3759,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "mcq last year answer.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1cEvbt7lqX75F3PoUDjjD6dyG3RxcZllg/view?usp=sharing",
     "description": "Physics Midterm paper/questions: mcq last year answer",
-    "badge": "\ud83c\udfaf MCQ with Solution",
+    "badge": "\\ud83c\\udfaf MCQ with Solution",
     "priority": 80
   },
   {
@@ -1896,11 +3773,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "MCQ_Physics_part 2.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1TV-ZOhtyozzal2ZimkkFMrhGA0WiTLxh/view?usp=sharing",
     "description": "Physics Midterm paper/questions: MCQ_Physics_part 2",
-    "badge": "\u26a1 Unit MCQ",
+    "badge": "\\u26a1 Unit MCQ",
     "priority": 80
   },
   {
@@ -1909,11 +3787,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "MCQ_Unit_I_PHY110.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1gUqKNkguu8R6DRkgJp2z5pCzfBmuyOio/view?usp=sharing",
     "description": "Physics Midterm paper/questions: MCQ_Unit_I_PHY110",
-    "badge": "\u26a1 Unit MCQ",
+    "badge": "\\u26a1 Unit MCQ",
     "priority": 80
   },
   {
@@ -1922,11 +3801,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "MCQ_Unit_II_PHY110.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1BsscAgNsYHbJQE3TonsmCpPdH1Of-c47/view?usp=sharing",
     "description": "Physics Midterm paper/questions: MCQ_Unit_II_PHY110",
-    "badge": "\u26a1 Unit MCQ",
+    "badge": "\\u26a1 Unit MCQ",
     "priority": 80
   },
   {
@@ -1935,11 +3815,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "MCQ_Unit_III_PHY110.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1zl6cMEhjgm6BUjD4zThIFq5gOBZuH5Jv/view?usp=sharing",
     "description": "Physics Midterm paper/questions: MCQ_Unit_III_PHY110",
-    "badge": "\u26a1 Unit MCQ",
+    "badge": "\\u26a1 Unit MCQ",
     "priority": 80
   },
   {
@@ -1948,11 +3829,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "photo_1_2024-05-14_08-28-38.jpg",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/17f-4PMRnQc55JQbn9DMsoR4HS7EgRM39/view?usp=sharing",
     "description": "Scanned question paper from previous year midterm exams.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -1961,11 +3843,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "photo_1_2024-05-14_08-28-49.jpg",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1Qt1-lJJA1UfX92t-0G2Sw8vTGS-uNMGx/view?usp=sharing",
     "description": "Scanned question paper from previous year midterm exams.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -1974,11 +3857,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "photo_2_2024-05-14_08-28-38.jpg",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1dJNRWn9xRABM7h9B7G717T68sEE9iW5e/view?usp=sharing",
     "description": "Scanned question paper from previous year midterm exams.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -1987,11 +3871,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "photo_2_2024-05-14_08-28-49.jpg",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1938xONzWnUJtDyf3uQxnYhdS3eg-J364/view?usp=sharing",
     "description": "Scanned question paper from previous year midterm exams.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -2000,11 +3885,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "photo_3_2024-05-14_08-28-38.jpg",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1I9E2t-e7Y-_5nv2CCXIFACRwYHZCt9ki/view?usp=sharing",
     "description": "Scanned question paper from previous year midterm exams.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -2013,11 +3899,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "photo_4_2024-05-14_08-28-38.jpg",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1KeRrQiqQsUXK2avyQl2WSLJGj_BzU5nQ/view?usp=sharing",
     "description": "Scanned question paper from previous year midterm exams.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -2026,11 +3913,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "photo_5_2024-05-14_08-28-38.jpg",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1Gp16ejjrbaDam9QIaG7fuGiKckeb4Vix/view?usp=sharing",
     "description": "Scanned question paper from previous year midterm exams.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -2039,11 +3927,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "photo_6_2024-05-14_08-28-38.jpg",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/15ilznIq0n4V5C521a5TXYgvFoLfHdsmn/view?usp=sharing",
     "description": "Scanned question paper from previous year midterm exams.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -2052,11 +3941,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "photo_7_2024-05-14_08-28-38.jpg",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1x_VzcvPA0b2e-ZsFLib6aIL-RzOPKPnX/view?usp=sharing",
     "description": "Scanned question paper from previous year midterm exams.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -2065,11 +3955,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "photo_8_2024-05-14_08-28-38.jpg",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1fxFdUNqA3didHypMlR3OMcpSSFP0uAzZ/view?usp=sharing",
     "description": "Scanned question paper from previous year midterm exams.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -2078,11 +3969,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "photo_9_2024-05-14_08-28-38.jpg",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1IUNupu_r5u24ms_0ki5MqbuhqVfgj0bK/view?usp=sharing",
     "description": "Scanned question paper from previous year midterm exams.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -2091,11 +3983,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "photo_10_2024-05-14_08-28-38.jpg",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "image",
     "driveUrl": "https://drive.google.com/file/d/1qKIyx48z7pwuv-9x9aA3WD0IG3Mkc_xw/view?usp=sharing",
     "description": "Scanned question paper from previous year midterm exams.",
-    "badge": "\ud83d\udcc4 PYQ Scan",
+    "badge": "\\ud83d\\udcc4 PYQ Scan",
     "priority": 40
   },
   {
@@ -2104,11 +3997,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "Tutorial_Unit_II_PHY110.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "pyq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1cyGMVkt05F2x8mYEYNxG-aIyfyg5k0c9/view?usp=sharing",
     "description": "Physics Midterm paper/questions: Tutorial_Unit_II_PHY110",
-    "badge": "\ud83d\udcc4 Past Paper",
+    "badge": "\\ud83d\\udcc4 Past Paper",
     "priority": 60
   },
   {
@@ -2117,11 +4011,12 @@ export const MIDTERM_RESOURCES_DATA: MidtermResourceItem[] = [
     "originalName": "unit 4 mcq phy110.pdf",
     "subject": "PHY175",
     "subjectName": "Engineering Physics (PHY175/110)",
+    "stream": "btech",
     "category": "mcq",
     "fileType": "pdf",
     "driveUrl": "https://drive.google.com/file/d/1cAvB83wDOHQ3S41yxOB7qhIZGIQ7Qdfr/view?usp=sharing",
     "description": "Physics Midterm paper/questions: unit 4 mcq phy110",
-    "badge": "\u26a1 Unit MCQ",
+    "badge": "\\u26a1 Unit MCQ",
     "priority": 80
   }
 ];
